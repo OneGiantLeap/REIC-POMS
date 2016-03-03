@@ -32,7 +32,7 @@ namespace REIC_POMS
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            //JUST TO TRANSITION TO THE MAIN SCREEN
+            //THIS JUST TRANSITIONS TO THE ITEMS MAIN SCREEN
             if ((txtUsername.Text == "wennie") && (txtPassword.Text == "1234"))
             {
                 ItemsMainScreen ims = new ItemsMainScreen();
