@@ -42,7 +42,7 @@ namespace REIC_POMS
             else
             //{
                 MessageBox.Show("The username or password you entered is incorrect.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            
+            //}
         }
 
     }
