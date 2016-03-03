@@ -40,8 +40,9 @@ namespace REIC_POMS
                 Close(); //Close the Log-in Screen
             }
             else
+            //{
                 MessageBox.Show("The username or password you entered is incorrect.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
+            
         }
 
     }
