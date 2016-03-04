@@ -11,3 +11,10 @@ C:\Users\Gayle Chua\Desktop\REIC POMS\REIC POMS\obj\Debug\REIC_POMS.ItemsMainScr
 C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\bin\Debug\REIC POMS.exe.config
 C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC POMS.exe
 C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC POMS.pdb
+C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\bin\Debug\REIC POMS.exe
+C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\bin\Debug\REIC POMS.pdb
+C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC POMS.csprojResolveAssemblyReference.cache
+C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.ItemsMainScreen.resources
+C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.Form1.resources
+C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.Properties.Resources.resources
+C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC POMS.csproj.GenerateResource.Cache

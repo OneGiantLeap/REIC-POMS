@@ -32,7 +32,7 @@ namespace REIC_POMS
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            //THIS JUST TRANSITIONS TO THE ITEMS MAIN SCREEN
+            //JUST TO TRANSITION TO THE MAIN SCREEN
             if ((txtUsername.Text == "wennie") && (txtPassword.Text == "1234"))
             {
                 ItemsMainScreen ims = new ItemsMainScreen();
@@ -40,7 +40,6 @@ namespace REIC_POMS
                 Close(); //Close the Log-in Screen
             }
             else
-            //{
                 MessageBox.Show("The username or password you entered is incorrect.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             //}
         }
