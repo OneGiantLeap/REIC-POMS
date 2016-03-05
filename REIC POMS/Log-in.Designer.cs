@@ -39,7 +39,6 @@
             this.btnMinimize = new System.Windows.Forms.Button();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.printDialog1 = new System.Windows.Forms.PrintDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -100,7 +99,7 @@
             // pictureBox3
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
-            this.pictureBox3.BackgroundImage = global::REIC_POMS.Properties.Resources.Password__32px_Black_;
+            this.pictureBox3.BackgroundImage = global::REIC_POMS.Properties.Resources.IconPassword;
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pictureBox3.Location = new System.Drawing.Point(335, 456);
             this.pictureBox3.Name = "pictureBox3";
@@ -112,7 +111,7 @@
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
-            this.pictureBox2.BackgroundImage = global::REIC_POMS.Properties.Resources.Username__32px_Black_;
+            this.pictureBox2.BackgroundImage = global::REIC_POMS.Properties.Resources.IconUsername;
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pictureBox2.Location = new System.Drawing.Point(335, 391);
             this.pictureBox2.Name = "pictureBox2";
@@ -123,7 +122,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackgroundImage = global::REIC_POMS.Properties.Resources.Logo_REIC_Banner;
+            this.pictureBox1.BackgroundImage = global::REIC_POMS.Properties.Resources.LogoREICBanner;
             this.pictureBox1.Location = new System.Drawing.Point(175, 182);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(695, 116);
@@ -176,10 +175,6 @@
             this.pictureBox5.TabIndex = 10;
             this.pictureBox5.TabStop = false;
             // 
-            // printDialog1
-            // 
-            this.printDialog1.UseEXDialog = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -224,7 +219,6 @@
         private System.Windows.Forms.Button btnMinimize;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.PrintDialog printDialog1;
     }
 }
 

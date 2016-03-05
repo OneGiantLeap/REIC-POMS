@@ -63,9 +63,9 @@ namespace REIC_POMS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Logo_REIC_Banner {
+        internal static System.Drawing.Bitmap ButtonActiveItems {
             get {
-                object obj = ResourceManager.GetObject("Logo-REIC Banner", resourceCulture);
+                object obj = ResourceManager.GetObject("ButtonActiveItems", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace REIC_POMS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Logo_ROMMA_Banner__Big_ {
+        internal static System.Drawing.Bitmap ButtonAddItem {
             get {
-                object obj = ResourceManager.GetObject("Logo-ROMMA Banner (Big)", resourceCulture);
+                object obj = ResourceManager.GetObject("ButtonAddItem", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace REIC_POMS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Logo_ROMMA_Banner__Big_1 {
+        internal static System.Drawing.Bitmap ButtonViewItem {
             get {
-                object obj = ResourceManager.GetObject("Logo-ROMMA Banner (Big)1", resourceCulture);
+                object obj = ResourceManager.GetObject("ButtonViewItem", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace REIC_POMS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Password__32px_Black_ {
+        internal static System.Drawing.Bitmap IconPassword {
             get {
-                object obj = ResourceManager.GetObject("Password (32px Black)", resourceCulture);
+                object obj = ResourceManager.GetObject("IconPassword", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +103,39 @@ namespace REIC_POMS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Username__32px_Black_ {
+        internal static System.Drawing.Bitmap IconUsername {
             get {
-                object obj = ResourceManager.GetObject("Username (32px Black)", resourceCulture);
+                object obj = ResourceManager.GetObject("IconUsername", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap LogoREICBanner {
+            get {
+                object obj = ResourceManager.GetObject("LogoREICBanner", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap LogoREICInitials {
+            get {
+                object obj = ResourceManager.GetObject("LogoREICInitials", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap LogoROMMA {
+            get {
+                object obj = ResourceManager.GetObject("LogoROMMA", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

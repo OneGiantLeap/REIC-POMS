@@ -17,15 +17,21 @@ namespace REIC_POMS
             InitializeComponent();
         }
 
-        private void minimizeBtn_Click(object sender, EventArgs e)
+        private void ItemsMainScreen_Load(object sender, EventArgs e)
+        {
+            cbbFilterBy.SelectedIndex = 0; //Sets the default combobox value to "Filter by..."
+        }
+
+        private void btnMinimize_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void exitBtn_Click(object sender, EventArgs e)
+        private void btnExit_Click(object sender, EventArgs e)
         {
             Close();
         }
+
 
     }
 }
