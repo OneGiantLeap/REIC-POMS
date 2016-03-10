@@ -180,7 +180,9 @@ namespace REIC_POMS
         //---------------------------
         private void btnAddItem_Click(object sender, EventArgs e)
         {
-
+            Item_AddForm iaf = new Item_AddForm();
+            iaf.ShowDialog();
+            Close();
         }
 
         private void btnAddItem_MouseEnter(object sender, EventArgs e)

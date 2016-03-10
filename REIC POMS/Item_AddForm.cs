@@ -36,5 +36,10 @@ namespace REIC_POMS
         {
             cbbUOM.SelectedIndex = 0;
         }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            Close(); //However, this closes the entire application.
+        }
     }
 }

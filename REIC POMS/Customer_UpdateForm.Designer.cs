@@ -207,7 +207,7 @@
             // 
             // imgUpdateCustomer
             // 
-            this.imgUpdateCustomer.BackgroundImage = global::REIC_POMS.Properties.Resources.Banner_Customer_Update;
+            this.imgUpdateCustomer.BackgroundImage = global::REIC_POMS.Properties.Resources.BannerCustomerUpdate;
             this.imgUpdateCustomer.Location = new System.Drawing.Point(0, 0);
             this.imgUpdateCustomer.Name = "imgUpdateCustomer";
             this.imgUpdateCustomer.Size = new System.Drawing.Size(410, 71);

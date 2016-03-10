@@ -50,7 +50,7 @@
             // 
             // imgAddCustomer
             // 
-            this.imgAddCustomer.BackgroundImage = global::REIC_POMS.Properties.Resources.Banner_Customer_Add;
+            this.imgAddCustomer.BackgroundImage = global::REIC_POMS.Properties.Resources.BannerCustomerAdd;
             this.imgAddCustomer.Location = new System.Drawing.Point(0, 0);
             this.imgAddCustomer.Name = "imgAddCustomer";
             this.imgAddCustomer.Size = new System.Drawing.Size(410, 71);

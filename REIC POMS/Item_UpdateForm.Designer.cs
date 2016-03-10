@@ -500,8 +500,8 @@
             // 
             // imgUpdateItem
             // 
-            this.imgUpdateItem.BackgroundImage = global::REIC_POMS.Properties.Resources.Banner_Item_Update;
-            this.imgUpdateItem.InitialImage = global::REIC_POMS.Properties.Resources.Banner_Item_Add;
+            this.imgUpdateItem.BackgroundImage = global::REIC_POMS.Properties.Resources.BannerItemUpdate;
+            this.imgUpdateItem.InitialImage = global::REIC_POMS.Properties.Resources.BannerItemAdd;
             this.imgUpdateItem.Location = new System.Drawing.Point(0, 0);
             this.imgUpdateItem.Name = "imgUpdateItem";
             this.imgUpdateItem.Size = new System.Drawing.Size(370, 71);

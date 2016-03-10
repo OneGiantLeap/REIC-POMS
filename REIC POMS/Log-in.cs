@@ -37,7 +37,7 @@ namespace REIC_POMS
             {
                 Item_MainScreen ims = new Item_MainScreen();
                 ims.ShowDialog();
-                this.Close(); //Close the Log-in Screen
+                Close(); //Close the Log-in Screen
             }
             else
                 MessageBox.Show("The username or password you entered is incorrect.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

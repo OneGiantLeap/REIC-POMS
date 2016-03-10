@@ -397,6 +397,7 @@
             this.btnCancel.TabIndex = 12;
             this.btnCancel.Text = "CANCEL";
             this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnAdd
             // 
@@ -512,8 +513,8 @@
             // 
             // imgAddItem
             // 
-            this.imgAddItem.BackgroundImage = global::REIC_POMS.Properties.Resources.Banner_Item_Add;
-            this.imgAddItem.InitialImage = global::REIC_POMS.Properties.Resources.Banner_Item_Add;
+            this.imgAddItem.BackgroundImage = global::REIC_POMS.Properties.Resources.BannerItemAdd;
+            this.imgAddItem.InitialImage = global::REIC_POMS.Properties.Resources.BannerItemAdd;
             this.imgAddItem.Location = new System.Drawing.Point(0, 0);
             this.imgAddItem.Name = "imgAddItem";
             this.imgAddItem.Size = new System.Drawing.Size(370, 71);
