@@ -47,6 +47,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Customer_AddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customer_AddForm.Designer.cs">
+      <DependentUpon>Customer_AddForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customer_UpdateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customer_UpdateForm.Designer.cs">
+      <DependentUpon>Customer_UpdateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customer_ViewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customer_ViewForm.Designer.cs">
+      <DependentUpon>Customer_ViewForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Item_AddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Item_AddForm.Designer.cs">
+      <DependentUpon>Item_AddForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Item_UpdateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Item_UpdateForm.Designer.cs">
+      <DependentUpon>Item_UpdateForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Log-in.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,8 +91,28 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+
     <EmbeddedResource Include="Item_MainScreen.resx">
       <DependentUpon>Item_MainScreen.cs</DependentUpon>
+
+    <EmbeddedResource Include="Customer_AddForm.resx">
+      <DependentUpon>Customer_AddForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customer_UpdateForm.resx">
+      <DependentUpon>Customer_UpdateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customer_ViewForm.resx">
+      <DependentUpon>Customer_ViewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Item_AddForm.resx">
+      <DependentUpon>Item_AddForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemsMainScreen.resx">
+      <DependentUpon>ItemsMainScreen.cs</DependentUpon>
+
+    </EmbeddedResource>
+    <EmbeddedResource Include="Item_UpdateForm.resx">
+      <DependentUpon>Item_UpdateForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Log-in.resx">
       <DependentUpon>Log-in.cs</DependentUpon>
@@ -248,6 +298,19 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Button-Add Customer %28Hover%29.png" />
+    <None Include="Resources\Banner-Item_Add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Banner-Item_Update.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Banner-Customer_Add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Banner-Customer_Update.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Banner-Customer_View.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

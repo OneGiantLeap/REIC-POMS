@@ -63,9 +63,55 @@ namespace REIC_POMS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+
         internal static System.Drawing.Bitmap ButtonActiveCustomers {
             get {
                 object obj = ResourceManager.GetObject("ButtonActiveCustomers", resourceCulture);
+
+        internal static System.Drawing.Bitmap Banner_Customer_Add {
+            get {
+                object obj = ResourceManager.GetObject("Banner_Customer_Add", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Banner_Customer_Update {
+            get {
+                object obj = ResourceManager.GetObject("Banner_Customer_Update", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Banner_Customer_View {
+            get {
+                object obj = ResourceManager.GetObject("Banner_Customer_View", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Banner_Item_Add {
+            get {
+                object obj = ResourceManager.GetObject("Banner_Item_Add", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Banner_Item_Update {
+            get {
+                object obj = ResourceManager.GetObject("Banner_Item_Update", resourceCulture);
+
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
