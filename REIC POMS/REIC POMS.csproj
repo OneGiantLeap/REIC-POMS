@@ -53,16 +53,16 @@
     <Compile Include="Log-in.Designer.cs">
       <DependentUpon>Log-in.cs</DependentUpon>
     </Compile>
-    <Compile Include="ItemsMainScreen.cs">
+    <Compile Include="Item_MainScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ItemsMainScreen.Designer.cs">
-      <DependentUpon>ItemsMainScreen.cs</DependentUpon>
+    <Compile Include="Item_MainScreen.Designer.cs">
+      <DependentUpon>Item_MainScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ItemsMainScreen.resx">
-      <DependentUpon>ItemsMainScreen.cs</DependentUpon>
+    <EmbeddedResource Include="Item_MainScreen.resx">
+      <DependentUpon>Item_MainScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Log-in.resx">
       <DependentUpon>Log-in.cs</DependentUpon>
@@ -91,12 +91,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Logo-ROMMA Banner %28Big%29.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Logo-ROMMA Banner %28Big%291.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Logo-REIC Banner.png" />
   </ItemGroup>
   <ItemGroup>
@@ -119,6 +113,141 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Button-Active_Items.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button-Inactive_PO.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ButtonViewItem.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button-Active_Customers.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button-Active_PO.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button-Active_PQ.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button-Active_RFQ.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button-Active_SI&amp;DR.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button-Active_SPR&amp;S.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button-Inactive_Items.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button-Inactive_PQ.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button-Inactive_RFQ.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button-Inactive_SI&amp;DR.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button-Inactive_Sign-Out.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button-Inactive_SPR&amp;S.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button-Add Customer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button-Create PO.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button-Create PQ.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button-Create RFQ.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button-Create SI&amp;DR.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button-View Customer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button-View PO.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button-View PQ.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button-View RFQ.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button-View SI&amp;DR.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button-Inactive_Customers.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button-Hover_Customers.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button-Hover_Items.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button-Hover_PO.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button-Hover_PQ.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button-Hover_RFQ.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button-Hover_SI&amp;DR.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button-Hover_Sign-Out.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button-Hover_SPR&amp;S.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button-Add Item %28Hover%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button-View Item %28Hover%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button-Create SI&amp;DR %28Hover%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button-View SI&amp;DR %28Hover%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button-View RFQ %28Hover%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button-Create RFQ %28Hover%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button-View PQ %28Hover%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button-Create PQ %28Hover%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button-View PO %28Hover%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button-Create PO %28Hover%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button-View Customer %28Hover%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button-Add Customer %28Hover%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
