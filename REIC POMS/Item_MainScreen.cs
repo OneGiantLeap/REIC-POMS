@@ -31,6 +31,10 @@ namespace REIC_POMS
             cbbFilterBy.SelectedIndex = 0; //Sets the default combobox value to "Filter by..."
         }
 
+        //--------------------------------------
+        // MINIMIZE AND CLOSE BUTTONS METHODS  |
+        //--------------------------------------
+
         private void btnMinimize_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
@@ -49,108 +53,116 @@ namespace REIC_POMS
         //---------------------------
         private void btnCustomers_Click(object sender, EventArgs e)
         {
-
+            Customer_MainScreen customerMain = new Customer_MainScreen();
+            this.Hide(); //Added to actually close the Main Screen instead of it being open in the background
+            customerMain.ShowDialog();
+            this.Close(); //Closes the Items Main Screen
         }
 
         private void btnCustomers_MouseEnter(object sender, EventArgs e)
-        {
-            btnCustomers.BackgroundImage = Properties.Resources.ButtonHoverCustomers;
-        }
+        { btnCustomers.BackgroundImage = Properties.Resources.ButtonHoverCustomers; }
 
         private void btnCustomers_MouseLeave(object sender, EventArgs e)
+        { btnCustomers.BackgroundImage = Properties.Resources.ButtonInactiveCustomers; }
+
+        //---------------------------
+        // SUPPLIER NAVBAR METHODS  |
+        //---------------------------
+        private void btnSuppliers_Click(object sender, EventArgs e)
         {
-            btnCustomers.BackgroundImage = Properties.Resources.ButtonInactiveCustomers;
+
         }
+
+        private void btnSuppliers_MouseEnter(object sender, EventArgs e)
+        { btnSuppliers.BackgroundImage = Properties.Resources.ButtonHoverSuppliers; }
+
+        private void btnSuppliers_MouseLeave(object sender, EventArgs e)
+        { btnSuppliers.BackgroundImage = Properties.Resources.ButtonInactiveSuppliers; }
 
         //----------------------------------------------
         // REQUEST FOR PRICE QUOTATION NAVBAR METHODS  |
         //----------------------------------------------
         private void btnRFQ_Click(object sender, EventArgs e)
         {
-
+            RFQ_MainScreen rfqMain = new RFQ_MainScreen();
+            this.Hide(); //Added to actually close the Main Screen instead of it being open in the background
+            rfqMain.ShowDialog();
+            this.Close(); //Closes the Item Main Screen
         }
 
         private void btnRFQ_MouseEnter(object sender, EventArgs e)
-        {
-            btnRFQ.BackgroundImage = Properties.Resources.ButtonHoverRFQ;
-        }
+        { btnRFQ.BackgroundImage = Properties.Resources.ButtonHoverRFQ; }
 
         private void btnRFQ_MouseLeave(object sender, EventArgs e)
-        {
-            btnRFQ.BackgroundImage = Properties.Resources.ButtonInactiveRFQ;
-        }
+        { btnRFQ.BackgroundImage = Properties.Resources.ButtonInactiveRFQ; }
 
         //----------------------------------
         // PRICE QUOTATION NAVBAR METHODS  |
         //----------------------------------
         private void btnPQ_Click(object sender, EventArgs e)
         {
-
+            PQ_MainScreen pqMain = new PQ_MainScreen();
+            this.Hide();
+            pqMain.ShowDialog();
+            this.Close();
         }
 
         private void btnPQ_MouseEnter(object sender, EventArgs e)
-        {
-            btnPQ.BackgroundImage = Properties.Resources.ButtonHoverPQ;
-        }
+        { btnPQ.BackgroundImage = Properties.Resources.ButtonHoverPQ; }
 
         private void btnPQ_MouseLeave(object sender, EventArgs e)
-        {
-            btnPQ.BackgroundImage = Properties.Resources.ButtonInactivePQ;
-        }
+        { btnPQ.BackgroundImage = Properties.Resources.ButtonInactivePQ; }
 
         //---------------------------------
         // PURCHASE ORDER NAVBAR METHODS  |
         //---------------------------------
         private void btnPO_Click(object sender, EventArgs e)
         {
-
+            PO_MainScreen poMain = new PO_MainScreen();
+            this.Hide();
+            poMain.ShowDialog();
+            this.Close();
         }
 
         private void btnPO_MouseEnter(object sender, EventArgs e)
-        {
-            btnPO.BackgroundImage = Properties.Resources.ButtonHoverPO;
-        }
+        { btnPO.BackgroundImage = Properties.Resources.ButtonHoverPO; }
 
         private void btnPO_MouseLeave(object sender, EventArgs e)
-        {
-            btnPO.BackgroundImage = Properties.Resources.ButtonInactivePO;
-        }
+        { btnPO.BackgroundImage = Properties.Resources.ButtonInactivePO; }
 
         //---------------------------------------------------
         // SALES INVOICE & DELIVERY RECEIPT NAVBAR METHODS  |
         //---------------------------------------------------
         private void btnSIDR_Click(object sender, EventArgs e)
         {
-
+            SIDR_MainScreen sidrMain = new SIDR_MainScreen();
+            this.Hide();
+            sidrMain.ShowDialog();
+            this.Close();
         }
 
         private void btnSIDR_MouseEnter(object sender, EventArgs e)
-        {
-            btnSIDR.BackgroundImage = Properties.Resources.ButtonHoverSIDR;
-        }
+        { btnSIDR.BackgroundImage = Properties.Resources.ButtonHoverSIDR; }
 
         private void btnSIDR_MouseLeave(object sender, EventArgs e)
-        {
-            btnSIDR.BackgroundImage = Properties.Resources.ButtonInactiveSIDR;
-        }
+        { btnSIDR.BackgroundImage = Properties.Resources.ButtonInactiveSIDR; }
 
         //-----------------------------------------------------
         // SALES PERFORMANCE REPORT & SUMMARY NAVBAR METHODS  |
         //-----------------------------------------------------
         private void btnSPRS_Click(object sender, EventArgs e)
         {
-
+            /*SPR_MainScreen sprMain = new SPR_MainScreen();
+            this.Hide();
+            sprMain.ShowDialog();
+            this.Close();*/
         }
 
         private void btnSPRS_MouseEnter(object sender, EventArgs e)
-        {
-            btnSPRS.BackgroundImage = Properties.Resources.ButtonHoverSPRS;
-        }
+        { btnSPRS.BackgroundImage = Properties.Resources.ButtonHoverSPRS; }
 
         private void btnSPRS_MouseLeave(object sender, EventArgs e)
-        {
-            btnSPRS.BackgroundImage = Properties.Resources.ButtonInactiveSPRS;
-        }
+        { btnSPRS.BackgroundImage = Properties.Resources.ButtonInactiveSPRS; }
 
         //--------------------------
         // SIGNOUT NAVBAR METHODS  |
@@ -166,14 +178,10 @@ namespace REIC_POMS
         }
 
         private void btnSignOut_MouseEnter(object sender, EventArgs e)
-        {
-            btnSignOut.BackgroundImage = Properties.Resources.ButtonHoverSignOut;
-        }
+        { btnSignOut.BackgroundImage = Properties.Resources.ButtonHoverSignOut; }
 
         private void btnSignOut_MouseLeave(object sender, EventArgs e)
-        {
-            btnSignOut.BackgroundImage = Properties.Resources.ButtonInactiveSignOut;
-        }
+        { btnSignOut.BackgroundImage = Properties.Resources.ButtonInactiveSignOut; }
 
         //---------------------------
         // ADD ITEM BUTTON METHODS  |
@@ -182,18 +190,13 @@ namespace REIC_POMS
         {
             Item_AddForm iaf = new Item_AddForm();
             iaf.ShowDialog();
-            Close();
         }
 
         private void btnAddItem_MouseEnter(object sender, EventArgs e)
-        {
-            btnAddItem.BackgroundImage = Properties.Resources.ButtonAddItemHover;
-        }
+        { btnAddItem.BackgroundImage = Properties.Resources.ButtonAddItemHover; }
 
         private void btnAddItem_MouseLeave(object sender, EventArgs e)
-        {
-            btnAddItem.BackgroundImage = Properties.Resources.ButtonAddItem;
-        }
+        { btnAddItem.BackgroundImage = Properties.Resources.ButtonAddItem; }
 
         //---------------------------
         // VIEW ITEM BUTTON METHODS  |
@@ -205,21 +208,17 @@ namespace REIC_POMS
 
 
         private void btnViewItem_MouseEnter(object sender, EventArgs e)
-        {
-            btnViewItem.BackgroundImage = Properties.Resources.ButtonViewItemHover;
-        }
+        { btnViewItem.BackgroundImage = Properties.Resources.ButtonViewItemHover; }
 
         private void btnViewItem_MouseLeave(object sender, EventArgs e)
-        {
-            btnViewItem.BackgroundImage = Properties.Resources.ButtonViewItem;
-        }
+        { btnViewItem.BackgroundImage = Properties.Resources.ButtonViewItem; }
 
         //---------------------------
         // SEARCH AND CLEAR SEARCH  |
         //---------------------------
         private void btnSearch_Click(object sender, EventArgs e)
         {
-
+            //Insert code that changes "Search for..." to blank when textbox is clicked
         }
 
         private void btnClearSearch_Click(object sender, EventArgs e)
