@@ -113,6 +113,86 @@ namespace REIC_POMS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BannerPQCreate {
+            get {
+                object obj = ResourceManager.GetObject("BannerPQCreate", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BannerPQQuickCreate {
+            get {
+                object obj = ResourceManager.GetObject("BannerPQQuickCreate", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BannerPQView {
+            get {
+                object obj = ResourceManager.GetObject("BannerPQView", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BannerRFQCreate {
+            get {
+                object obj = ResourceManager.GetObject("BannerRFQCreate", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BannerRFQView {
+            get {
+                object obj = ResourceManager.GetObject("BannerRFQView", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BannerSupplierAdd {
+            get {
+                object obj = ResourceManager.GetObject("BannerSupplierAdd", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BannerSupplierUpdate {
+            get {
+                object obj = ResourceManager.GetObject("BannerSupplierUpdate", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BannerSupplierView {
+            get {
+                object obj = ResourceManager.GetObject("BannerSupplierView", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ButtonActiveCustomers {
             get {
                 object obj = ResourceManager.GetObject("ButtonActiveCustomers", resourceCulture);
@@ -183,6 +263,16 @@ namespace REIC_POMS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ButtonActiveSuppliers {
+            get {
+                object obj = ResourceManager.GetObject("ButtonActiveSuppliers", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ButtonAddCustomer {
             get {
                 object obj = ResourceManager.GetObject("ButtonAddCustomer", resourceCulture);
@@ -216,6 +306,26 @@ namespace REIC_POMS.Properties {
         internal static System.Drawing.Bitmap ButtonAddItemHover {
             get {
                 object obj = ResourceManager.GetObject("ButtonAddItemHover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ButtonAddSupplier {
+            get {
+                object obj = ResourceManager.GetObject("ButtonAddSupplier", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ButtonAddSupplierHover {
+            get {
+                object obj = ResourceManager.GetObject("ButtonAddSupplierHover", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -383,6 +493,16 @@ namespace REIC_POMS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ButtonHoverSuppliers {
+            get {
+                object obj = ResourceManager.GetObject("ButtonHoverSuppliers", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ButtonInactiveCustomers {
             get {
                 object obj = ResourceManager.GetObject("ButtonInactiveCustomers", resourceCulture);
@@ -456,6 +576,16 @@ namespace REIC_POMS.Properties {
         internal static System.Drawing.Bitmap ButtonInactiveSPRS {
             get {
                 object obj = ResourceManager.GetObject("ButtonInactiveSPRS", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ButtonInactiveSuppliers {
+            get {
+                object obj = ResourceManager.GetObject("ButtonInactiveSuppliers", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -576,6 +706,26 @@ namespace REIC_POMS.Properties {
         internal static System.Drawing.Bitmap ButtonViewSIDRHover {
             get {
                 object obj = ResourceManager.GetObject("ButtonViewSIDRHover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ButtonViewSupplier {
+            get {
+                object obj = ResourceManager.GetObject("ButtonViewSupplier", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ButtonViewSupplierHover {
+            get {
+                object obj = ResourceManager.GetObject("ButtonViewSupplierHover", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
