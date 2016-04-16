@@ -33,11 +33,13 @@ namespace REIC_POMS
         private void btnLogin_Click(object sender, EventArgs e)
         {
             //JUST TO TRANSITION TO THE MAIN SCREEN
-            if ((txtUsername.Text == "wennie") && (txtPassword.Text == "1234"))
+            //if ((txtUsername.Text == "wennie") && (txtPassword.Text == "1234"))
+            if ((txtUsername.Text == "Username") && (txtPassword.Text == "Password")) //Temporarily changed it, kasi kakatamad to input wennie and 1234 all the time
             {
                 Item_MainScreen ims = new Item_MainScreen();
+                this.Hide(); //Actually closes the Log-in Form instead of leaving it open in the background.
                 ims.ShowDialog();
-                Close(); //Close the Log-in Screen
+                this.Close(); //Close the Log-in Screen
             }
             else
                 MessageBox.Show("The username or password you entered is incorrect.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
