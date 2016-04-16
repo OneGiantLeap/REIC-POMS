@@ -1,0 +1,9 @@
+000000|Logistics|2242-8887-9199-8848|Fat Shaolin Jaideite Kiosk|Jem Tan|09224445555|0251478498568754|jem.tan@fatshaolin.com.ph|Home Sweet Home|
+000001|Food|erer|Coconut|Potato|09564|N/A|potato@house.com|The Griller|
+000002|Logistics||Red Mango|Sweet Mango|7284878|8748224455558888|sweet@redmango.com|Trinoma|
+000003|N/A|8888-2222-5555-7777|Hot Star|Chee Ken|09123456789|N/A|boss@hotstar.com|Katipunan|
+000004|Logistics Support Service|8887-8798-2224-0154|Advanced Tradelinks Philippines Incorporated|ROMMA Group of Companies|502-3344|N/A|cs.atpi@rommagroup.com.ph| Lot 4, Allegis IT Park, Carmelray Industrial Park 2, Makiling Dr, Tulo, Calamba, 4029 Laguna|
+000005|IT|N/A|Hewlett-Packard Enterprise|Meg Whitman|09123456789|N/A|megwhitman@hpe.com|California|
+000006|IT|---|Indra|Laura Hazeline Co|09123456789|N/A|lhco@indra.com.ph|First World Philippines|
+000007|Food|---|Food Group|Mr. Foodie|09123456789|N/A|foodie@foodgroup.com.ph|Philippines|
+000008|N/A|0000-2156-5841-2587|Sony|Experia Zee|09123456789|N/A|xperia@sony.com|Sonyland|
