@@ -104,10 +104,15 @@
             // cbbUOM
             // 
             this.cbbUOM.FormattingEnabled = true;
+            this.cbbUOM.Items.AddRange(new object[] {
+            "g",
+            "lb",
+            "something else"});
             this.cbbUOM.Location = new System.Drawing.Point(277, 245);
             this.cbbUOM.Name = "cbbUOM";
             this.cbbUOM.Size = new System.Drawing.Size(50, 27);
             this.cbbUOM.TabIndex = 22;
+            this.cbbUOM.SelectedIndexChanged += new System.EventHandler(this.cbbUOM_SelectedIndexChanged);
             // 
             // btnNext
             // 
@@ -122,6 +127,7 @@
             this.btnNext.TabIndex = 21;
             this.btnNext.Text = "NEXT";
             this.btnNext.UseVisualStyleBackColor = false;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // txtItemDesc
             // 
@@ -158,6 +164,7 @@
             // 
             // txtREICPrice
             // 
+            this.txtREICPrice.Enabled = false;
             this.txtREICPrice.Location = new System.Drawing.Point(29, 245);
             this.txtREICPrice.Name = "txtREICPrice";
             this.txtREICPrice.Size = new System.Drawing.Size(139, 26);
@@ -200,6 +207,7 @@
             this.btnUpdate.TabIndex = 11;
             this.btnUpdate.Text = "UPDATE";
             this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // txtSupplierEmail
             // 
@@ -228,6 +236,7 @@
             // txtPartNumber
             // 
             this.txtPartNumber.Location = new System.Drawing.Point(127, 70);
+            this.txtPartNumber.MaxLength = 6;
             this.txtPartNumber.Multiline = true;
             this.txtPartNumber.Name = "txtPartNumber";
             this.txtPartNumber.Size = new System.Drawing.Size(200, 25);
@@ -375,6 +384,7 @@
             this.btnCancel.TabIndex = 12;
             this.btnCancel.Text = "CANCEL";
             this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // lblSupplierName
             // 
@@ -517,6 +527,7 @@
             this.Controls.Add(this.imgUpdateItem);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Item_UpdateForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Item_UpdateForm";
             ((System.ComponentModel.ISupportInitialize)(this.nudMOQ)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudSuppPrice)).EndInit();

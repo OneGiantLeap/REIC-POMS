@@ -90,7 +90,6 @@
             // tabItemDetails
             // 
             this.tabItemDetails.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(249)))));
-            this.tabItemDetails.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tabItemDetails.Controls.Add(this.cbbUOM);
             this.tabItemDetails.Controls.Add(this.btnNext);
             this.tabItemDetails.Controls.Add(this.txtItemDesc);
@@ -125,6 +124,12 @@
             // cbbUOM
             // 
             this.cbbUOM.FormattingEnabled = true;
+            this.cbbUOM.Items.AddRange(new object[] {
+            "g",
+            "lb",
+            "somethings",
+            "someth",
+            "some"});
             this.cbbUOM.Location = new System.Drawing.Point(277, 245);
             this.cbbUOM.Name = "cbbUOM";
             this.cbbUOM.Size = new System.Drawing.Size(50, 27);
@@ -144,6 +149,7 @@
             this.btnNext.TabIndex = 21;
             this.btnNext.Text = "NEXT";
             this.btnNext.UseVisualStyleBackColor = false;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // txtItemDesc
             // 
@@ -181,11 +187,13 @@
             // 
             // txtREICPrice
             // 
+            this.txtREICPrice.HideSelection = false;
             this.txtREICPrice.Location = new System.Drawing.Point(29, 245);
             this.txtREICPrice.Name = "txtREICPrice";
             this.txtREICPrice.ReadOnly = true;
             this.txtREICPrice.Size = new System.Drawing.Size(139, 26);
             this.txtREICPrice.TabIndex = 16;
+            this.txtREICPrice.TextChanged += new System.EventHandler(this.txtREICPrice_TextChanged);
             // 
             // cbbMarkup
             // 
@@ -202,15 +210,22 @@
             this.cbbMarkup.Name = "cbbMarkup";
             this.cbbMarkup.Size = new System.Drawing.Size(50, 27);
             this.cbbMarkup.TabIndex = 15;
+            this.cbbMarkup.SelectedIndexChanged += new System.EventHandler(this.cbbMarkup_SelectedIndexChanged);
             // 
             // nudSuppPrice
             // 
             this.nudSuppPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.nudSuppPrice.Location = new System.Drawing.Point(29, 186);
+            this.nudSuppPrice.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
             this.nudSuppPrice.Name = "nudSuppPrice";
             this.nudSuppPrice.Size = new System.Drawing.Size(139, 26);
             this.nudSuppPrice.TabIndex = 14;
             this.nudSuppPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.nudSuppPrice.ValueChanged += new System.EventHandler(this.nudSuppPrice_ValueChanged);
             // 
             // txtItemName
             // 
@@ -223,6 +238,7 @@
             // txtPartNumber
             // 
             this.txtPartNumber.Location = new System.Drawing.Point(127, 70);
+            this.txtPartNumber.MaxLength = 6;
             this.txtPartNumber.Multiline = true;
             this.txtPartNumber.Name = "txtPartNumber";
             this.txtPartNumber.Size = new System.Drawing.Size(200, 25);
@@ -377,6 +393,7 @@
             this.tabSupplierDetails.Controls.Add(this.lblSupplierName);
             this.tabSupplierDetails.Controls.Add(this.lblSupplierDetails);
             this.tabSupplierDetails.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.tabSupplierDetails.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.tabSupplierDetails.Location = new System.Drawing.Point(4, 28);
             this.tabSupplierDetails.Name = "tabSupplierDetails";
             this.tabSupplierDetails.Padding = new System.Windows.Forms.Padding(3);
@@ -412,9 +429,11 @@
             this.btnAdd.TabIndex = 11;
             this.btnAdd.Text = "ADD";
             this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // txtSupplierAddress
             // 
+            this.txtSupplierAddress.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.txtSupplierAddress.Location = new System.Drawing.Point(29, 318);
             this.txtSupplierAddress.Multiline = true;
             this.txtSupplierAddress.Name = "txtSupplierAddress";
@@ -423,37 +442,41 @@
             // 
             // txtSupplierEmail
             // 
+            this.txtSupplierEmail.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.txtSupplierEmail.Location = new System.Drawing.Point(29, 259);
             this.txtSupplierEmail.Name = "txtSupplierEmail";
-            this.txtSupplierEmail.Size = new System.Drawing.Size(298, 25);
+            this.txtSupplierEmail.Size = new System.Drawing.Size(298, 26);
             this.txtSupplierEmail.TabIndex = 9;
             // 
             // txtSupplierNumber
             // 
+            this.txtSupplierNumber.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.txtSupplierNumber.Location = new System.Drawing.Point(29, 201);
             this.txtSupplierNumber.Name = "txtSupplierNumber";
-            this.txtSupplierNumber.Size = new System.Drawing.Size(298, 25);
+            this.txtSupplierNumber.Size = new System.Drawing.Size(298, 26);
             this.txtSupplierNumber.TabIndex = 8;
             // 
             // txtSupplierPerson
             // 
-            this.txtSupplierPerson.Font = new System.Drawing.Font("Source Sans Pro Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.txtSupplierPerson.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.txtSupplierPerson.Location = new System.Drawing.Point(29, 142);
             this.txtSupplierPerson.Name = "txtSupplierPerson";
-            this.txtSupplierPerson.Size = new System.Drawing.Size(298, 23);
+            this.txtSupplierPerson.Size = new System.Drawing.Size(298, 26);
             this.txtSupplierPerson.TabIndex = 7;
             // 
             // txtSupplierName
             // 
+            this.txtSupplierName.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.txtSupplierName.Location = new System.Drawing.Point(29, 84);
             this.txtSupplierName.Name = "txtSupplierName";
-            this.txtSupplierName.Size = new System.Drawing.Size(298, 25);
+            this.txtSupplierName.Size = new System.Drawing.Size(298, 26);
             this.txtSupplierName.TabIndex = 6;
             // 
             // lblSupplierAddress
             // 
             this.lblSupplierAddress.AutoSize = true;
             this.lblSupplierAddress.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblSupplierAddress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.lblSupplierAddress.Location = new System.Drawing.Point(26, 297);
             this.lblSupplierAddress.Name = "lblSupplierAddress";
             this.lblSupplierAddress.Size = new System.Drawing.Size(66, 18);
@@ -464,6 +487,7 @@
             // 
             this.lblSupplierEmail.AutoSize = true;
             this.lblSupplierEmail.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblSupplierEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.lblSupplierEmail.Location = new System.Drawing.Point(26, 238);
             this.lblSupplierEmail.Name = "lblSupplierEmail";
             this.lblSupplierEmail.Size = new System.Drawing.Size(111, 18);
@@ -474,6 +498,7 @@
             // 
             this.lblSupplierNumber.AutoSize = true;
             this.lblSupplierNumber.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblSupplierNumber.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.lblSupplierNumber.Location = new System.Drawing.Point(26, 180);
             this.lblSupplierNumber.Name = "lblSupplierNumber";
             this.lblSupplierNumber.Size = new System.Drawing.Size(120, 18);
@@ -484,6 +509,7 @@
             // 
             this.lblSupplierPerson.AutoSize = true;
             this.lblSupplierPerson.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblSupplierPerson.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.lblSupplierPerson.Location = new System.Drawing.Point(26, 121);
             this.lblSupplierPerson.Name = "lblSupplierPerson";
             this.lblSupplierPerson.Size = new System.Drawing.Size(118, 18);
@@ -494,6 +520,7 @@
             // 
             this.lblSupplierName.AutoSize = true;
             this.lblSupplierName.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblSupplierName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.lblSupplierName.Location = new System.Drawing.Point(26, 63);
             this.lblSupplierName.Name = "lblSupplierName";
             this.lblSupplierName.Size = new System.Drawing.Size(106, 18);
@@ -517,7 +544,7 @@
             this.imgAddItem.InitialImage = global::REIC_POMS.Properties.Resources.BannerItemAdd;
             this.imgAddItem.Location = new System.Drawing.Point(0, 0);
             this.imgAddItem.Name = "imgAddItem";
-            this.imgAddItem.Size = new System.Drawing.Size(370, 71);
+            this.imgAddItem.Size = new System.Drawing.Size(370, 70);
             this.imgAddItem.TabIndex = 1;
             this.imgAddItem.TabStop = false;
             // 
@@ -525,6 +552,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(249)))));
             this.ClientSize = new System.Drawing.Size(370, 610);
             this.Controls.Add(this.imgAddItem);
             this.Controls.Add(this.tabItemForm);

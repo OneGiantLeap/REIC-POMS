@@ -51,18 +51,11 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Customer.cs" />
     <Compile Include="Customer_AddForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Customer_AddForm.Designer.cs">
       <DependentUpon>Customer_AddForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Customer_MainScreen.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Customer_MainScreen.Designer.cs">
-      <DependentUpon>Customer_MainScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Customer_UpdateForm.cs">
       <SubType>Form</SubType>
@@ -76,6 +69,7 @@
     <Compile Include="Customer_ViewForm.Designer.cs">
       <DependentUpon>Customer_ViewForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Item.cs" />
     <Compile Include="Item_AddForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +81,12 @@
     </Compile>
     <Compile Include="Item_UpdateForm.Designer.cs">
       <DependentUpon>Item_UpdateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Item_ViewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Item_ViewForm.Designer.cs">
+      <DependentUpon>Item_ViewForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Log-in.cs">
       <SubType>Form</SubType>
@@ -100,66 +100,33 @@
     <Compile Include="Item_MainScreen.Designer.cs">
       <DependentUpon>Item_MainScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="PO_MainScreen.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PO_MainScreen.Designer.cs">
-      <DependentUpon>PO_MainScreen.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PQ_CreateForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PQ_CreateForm.Designer.cs">
-      <DependentUpon>PQ_CreateForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PQ_CreateFromRFQForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PQ_CreateFromRFQForm.Designer.cs">
-      <DependentUpon>PQ_CreateFromRFQForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PQ_MainScreen.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PQ_MainScreen.Designer.cs">
-      <DependentUpon>PQ_MainScreen.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PQ_ViewForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PQ_ViewForm.Designer.cs">
-      <DependentUpon>PQ_ViewForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RFQ.cs" />
-    <Compile Include="RFQ_CreateForm.cs">
+    <Compile Include="Supplier.cs" />
+    <Compile Include="Supplier_AddForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RFQ_CreateForm.Designer.cs">
-      <DependentUpon>RFQ_CreateForm.cs</DependentUpon>
+    <Compile Include="Supplier_AddForm.Designer.cs">
+      <DependentUpon>Supplier_AddForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="RFQ_MainScreen.cs">
+    <Compile Include="Supplier_MainScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RFQ_MainScreen.Designer.cs">
-      <DependentUpon>RFQ_MainScreen.cs</DependentUpon>
+    <Compile Include="Supplier_MainScreen.Designer.cs">
+      <DependentUpon>Supplier_MainScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="RFQ_ViewForm.cs">
+    <Compile Include="Supplier_UpdateForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RFQ_ViewForm.Designer.cs">
-      <DependentUpon>RFQ_ViewForm.cs</DependentUpon>
+    <Compile Include="Supplier_UpdateForm.Designer.cs">
+      <DependentUpon>Supplier_UpdateForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="SIDR_MainScreen.cs">
+    <Compile Include="Supplier_ViewForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SIDR_MainScreen.Designer.cs">
-      <DependentUpon>SIDR_MainScreen.cs</DependentUpon>
+    <Compile Include="Supplier_ViewForm.Designer.cs">
+      <DependentUpon>Supplier_ViewForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Customer_MainScreen.resx">
-      <DependentUpon>Customer_MainScreen.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Item_MainScreen.resx">
       <DependentUpon>Item_MainScreen.cs</DependentUpon>
     </EmbeddedResource>
@@ -178,40 +145,28 @@
     <EmbeddedResource Include="Item_UpdateForm.resx">
       <DependentUpon>Item_UpdateForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Item_ViewForm.resx">
+      <DependentUpon>Item_ViewForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Log-in.resx">
       <DependentUpon>Log-in.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PO_MainScreen.resx">
-      <DependentUpon>PO_MainScreen.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PQ_CreateForm.resx">
-      <DependentUpon>PQ_CreateForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PQ_CreateFromRFQForm.resx">
-      <DependentUpon>PQ_CreateFromRFQForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PQ_MainScreen.resx">
-      <DependentUpon>PQ_MainScreen.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PQ_ViewForm.resx">
-      <DependentUpon>PQ_ViewForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <SubType>Designer</SubType>
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="RFQ_CreateForm.resx">
-      <DependentUpon>RFQ_CreateForm.cs</DependentUpon>
+    <EmbeddedResource Include="Supplier_AddForm.resx">
+      <DependentUpon>Supplier_AddForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RFQ_MainScreen.resx">
-      <DependentUpon>RFQ_MainScreen.cs</DependentUpon>
+    <EmbeddedResource Include="Supplier_MainScreen.resx">
+      <DependentUpon>Supplier_MainScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RFQ_ViewForm.resx">
-      <DependentUpon>RFQ_ViewForm.cs</DependentUpon>
+    <EmbeddedResource Include="Supplier_UpdateForm.resx">
+      <DependentUpon>Supplier_UpdateForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SIDR_MainScreen.resx">
-      <DependentUpon>SIDR_MainScreen.cs</DependentUpon>
+    <EmbeddedResource Include="Supplier_ViewForm.resx">
+      <DependentUpon>Supplier_ViewForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -232,31 +187,25 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\BannerPQCreate.png" />
+    <None Include="Resources\BannerSupplierAdd.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\BannerRFQCreate.png" />
+    <None Include="Resources\BannerItemView.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\BannerRFQView.png" />
+    <None Include="Resources\BannerSupplierView.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\BannerPQQuickCreate.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\BannerPQView.png" />
+    <None Include="Resources\BannerSupplierUpdate.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ButtonActiveSuppliers.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\ButtonHoverSuppliers.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\ButtonInactiveSuppliers.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\ButtonViewSupplierHover.png" />
+    <None Include="Resources\ButtonAddSupplier.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ButtonViewSupplier.png" />
@@ -265,25 +214,7 @@
     <None Include="Resources\ButtonAddSupplierHover.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\ButtonAddSupplier.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\BannerSupplierAdd.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\BannerSupplierUpdate.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\BannerSupplierView.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ButtonHoverSignOut.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ButtonActivePO.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ButtonActivePQ.png" />
+    <None Include="Resources\ButtonViewSupplierHover.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
