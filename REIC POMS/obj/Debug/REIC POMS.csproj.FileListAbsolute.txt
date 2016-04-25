@@ -1,0 +1,101 @@
+C:\Users\Gayle Chua\Desktop\REIC POMS\REIC POMS\bin\Debug\REIC POMS.exe.config
+C:\Users\Gayle Chua\Desktop\REIC POMS\REIC POMS\bin\Debug\REIC POMS.exe
+C:\Users\Gayle Chua\Desktop\REIC POMS\REIC POMS\bin\Debug\REIC POMS.pdb
+C:\Users\Gayle Chua\Desktop\REIC POMS\REIC POMS\obj\Debug\REIC POMS.csprojResolveAssemblyReference.cache
+C:\Users\Gayle Chua\Desktop\REIC POMS\REIC POMS\obj\Debug\REIC_POMS.Form1.resources
+C:\Users\Gayle Chua\Desktop\REIC POMS\REIC POMS\obj\Debug\REIC_POMS.Properties.Resources.resources
+C:\Users\Gayle Chua\Desktop\REIC POMS\REIC POMS\obj\Debug\REIC POMS.csproj.GenerateResource.Cache
+C:\Users\Gayle Chua\Desktop\REIC POMS\REIC POMS\obj\Debug\REIC POMS.exe
+C:\Users\Gayle Chua\Desktop\REIC POMS\REIC POMS\obj\Debug\REIC POMS.pdb
+C:\Users\Gayle Chua\Desktop\REIC POMS\REIC POMS\obj\Debug\REIC_POMS.ItemsMainScreen.resources
+C:\Users\Ariel\Documents\GitHub\REIC-POMS\REIC POMS\bin\Debug\REIC POMS.exe.config
+C:\Users\Ariel\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC POMS.exe
+C:\Users\Ariel\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC POMS.pdb
+C:\Users\Ariel\Documents\GitHub\REIC-POMS\REIC POMS\bin\Debug\REIC POMS.exe
+C:\Users\Ariel\Documents\GitHub\REIC-POMS\REIC POMS\bin\Debug\REIC POMS.pdb
+C:\Users\Ariel\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC POMS.csprojResolveAssemblyReference.cache
+C:\Users\Ariel\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.Item_AddForm.resources
+C:\Users\Ariel\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.Properties.Resources.resources
+C:\Users\Ariel\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC POMS.csproj.GenerateResource.Cache
+C:\Users\Ariel\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.Customer_AddForm.resources
+C:\Users\Ariel\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.Customer_UpdateForm.resources
+C:\Users\Ariel\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.Customer_ViewForm.resources
+C:\Users\Ariel\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.Item_UpdateForm.resources
+C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\bin\Debug\REIC POMS.exe.config
+C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\bin\Debug\REIC POMS.exe
+C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\bin\Debug\REIC POMS.pdb
+C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.Customer_MainScreen.resources
+C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.Item_MainScreen.resources
+C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.Customer_AddForm.resources
+C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.Customer_UpdateForm.resources
+C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.Customer_ViewForm.resources
+C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.Item_AddForm.resources
+C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.Item_UpdateForm.resources
+C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.LoginScreen.resources
+C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.PO_MainScreen.resources
+C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.PQ_CreateForm.resources
+C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.PQ_CreateFromRFQForm.resources
+C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.PQ_MainScreen.resources
+C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.PQ_ViewForm.resources
+C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.Properties.Resources.resources
+C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.RFQ_CreateForm.resources
+C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.RFQ_MainScreen.resources
+C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.RFQ_ViewForm.resources
+C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC POMS.csproj.GenerateResource.Cache
+C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC POMS.exe
+C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC POMS.pdb
+C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.SIDR_MainScreen.resources
+C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.Item_ViewForm.resources
+C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.Supplier_MainScreen.resources
+C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.Supplier_AddForm.resources
+C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC POMS.csprojResolveAssemblyReference.cache
+C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.Supplier_UpdateForm.resources
+C:\Users\Ariel\Desktop\REIC-POMS\REIC-POMS\REIC POMS\bin\Debug\REIC POMS.exe.config
+C:\Users\Ariel\Desktop\REIC-POMS\REIC-POMS\REIC POMS\obj\Debug\REIC POMS.exe
+C:\Users\Ariel\Desktop\REIC-POMS\REIC-POMS\REIC POMS\obj\Debug\REIC POMS.pdb
+C:\Users\Ariel\Documents\GitHub\REIC POMS\bin\Debug\REIC POMS.exe.config
+C:\Users\Ariel\Documents\GitHub\REIC POMS\obj\Debug\REIC POMS.exe
+C:\Users\Ariel\Documents\GitHub\REIC POMS\obj\Debug\REIC POMS.pdb
+C:\Users\Ariel\Documents\GitHub\REIC POMS\bin\Debug\REIC POMS.exe
+C:\Users\Ariel\Documents\GitHub\REIC POMS\bin\Debug\REIC POMS.pdb
+C:\Users\Ariel\Documents\GitHub\REIC POMS\obj\Debug\REIC POMS.csprojResolveAssemblyReference.cache
+C:\Users\Ariel\Documents\GitHub\REIC POMS\obj\Debug\REIC_POMS.Customer_MainScreen.resources
+C:\Users\Ariel\Documents\GitHub\REIC POMS\obj\Debug\REIC_POMS.Item_MainScreen.resources
+C:\Users\Ariel\Documents\GitHub\REIC POMS\obj\Debug\REIC_POMS.Customer_AddForm.resources
+C:\Users\Ariel\Documents\GitHub\REIC POMS\obj\Debug\REIC_POMS.Customer_UpdateForm.resources
+C:\Users\Ariel\Documents\GitHub\REIC POMS\obj\Debug\REIC_POMS.Customer_ViewForm.resources
+C:\Users\Ariel\Documents\GitHub\REIC POMS\obj\Debug\REIC_POMS.Item_AddForm.resources
+C:\Users\Ariel\Documents\GitHub\REIC POMS\obj\Debug\REIC_POMS.Item_UpdateForm.resources
+C:\Users\Ariel\Documents\GitHub\REIC POMS\obj\Debug\REIC_POMS.Item_ViewForm.resources
+C:\Users\Ariel\Documents\GitHub\REIC POMS\obj\Debug\REIC_POMS.LoginScreen.resources
+C:\Users\Ariel\Documents\GitHub\REIC POMS\obj\Debug\REIC_POMS.PO_MainScreen.resources
+C:\Users\Ariel\Documents\GitHub\REIC POMS\obj\Debug\REIC_POMS.PQ_CreateForm.resources
+C:\Users\Ariel\Documents\GitHub\REIC POMS\obj\Debug\REIC_POMS.PQ_CreateFromRFQForm.resources
+C:\Users\Ariel\Documents\GitHub\REIC POMS\obj\Debug\REIC_POMS.PQ_MainScreen.resources
+C:\Users\Ariel\Documents\GitHub\REIC POMS\obj\Debug\REIC_POMS.PQ_ViewForm.resources
+C:\Users\Ariel\Documents\GitHub\REIC POMS\obj\Debug\REIC_POMS.Properties.Resources.resources
+C:\Users\Ariel\Documents\GitHub\REIC POMS\obj\Debug\REIC_POMS.RFQ_CreateForm.resources
+C:\Users\Ariel\Documents\GitHub\REIC POMS\obj\Debug\REIC_POMS.RFQ_MainScreen.resources
+C:\Users\Ariel\Documents\GitHub\REIC POMS\obj\Debug\REIC_POMS.RFQ_ViewForm.resources
+C:\Users\Ariel\Documents\GitHub\REIC POMS\obj\Debug\REIC_POMS.SIDR_MainScreen.resources
+C:\Users\Ariel\Documents\GitHub\REIC POMS\obj\Debug\REIC_POMS.Supplier_AddForm.resources
+C:\Users\Ariel\Documents\GitHub\REIC POMS\obj\Debug\REIC_POMS.Supplier_MainScreen.resources
+C:\Users\Ariel\Documents\GitHub\REIC POMS\obj\Debug\REIC_POMS.Supplier_UpdateForm.resources
+C:\Users\Ariel\Documents\GitHub\REIC POMS\obj\Debug\REIC POMS.csproj.GenerateResource.Cache
+C:\Users\Ariel\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.Customer_MainScreen.resources
+C:\Users\Ariel\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.Item_MainScreen.resources
+C:\Users\Ariel\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.Item_ViewForm.resources
+C:\Users\Ariel\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.LoginScreen.resources
+C:\Users\Ariel\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.PO_MainScreen.resources
+C:\Users\Ariel\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.PQ_CreateForm.resources
+C:\Users\Ariel\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.PQ_CreateFromRFQForm.resources
+C:\Users\Ariel\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.PQ_MainScreen.resources
+C:\Users\Ariel\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.PQ_ViewForm.resources
+C:\Users\Ariel\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.RFQ_CreateForm.resources
+C:\Users\Ariel\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.RFQ_MainScreen.resources
+C:\Users\Ariel\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.RFQ_ViewForm.resources
+C:\Users\Ariel\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.SIDR_MainScreen.resources
+C:\Users\Ariel\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.Supplier_AddForm.resources
+C:\Users\Ariel\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.Supplier_MainScreen.resources
+C:\Users\Ariel\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.Supplier_UpdateForm.resources
+C:\Users\Ariel\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.Supplier_ViewForm.resources
