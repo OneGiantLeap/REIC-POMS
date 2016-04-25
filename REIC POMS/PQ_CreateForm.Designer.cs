@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PQ_CreateForm));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtItemName = new System.Windows.Forms.TextBox();
             this.txtTotalAmount = new System.Windows.Forms.TextBox();
             this.cbbInFavorOf = new System.Windows.Forms.ComboBox();
@@ -77,13 +77,9 @@
             this.lblItemSelected = new System.Windows.Forms.Label();
             this.txtItemTotal = new System.Windows.Forms.TextBox();
             this.TabPage2 = new System.Windows.Forms.TabPage();
+            this.btnClearItems = new System.Windows.Forms.Button();
+            this.btnRemove = new System.Windows.Forms.Button();
             this.dgvPQItems = new System.Windows.Forms.DataGridView();
-            this.RFQItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RFQDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RFQUOM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblRFQItems = new System.Windows.Forms.Label();
             this.dgvItemSelection = new System.Windows.Forms.DataGridView();
             this.PartNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -95,6 +91,7 @@
             this.cbbFilterBy = new System.Windows.Forms.ComboBox();
             this.txtSearchFor = new System.Windows.Forms.TextBox();
             this.lblSelection = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.lblDate = new System.Windows.Forms.Label();
             this.lblPQNumber = new System.Windows.Forms.Label();
             this.lblQuotationDetails = new System.Windows.Forms.Label();
@@ -103,18 +100,25 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.btnClearItems = new System.Windows.Forms.Button();
-            this.btnRemove = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.cbbBillTo = new System.Windows.Forms.ComboBox();
+            this.lblBillTo = new System.Windows.Forms.Label();
+            this.cbbShipTo = new System.Windows.Forms.ComboBox();
+            this.lblShipTo = new System.Windows.Forms.Label();
+            this.RFQItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RFQDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RFQUOM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.nupItemQuantity)).BeginInit();
             this.grpItemSelected.SuspendLayout();
             this.TabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPQItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItemSelection)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabPQForm.SuspendLayout();
             this.TabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -144,11 +148,16 @@
             // 
             // cbbInFavorOf
             // 
+            this.cbbInFavorOf.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbInFavorOf.FormattingEnabled = true;
-            this.cbbInFavorOf.Location = new System.Drawing.Point(199, 294);
+            this.cbbInFavorOf.Items.AddRange(new object[] {
+            "Select",
+            "Customer",
+            "REIC"});
+            this.cbbInFavorOf.Location = new System.Drawing.Point(33, 390);
             this.cbbInFavorOf.Name = "cbbInFavorOf";
             this.cbbInFavorOf.Size = new System.Drawing.Size(135, 27);
-            this.cbbInFavorOf.TabIndex = 28;
+            this.cbbInFavorOf.TabIndex = 9;
             // 
             // txtCustomerAddress
             // 
@@ -273,47 +282,60 @@
             // 
             // cbbDeliveryTerms
             // 
+            this.cbbDeliveryTerms.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbDeliveryTerms.FormattingEnabled = true;
-            this.cbbDeliveryTerms.Location = new System.Drawing.Point(34, 356);
+            this.cbbDeliveryTerms.Items.AddRange(new object[] {
+            "Select",
+            "Ex-works",
+            "CIF",
+            "FOB",
+            "DAP"});
+            this.cbbDeliveryTerms.Location = new System.Drawing.Point(199, 271);
             this.cbbDeliveryTerms.Name = "cbbDeliveryTerms";
             this.cbbDeliveryTerms.Size = new System.Drawing.Size(135, 27);
-            this.cbbDeliveryTerms.TabIndex = 17;
+            this.cbbDeliveryTerms.TabIndex = 6;
             // 
             // cbbCustomerName
             // 
+            this.cbbCustomerName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbCustomerName.FormattingEnabled = true;
             this.cbbCustomerName.Location = new System.Drawing.Point(556, 78);
             this.cbbCustomerName.Name = "cbbCustomerName";
             this.cbbCustomerName.Size = new System.Drawing.Size(250, 27);
-            this.cbbCustomerName.TabIndex = 16;
-            this.cbbCustomerName.SelectedIndexChanged += new System.EventHandler(this.cbbCustomerName_SelectedIndexChanged);
+            this.cbbCustomerName.TabIndex = 10;
             // 
             // cbbPaymentTerms
             // 
+            this.cbbPaymentTerms.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbPaymentTerms.FormattingEnabled = true;
-            this.cbbPaymentTerms.Location = new System.Drawing.Point(33, 294);
+            this.cbbPaymentTerms.Items.AddRange(new object[] {
+            "Select",
+            "COD",
+            "15 Days",
+            "30 Days",
+            "60 Days"});
+            this.cbbPaymentTerms.Location = new System.Drawing.Point(33, 271);
             this.cbbPaymentTerms.Name = "cbbPaymentTerms";
             this.cbbPaymentTerms.Size = new System.Drawing.Size(135, 27);
-            this.cbbPaymentTerms.TabIndex = 15;
-            this.cbbPaymentTerms.SelectedIndexChanged += new System.EventHandler(this.cbbPaymentTerms_SelectedIndexChanged);
+            this.cbbPaymentTerms.TabIndex = 5;
             // 
             // dtpToDate
             // 
             this.dtpToDate.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.dtpToDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpToDate.Location = new System.Drawing.Point(222, 229);
+            this.dtpToDate.Location = new System.Drawing.Point(222, 211);
             this.dtpToDate.Name = "dtpToDate";
             this.dtpToDate.Size = new System.Drawing.Size(112, 26);
-            this.dtpToDate.TabIndex = 14;
+            this.dtpToDate.TabIndex = 4;
             // 
             // dtpFromDate
             // 
             this.dtpFromDate.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.dtpFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFromDate.Location = new System.Drawing.Point(79, 229);
+            this.dtpFromDate.Location = new System.Drawing.Point(79, 211);
             this.dtpFromDate.Name = "dtpFromDate";
             this.dtpFromDate.Size = new System.Drawing.Size(112, 26);
-            this.dtpFromDate.TabIndex = 13;
+            this.dtpFromDate.TabIndex = 3;
             // 
             // lblItemQuantity
             // 
@@ -332,8 +354,7 @@
             this.dtpDate.Location = new System.Drawing.Point(219, 114);
             this.dtpDate.Name = "dtpDate";
             this.dtpDate.Size = new System.Drawing.Size(115, 26);
-            this.dtpDate.TabIndex = 12;
-            this.dtpDate.ValueChanged += new System.EventHandler(this.dtpDate_ValueChanged);
+            this.dtpDate.TabIndex = 1;
             // 
             // txtUnitPrice
             // 
@@ -342,10 +363,11 @@
             this.txtUnitPrice.Enabled = false;
             this.txtUnitPrice.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.txtUnitPrice.ForeColor = System.Drawing.Color.Black;
-            this.txtUnitPrice.Location = new System.Drawing.Point(65, 114);
+            this.txtUnitPrice.Location = new System.Drawing.Point(69, 114);
             this.txtUnitPrice.Name = "txtUnitPrice";
             this.txtUnitPrice.Size = new System.Drawing.Size(85, 26);
             this.txtUnitPrice.TabIndex = 14;
+            this.txtUnitPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtRFQNumber
             // 
@@ -355,7 +377,7 @@
             this.txtRFQNumber.Multiline = true;
             this.txtRFQNumber.Name = "txtRFQNumber";
             this.txtRFQNumber.Size = new System.Drawing.Size(115, 27);
-            this.txtRFQNumber.TabIndex = 11;
+            this.txtRFQNumber.TabIndex = 2;
             // 
             // txtPQNumber
             // 
@@ -373,7 +395,7 @@
             this.lblDeliveryTerms.AutoSize = true;
             this.lblDeliveryTerms.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblDeliveryTerms.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.lblDeliveryTerms.Location = new System.Drawing.Point(31, 335);
+            this.lblDeliveryTerms.Location = new System.Drawing.Point(196, 250);
             this.lblDeliveryTerms.Name = "lblDeliveryTerms";
             this.lblDeliveryTerms.Size = new System.Drawing.Size(112, 18);
             this.lblDeliveryTerms.TabIndex = 9;
@@ -384,7 +406,7 @@
             this.lblInFavorOf.AutoSize = true;
             this.lblInFavorOf.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblInFavorOf.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.lblInFavorOf.Location = new System.Drawing.Point(196, 273);
+            this.lblInFavorOf.Location = new System.Drawing.Point(30, 369);
             this.lblInFavorOf.Name = "lblInFavorOf";
             this.lblInFavorOf.Size = new System.Drawing.Size(82, 18);
             this.lblInFavorOf.TabIndex = 8;
@@ -395,7 +417,7 @@
             this.lblPaymentTerms.AutoSize = true;
             this.lblPaymentTerms.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblPaymentTerms.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.lblPaymentTerms.Location = new System.Drawing.Point(30, 273);
+            this.lblPaymentTerms.Location = new System.Drawing.Point(30, 250);
             this.lblPaymentTerms.Name = "lblPaymentTerms";
             this.lblPaymentTerms.Size = new System.Drawing.Size(110, 18);
             this.lblPaymentTerms.TabIndex = 7;
@@ -406,7 +428,7 @@
             this.lblToDate.AutoSize = true;
             this.lblToDate.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblToDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.lblToDate.Location = new System.Drawing.Point(195, 232);
+            this.lblToDate.Location = new System.Drawing.Point(195, 214);
             this.lblToDate.Name = "lblToDate";
             this.lblToDate.Size = new System.Drawing.Size(24, 19);
             this.lblToDate.TabIndex = 6;
@@ -417,7 +439,7 @@
             this.lblFromDate.AutoSize = true;
             this.lblFromDate.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblFromDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.lblFromDate.Location = new System.Drawing.Point(27, 232);
+            this.lblFromDate.Location = new System.Drawing.Point(30, 214);
             this.lblFromDate.Name = "lblFromDate";
             this.lblFromDate.Size = new System.Drawing.Size(41, 19);
             this.lblFromDate.TabIndex = 5;
@@ -428,7 +450,7 @@
             this.Label5.AutoSize = true;
             this.Label5.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.Label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.Label5.Location = new System.Drawing.Point(28, 208);
+            this.Label5.Location = new System.Drawing.Point(30, 190);
             this.Label5.Name = "Label5";
             this.Label5.Size = new System.Drawing.Size(205, 18);
             this.Label5.TabIndex = 4;
@@ -436,17 +458,19 @@
             // 
             // nupItemQuantity
             // 
+            this.nupItemQuantity.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.nupItemQuantity.Location = new System.Drawing.Point(15, 114);
             this.nupItemQuantity.Name = "nupItemQuantity";
-            this.nupItemQuantity.Size = new System.Drawing.Size(33, 25);
+            this.nupItemQuantity.Size = new System.Drawing.Size(44, 26);
             this.nupItemQuantity.TabIndex = 13;
+            this.nupItemQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblRFQNumber
             // 
             this.lblRFQNumber.AutoSize = true;
             this.lblRFQNumber.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblRFQNumber.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.lblRFQNumber.Location = new System.Drawing.Point(30, 162);
+            this.lblRFQNumber.Location = new System.Drawing.Point(30, 156);
             this.lblRFQNumber.Name = "lblRFQNumber";
             this.lblRFQNumber.Size = new System.Drawing.Size(57, 18);
             this.lblRFQNumber.TabIndex = 3;
@@ -456,7 +480,7 @@
             // 
             this.lblItemTotal.AutoSize = true;
             this.lblItemTotal.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.lblItemTotal.Location = new System.Drawing.Point(158, 93);
+            this.lblItemTotal.Location = new System.Drawing.Point(160, 93);
             this.lblItemTotal.Name = "lblItemTotal";
             this.lblItemTotal.Size = new System.Drawing.Size(80, 18);
             this.lblItemTotal.TabIndex = 17;
@@ -466,7 +490,7 @@
             // 
             this.lblUnitPrice.AutoSize = true;
             this.lblUnitPrice.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.lblUnitPrice.Location = new System.Drawing.Point(62, 93);
+            this.lblUnitPrice.Location = new System.Drawing.Point(66, 93);
             this.lblUnitPrice.Name = "lblUnitPrice";
             this.lblUnitPrice.Size = new System.Drawing.Size(77, 18);
             this.lblUnitPrice.TabIndex = 16;
@@ -503,7 +527,7 @@
             this.btnAddtoPQ.Location = new System.Drawing.Point(17, 152);
             this.btnAddtoPQ.Name = "btnAddtoPQ";
             this.btnAddtoPQ.Size = new System.Drawing.Size(230, 27);
-            this.btnAddtoPQ.TabIndex = 71;
+            this.btnAddtoPQ.TabIndex = 16;
             this.btnAddtoPQ.Text = "ADD TO PRICE QUOTATION";
             this.btnAddtoPQ.UseVisualStyleBackColor = false;
             // 
@@ -537,10 +561,11 @@
             this.txtItemTotal.Enabled = false;
             this.txtItemTotal.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.txtItemTotal.ForeColor = System.Drawing.Color.Black;
-            this.txtItemTotal.Location = new System.Drawing.Point(161, 114);
+            this.txtItemTotal.Location = new System.Drawing.Point(163, 114);
             this.txtItemTotal.Name = "txtItemTotal";
-            this.txtItemTotal.Size = new System.Drawing.Size(85, 26);
+            this.txtItemTotal.Size = new System.Drawing.Size(84, 26);
             this.txtItemTotal.TabIndex = 15;
+            this.txtItemTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // TabPage2
             // 
@@ -565,37 +590,61 @@
             this.TabPage2.TabIndex = 1;
             this.TabPage2.Text = "Item Details";
             // 
+            // btnClearItems
+            // 
+            this.btnClearItems.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnClearItems.BackgroundImage")));
+            this.btnClearItems.FlatAppearance.BorderSize = 0;
+            this.btnClearItems.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClearItems.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(107)))), ((int)(((byte)(58)))));
+            this.btnClearItems.Location = new System.Drawing.Point(759, 348);
+            this.btnClearItems.Name = "btnClearItems";
+            this.btnClearItems.Size = new System.Drawing.Size(60, 67);
+            this.btnClearItems.TabIndex = 77;
+            this.btnClearItems.UseVisualStyleBackColor = true;
+            // 
+            // btnRemove
+            // 
+            this.btnRemove.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRemove.BackgroundImage")));
+            this.btnRemove.FlatAppearance.BorderSize = 0;
+            this.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemove.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnRemove.Location = new System.Drawing.Point(759, 275);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(60, 67);
+            this.btnRemove.TabIndex = 76;
+            this.btnRemove.UseVisualStyleBackColor = true;
+            // 
             // dgvPQItems
             // 
             this.dgvPQItems.AllowUserToAddRows = false;
             this.dgvPQItems.AllowUserToDeleteRows = false;
             this.dgvPQItems.AllowUserToResizeColumns = false;
             this.dgvPQItems.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Source Sans Pro", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(107)))), ((int)(((byte)(58)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            this.dgvPQItems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            dataGridViewCellStyle25.Font = new System.Drawing.Font("Source Sans Pro", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(107)))), ((int)(((byte)(58)))));
+            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvPQItems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle25;
             this.dgvPQItems.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(249)))));
             this.dgvPQItems.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvPQItems.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPQItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            dataGridViewCellStyle26.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            dataGridViewCellStyle26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPQItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle26;
             this.dgvPQItems.ColumnHeadersHeight = 24;
             this.dgvPQItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvPQItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.RFQItemName,
             this.RFQDescription,
-            this.RFQUOM,
             this.Column1,
             this.Qty,
+            this.RFQUOM,
             this.Column2});
             this.dgvPQItems.EnableHeadersVisualStyles = false;
             this.dgvPQItems.Location = new System.Drawing.Point(32, 275);
@@ -603,66 +652,24 @@
             this.dgvPQItems.Name = "dgvPQItems";
             this.dgvPQItems.ReadOnly = true;
             this.dgvPQItems.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(107)))), ((int)(((byte)(58)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(251)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPQItems.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            dataGridViewCellStyle27.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            dataGridViewCellStyle27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(107)))), ((int)(((byte)(58)))));
+            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(251)))));
+            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPQItems.RowHeadersDefaultCellStyle = dataGridViewCellStyle27;
             this.dgvPQItems.RowHeadersVisible = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(249)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Source Sans Pro", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(107)))), ((int)(((byte)(58)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            this.dgvPQItems.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(249)))));
+            dataGridViewCellStyle28.Font = new System.Drawing.Font("Source Sans Pro", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(107)))), ((int)(((byte)(58)))));
+            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvPQItems.RowsDefaultCellStyle = dataGridViewCellStyle28;
             this.dgvPQItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPQItems.Size = new System.Drawing.Size(710, 140);
             this.dgvPQItems.TabIndex = 72;
-            // 
-            // RFQItemName
-            // 
-            this.RFQItemName.HeaderText = "ITEM NAME";
-            this.RFQItemName.Name = "RFQItemName";
-            this.RFQItemName.ReadOnly = true;
-            this.RFQItemName.Width = 208;
-            // 
-            // RFQDescription
-            // 
-            this.RFQDescription.HeaderText = "DESCRIPTION";
-            this.RFQDescription.Name = "RFQDescription";
-            this.RFQDescription.ReadOnly = true;
-            this.RFQDescription.Width = 240;
-            // 
-            // RFQUOM
-            // 
-            this.RFQUOM.HeaderText = "UOM";
-            this.RFQUOM.Name = "RFQUOM";
-            this.RFQUOM.ReadOnly = true;
-            this.RFQUOM.Width = 40;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "UNIT PRICE";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 90;
-            // 
-            // Qty
-            // 
-            this.Qty.HeaderText = "QTY.";
-            this.Qty.Name = "Qty";
-            this.Qty.ReadOnly = true;
-            this.Qty.Width = 40;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "ITEM TOTAL";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 90;
             // 
             // lblRFQItems
             // 
@@ -681,23 +688,23 @@
             this.dgvItemSelection.AllowUserToDeleteRows = false;
             this.dgvItemSelection.AllowUserToResizeColumns = false;
             this.dgvItemSelection.AllowUserToResizeRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Source Sans Pro", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(107)))), ((int)(((byte)(58)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
-            this.dgvItemSelection.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            dataGridViewCellStyle29.Font = new System.Drawing.Font("Source Sans Pro", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(107)))), ((int)(((byte)(58)))));
+            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvItemSelection.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle29;
             this.dgvItemSelection.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(249)))));
             this.dgvItemSelection.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvItemSelection.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvItemSelection.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            dataGridViewCellStyle30.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            dataGridViewCellStyle30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvItemSelection.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle30;
             this.dgvItemSelection.ColumnHeadersHeight = 24;
             this.dgvItemSelection.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvItemSelection.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -712,21 +719,21 @@
             this.dgvItemSelection.Name = "dgvItemSelection";
             this.dgvItemSelection.ReadOnly = true;
             this.dgvItemSelection.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(251)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(107)))), ((int)(((byte)(58)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvItemSelection.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(251)))));
+            dataGridViewCellStyle31.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            dataGridViewCellStyle31.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(107)))), ((int)(((byte)(58)))));
+            dataGridViewCellStyle31.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvItemSelection.RowHeadersDefaultCellStyle = dataGridViewCellStyle31;
             this.dgvItemSelection.RowHeadersVisible = false;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(249)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Source Sans Pro", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(107)))), ((int)(((byte)(58)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
-            this.dgvItemSelection.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(249)))));
+            dataGridViewCellStyle32.Font = new System.Drawing.Font("Source Sans Pro", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle32.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            dataGridViewCellStyle32.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(107)))), ((int)(((byte)(58)))));
+            dataGridViewCellStyle32.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvItemSelection.RowsDefaultCellStyle = dataGridViewCellStyle32;
             this.dgvItemSelection.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvItemSelection.Size = new System.Drawing.Size(515, 150);
             this.dgvItemSelection.TabIndex = 73;
@@ -814,12 +821,22 @@
             this.lblSelection.TabIndex = 68;
             this.lblSelection.Text = "Selection";
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(302, 31);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(23, 26);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 70;
+            this.pictureBox2.TabStop = false;
+            // 
             // lblDate
             // 
             this.lblDate.AutoSize = true;
             this.lblDate.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.lblDate.Location = new System.Drawing.Point(30, 119);
+            this.lblDate.Location = new System.Drawing.Point(30, 118);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(40, 18);
             this.lblDate.TabIndex = 2;
@@ -860,6 +877,11 @@
             // 
             // TabPage1
             // 
+            this.TabPage1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.TabPage1.Controls.Add(this.cbbShipTo);
+            this.TabPage1.Controls.Add(this.lblShipTo);
+            this.TabPage1.Controls.Add(this.cbbBillTo);
+            this.TabPage1.Controls.Add(this.lblBillTo);
             this.TabPage1.Controls.Add(this.panel1);
             this.TabPage1.Controls.Add(this.cbbInFavorOf);
             this.TabPage1.Controls.Add(this.txtCustomerAddress);
@@ -896,15 +918,13 @@
             this.TabPage1.Size = new System.Drawing.Size(845, 437);
             this.TabPage1.TabIndex = 0;
             this.TabPage1.Text = "Quotation & Customer Details";
-            this.TabPage1.UseVisualStyleBackColor = true;
-            this.TabPage1.Click += new System.EventHandler(this.TabPage1_Click);
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.panel1.Location = new System.Drawing.Point(384, 30);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1, 356);
+            this.panel1.Size = new System.Drawing.Size(1, 385);
             this.panel1.TabIndex = 29;
             // 
             // btnCancel
@@ -935,40 +955,6 @@
             this.btnSave.Text = "SAVE AND GENERATE PDF";
             this.btnSave.UseVisualStyleBackColor = false;
             // 
-            // btnClearItems
-            // 
-            this.btnClearItems.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnClearItems.BackgroundImage")));
-            this.btnClearItems.FlatAppearance.BorderSize = 0;
-            this.btnClearItems.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClearItems.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(107)))), ((int)(((byte)(58)))));
-            this.btnClearItems.Location = new System.Drawing.Point(759, 348);
-            this.btnClearItems.Name = "btnClearItems";
-            this.btnClearItems.Size = new System.Drawing.Size(60, 67);
-            this.btnClearItems.TabIndex = 77;
-            this.btnClearItems.UseVisualStyleBackColor = true;
-            // 
-            // btnRemove
-            // 
-            this.btnRemove.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRemove.BackgroundImage")));
-            this.btnRemove.FlatAppearance.BorderSize = 0;
-            this.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRemove.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnRemove.Location = new System.Drawing.Point(759, 275);
-            this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(60, 67);
-            this.btnRemove.TabIndex = 76;
-            this.btnRemove.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(302, 31);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(23, 26);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 70;
-            this.pictureBox2.TabStop = false;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImage = global::REIC_POMS.Properties.Resources.BannerPQCreate;
@@ -977,7 +963,96 @@
             this.pictureBox1.Size = new System.Drawing.Size(853, 71);
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // cbbBillTo
+            // 
+            this.cbbBillTo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbBillTo.FormattingEnabled = true;
+            this.cbbBillTo.Items.AddRange(new object[] {
+            "Select",
+            "Customer",
+            "REIC"});
+            this.cbbBillTo.Location = new System.Drawing.Point(33, 328);
+            this.cbbBillTo.Name = "cbbBillTo";
+            this.cbbBillTo.Size = new System.Drawing.Size(135, 27);
+            this.cbbBillTo.TabIndex = 7;
+            // 
+            // lblBillTo
+            // 
+            this.lblBillTo.AutoSize = true;
+            this.lblBillTo.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblBillTo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.lblBillTo.Location = new System.Drawing.Point(30, 307);
+            this.lblBillTo.Name = "lblBillTo";
+            this.lblBillTo.Size = new System.Drawing.Size(54, 18);
+            this.lblBillTo.TabIndex = 30;
+            this.lblBillTo.Text = "BILL TO";
+            // 
+            // cbbShipTo
+            // 
+            this.cbbShipTo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbShipTo.FormattingEnabled = true;
+            this.cbbShipTo.Items.AddRange(new object[] {
+            "Select",
+            "Customer",
+            "REIC"});
+            this.cbbShipTo.Location = new System.Drawing.Point(199, 328);
+            this.cbbShipTo.Name = "cbbShipTo";
+            this.cbbShipTo.Size = new System.Drawing.Size(135, 27);
+            this.cbbShipTo.TabIndex = 8;
+            // 
+            // lblShipTo
+            // 
+            this.lblShipTo.AutoSize = true;
+            this.lblShipTo.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblShipTo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.lblShipTo.Location = new System.Drawing.Point(196, 307);
+            this.lblShipTo.Name = "lblShipTo";
+            this.lblShipTo.Size = new System.Drawing.Size(57, 18);
+            this.lblShipTo.TabIndex = 32;
+            this.lblShipTo.Text = "SHIP TO";
+            // 
+            // RFQItemName
+            // 
+            this.RFQItemName.HeaderText = "ITEM NAME";
+            this.RFQItemName.Name = "RFQItemName";
+            this.RFQItemName.ReadOnly = true;
+            this.RFQItemName.Width = 208;
+            // 
+            // RFQDescription
+            // 
+            this.RFQDescription.HeaderText = "DESCRIPTION";
+            this.RFQDescription.Name = "RFQDescription";
+            this.RFQDescription.ReadOnly = true;
+            this.RFQDescription.Width = 240;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "UNIT PRICE";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 90;
+            // 
+            // Qty
+            // 
+            this.Qty.HeaderText = "QTY.";
+            this.Qty.Name = "Qty";
+            this.Qty.ReadOnly = true;
+            this.Qty.Width = 40;
+            // 
+            // RFQUOM
+            // 
+            this.RFQUOM.HeaderText = "UOM";
+            this.RFQUOM.Name = "RFQUOM";
+            this.RFQUOM.ReadOnly = true;
+            this.RFQUOM.Width = 40;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "ITEM TOTAL";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 90;
             // 
             // PQ_CreateForm
             // 
@@ -992,7 +1067,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "PQ_CreateForm";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.CreatePQ_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nupItemQuantity)).EndInit();
             this.grpItemSelected.ResumeLayout(false);
             this.grpItemSelected.PerformLayout();
@@ -1000,10 +1074,10 @@
             this.TabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPQItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItemSelection)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.tabPQForm.ResumeLayout(false);
             this.TabPage1.ResumeLayout(false);
             this.TabPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -1075,11 +1149,15 @@
         private System.Windows.Forms.Button btnAddtoPQ;
         private System.Windows.Forms.Label lblItemName;
         private System.Windows.Forms.Label lblItemSelected;
+        internal System.Windows.Forms.ComboBox cbbShipTo;
+        internal System.Windows.Forms.Label lblShipTo;
+        internal System.Windows.Forms.ComboBox cbbBillTo;
+        internal System.Windows.Forms.Label lblBillTo;
         private System.Windows.Forms.DataGridViewTextBoxColumn RFQItemName;
         private System.Windows.Forms.DataGridViewTextBoxColumn RFQDescription;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RFQUOM;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Qty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RFQUOM;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
     }
 }

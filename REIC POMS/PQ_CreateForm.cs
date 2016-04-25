@@ -17,49 +17,5 @@ namespace REIC_POMS
             InitializeComponent();
         }
 
-        private void Label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TabPage1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cbbCustomerName_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cbbPaymentTerms_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void CreatePQ_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dtpDate_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

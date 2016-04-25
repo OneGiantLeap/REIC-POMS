@@ -372,9 +372,9 @@
             this.cbbPaymentTerms.Items.AddRange(new object[] {
             "Select",
             "COD",
-            "30 Days",
             "15 Days",
-            "Credit"});
+            "30 Days",
+            "60 Days"});
             this.cbbPaymentTerms.Location = new System.Drawing.Point(35, 178);
             this.cbbPaymentTerms.Name = "cbbPaymentTerms";
             this.cbbPaymentTerms.Size = new System.Drawing.Size(145, 27);
