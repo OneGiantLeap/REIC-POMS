@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnMinimize = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
@@ -48,6 +48,7 @@
             this.Supplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnSuppliers = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.btnItems = new System.Windows.Forms.Button();
             this.btnSignOut = new System.Windows.Forms.Button();
             this.btnSPRS = new System.Windows.Forms.Button();
@@ -60,6 +61,10 @@
             this.imgREICBall = new System.Windows.Forms.PictureBox();
             this.btnViewSupplier = new System.Windows.Forms.PictureBox();
             this.btnAddSupplier = new System.Windows.Forms.PictureBox();
+            this.btnSuppliers = new System.Windows.Forms.Button();
+            this.SupplierName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SupplierPerson = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SupplierNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSuppliers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgREICLogo)).BeginInit();
@@ -128,7 +133,7 @@
             this.lblAllSuppliers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
             this.lblAllSuppliers.Font = new System.Drawing.Font("Source Sans Pro", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblAllSuppliers.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(249)))));
-            this.lblAllSuppliers.Location = new System.Drawing.Point(164, 3);
+            this.lblAllSuppliers.Location = new System.Drawing.Point(159, 3);
             this.lblAllSuppliers.Name = "lblAllSuppliers";
             this.lblAllSuppliers.Size = new System.Drawing.Size(329, 44);
             this.lblAllSuppliers.TabIndex = 13;
@@ -202,50 +207,50 @@
             this.dgvSuppliers.AllowUserToDeleteRows = false;
             this.dgvSuppliers.AllowUserToResizeColumns = false;
             this.dgvSuppliers.AllowUserToResizeRows = false;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Source Sans Pro", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(219)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(107)))), ((int)(((byte)(58)))));
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.White;
-            this.dgvSuppliers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Source Sans Pro", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(219)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(107)))), ((int)(((byte)(58)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvSuppliers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvSuppliers.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(147)))), ((int)(((byte)(147)))));
             this.dgvSuppliers.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvSuppliers.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Source Sans Pro", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSuppliers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Source Sans Pro", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSuppliers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvSuppliers.ColumnHeadersHeight = 24;
             this.dgvSuppliers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvSuppliers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.PartNo,
-            this.ItemName,
-            this.Supplier});
+            this.SupplierName,
+            this.SupplierPerson,
+            this.SupplierNumber});
             this.dgvSuppliers.EnableHeadersVisualStyles = false;
             this.dgvSuppliers.Location = new System.Drawing.Point(211, 55);
             this.dgvSuppliers.MultiSelect = false;
             this.dgvSuppliers.Name = "dgvSuppliers";
             this.dgvSuppliers.ReadOnly = true;
             this.dgvSuppliers.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Source Sans Pro", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSuppliers.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Source Sans Pro", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSuppliers.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvSuppliers.RowHeadersVisible = false;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(106)))), ((int)(((byte)(106)))));
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Source Sans Pro", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(219)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(107)))), ((int)(((byte)(58)))));
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.White;
-            this.dgvSuppliers.RowsDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(106)))), ((int)(((byte)(106)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Source Sans Pro", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(219)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(107)))), ((int)(((byte)(58)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvSuppliers.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvSuppliers.RowTemplate.Height = 24;
             this.dgvSuppliers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvSuppliers.ShowCellErrors = false;
@@ -281,20 +286,6 @@
             this.panel2.Size = new System.Drawing.Size(644, 20);
             this.panel2.TabIndex = 32;
             // 
-            // btnSuppliers
-            // 
-            this.btnSuppliers.BackgroundImage = global::REIC_POMS.Properties.Resources.ButtonActiveSuppliers;
-            this.btnSuppliers.FlatAppearance.BorderSize = 0;
-            this.btnSuppliers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSuppliers.Location = new System.Drawing.Point(-2, 288);
-            this.btnSuppliers.Name = "btnSuppliers";
-            this.btnSuppliers.Size = new System.Drawing.Size(213, 48);
-            this.btnSuppliers.TabIndex = 41;
-            this.btnSuppliers.UseVisualStyleBackColor = true;
-            this.btnSuppliers.Click += new System.EventHandler(this.btnSuppliers_Click);
-            this.btnSuppliers.MouseEnter += new System.EventHandler(this.btnSuppliers_MouseEnter);
-            this.btnSuppliers.MouseLeave += new System.EventHandler(this.btnSuppliers_MouseLeave);
-            // 
             // btnItems
             // 
             this.btnItems.BackgroundImage = global::REIC_POMS.Properties.Resources.ButtonInactiveItems;
@@ -308,13 +299,16 @@
             this.btnItems.TabIndex = 40;
             this.btnItems.TabStop = false;
             this.btnItems.UseVisualStyleBackColor = true;
+            this.btnItems.Click += new System.EventHandler(this.btnItems_Click);
+            this.btnItems.MouseEnter += new System.EventHandler(this.btnItems_MouseEnter);
+            this.btnItems.MouseLeave += new System.EventHandler(this.btnItems_MouseLeave);
             // 
             // btnSignOut
             // 
             this.btnSignOut.BackgroundImage = global::REIC_POMS.Properties.Resources.ButtonInactiveSignOut;
             this.btnSignOut.FlatAppearance.BorderSize = 0;
             this.btnSignOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSignOut.Location = new System.Drawing.Point(-2, 594);
+            this.btnSignOut.Location = new System.Drawing.Point(-2, 573);
             this.btnSignOut.Name = "btnSignOut";
             this.btnSignOut.Size = new System.Drawing.Size(213, 48);
             this.btnSignOut.TabIndex = 39;
@@ -328,7 +322,7 @@
             this.btnSPRS.BackgroundImage = global::REIC_POMS.Properties.Resources.ButtonInactiveSPRS;
             this.btnSPRS.FlatAppearance.BorderSize = 0;
             this.btnSPRS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSPRS.Location = new System.Drawing.Point(-2, 543);
+            this.btnSPRS.Location = new System.Drawing.Point(-2, 525);
             this.btnSPRS.Name = "btnSPRS";
             this.btnSPRS.Size = new System.Drawing.Size(213, 48);
             this.btnSPRS.TabIndex = 38;
@@ -342,7 +336,7 @@
             this.btnSIDR.BackgroundImage = global::REIC_POMS.Properties.Resources.ButtonInactiveSIDR;
             this.btnSIDR.FlatAppearance.BorderSize = 0;
             this.btnSIDR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSIDR.Location = new System.Drawing.Point(-2, 492);
+            this.btnSIDR.Location = new System.Drawing.Point(-2, 477);
             this.btnSIDR.Name = "btnSIDR";
             this.btnSIDR.Size = new System.Drawing.Size(213, 48);
             this.btnSIDR.TabIndex = 37;
@@ -356,7 +350,7 @@
             this.btnPO.BackgroundImage = global::REIC_POMS.Properties.Resources.ButtonInactivePO;
             this.btnPO.FlatAppearance.BorderSize = 0;
             this.btnPO.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPO.Location = new System.Drawing.Point(-2, 441);
+            this.btnPO.Location = new System.Drawing.Point(-2, 429);
             this.btnPO.Name = "btnPO";
             this.btnPO.Size = new System.Drawing.Size(213, 48);
             this.btnPO.TabIndex = 36;
@@ -370,7 +364,7 @@
             this.btnPQ.BackgroundImage = global::REIC_POMS.Properties.Resources.ButtonInactivePQ;
             this.btnPQ.FlatAppearance.BorderSize = 0;
             this.btnPQ.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPQ.Location = new System.Drawing.Point(-2, 390);
+            this.btnPQ.Location = new System.Drawing.Point(-2, 381);
             this.btnPQ.Name = "btnPQ";
             this.btnPQ.Size = new System.Drawing.Size(213, 48);
             this.btnPQ.TabIndex = 35;
@@ -401,7 +395,7 @@
             this.btnRFQ.BackgroundImage = global::REIC_POMS.Properties.Resources.ButtonInactiveRFQ;
             this.btnRFQ.FlatAppearance.BorderSize = 0;
             this.btnRFQ.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRFQ.Location = new System.Drawing.Point(-2, 339);
+            this.btnRFQ.Location = new System.Drawing.Point(-2, 333);
             this.btnRFQ.Name = "btnRFQ";
             this.btnRFQ.Size = new System.Drawing.Size(213, 48);
             this.btnRFQ.TabIndex = 33;
@@ -431,6 +425,7 @@
             // btnViewSupplier
             // 
             this.btnViewSupplier.BackgroundImage = global::REIC_POMS.Properties.Resources.ButtonViewSupplier;
+            this.btnViewSupplier.InitialImage = global::REIC_POMS.Properties.Resources.ButtonViewSupplier;
             this.btnViewSupplier.Location = new System.Drawing.Point(946, 99);
             this.btnViewSupplier.Name = "btnViewSupplier";
             this.btnViewSupplier.Size = new System.Drawing.Size(60, 98);
@@ -443,6 +438,7 @@
             // btnAddSupplier
             // 
             this.btnAddSupplier.BackgroundImage = global::REIC_POMS.Properties.Resources.ButtonAddSupplier;
+            this.btnAddSupplier.InitialImage = global::REIC_POMS.Properties.Resources.ButtonAddSupplier;
             this.btnAddSupplier.Location = new System.Drawing.Point(876, 99);
             this.btnAddSupplier.Name = "btnAddSupplier";
             this.btnAddSupplier.Size = new System.Drawing.Size(60, 98);
@@ -451,6 +447,38 @@
             this.btnAddSupplier.Click += new System.EventHandler(this.btnAddSupplier_Click);
             this.btnAddSupplier.MouseEnter += new System.EventHandler(this.btnAddSupplier_MouseEnter);
             this.btnAddSupplier.MouseLeave += new System.EventHandler(this.btnAddSupplier_MouseLeave);
+            // 
+            // btnSuppliers
+            // 
+            this.btnSuppliers.BackgroundImage = global::REIC_POMS.Properties.Resources.ButtonActiveSuppliers;
+            this.btnSuppliers.FlatAppearance.BorderSize = 0;
+            this.btnSuppliers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSuppliers.Location = new System.Drawing.Point(-2, 285);
+            this.btnSuppliers.Name = "btnSuppliers";
+            this.btnSuppliers.Size = new System.Drawing.Size(213, 48);
+            this.btnSuppliers.TabIndex = 43;
+            this.btnSuppliers.UseVisualStyleBackColor = true;
+            // 
+            // SupplierName
+            // 
+            this.SupplierName.HeaderText = "SUPPLIER NAME";
+            this.SupplierName.Name = "SupplierName";
+            this.SupplierName.ReadOnly = true;
+            this.SupplierName.Width = 280;
+            // 
+            // SupplierPerson
+            // 
+            this.SupplierPerson.HeaderText = "CONTACT PERSON";
+            this.SupplierPerson.Name = "SupplierPerson";
+            this.SupplierPerson.ReadOnly = true;
+            this.SupplierPerson.Width = 210;
+            // 
+            // SupplierNumber
+            // 
+            this.SupplierNumber.HeaderText = "CONTACT NUMBER";
+            this.SupplierNumber.Name = "SupplierNumber";
+            this.SupplierNumber.ReadOnly = true;
+            this.SupplierNumber.Width = 152;
             // 
             // Supplier_MainScreen
             // 
@@ -530,5 +558,8 @@
         private System.Windows.Forms.Button btnSignOut;
         private System.Windows.Forms.Button btnItems;
         private System.Windows.Forms.Button btnSuppliers;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SupplierName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SupplierPerson;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SupplierNumber;
     }
 }

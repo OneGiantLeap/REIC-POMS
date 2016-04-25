@@ -18,65 +18,95 @@ namespace REIC_POMS
         }
         public bool cancel;
 
-        public string PartNumbertoView {
-               set { outputPartNumber.Text=value; }
-               get { return outputPartNumber.Text; } }
+        public string PartNumbertoView
+        {
+            set { outputPartNumber.Text = value; }
+            get { return outputPartNumber.Text; }
+        }
 
-        public string ItemNametoView {
+        public string ItemNametoView
+        {
             set { outputItemName.Text = value; }
-            get { return outputItemName.Text; }}   
+            get { return outputItemName.Text; }
+        }
 
-        public string SupplierUnitPricetoView {
+        public string SupplierUnitPricetoView
+        {
             set { outputSuppPrice.Text = value; }
-            get { return outputSuppPrice.Text; } }
+            get { return outputSuppPrice.Text; }
+        }
 
-        public string MarkuptoView {
+        public string MarkuptoView
+        {
             set { outputMarkup.Text = value; }
-            get { return outputMarkup.Text; } }
+            get { return outputMarkup.Text; }
+        }
 
-        public string ReicUnitPricetoView {
+        public string ReicUnitPricetoView
+        {
             set { outputREICPrice.Text = value; }
-            get { return outputREICPrice.Text; } }
+            get { return outputREICPrice.Text; }
+        }
 
-        public string MoqtoView {
+        public string MoqtoView
+        {
             set { outputMOQ.Text = value; }
-            get { return outputMOQ.Text; } }
+            get { return outputMOQ.Text; }
+        }
 
-        public string UomtoView {
+        public string UomtoView
+        {
             set { outputUOM.Text = value; }
-            get { return outputUOM.Text; } }
+            get { return outputUOM.Text; }
+        }
 
-        public string FromDatetoView {
+        public string FromDatetoView
+        {
             set { outputFromDate.Text = value; }
-            get { return outputFromDate.Text; } }
+            get { return outputFromDate.Text; }
+        }
 
-        public string ToDatetoView {
+        public string ToDatetoView
+        {
             set { outputToDate.Text = value; }
-            get { return outputToDate.Text; } }
+            get { return outputToDate.Text; }
+        }
 
-        public string ItemDescriptiontoView {
+        public string ItemDescriptiontoView
+        {
             set { outputItemDesc.Text = value; }
-            get { return outputItemDesc.Text; } }
+            get { return outputItemDesc.Text; }
+        }
 
-        public string SupplierNametoView {
+        public string SupplierNametoView
+        {
             set { outputSupplierName.Text = value; }
-            get { return outputSupplierName.Text; } }
+            get { return outputSupplierName.Text; }
+        }
 
-        public string SupplierPersontoView {
+        public string SupplierPersontoView
+        {
             set { outputSupplierPerson.Text = value; }
-            get { return outputSupplierPerson.Text; } }
+            get { return outputSupplierPerson.Text; }
+        }
 
-        public string SupplierNumbertoView {
+        public string SupplierNumbertoView
+        {
             set { outputSupplierNumber.Text = value; }
-            get { return outputSupplierNumber.Text; } }
+            get { return outputSupplierNumber.Text; }
+        }
 
-        public string SupplierEmailtoView {
+        public string SupplierEmailtoView
+        {
             set { outputSupplierEmail.Text = value; }
-            get { return outputSupplierEmail.Text; } }
+            get { return outputSupplierEmail.Text; }
+        }
 
-        public string SupplierAddresstoView {
+        public string SupplierAddresstoView
+        {
             set { outputSupplierAddress.Text = value; }
-            get { return outputSupplierAddress.Text; } }
+            get { return outputSupplierAddress.Text; }
+        }
 
 
 
@@ -99,7 +129,7 @@ namespace REIC_POMS
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             Item_UpdateForm iuf = new Item_UpdateForm();
-            
+
 
             iuf.PartNumbertoEdit = PartNumbertoView;
             iuf.ItemNametoEdit = ItemNametoView;
@@ -119,8 +149,8 @@ namespace REIC_POMS
             this.Hide();
             iuf.ShowDialog();
 
-            if (iuf.Cancel == false) 
-            { 
+            if (iuf.Cancel == false)
+            {
                 PartNumbertoView = iuf.PartNumbertoEdit;
                 ItemNametoView = iuf.ItemNametoEdit;
                 SupplierUnitPricetoView = iuf.SupplierUnitPricetoEdit;
@@ -138,7 +168,7 @@ namespace REIC_POMS
                 SupplierAddresstoView = iuf.SupplierAddresstoEdit;
                 cancel = false;
             }
-            else 
+            else
             { cancel = true; }
             this.Close();
 

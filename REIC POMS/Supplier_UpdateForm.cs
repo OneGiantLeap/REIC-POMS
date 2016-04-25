@@ -18,7 +18,6 @@ namespace REIC_POMS
             InitializeComponent();
         }
 
-     
         public string SupplierNametoEdit
         {
             set { txtSupplierName.Text = value; }
@@ -78,7 +77,5 @@ namespace REIC_POMS
         {
             get { return cancel; }
         }
-
-
     }
 }

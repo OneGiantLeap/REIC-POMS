@@ -12,7 +12,6 @@ namespace REIC_POMS
 {
     public partial class Supplier_AddForm : Form
     {
-        
         public bool cancel;
         public bool filledOut;
 
@@ -28,7 +27,6 @@ namespace REIC_POMS
         public string SupplierNumber { get { return txtSupplierNumber.Text; } }
         public string SupplierEmail { get { return txtSupplierEmail.Text; } }
         public string SupplierAddress { get { return txtSupplierAddress.Text; } }
-        
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -40,9 +38,7 @@ namespace REIC_POMS
         {
             do
             {
-             
                 if (
-                    
                     (SupplierName.Length == 0) ||
                     (SupplierPerson.Length == 0) ||
                     (SupplierNumber.Length == 0) ||
@@ -57,7 +53,7 @@ namespace REIC_POMS
                         return;
                     }
                 }
-           
+
                 else { filledOut = true; }
 
             } while (filledOut == false);
@@ -70,7 +66,6 @@ namespace REIC_POMS
         {
             get { return cancel; }
         }
-
 
     }
 }

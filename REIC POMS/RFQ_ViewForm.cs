@@ -92,10 +92,15 @@ namespace REIC_POMS
             /*
             
             */
+
+            //---CLOSING THE FORM
+            cancel = false; //Will be used by RFQ Main Screen
+            Close(); //Only RFQ_MainScreen.cs remains
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
+            cancel = true;
             Close();
         }
     }

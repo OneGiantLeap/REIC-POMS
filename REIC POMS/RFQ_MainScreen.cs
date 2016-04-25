@@ -287,7 +287,7 @@ namespace REIC_POMS
                                     crfq.PaymentTerms,
                                     crfq.AccountNumber,
                                     crfq.DeliveryTerms,
-                                    crfq.InFavorOf,
+                                    //crfq.InFavorOf,
                                     crfq.CustomerName,
                                     crfq.SupplierName,
                                     crfq.SupplierPerson,
@@ -312,7 +312,7 @@ namespace REIC_POMS
 
                 //---MESSAGEBOX FOR DEBUG PURPOSES
                 MessageBox.Show("RFQ CREATED: " + crfq.RFQNo + ", " + crfq.RequestDate + ", " + crfq.PaymentTerms + ", " + crfq.AccountNumber
-                                + ", " + crfq.DeliveryTerms + ", " + crfq.InFavorOf + ", " + crfq.CustomerName + ", " + crfq.SupplierName
+                                + ", " + crfq.DeliveryTerms + ", " /*+ crfq.InFavorOf*/ + ", " + crfq.CustomerName + ", " + crfq.SupplierName
                                 + ", " + crfq.SupplierPerson + ", " + crfq.SupplierNumber + ", " + crfq.SupplierEmail + ", " + crfq.SupplierAddress
                                 + "With " + crfq.RFQItemsList.Count + ". Inserted to Array [" + (rfqList.Count - 1) + " ]");
 

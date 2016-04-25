@@ -8,3 +8,4 @@
 000007|Food|---|Food Group|Mr. Foodie|09123456789|N/A|foodie@foodgroup.com.ph|Philippines
 000008|N/A|0000-2156-5841-2587|Sony|Experia Zee|09123456789|N/A|xperia@sony.com|Sonyland
 000009|N/A|N/A---|CD-R King|Adrian King|09123456788|N/A|adrian@cdrking.com.ph|Near Gilmore Station
+000010|Sports|N/A|Tai Co.|Anusorn Tai Bundit|09153909781|N/A|taicompany@yahoo.com|Ateneo de Manila University

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Collections;
+using System.IO;
 
 namespace REIC_POMS
 {
@@ -23,16 +24,34 @@ namespace REIC_POMS
             supplierIDCounter = 000000;
             supplierList = new ArrayList();
 
+            //---STREAM READER
+            try
+            {
+                FileStream fs = new FileStream(@"supplier.txt", FileMode.Open);
+                StreamReader readin = new StreamReader(fs);
+                while (!readin.EndOfStream)
+                {
+                    string[] text = readin.ReadLine().Split('|');
+                    supplierList.Add(new Supplier(text[0], text[1], text[2], text[3], text[4], text[5])); //Recreate the Supplier
+                    dgvSuppliers.Rows.Add(text[1], text[2], text[3]);
+                    supplierIDCounter++;
+                }
+                readin.Close();
+                fs.Close();
+            }
+            catch (Exception /*e*/) { }
 
+            /*
             //ADJUST DATAGRIDVIEW COLUMN ALIGNMENT
             dgvSuppliers.Columns["PartNo"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter; //Center column header
             dgvSuppliers.Columns["PartNo"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; //Center column contents
+            */
 
             //TEST CODE (For the purpose of customizing the DGV and checking out its appearance)
-            dgvSuppliers.Rows.Add("000000", "Aluminum Wire Bonders A", "Supplier A");
-            dgvSuppliers.Rows.Add("000001", "Vacuum Sealer A", "Supplier A");
-            dgvSuppliers.Rows.Add("000002", "Paper Tapes A", "Supplier A");
-            dgvSuppliers.Rows.Add("000003", "Mold Press A", "Supplier A");
+            /*dgvSuppliers.Rows.Add("Lucid Co.", "Victoria Carpio", "09133933371");
+            dgvSuppliers.Rows.Add("Fluora’s Shop", "Marvin Sta. Ana", "09253902271");
+            dgvSuppliers.Rows.Add("Cinco Company", "Royce Goden", "09153903125");
+            dgvSuppliers.Rows.Add("Mayers Balay", "Angelo Mercado", "09169833371");*/
         }
 
         private void SuppliersMainScreen_Load(object sender, EventArgs e)
@@ -40,14 +59,38 @@ namespace REIC_POMS
             cbbFilterBy.SelectedIndex = 0; //Sets the default combobox value to "Filter by..."
         }
 
+        //-----------------
+        // STREAM WRITER  |
+        //-----------------
+        private void saveSupplierData()
+        {
+            try
+            {
+                FileStream fs = new FileStream(@"supplier.txt", FileMode.Create);
+                StreamWriter writeout = new StreamWriter(fs);
+
+                for (int i = 0; i < supplierList.Count; i++)
+                {
+                    Supplier s = (Supplier)supplierList[i]; //Casting. So that I can retrieve attribute values from this specific Item.
+                    writeout.WriteLine(s.SupplierID + "|"
+                                     + s.SupplierName + "|"
+                                     + s.SupplierPerson + "|"
+                                     + s.SupplierNumber + "|"
+                                     + s.SupplierEmail + "|"
+                                     + s.SupplierAddress);
+                }
+                writeout.Close();
+                fs.Close();
+            }
+            catch (Exception /*e2*/) { }
+        }
+
         //--------------------------------------
         // MINIMIZE AND CLOSE BUTTONS METHODS  |
         //--------------------------------------
 
         private void btnMinimize_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
+        { this.WindowState = FormWindowState.Minimized; }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -57,137 +100,136 @@ namespace REIC_POMS
                 Close(); //Exit the program
         }
 
+        //------------------------
+        // ITEMS NAVBAR METHODS  |
+        //------------------------
+        private void btnItems_Click(object sender, EventArgs e)
+        {
+            Item_MainScreen itemsMain = new Item_MainScreen();
+            this.Hide(); //Added to actually close the Main Screen instead of it being open in the background
+            itemsMain.ShowDialog();
+            this.Close(); //Closes the Customer Main Screen
+        }
+
+        private void btnItems_MouseEnter(object sender, EventArgs e)
+        { btnItems.BackgroundImage = Properties.Resources.ButtonHoverItems; }
+
+        private void btnItems_MouseLeave(object sender, EventArgs e)
+        { btnItems.BackgroundImage = Properties.Resources.ButtonInactiveItems; }
+
         //---------------------------
         // CUSTOMER NAVBAR METHODS  |
         //---------------------------
         private void btnCustomers_Click(object sender, EventArgs e)
         {
-      //      Customer_MainScreen customerMain = new Customer_MainScreen();
-            this.Hide(); //Added to actually close the Main Screen instead of it being open in the background
-       //     customerMain.ShowDialog();
+            Customer_MainScreen customerMain = new Customer_MainScreen();
+            this.Hide();
+            customerMain.ShowDialog();
             this.Close(); //Closes the Items Main Screen
         }
 
         private void btnCustomers_MouseEnter(object sender, EventArgs e)
-        {
-            btnCustomers.BackgroundImage = Properties.Resources.ButtonHoverCustomers;
-        }
+        { btnCustomers.BackgroundImage = Properties.Resources.ButtonHoverCustomers; }
 
         private void btnCustomers_MouseLeave(object sender, EventArgs e)
-        {
-            btnCustomers.BackgroundImage = Properties.Resources.ButtonInactiveCustomers;
-        }
+        { btnCustomers.BackgroundImage = Properties.Resources.ButtonInactiveCustomers; }
 
         //---------------------------
-        // CUSTOMER NAVBAR METHODS  |
+        // SUPPLIER NAVBAR METHODS  |
         //---------------------------
         private void btnSuppliers_Click(object sender, EventArgs e)
-        {
-
-        }
+        { /*Nothing to add here*/ }
 
         private void btnSuppliers_MouseEnter(object sender, EventArgs e)
-        {
-       //     btnSuppliers.BackgroundImage = Properties.Resources.ButtonHoverSuppliers;
-        }
+        { /*Nothing to add here*/ }
 
         private void btnSuppliers_MouseLeave(object sender, EventArgs e)
-        {
-            btnSuppliers.BackgroundImage = Properties.Resources.ButtonInactiveSuppliers;
-        }
+        { /*Nothing to add here*/ }
 
         //----------------------------------------------
         // REQUEST FOR PRICE QUOTATION NAVBAR METHODS  |
         //----------------------------------------------
         private void btnRFQ_Click(object sender, EventArgs e)
         {
-       //     RFQ_MainScreen rfqMain = new RFQ_MainScreen();
-            this.Hide(); //Added to actually close the Main Screen instead of it being open in the background
-        //    rfqMain.ShowDialog();
-            this.Close(); //Closes the Item Main Screen
+            RFQ_MainScreen rfqMain = new RFQ_MainScreen();
+            this.Hide();
+            rfqMain.ShowDialog();
+            this.Close();
         }
 
         private void btnRFQ_MouseEnter(object sender, EventArgs e)
-        {
-            btnRFQ.BackgroundImage = Properties.Resources.ButtonHoverRFQ;
-        }
+        { btnRFQ.BackgroundImage = Properties.Resources.ButtonHoverRFQ; }
 
         private void btnRFQ_MouseLeave(object sender, EventArgs e)
-        {
-            btnRFQ.BackgroundImage = Properties.Resources.ButtonInactiveRFQ;
-        }
+        { btnRFQ.BackgroundImage = Properties.Resources.ButtonInactiveRFQ; }
 
         //----------------------------------
         // PRICE QUOTATION NAVBAR METHODS  |
         //----------------------------------
         private void btnPQ_Click(object sender, EventArgs e)
         {
-
+            PQ_MainScreen pqMain = new PQ_MainScreen();
+            this.Hide();
+            pqMain.ShowDialog();
+            this.Close();
         }
 
         private void btnPQ_MouseEnter(object sender, EventArgs e)
-        {
-            btnPQ.BackgroundImage = Properties.Resources.ButtonHoverPQ;
-        }
+        { btnPQ.BackgroundImage = Properties.Resources.ButtonHoverPQ; }
 
         private void btnPQ_MouseLeave(object sender, EventArgs e)
-        {
-            btnPQ.BackgroundImage = Properties.Resources.ButtonInactivePQ;
-        }
+        { btnPQ.BackgroundImage = Properties.Resources.ButtonInactivePQ; }
 
         //---------------------------------
         // PURCHASE ORDER NAVBAR METHODS  |
         //---------------------------------
         private void btnPO_Click(object sender, EventArgs e)
         {
-
+            PO_MainScreen poMain = new PO_MainScreen();
+            this.Hide();
+            poMain.ShowDialog();
+            this.Close();
         }
 
         private void btnPO_MouseEnter(object sender, EventArgs e)
-        {
-            btnPO.BackgroundImage = Properties.Resources.ButtonHoverPO;
-        }
+        { btnPO.BackgroundImage = Properties.Resources.ButtonHoverPO; }
 
         private void btnPO_MouseLeave(object sender, EventArgs e)
-        {
-            btnPO.BackgroundImage = Properties.Resources.ButtonInactivePO;
-        }
+        { btnPO.BackgroundImage = Properties.Resources.ButtonInactivePO; }
 
         //---------------------------------------------------
         // SALES INVOICE & DELIVERY RECEIPT NAVBAR METHODS  |
         //---------------------------------------------------
         private void btnSIDR_Click(object sender, EventArgs e)
         {
-
+            SIDR_MainScreen sidrMain = new SIDR_MainScreen();
+            this.Hide();
+            sidrMain.ShowDialog();
+            this.Close();
         }
 
         private void btnSIDR_MouseEnter(object sender, EventArgs e)
-        {
-            btnSIDR.BackgroundImage = Properties.Resources.ButtonHoverSIDR;
-        }
+        { btnSIDR.BackgroundImage = Properties.Resources.ButtonHoverSIDR; }
 
         private void btnSIDR_MouseLeave(object sender, EventArgs e)
-        {
-            btnSIDR.BackgroundImage = Properties.Resources.ButtonInactiveSIDR;
-        }
+        { btnSIDR.BackgroundImage = Properties.Resources.ButtonInactiveSIDR; }
 
         //-----------------------------------------------------
         // SALES PERFORMANCE REPORT & SUMMARY NAVBAR METHODS  |
         //-----------------------------------------------------
         private void btnSPRS_Click(object sender, EventArgs e)
         {
-
+            /*SPR_MainScreen sprMain = new SPR_MainScreen();
+            this.Hide();
+            sprMain.ShowDialog();
+            this.Close();*/
         }
 
         private void btnSPRS_MouseEnter(object sender, EventArgs e)
-        {
-            btnSPRS.BackgroundImage = Properties.Resources.ButtonHoverSPRS;
-        }
+        { btnSPRS.BackgroundImage = Properties.Resources.ButtonHoverSPRS; }
 
         private void btnSPRS_MouseLeave(object sender, EventArgs e)
-        {
-            btnSPRS.BackgroundImage = Properties.Resources.ButtonInactiveSPRS;
-        }
+        { btnSPRS.BackgroundImage = Properties.Resources.ButtonInactiveSPRS; }
 
         //--------------------------
         // SIGNOUT NAVBAR METHODS  |
@@ -203,14 +245,10 @@ namespace REIC_POMS
         }
 
         private void btnSignOut_MouseEnter(object sender, EventArgs e)
-        {
-            btnSignOut.BackgroundImage = Properties.Resources.ButtonHoverSignOut;
-        }
+        { btnSignOut.BackgroundImage = Properties.Resources.ButtonHoverSignOut; }
 
         private void btnSignOut_MouseLeave(object sender, EventArgs e)
-        {
-            btnSignOut.BackgroundImage = Properties.Resources.ButtonInactiveSignOut;
-        }
+        { btnSignOut.BackgroundImage = Properties.Resources.ButtonInactiveSignOut; }
 
         //---------------------------
         // ADD ITEM BUTTON METHODS  |
@@ -222,7 +260,6 @@ namespace REIC_POMS
 
             if (saf.Cancel == false)
             {
-                
                 supplierList.Add(new Supplier(
                               supplierIDCounter.ToString("D6"),
                               saf.SupplierName,
@@ -232,6 +269,7 @@ namespace REIC_POMS
                               saf.SupplierAddress));
 
                 dgvSuppliers.Rows.Add(saf.SupplierName, saf.SupplierPerson, saf.SupplierNumber);
+                saveSupplierData(); //Filestream
                 supplierIDCounter++;
                 return;
             }
@@ -245,14 +283,10 @@ namespace REIC_POMS
         }
 
         private void btnAddSupplier_MouseEnter(object sender, EventArgs e)
-        {
-            btnAddSupplier.BackgroundImage = Properties.Resources.ButtonAddItemHover;
-        }
+        { btnAddSupplier.BackgroundImage = Properties.Resources.ButtonAddSupplierHover; }
 
         private void btnAddSupplier_MouseLeave(object sender, EventArgs e)
-        {
-            btnAddSupplier.BackgroundImage = Properties.Resources.ButtonAddItem;
-        }
+        { btnAddSupplier.BackgroundImage = Properties.Resources.ButtonAddSupplier; }
 
         //---------------------------
         // VIEW ITEM BUTTON METHODS  |
@@ -288,8 +322,8 @@ namespace REIC_POMS
                             dgvSuppliers.SelectedRows[0].Cells[1].Value = svf.SupplierPersontoView;
                             dgvSuppliers.SelectedRows[0].Cells[2].Value = svf.SupplierNumbertoView;
 
+                            saveSupplierData(); //Filestream
                             MessageBox.Show("oh yan updated na yan ah.");
-
                         }
                     }
                 }
@@ -298,14 +332,10 @@ namespace REIC_POMS
 
 
         private void btnViewSupplier_MouseEnter(object sender, EventArgs e)
-        {
-            btnViewSupplier.BackgroundImage = Properties.Resources.ButtonViewItemHover;
-        }
+        { btnViewSupplier.BackgroundImage = Properties.Resources.ButtonViewSupplierHover; }
 
         private void btnViewSupplier_MouseLeave(object sender, EventArgs e)
-        {
-            btnViewSupplier.BackgroundImage = Properties.Resources.ButtonViewItem;
-        }
+        { btnViewSupplier.BackgroundImage = Properties.Resources.ButtonViewSupplier; }
 
         //---------------------------
         // SEARCH AND CLEAR SEARCH  |

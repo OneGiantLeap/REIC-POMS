@@ -15,7 +15,7 @@ namespace REIC_POMS
                    string paymentTerms,
                    string accountNumber,
                    string deliveryTerms,
-                   string inFavorOf,
+                   //string inFavorOf, No longer neededed
                    string customerName, //ENIGMA
                    string supplierName, //ENIGMA (plus its other fields)
                    string supplierPerson,
@@ -30,7 +30,7 @@ namespace REIC_POMS
             PaymentTerms = paymentTerms;
             AccountNumber = accountNumber;
             DeliveryTerms = deliveryTerms;
-            InFavorOf = inFavorOf;
+            //InFavorOf = inFavorOf;
             CustomerName = customerName;
             SupplierName = supplierName;
             SupplierPerson = supplierPerson;
@@ -46,7 +46,7 @@ namespace REIC_POMS
         public string PaymentTerms { get; set; }
         public string AccountNumber { get; set; }
         public string DeliveryTerms { get; set; }
-        public string InFavorOf { get; set; }
+        //public string InFavorOf { get; set; }
         public string CustomerName { get; set; }
         public string SupplierName { get; set; }
         public string SupplierPerson { get; set; }

@@ -8,24 +8,24 @@ namespace REIC_POMS
 {
     class Item
     {
-              
-        public Item (string partNumber,
-                    string itemName,
-                    double supplierUnitPrice,
+        //text[#] refers to the number in the Filestream
+        public Item(string partNumber, //text[0]
+                    string itemName, //text[1]
+                    double supplierUnitPrice, //text[2]
                     double markup,
                     double reicUnitPrice,
-                    int moq,
+                    int moq, //text[5]
                     string uom,
                     string fromDate,
                     string toDate,
-                    string itemDescription,
-                    string supplierName,
+                    string itemDescription, //text[9]
+                    string supplierName, //text[10]
                     string supplierPerson,
-                    string supplierNumber, 
+                    string supplierNumber,
                     string supplierEmail,
                     string supplierAddress
                     )
-            
+
         {
             this.PartNumber = partNumber;
             this.ItemName = itemName;
@@ -42,10 +42,8 @@ namespace REIC_POMS
             this.SupplierNumber = supplierNumber;
             this.SupplierEmail = supplierEmail;
             this.SupplierAddress = supplierAddress;
-          
         }
 
-        
         public double ComputedValue { get { return (SupplierUnitPrice * Markup / 100); } }//to compute for the value added (markup)
         public string PartNumber { get; set; }
         public string ItemName { get; set; }
@@ -57,7 +55,6 @@ namespace REIC_POMS
         public string FromDateNoTime { get; set; }
         public string ToDateNoTime { get; set; }
         public string ItemDescription { get; set; }
-        //public string SupplierDetails { get; set; }
         public string SupplierName { get; set; }
         public string SupplierPerson { get; set; }
         public string SupplierNumber { get; set; }

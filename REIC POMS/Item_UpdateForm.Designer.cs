@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.txtSupplierPerson = new System.Windows.Forms.TextBox();
-            this.txtSupplierName = new System.Windows.Forms.TextBox();
             this.lblSupplierEmail = new System.Windows.Forms.Label();
             this.cbbUOM = new System.Windows.Forms.ComboBox();
             this.btnNext = new System.Windows.Forms.Button();
@@ -57,6 +56,7 @@
             this.lblSupplierDetails = new System.Windows.Forms.Label();
             this.lblMOQ = new System.Windows.Forms.Label();
             this.tabSupplierDetails = new System.Windows.Forms.TabPage();
+            this.cbbSupplierName = new System.Windows.Forms.ComboBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.lblSupplierName = new System.Windows.Forms.Label();
             this.lblREICPrice = new System.Windows.Forms.Label();
@@ -78,18 +78,14 @@
             // 
             // txtSupplierPerson
             // 
-            this.txtSupplierPerson.Font = new System.Drawing.Font("Source Sans Pro Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.txtSupplierPerson.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.txtSupplierPerson.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSupplierPerson.Enabled = false;
+            this.txtSupplierPerson.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.txtSupplierPerson.Location = new System.Drawing.Point(29, 142);
             this.txtSupplierPerson.Name = "txtSupplierPerson";
-            this.txtSupplierPerson.Size = new System.Drawing.Size(298, 23);
+            this.txtSupplierPerson.Size = new System.Drawing.Size(298, 26);
             this.txtSupplierPerson.TabIndex = 7;
-            // 
-            // txtSupplierName
-            // 
-            this.txtSupplierName.Location = new System.Drawing.Point(29, 84);
-            this.txtSupplierName.Name = "txtSupplierName";
-            this.txtSupplierName.Size = new System.Drawing.Size(298, 25);
-            this.txtSupplierName.TabIndex = 6;
             // 
             // lblSupplierEmail
             // 
@@ -103,11 +99,18 @@
             // 
             // cbbUOM
             // 
+            this.cbbUOM.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbUOM.FormattingEnabled = true;
+            this.cbbUOM.Items.AddRange(new object[] {
+            "g",
+            "lb",
+            "pera",
+            "pagkain"});
             this.cbbUOM.Location = new System.Drawing.Point(277, 245);
             this.cbbUOM.Name = "cbbUOM";
             this.cbbUOM.Size = new System.Drawing.Size(50, 27);
-            this.cbbUOM.TabIndex = 22;
+            this.cbbUOM.TabIndex = 6;
+            this.cbbUOM.SelectedIndexChanged += new System.EventHandler(this.cbbUOM_SelectedIndexChanged);
             // 
             // btnNext
             // 
@@ -119,9 +122,10 @@
             this.btnNext.Location = new System.Drawing.Point(237, 462);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(90, 35);
-            this.btnNext.TabIndex = 21;
+            this.btnNext.TabIndex = 10;
             this.btnNext.Text = "NEXT";
             this.btnNext.UseVisualStyleBackColor = false;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // txtItemDesc
             // 
@@ -129,7 +133,7 @@
             this.txtItemDesc.Multiline = true;
             this.txtItemDesc.Name = "txtItemDesc";
             this.txtItemDesc.Size = new System.Drawing.Size(298, 74);
-            this.txtItemDesc.TabIndex = 20;
+            this.txtItemDesc.TabIndex = 9;
             // 
             // dtpToDate
             // 
@@ -138,7 +142,7 @@
             this.dtpToDate.Location = new System.Drawing.Point(212, 303);
             this.dtpToDate.Name = "dtpToDate";
             this.dtpToDate.Size = new System.Drawing.Size(115, 26);
-            this.dtpToDate.TabIndex = 19;
+            this.dtpToDate.TabIndex = 8;
             // 
             // dtpFromDate
             // 
@@ -147,37 +151,76 @@
             this.dtpFromDate.Location = new System.Drawing.Point(67, 303);
             this.dtpFromDate.Name = "dtpFromDate";
             this.dtpFromDate.Size = new System.Drawing.Size(115, 26);
-            this.dtpFromDate.TabIndex = 18;
+            this.dtpFromDate.TabIndex = 7;
             // 
             // nudMOQ
             // 
             this.nudMOQ.Location = new System.Drawing.Point(210, 244);
+            this.nudMOQ.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.nudMOQ.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nudMOQ.Name = "nudMOQ";
             this.nudMOQ.Size = new System.Drawing.Size(50, 26);
-            this.nudMOQ.TabIndex = 17;
+            this.nudMOQ.TabIndex = 5;
+            this.nudMOQ.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.nudMOQ.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // txtREICPrice
             // 
+            this.txtREICPrice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.txtREICPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtREICPrice.Enabled = false;
             this.txtREICPrice.Location = new System.Drawing.Point(29, 245);
             this.txtREICPrice.Name = "txtREICPrice";
             this.txtREICPrice.Size = new System.Drawing.Size(139, 26);
             this.txtREICPrice.TabIndex = 16;
+            this.txtREICPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // cbbMarkup
             // 
+            this.cbbMarkup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbMarkup.FormattingEnabled = true;
+            this.cbbMarkup.Items.AddRange(new object[] {
+            "0",
+            "10",
+            "15",
+            "25",
+            "35",
+            "50",
+            "60",
+            "75",
+            "100"});
             this.cbbMarkup.Location = new System.Drawing.Point(210, 186);
             this.cbbMarkup.Name = "cbbMarkup";
             this.cbbMarkup.Size = new System.Drawing.Size(50, 27);
-            this.cbbMarkup.TabIndex = 15;
+            this.cbbMarkup.TabIndex = 4;
+            this.cbbMarkup.SelectedIndexChanged += new System.EventHandler(this.cbbMarkup_SelectedIndexChanged);
             // 
             // nudSuppPrice
             // 
             this.nudSuppPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.nudSuppPrice.Location = new System.Drawing.Point(29, 186);
+            this.nudSuppPrice.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
             this.nudSuppPrice.Name = "nudSuppPrice";
             this.nudSuppPrice.Size = new System.Drawing.Size(139, 26);
-            this.nudSuppPrice.TabIndex = 14;
+            this.nudSuppPrice.TabIndex = 3;
+            this.nudSuppPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.nudSuppPrice.ValueChanged += new System.EventHandler(this.nudSuppPrice_ValueChanged);
             // 
             // txtItemName
             // 
@@ -185,7 +228,7 @@
             this.txtItemName.Multiline = true;
             this.txtItemName.Name = "txtItemName";
             this.txtItemName.Size = new System.Drawing.Size(298, 25);
-            this.txtItemName.TabIndex = 13;
+            this.txtItemName.TabIndex = 2;
             // 
             // btnUpdate
             // 
@@ -197,22 +240,31 @@
             this.btnUpdate.Location = new System.Drawing.Point(29, 441);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(140, 35);
-            this.btnUpdate.TabIndex = 11;
+            this.btnUpdate.TabIndex = 12;
             this.btnUpdate.Text = "UPDATE";
             this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // txtSupplierEmail
             // 
+            this.txtSupplierEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.txtSupplierEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSupplierEmail.Enabled = false;
+            this.txtSupplierEmail.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.txtSupplierEmail.Location = new System.Drawing.Point(29, 259);
             this.txtSupplierEmail.Name = "txtSupplierEmail";
-            this.txtSupplierEmail.Size = new System.Drawing.Size(298, 25);
+            this.txtSupplierEmail.Size = new System.Drawing.Size(298, 26);
             this.txtSupplierEmail.TabIndex = 9;
             // 
             // txtSupplierNumber
             // 
+            this.txtSupplierNumber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.txtSupplierNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSupplierNumber.Enabled = false;
+            this.txtSupplierNumber.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.txtSupplierNumber.Location = new System.Drawing.Point(29, 201);
             this.txtSupplierNumber.Name = "txtSupplierNumber";
-            this.txtSupplierNumber.Size = new System.Drawing.Size(298, 25);
+            this.txtSupplierNumber.Size = new System.Drawing.Size(298, 26);
             this.txtSupplierNumber.TabIndex = 8;
             // 
             // lblSupplierAddress
@@ -228,10 +280,11 @@
             // txtPartNumber
             // 
             this.txtPartNumber.Location = new System.Drawing.Point(127, 70);
+            this.txtPartNumber.MaxLength = 6;
             this.txtPartNumber.Multiline = true;
             this.txtPartNumber.Name = "txtPartNumber";
             this.txtPartNumber.Size = new System.Drawing.Size(200, 25);
-            this.txtPartNumber.TabIndex = 12;
+            this.txtPartNumber.TabIndex = 1;
             // 
             // lblItemDesc
             // 
@@ -279,6 +332,10 @@
             // 
             // txtSupplierAddress
             // 
+            this.txtSupplierAddress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.txtSupplierAddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSupplierAddress.Enabled = false;
+            this.txtSupplierAddress.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.txtSupplierAddress.Location = new System.Drawing.Point(29, 318);
             this.txtSupplierAddress.Multiline = true;
             this.txtSupplierAddress.Name = "txtSupplierAddress";
@@ -341,13 +398,13 @@
             // tabSupplierDetails
             // 
             this.tabSupplierDetails.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(249)))));
+            this.tabSupplierDetails.Controls.Add(this.cbbSupplierName);
             this.tabSupplierDetails.Controls.Add(this.btnCancel);
             this.tabSupplierDetails.Controls.Add(this.btnUpdate);
             this.tabSupplierDetails.Controls.Add(this.txtSupplierAddress);
             this.tabSupplierDetails.Controls.Add(this.txtSupplierEmail);
             this.tabSupplierDetails.Controls.Add(this.txtSupplierNumber);
             this.tabSupplierDetails.Controls.Add(this.txtSupplierPerson);
-            this.tabSupplierDetails.Controls.Add(this.txtSupplierName);
             this.tabSupplierDetails.Controls.Add(this.lblSupplierAddress);
             this.tabSupplierDetails.Controls.Add(this.lblSupplierEmail);
             this.tabSupplierDetails.Controls.Add(this.lblSupplierNumber);
@@ -362,6 +419,17 @@
             this.tabSupplierDetails.TabIndex = 1;
             this.tabSupplierDetails.Text = "Supplier Details";
             // 
+            // cbbSupplierName
+            // 
+            this.cbbSupplierName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbSupplierName.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.cbbSupplierName.FormattingEnabled = true;
+            this.cbbSupplierName.Location = new System.Drawing.Point(29, 84);
+            this.cbbSupplierName.Name = "cbbSupplierName";
+            this.cbbSupplierName.Size = new System.Drawing.Size(298, 27);
+            this.cbbSupplierName.TabIndex = 11;
+            this.cbbSupplierName.SelectedIndexChanged += new System.EventHandler(this.cbbSupplierName_SelectedIndexChanged);
+            // 
             // btnCancel
             // 
             this.btnCancel.BackColor = System.Drawing.Color.White;
@@ -372,9 +440,10 @@
             this.btnCancel.Location = new System.Drawing.Point(187, 441);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(140, 35);
-            this.btnCancel.TabIndex = 12;
+            this.btnCancel.TabIndex = 13;
             this.btnCancel.Text = "CANCEL";
             this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // lblSupplierName
             // 
@@ -466,7 +535,6 @@
             // tabItemDetails
             // 
             this.tabItemDetails.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(249)))));
-            this.tabItemDetails.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tabItemDetails.Controls.Add(this.cbbUOM);
             this.tabItemDetails.Controls.Add(this.btnNext);
             this.tabItemDetails.Controls.Add(this.txtItemDesc);
@@ -517,6 +585,7 @@
             this.Controls.Add(this.imgUpdateItem);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Item_UpdateForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Item_UpdateForm";
             ((System.ComponentModel.ISupportInitialize)(this.nudMOQ)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudSuppPrice)).EndInit();
@@ -533,7 +602,6 @@
         #endregion
 
         private System.Windows.Forms.TextBox txtSupplierPerson;
-        private System.Windows.Forms.TextBox txtSupplierName;
         private System.Windows.Forms.Label lblSupplierEmail;
         private System.Windows.Forms.ComboBox cbbUOM;
         private System.Windows.Forms.Button btnNext;
@@ -572,5 +640,6 @@
         private System.Windows.Forms.TabControl tabItemForm;
         private System.Windows.Forms.TabPage tabItemDetails;
         private System.Windows.Forms.PictureBox imgUpdateItem;
+        private System.Windows.Forms.ComboBox cbbSupplierName;
     }
 }

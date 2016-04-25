@@ -56,19 +56,21 @@
             this.outputUOM = new System.Windows.Forms.Label();
             this.outputFromDate = new System.Windows.Forms.Label();
             this.outputToDate = new System.Windows.Forms.Label();
-            this.outputItemDesc = new System.Windows.Forms.Label();
             this.outputSupplierName = new System.Windows.Forms.Label();
             this.outputSupplierPerson = new System.Windows.Forms.Label();
             this.outputSupplierNumber = new System.Windows.Forms.Label();
             this.outputSupplierEmail = new System.Windows.Forms.Label();
-            this.outputSupplierAddress = new System.Windows.Forms.Label();
             this.lblDash = new System.Windows.Forms.Label();
+            this.outputSupplierAddress = new System.Windows.Forms.TextBox();
+            this.outputItemDesc = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.imgViewItem)).BeginInit();
             this.SuspendLayout();
             // 
             // imgViewItem
             // 
             this.imgViewItem.BackgroundImage = global::REIC_POMS.Properties.Resources.BannerItemView;
+            this.imgViewItem.InitialImage = global::REIC_POMS.Properties.Resources.BannerItemView;
             this.imgViewItem.Location = new System.Drawing.Point(0, 0);
             this.imgViewItem.Name = "imgViewItem";
             this.imgViewItem.Size = new System.Drawing.Size(720, 70);
@@ -80,7 +82,7 @@
             this.lblItemDesc.AutoSize = true;
             this.lblItemDesc.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblItemDesc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.lblItemDesc.Location = new System.Drawing.Point(42, 424);
+            this.lblItemDesc.Location = new System.Drawing.Point(42, 428);
             this.lblItemDesc.Name = "lblItemDesc";
             this.lblItemDesc.Size = new System.Drawing.Size(124, 18);
             this.lblItemDesc.TabIndex = 34;
@@ -355,7 +357,7 @@
             // 
             this.outputFromDate.AutoSize = true;
             this.outputFromDate.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.outputFromDate.Location = new System.Drawing.Point(89, 400);
+            this.outputFromDate.Location = new System.Drawing.Point(77, 400);
             this.outputFromDate.Name = "outputFromDate";
             this.outputFromDate.Size = new System.Drawing.Size(47, 19);
             this.outputFromDate.TabIndex = 65;
@@ -370,16 +372,6 @@
             this.outputToDate.Size = new System.Drawing.Size(47, 19);
             this.outputToDate.TabIndex = 66;
             this.outputToDate.Text = "label2";
-            // 
-            // outputItemDesc
-            // 
-            this.outputItemDesc.AutoSize = true;
-            this.outputItemDesc.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.outputItemDesc.Location = new System.Drawing.Point(65, 444);
-            this.outputItemDesc.Name = "outputItemDesc";
-            this.outputItemDesc.Size = new System.Drawing.Size(47, 19);
-            this.outputItemDesc.TabIndex = 67;
-            this.outputItemDesc.Text = "label3";
             // 
             // outputSupplierName
             // 
@@ -421,16 +413,6 @@
             this.outputSupplierEmail.TabIndex = 71;
             this.outputSupplierEmail.Text = "label4";
             // 
-            // outputSupplierAddress
-            // 
-            this.outputSupplierAddress.AutoSize = true;
-            this.outputSupplierAddress.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.outputSupplierAddress.Location = new System.Drawing.Point(530, 276);
-            this.outputSupplierAddress.Name = "outputSupplierAddress";
-            this.outputSupplierAddress.Size = new System.Drawing.Size(47, 19);
-            this.outputSupplierAddress.TabIndex = 72;
-            this.outputSupplierAddress.Text = "label5";
-            // 
             // lblDash
             // 
             this.lblDash.AutoSize = true;
@@ -441,19 +423,58 @@
             this.lblDash.TabIndex = 73;
             this.lblDash.Text = "to";
             // 
+            // outputSupplierAddress
+            // 
+            this.outputSupplierAddress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(249)))));
+            this.outputSupplierAddress.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.outputSupplierAddress.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.outputSupplierAddress.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.outputSupplierAddress.Location = new System.Drawing.Point(398, 298);
+            this.outputSupplierAddress.MaxLength = 150;
+            this.outputSupplierAddress.Multiline = true;
+            this.outputSupplierAddress.Name = "outputSupplierAddress";
+            this.outputSupplierAddress.ReadOnly = true;
+            this.outputSupplierAddress.Size = new System.Drawing.Size(286, 75);
+            this.outputSupplierAddress.TabIndex = 74;
+            this.outputSupplierAddress.Text = "Magic TextBox";
+            // 
+            // outputItemDesc
+            // 
+            this.outputItemDesc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(249)))));
+            this.outputItemDesc.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.outputItemDesc.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.outputItemDesc.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.outputItemDesc.Location = new System.Drawing.Point(57, 449);
+            this.outputItemDesc.MaxLength = 150;
+            this.outputItemDesc.Multiline = true;
+            this.outputItemDesc.Name = "outputItemDesc";
+            this.outputItemDesc.ReadOnly = true;
+            this.outputItemDesc.Size = new System.Drawing.Size(263, 50);
+            this.outputItemDesc.TabIndex = 75;
+            this.outputItemDesc.Text = "Magic TextBox";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.panel1.Location = new System.Drawing.Point(353, 99);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1, 397);
+            this.panel1.TabIndex = 76;
+            // 
             // Item_ViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(249)))));
             this.ClientSize = new System.Drawing.Size(720, 535);
-            this.Controls.Add(this.lblDash);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.outputItemDesc);
             this.Controls.Add(this.outputSupplierAddress);
+            this.Controls.Add(this.lblDash);
             this.Controls.Add(this.outputSupplierEmail);
             this.Controls.Add(this.outputSupplierNumber);
             this.Controls.Add(this.outputSupplierPerson);
             this.Controls.Add(this.outputSupplierName);
-            this.Controls.Add(this.outputItemDesc);
             this.Controls.Add(this.outputToDate);
             this.Controls.Add(this.outputFromDate);
             this.Controls.Add(this.outputUOM);
@@ -523,12 +544,13 @@
         private System.Windows.Forms.Label outputUOM;
         private System.Windows.Forms.Label outputFromDate;
         private System.Windows.Forms.Label outputToDate;
-        private System.Windows.Forms.Label outputItemDesc;
         private System.Windows.Forms.Label outputSupplierName;
         private System.Windows.Forms.Label outputSupplierPerson;
         private System.Windows.Forms.Label outputSupplierNumber;
         private System.Windows.Forms.Label outputSupplierEmail;
-        private System.Windows.Forms.Label outputSupplierAddress;
         private System.Windows.Forms.Label lblDash;
+        private System.Windows.Forms.TextBox outputSupplierAddress;
+        private System.Windows.Forms.TextBox outputItemDesc;
+        private System.Windows.Forms.Panel panel1;
     }
 }

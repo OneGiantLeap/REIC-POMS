@@ -4,3 +4,4 @@
 000003|Research Outfitters|Gunther Spielmann|213445|gspielmann@routfitters.com|Mechitaristengasse 5, Vienna
 000004|Western Technological Supply|W.E. Macdonald|3762855|macdonald@wts.com|5063 Richmond Mall, Vancouver
 000005|Lone Star State Research Suppliers|Charles Baron|512/478-0788|cbaron@lonestar.com|198 Fayetteville Road, Memphis
+000006|Forever 21|Shannon Cu|09102345371|scu@forever21.com.ph|Malling all you can, yo!

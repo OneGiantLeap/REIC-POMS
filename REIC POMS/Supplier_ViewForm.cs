@@ -18,7 +18,6 @@ namespace REIC_POMS
         }
         public bool cancel;
 
- 
         public string SupplierNametoView
         {
             set { outputSupplierName.Text = value; }
@@ -64,23 +63,23 @@ namespace REIC_POMS
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            Item_UpdateForm iuf = new Item_UpdateForm();
+            Supplier_UpdateForm suf = new Supplier_UpdateForm();
 
-            iuf.SupplierNametoEdit = SupplierNametoView;
-            iuf.SupplierPersontoEdit = SupplierPersontoView;
-            iuf.SupplierNumbertoEdit = SupplierNumbertoView;
-            iuf.SupplierEmailtoEdit = SupplierEmailtoView;
-            iuf.SupplierAddresstoEdit = SupplierAddresstoView;
+            suf.SupplierNametoEdit = SupplierNametoView;
+            suf.SupplierPersontoEdit = SupplierPersontoView;
+            suf.SupplierNumbertoEdit = SupplierNumbertoView;
+            suf.SupplierEmailtoEdit = SupplierEmailtoView;
+            suf.SupplierAddresstoEdit = SupplierAddresstoView;
             this.Hide();
-            iuf.ShowDialog();
+            suf.ShowDialog();
 
-            if (iuf.Cancel == false)
+            if (suf.Cancel == false)
             {
-                SupplierNametoView = iuf.SupplierNametoEdit;
-                SupplierPersontoView = iuf.SupplierPersontoEdit;
-                SupplierNumbertoView = iuf.SupplierNumbertoEdit;
-                SupplierEmailtoView = iuf.SupplierEmailtoEdit;
-                SupplierAddresstoView = iuf.SupplierAddresstoEdit;
+                SupplierNametoView = suf.SupplierNametoEdit;
+                SupplierPersontoView = suf.SupplierPersontoEdit;
+                SupplierNumbertoView = suf.SupplierNumbertoEdit;
+                SupplierEmailtoView = suf.SupplierEmailtoEdit;
+                SupplierAddresstoView = suf.SupplierAddresstoEdit;
                 cancel = false;
             }
             else

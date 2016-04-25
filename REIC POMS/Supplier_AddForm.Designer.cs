@@ -40,7 +40,6 @@
             this.lblSupplierNumber = new System.Windows.Forms.Label();
             this.lblSupplierPerson = new System.Windows.Forms.Label();
             this.lblSupplierName = new System.Windows.Forms.Label();
-            this.lblSupplierDetails = new System.Windows.Forms.Label();
             this.imgAddSupplier = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.imgAddSupplier)).BeginInit();
             this.SuspendLayout();
@@ -52,12 +51,13 @@
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Source Sans Pro Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(107)))), ((int)(((byte)(58)))));
-            this.btnCancel.Location = new System.Drawing.Point(198, 500);
+            this.btnCancel.Location = new System.Drawing.Point(198, 440);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(140, 35);
-            this.btnCancel.TabIndex = 25;
+            this.btnCancel.TabIndex = 7;
             this.btnCancel.Text = "CANCEL";
             this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnAdd
             // 
@@ -66,60 +66,61 @@
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Font = new System.Drawing.Font("Source Sans Pro Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.btnAdd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(249)))));
-            this.btnAdd.Location = new System.Drawing.Point(40, 500);
+            this.btnAdd.Location = new System.Drawing.Point(40, 440);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(140, 35);
-            this.btnAdd.TabIndex = 24;
+            this.btnAdd.TabIndex = 6;
             this.btnAdd.Text = "ADD";
             this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // txtSupplierAddress
             // 
             this.txtSupplierAddress.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.txtSupplierAddress.Location = new System.Drawing.Point(40, 377);
+            this.txtSupplierAddress.Location = new System.Drawing.Point(40, 345);
             this.txtSupplierAddress.Multiline = true;
             this.txtSupplierAddress.Name = "txtSupplierAddress";
             this.txtSupplierAddress.Size = new System.Drawing.Size(298, 75);
-            this.txtSupplierAddress.TabIndex = 23;
+            this.txtSupplierAddress.TabIndex = 5;
             // 
             // txtSupplierEmail
             // 
             this.txtSupplierEmail.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.txtSupplierEmail.Location = new System.Drawing.Point(40, 318);
+            this.txtSupplierEmail.Location = new System.Drawing.Point(40, 286);
             this.txtSupplierEmail.Name = "txtSupplierEmail";
             this.txtSupplierEmail.Size = new System.Drawing.Size(298, 26);
-            this.txtSupplierEmail.TabIndex = 22;
+            this.txtSupplierEmail.TabIndex = 4;
             // 
             // txtSupplierNumber
             // 
             this.txtSupplierNumber.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.txtSupplierNumber.Location = new System.Drawing.Point(40, 260);
+            this.txtSupplierNumber.Location = new System.Drawing.Point(40, 228);
             this.txtSupplierNumber.Name = "txtSupplierNumber";
             this.txtSupplierNumber.Size = new System.Drawing.Size(298, 26);
-            this.txtSupplierNumber.TabIndex = 21;
+            this.txtSupplierNumber.TabIndex = 3;
             // 
             // txtSupplierPerson
             // 
             this.txtSupplierPerson.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.txtSupplierPerson.Location = new System.Drawing.Point(40, 201);
+            this.txtSupplierPerson.Location = new System.Drawing.Point(40, 169);
             this.txtSupplierPerson.Name = "txtSupplierPerson";
             this.txtSupplierPerson.Size = new System.Drawing.Size(298, 26);
-            this.txtSupplierPerson.TabIndex = 20;
+            this.txtSupplierPerson.TabIndex = 2;
             // 
             // txtSupplierName
             // 
             this.txtSupplierName.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.txtSupplierName.Location = new System.Drawing.Point(40, 143);
+            this.txtSupplierName.Location = new System.Drawing.Point(40, 111);
             this.txtSupplierName.Name = "txtSupplierName";
             this.txtSupplierName.Size = new System.Drawing.Size(298, 26);
-            this.txtSupplierName.TabIndex = 19;
+            this.txtSupplierName.TabIndex = 1;
             // 
             // lblSupplierAddress
             // 
             this.lblSupplierAddress.AutoSize = true;
             this.lblSupplierAddress.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblSupplierAddress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.lblSupplierAddress.Location = new System.Drawing.Point(37, 356);
+            this.lblSupplierAddress.Location = new System.Drawing.Point(37, 324);
             this.lblSupplierAddress.Name = "lblSupplierAddress";
             this.lblSupplierAddress.Size = new System.Drawing.Size(66, 18);
             this.lblSupplierAddress.TabIndex = 18;
@@ -130,7 +131,7 @@
             this.lblSupplierEmail.AutoSize = true;
             this.lblSupplierEmail.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblSupplierEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.lblSupplierEmail.Location = new System.Drawing.Point(37, 297);
+            this.lblSupplierEmail.Location = new System.Drawing.Point(37, 265);
             this.lblSupplierEmail.Name = "lblSupplierEmail";
             this.lblSupplierEmail.Size = new System.Drawing.Size(111, 18);
             this.lblSupplierEmail.TabIndex = 17;
@@ -141,7 +142,7 @@
             this.lblSupplierNumber.AutoSize = true;
             this.lblSupplierNumber.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblSupplierNumber.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.lblSupplierNumber.Location = new System.Drawing.Point(37, 239);
+            this.lblSupplierNumber.Location = new System.Drawing.Point(37, 207);
             this.lblSupplierNumber.Name = "lblSupplierNumber";
             this.lblSupplierNumber.Size = new System.Drawing.Size(120, 18);
             this.lblSupplierNumber.TabIndex = 16;
@@ -152,7 +153,7 @@
             this.lblSupplierPerson.AutoSize = true;
             this.lblSupplierPerson.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblSupplierPerson.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.lblSupplierPerson.Location = new System.Drawing.Point(37, 180);
+            this.lblSupplierPerson.Location = new System.Drawing.Point(37, 148);
             this.lblSupplierPerson.Name = "lblSupplierPerson";
             this.lblSupplierPerson.Size = new System.Drawing.Size(118, 18);
             this.lblSupplierPerson.TabIndex = 15;
@@ -163,22 +164,11 @@
             this.lblSupplierName.AutoSize = true;
             this.lblSupplierName.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblSupplierName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.lblSupplierName.Location = new System.Drawing.Point(37, 122);
+            this.lblSupplierName.Location = new System.Drawing.Point(37, 90);
             this.lblSupplierName.Name = "lblSupplierName";
             this.lblSupplierName.Size = new System.Drawing.Size(106, 18);
             this.lblSupplierName.TabIndex = 14;
             this.lblSupplierName.Text = "SUPPLIER NAME";
-            // 
-            // lblSupplierDetails
-            // 
-            this.lblSupplierDetails.AutoSize = true;
-            this.lblSupplierDetails.Font = new System.Drawing.Font("Source Sans Pro", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.lblSupplierDetails.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(107)))), ((int)(((byte)(58)))));
-            this.lblSupplierDetails.Location = new System.Drawing.Point(33, 75);
-            this.lblSupplierDetails.Name = "lblSupplierDetails";
-            this.lblSupplierDetails.Size = new System.Drawing.Size(214, 38);
-            this.lblSupplierDetails.TabIndex = 13;
-            this.lblSupplierDetails.Text = "Supplier Details";
             // 
             // imgAddSupplier
             // 
@@ -195,7 +185,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(249)))));
-            this.ClientSize = new System.Drawing.Size(370, 610);
+            this.ClientSize = new System.Drawing.Size(370, 500);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.txtSupplierAddress);
@@ -208,7 +198,6 @@
             this.Controls.Add(this.lblSupplierNumber);
             this.Controls.Add(this.lblSupplierPerson);
             this.Controls.Add(this.lblSupplierName);
-            this.Controls.Add(this.lblSupplierDetails);
             this.Controls.Add(this.imgAddSupplier);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Supplier_AddForm";
@@ -234,6 +223,5 @@
         private System.Windows.Forms.Label lblSupplierNumber;
         private System.Windows.Forms.Label lblSupplierPerson;
         private System.Windows.Forms.Label lblSupplierName;
-        private System.Windows.Forms.Label lblSupplierDetails;
     }
 }
