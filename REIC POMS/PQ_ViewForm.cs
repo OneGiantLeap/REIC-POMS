@@ -31,5 +31,15 @@ namespace REIC_POMS
         {
 
         }
+
+        private void btnCreatePO_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

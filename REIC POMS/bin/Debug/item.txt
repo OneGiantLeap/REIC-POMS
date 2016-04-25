@@ -1,0 +1,3 @@
+000001|Aluminum Wire Bonders A|1200|35|1620|2|g|04/18/2016|04/23/2016|Wire|Basic Co.|Lleonora Abencia|09153901222|baseec@hotmail.com|Basic Street, Philippines
+000002|Vacuum Sealer|100|25|125|8|g|04/18/2016|04/30/2016|Expert in sealing|Supplier A|Timothy Ang|09153915937|reno@gmail.com|Reno
+000003|Paper Tapes A|100|15|115|7|g|04/18/2016|04/30/2016|Adhesive|MGE Transport|Anthony Ong|09153919945|mgetrans@yahoo.com|Bonifacio Global City

@@ -23,22 +23,78 @@ namespace REIC_POMS
         //---------------------
         //  SPECIAL VARIABLES |
         //---------------------
-        //Insert private bool cancel here
+        private bool cancel; //Will be used by Main Screen to know if it will create the RFQ or not
 
         //-------------------
         //  GETTERS-SETTERS |
         //-------------------
-        //Insert public string here
+        public string RFQNoToView { //ENIGMA: Format for RFQ No.
+            set { outputRFQNo.Text = value; }
+            get { return outputRFQNo.Text; } }
+
+        public string RequestDateToView { //ENIGMA: string or datetime?
+            set { outputDateOfRequest.Text = value; } //Set it to today's date by default?
+            get { return outputDateOfRequest.Text; } }
+
+        public string PaymentTermsToView {
+            set { outputPaymentTerms.Text = value; }
+            get { return outputPaymentTerms.Text; } }
+
+        public string AccountNumberToView { //IN DATA DICTIONARY, IT'S VARCHAR(16)
+            set { outputAccountNumber.Text = value; }
+            get { return outputAccountNumber.Text; } }
+
+        public string DeliveryTermsToView {
+            set { outputDeliveryTerms.Text = value; }
+            get { return outputDeliveryTerms.Text; } }
+
+        public string InFavorOfToView {
+            set { outputInFavorOf.Text = value; }
+            get { return outputInFavorOf.Text; } }
+
+        public string CustomerNameToView {
+            set { outputCustomerName.Text = value; }
+            get { return outputCustomerName.Text; } }
+
+        public string SupplierNameToView {
+            set { outputSupplierName.Text = value; }
+            get { return outputSupplierName.Text; } }
+
+        public string SupplierPersonToView {
+            set { outputSupplierPerson.Text = value; }
+            get { return outputSupplierPerson.Text; } }
+
+        public string SupplierNumberToView {
+            set { outputSupplierNumber.Text = value; }
+            get { return outputSupplierNumber.Text; } }
+
+        public string SupplierEmailToView {
+            set { outputSupplierEmail.Text = value;  }
+            get { return outputSupplierEmail.Text; } }
+
+        public string SupplierAddressToView {
+            set { outputSupplierAddress.Text = value; }
+            get { return outputSupplierAddress.Text; } }
+
+        //ENIGMA: How about the RFQItems???
+        /* <--- May result to error of "Inconsistent Accessibility"
+        public Items[] RFQItems {
+            get { return RFQItems; }
+        }*/
+
+        public bool Cancel { get { return cancel; } }
 
         //-------------------
         //  BUTTON METHODS  |
         //-------------------
-        private void btnSave_Click(object sender, EventArgs e)
+        private void btnCreatePQ_Click(object sender, EventArgs e)
         {
-
+            /*
+            
+            */
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
         }

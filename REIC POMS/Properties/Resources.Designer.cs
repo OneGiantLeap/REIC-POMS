@@ -113,6 +113,16 @@ namespace REIC_POMS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BannerItemView {
+            get {
+                object obj = ResourceManager.GetObject("BannerItemView", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap BannerPQCreate {
             get {
                 object obj = ResourceManager.GetObject("BannerPQCreate", resourceCulture);
@@ -326,6 +336,26 @@ namespace REIC_POMS.Properties {
         internal static System.Drawing.Bitmap ButtonAddSupplierHover {
             get {
                 object obj = ResourceManager.GetObject("ButtonAddSupplierHover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ButtonClearAllItems {
+            get {
+                object obj = ResourceManager.GetObject("ButtonClearAllItems", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ButtonClearAllItemsHover {
+            get {
+                object obj = ResourceManager.GetObject("ButtonClearAllItemsHover", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -586,6 +616,26 @@ namespace REIC_POMS.Properties {
         internal static System.Drawing.Bitmap ButtonInactiveSuppliers {
             get {
                 object obj = ResourceManager.GetObject("ButtonInactiveSuppliers", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ButtonRemoveItems {
+            get {
+                object obj = ResourceManager.GetObject("ButtonRemoveItems", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ButtonRemoveItemsHover {
+            get {
+                object obj = ResourceManager.GetObject("ButtonRemoveItemsHover", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -15,18 +15,13 @@ namespace REIC_POMS
     public partial class Customer_MainScreen : Form
     {
         //ATTRIBUTES
-        //private Customer[] customersList; //All customers --> Not needed anymore since ArrayList implementation
         private ArrayList customerList;
-        //private int max; //Maximum number of customers in array --> Not needed anymore since ArrayList implementation
-        //private int current; //Current number of customers in array --> Not needed anymore since ArrayList implementation
         private int customerIDCounter; //Will be used for customer ID
 
         //CONSTRUCTOR
         public Customer_MainScreen()
         {
             InitializeComponent();
-            //max = 5; --> Not needed anymore since ArrayList implementation
-            //current = 0; --> Not needed anymore since ArrayList implementation
             customerIDCounter = 000000;
             customerList = new ArrayList();
 
@@ -40,7 +35,6 @@ namespace REIC_POMS
                     string[] text = readin.ReadLine().Split('|');
                     dgvCustomers.Rows.Add(text[3], text[4], text[5], text[7]); //Place Customer at DGV
                     customerList.Add(new Customer(text[0], text[1], text[2], text[3], text[4], text[5], text[6], text[7], text[8])); //Recreate the Customer
-                    //current++;
                     customerIDCounter++;
                     //MessageBox.Show("Customer data added.");
                 }
@@ -80,9 +74,8 @@ namespace REIC_POMS
                                    + c.CustomerNumber + "|"
                                    + c.AccountNumber + "|"
                                    + c.CustomerEmail + "|"
-                                   + c.CustomerAddress + "|");
+                                   + c.CustomerAddress);
                 }
-                
                 writeout.Close();
                 fs.Close();
             }
@@ -90,9 +83,7 @@ namespace REIC_POMS
         }
 
         private void ItemsMainScreen_Load(object sender, EventArgs e)
-        {
-            //Don't know what this is for 
-        }
+        { /*Don't know what this is for*/ }
 
         //--------------------------------------
         // MINIMIZE AND CLOSE BUTTONS METHODS  |
@@ -144,10 +135,10 @@ namespace REIC_POMS
         //---------------------------
         private void btnSuppliers_Click(object sender, EventArgs e)
         {
-            /*Supplier_MainScreen supplierMain = new Supplier_MainScreen();
+            Supplier_MainScreen supplierMain = new Supplier_MainScreen();
             this.Hide();
-            customerMain.ShowDialog();
-            this.Close(); */
+            supplierMain.ShowDialog();
+            this.Close(); 
         }
 
         private void btnSuppliers_MouseEnter(object sender, EventArgs e)
@@ -162,9 +153,9 @@ namespace REIC_POMS
         private void btnRFQ_Click(object sender, EventArgs e)
         {
             RFQ_MainScreen rfqMain = new RFQ_MainScreen();
-            this.Hide(); //Added to actually close the Main Screen instead of it being open in the background
+            this.Hide();
             rfqMain.ShowDialog();
-            this.Close(); //Closes the Customer Main Screen
+            this.Close();
         }
 
         private void btnRFQ_MouseEnter(object sender, EventArgs e)
@@ -268,7 +259,7 @@ namespace REIC_POMS
             Customer_AddForm caf = new Customer_AddForm();
             caf.ShowDialog(); //Validation happens at Customer_AddForm.cs
 
-            if (caf.Cancel == false) //Meaning, will create the Customer. If Cancel is true, nothing happens.
+            if (caf.Cancel == false) //Meaning, will add the Customer. If Cancel is true, nothing happens.
             {
                 //---ADD the new Customer to the ArrayList
                 customerList.Add(new Customer(customerIDCounter.ToString("D6"),
@@ -281,7 +272,7 @@ namespace REIC_POMS
                                               caf.CustomerEmail,
                                               caf.CustomerAddress));
 
-                //---DISPLAY the newly created Customer in the Main Screen DGV
+                //---DISPLAY the newly added Customer in the Main Screen DGV
                 dgvCustomers.Rows.Add(caf.CustomerName, caf.CustomerPerson, caf.CustomerNumber, caf.CustomerEmail);
 
                 //---MESSAGEBOX FOR DEBUG PURPOSES
@@ -292,7 +283,7 @@ namespace REIC_POMS
                 //Increments & Saving
                 //current++;
                 customerIDCounter++; //I haven't figured out how to add padded zeros   
-                saveCustomerData();
+                saveCustomerData(); //Streamwriter
             }
         }
 
@@ -327,7 +318,7 @@ namespace REIC_POMS
 
                     if (c.CustomerName == dgvCustomers.SelectedRows[0].Cells[0].Value.ToString()) //If Customer Names match
                     {
-                        //---DISPLAY the view form + display the values above to the form
+                        //---DISPLAY the view form
                         Customer_ViewForm cvf = new Customer_ViewForm();
                         cvf.BNameToView = c.BusinessName;
                         cvf.TinToView = c.TinNumber;
@@ -364,11 +355,12 @@ namespace REIC_POMS
                             //---MESSAGEBOX FOR DEBUG PURPOSES
                             MessageBox.Show("UPDATE FREAKING SUCCESSFUL. BOO YEAH.");
                         }
-                //---MESSAGEBOX FOR DEBUG PURPOSES
-                if (cvf.Cancel == true) { MessageBox.Show("No update was done. K BOSS."); } }
+                        //---MESSAGEBOX FOR DEBUG PURPOSES
+                        //if (cvf.Cancel == true) { MessageBox.Show("No update was done. K BOSS."); } }
 
+                    }
                 } //End of if (customersList[i] != null)
-            } //End of for-loop
+            } //End of for-loop 
         }
 
         private void btnViewCustomer_MouseEnter(object sender, EventArgs e)

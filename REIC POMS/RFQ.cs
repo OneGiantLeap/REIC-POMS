@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections;
 
 namespace REIC_POMS
 {
@@ -20,8 +21,8 @@ namespace REIC_POMS
                    string supplierPerson,
                    string supplierNumber,
                    string supplierEmail,
-                   string supplierAddress)//,
-                   //Item[] rfqItems) //NOT SURE IF IT'S RIGHT; please add Item class, lest this remains red    
+                   string supplierAddress,
+                   ArrayList rfqItems)   
 
         {
             RFQNo = rfqNo;
@@ -36,7 +37,7 @@ namespace REIC_POMS
             SupplierNumber = supplierNumber;
             SupplierEmail = supplierEmail;
             SupplierAddress = supplierAddress;
-            //RFQItems = rfqItems; //NOT SURE LOGIC BEHIND THIS IS RIGHT
+            RFQItems = rfqItems;
         }
 
         //PROPERTIES
@@ -52,6 +53,6 @@ namespace REIC_POMS
         public string SupplierNumber { get; set; }
         public string SupplierEmail { get; set; }
         public string SupplierAddress { get; set; }
-        //public Item[] RFQItems { get; set; } //NOT SURE IF IT'S RIGHT; Please add Item class, lest this remains red    
+        public ArrayList RFQItems { get; set; } 
     }
 }

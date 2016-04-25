@@ -29,13 +29,11 @@ namespace REIC_POMS
 
         //ATTRIBUTES
         private ArrayList rfqList;
-        private int current;  //Came from Customer Main Screen. Don't know if we'll need this for RFQ.
 
         //CONSTRUCTOR
         public RFQ_MainScreen()
         {
             InitializeComponent();
-            current = 0;
             rfqList = new ArrayList();
 
             //---ADJUST DATAGRIDVIEW COLUMN ALIGNMENT
@@ -61,8 +59,8 @@ namespace REIC_POMS
                 {
                     string[] text = readin.ReadLine().Split('|');
                     dgvRFQ.Rows.Add(text[3], text[4], text[5], text[7]); //Place Customer at DGV
-                    rfqList.Add(new Customer(text[0], text[1], text[2], text[3], text[4], text[5], text[6], text[7], text[8])); //Recreate the Customer
-                    //current++; *Came from Customer Main Screen. Don't know if we'll need this for RFQ.
+                    //rfqList.Add(new Customer(text[0], text[1], text[2], text[3], text[4], text[5], text[6], text[7], text[8])); //Recreate the Customer
+
                     //MessageBox.Show("RFQ data added.");
                 }
                 readin.Close();
@@ -129,9 +127,9 @@ namespace REIC_POMS
         private void btnItems_Click(object sender, EventArgs e)
         {
             Item_MainScreen itemsMain = new Item_MainScreen();
-            this.Hide(); //Added to actually close the Main Screen instead of it being open in the background
+            this.Hide();
             itemsMain.ShowDialog();
-            this.Close(); //Closes the Customer Main Screen
+            this.Close();
         }
 
         private void btnItems_MouseEnter(object sender, EventArgs e)
@@ -162,10 +160,10 @@ namespace REIC_POMS
         //---------------------------
         private void btnSuppliers_Click(object sender, EventArgs e)
         {
-            /*Supplier_MainScreen supplierMain = new Supplier_MainScreen();
+            Supplier_MainScreen supplierMain = new Supplier_MainScreen();
             this.Hide();
-            customerMain.ShowDialog();
-            this.Close(); */
+            supplierMain.ShowDialog();
+            this.Close(); 
         }
 
         private void btnSuppliers_MouseEnter(object sender, EventArgs e)
@@ -259,7 +257,7 @@ namespace REIC_POMS
         //--------------------------
         private void btnSignOut_Click(object sender, EventArgs e)
         {
-            //TEST CODE
+            //TEST CODE 
             DialogResult result = MessageBox.Show("Are you sure you want to sign out?", "Confirm Sign Out", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
                 //LoginScreen login = new LoginScreen(); //Log-in Screen ---> This doesn't work, so I placed Application.Restart(); instead
@@ -280,14 +278,14 @@ namespace REIC_POMS
         {
             RFQ_CreateForm crfq = new RFQ_CreateForm();
             crfq.ShowDialog(); //Validation happens at RFQ_CreateForm.cs
-
+            
             if (crfq.Cancel == false) //Meaning, will create the RFQ. If Cancel is true, nothing happens.
             {
                 //---ADD the new Request for Price Quotation to the ArrayList
                 rfqList.Add(new RFQ(crfq.RFQNo, //THIS SHOULD BE SPECIALLY CUSTOMIZED with the correct RFQ No. format (Good luck)
                                     crfq.RequestDate,
                                     crfq.PaymentTerms,
-                                    crfq.AccountNumber.ToString(),
+                                    crfq.AccountNumber,
                                     crfq.DeliveryTerms,
                                     crfq.InFavorOf,
                                     crfq.CustomerName,
@@ -295,9 +293,9 @@ namespace REIC_POMS
                                     crfq.SupplierPerson,
                                     crfq.SupplierNumber,
                                     crfq.SupplierEmail,
-                                    crfq.SupplierAddress/*,
-                                    crfq.RFQItems*/));
-
+                                    crfq.SupplierAddress,
+                                    crfq.RFQItemsList));
+            
                 /*Saw an article, but wasn't able to finish reading it. This code snippet is interesting.
                     What if the RFQ's item collection is another ArrayList, and then we insert that to the RFQ ArrayList?
                     Next challenge would be passing the RFQ items' data from the Create Form.
@@ -316,7 +314,7 @@ namespace REIC_POMS
                 MessageBox.Show("RFQ CREATED: " + crfq.RFQNo + ", " + crfq.RequestDate + ", " + crfq.PaymentTerms + ", " + crfq.AccountNumber
                                 + ", " + crfq.DeliveryTerms + ", " + crfq.InFavorOf + ", " + crfq.CustomerName + ", " + crfq.SupplierName
                                 + ", " + crfq.SupplierPerson + ", " + crfq.SupplierNumber + ", " + crfq.SupplierEmail + ", " + crfq.SupplierAddress
-                                + "With "/* + crfq.RFQItems.Length*/ + ". Inserted to Array [" + current + " ]");
+                                + "With " + crfq.RFQItemsList.Count + ". Inserted to Array [" + (rfqList.Count - 1) + " ]");
 
                 //Increments & Saving
                 //current++; *Came from Customer Main Screen. Don't know if we'll need this for RFQ.

@@ -38,6 +38,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -76,6 +77,7 @@
     <Compile Include="Customer_ViewForm.Designer.cs">
       <DependentUpon>Customer_ViewForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Item.cs" />
     <Compile Include="Item_AddForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +89,12 @@
     </Compile>
     <Compile Include="Item_UpdateForm.Designer.cs">
       <DependentUpon>Item_UpdateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Item_ViewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Item_ViewForm.Designer.cs">
+      <DependentUpon>Item_ViewForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Log-in.cs">
       <SubType>Form</SubType>
@@ -157,6 +165,31 @@
     <Compile Include="SIDR_MainScreen.Designer.cs">
       <DependentUpon>SIDR_MainScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Supplier.cs" />
+    <Compile Include="Supplier_AddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supplier_AddForm.Designer.cs">
+      <DependentUpon>Supplier_AddForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supplier_MainScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supplier_MainScreen.Designer.cs">
+      <DependentUpon>Supplier_MainScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supplier_UpdateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supplier_UpdateForm.Designer.cs">
+      <DependentUpon>Supplier_UpdateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supplier_ViewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supplier_ViewForm.Designer.cs">
+      <DependentUpon>Supplier_ViewForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Customer_MainScreen.resx">
       <DependentUpon>Customer_MainScreen.cs</DependentUpon>
     </EmbeddedResource>
@@ -177,6 +210,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Item_UpdateForm.resx">
       <DependentUpon>Item_UpdateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Item_ViewForm.resx">
+      <DependentUpon>Item_ViewForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Log-in.resx">
       <DependentUpon>Log-in.cs</DependentUpon>
@@ -212,6 +248,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SIDR_MainScreen.resx">
       <DependentUpon>SIDR_MainScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supplier_AddForm.resx">
+      <DependentUpon>Supplier_AddForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supplier_MainScreen.resx">
+      <DependentUpon>Supplier_MainScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supplier_UpdateForm.resx">
+      <DependentUpon>Supplier_UpdateForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -284,6 +329,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ButtonActivePQ.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BannerItemView.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ButtonClearAllItems.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ButtonClearAllItemsHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ButtonRemoveItems.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ButtonRemoveItemsHover.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

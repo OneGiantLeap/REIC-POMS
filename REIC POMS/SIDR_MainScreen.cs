@@ -88,10 +88,10 @@ namespace REIC_POMS
         //---------------------------
         private void btnSuppliers_Click(object sender, EventArgs e)
         {
-            /*Supplier_MainScreen supplierMain = new Supplier_MainScreen();
+            Supplier_MainScreen supplierMain = new Supplier_MainScreen();
             this.Hide();
-            customerMain.ShowDialog();
-            this.Close(); */
+            supplierMain.ShowDialog();
+            this.Close(); 
         }
 
         private void btnSuppliers_MouseEnter(object sender, EventArgs e)
