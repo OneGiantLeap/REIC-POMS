@@ -90,16 +90,16 @@ namespace REIC_POMS
             get { return cbbUOM.Text; }
         }
 
-        public string FromDatetoEdit
+        public DateTime FromDatetoEdit
         {
-            set { dtpFromDate.Text = value; }
-            get { return dtpFromDate.Text; }
+            set { dtpFromDate.Value = value; }
+            get { return dtpFromDate.Value; }
         }
 
-        public string ToDatetoEdit
+        public DateTime ToDatetoEdit
         {
-            set { dtpToDate.Text = value; }
-            get { return dtpToDate.Text; }
+            set { dtpToDate.Value = value; }
+            get { return dtpToDate.Value; }
         }
 
         public string ItemDescriptiontoEdit
@@ -146,7 +146,7 @@ namespace REIC_POMS
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-
+            int dateResult = DateTime.Compare(FromDatetoEdit, ToDatetoEdit);
             if ((PartNumbertoEdit.Length == 0) ||
                 (ItemNametoEdit.Length == 0) ||
                 (SupplierUnitPricetoEdit.Length == 0) ||
@@ -154,8 +154,6 @@ namespace REIC_POMS
                 (ReicUnitPricetoEdit.Length == 0) ||
                 (MoqtoEdit.Length == 0) ||
                 (UomtoEdit.Length == 0) ||
-                (FromDatetoEdit.Length == 0) ||
-                (ToDatetoEdit.Length == 0) ||
                 (SupplierNametoEdit.Length == 0) ||
                 (SupplierPersontoEdit.Length == 0) ||
                 (SupplierNumbertoEdit.Length == 0) ||
@@ -165,6 +163,22 @@ namespace REIC_POMS
             {
                 MessageBox.Show("All fields should be completed", "Empty fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
+            }
+            else if (dateResult > 0)
+            {
+                DialogResult result = MessageBox.Show("dont be stupid, fromDate later than toDate, ano yan joke!.", "Bawal", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (result == DialogResult.OK)
+                {
+                    return;
+                }
+            }
+            else if (dateResult == 0)
+            {
+                DialogResult result = MessageBox.Show("dont be stupid, fromDate later equal toDate, ano yan joke!.", "Bawal", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (result == DialogResult.OK)
+                {
+                    return;
+                }
             }
 
             cancel = false;

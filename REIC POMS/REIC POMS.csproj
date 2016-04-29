@@ -118,6 +118,7 @@
     <Compile Include="PO_MainScreen.Designer.cs">
       <DependentUpon>PO_MainScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="PQ.cs" />
     <Compile Include="PQ_CreateForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -267,9 +268,6 @@
     <EmbeddedResource Include="Supplier_ViewForm.resx">
       <DependentUpon>Supplier_ViewForm.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="ClassDiagram1.cd" />
-    <None Include="ClassDiagram2.cd" />
-    <None Include="ClassDiagram3.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

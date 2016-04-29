@@ -46,8 +46,8 @@
             this.PartNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Supplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btnSuppliers = new System.Windows.Forms.Button();
+          //  this.panel2 = new System.Windows.Forms.Panel();
+          //  this.btnSuppliers = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnItems = new System.Windows.Forms.Button();
             this.btnSignOut = new System.Windows.Forms.Button();

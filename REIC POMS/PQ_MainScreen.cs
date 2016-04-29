@@ -205,7 +205,8 @@ namespace REIC_POMS
         //-----------------------------------------
         private void btnCreatePQ_Click(object sender, EventArgs e)
         {
-
+            PQ_CreateFromRFQForm pcf = new PQ_CreateFromRFQForm();
+            pcf.ShowDialog();
         }
 
         private void btnCreatePQ_MouseEnter(object sender, EventArgs e)
