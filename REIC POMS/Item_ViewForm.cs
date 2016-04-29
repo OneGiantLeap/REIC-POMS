@@ -129,8 +129,7 @@ namespace REIC_POMS
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             Item_UpdateForm iuf = new Item_UpdateForm();
-
-
+           
             iuf.PartNumbertoEdit = PartNumbertoView;
             iuf.ItemNametoEdit = ItemNametoView;
             iuf.SupplierUnitPricetoEdit = SupplierUnitPricetoView;
@@ -138,8 +137,8 @@ namespace REIC_POMS
             iuf.ReicUnitPricetoEdit = ReicUnitPricetoView;
             iuf.MoqtoEdit = MoqtoView;
             iuf.UomtoEdit = UomtoView;
-            iuf.FromDatetoEdit = FromDatetoView;
-            iuf.ToDatetoEdit = ToDatetoView;
+            iuf.FromDatetoEdit = DateTime.Parse(FromDatetoView);
+            iuf.ToDatetoEdit = DateTime.Parse(ToDatetoView);
             iuf.ItemDescriptiontoEdit = ItemDescriptiontoView;
             iuf.SupplierNametoEdit = SupplierNametoView;
             iuf.SupplierPersontoEdit = SupplierPersontoView;
@@ -158,8 +157,8 @@ namespace REIC_POMS
                 ReicUnitPricetoView = iuf.ReicUnitPricetoEdit;
                 MoqtoView = iuf.MoqtoEdit;
                 UomtoView = iuf.UomtoEdit;
-                FromDatetoView = iuf.FromDatetoEdit;
-                ToDatetoView = iuf.ToDatetoEdit;
+                FromDatetoView = iuf.FromDatetoEdit.ToString();
+                ToDatetoView = iuf.ToDatetoEdit.ToString();
                 ItemDescriptiontoView = iuf.ItemDescriptiontoEdit;
                 SupplierNametoView = iuf.SupplierNametoEdit;
                 SupplierPersontoView = iuf.SupplierPersontoEdit;

@@ -16,5 +16,23 @@ namespace REIC_POMS
         {
             InitializeComponent();
         }
+        public bool cancel;
+
+        public bool Cancel
+        {
+            get { return cancel; }
+        }
+
+        private void btnOk_Click(object sender, EventArgs e)
+        {
+            PQ_CreateForm pf = new PQ_CreateForm();
+            pf.ShowDialog();
+            cancel = false;
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            cancel = true;
+        }
     }
 }

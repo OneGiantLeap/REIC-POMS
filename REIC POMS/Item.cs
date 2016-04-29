@@ -23,7 +23,8 @@ namespace REIC_POMS
                     string supplierPerson,
                     string supplierNumber,
                     string supplierEmail,
-                    string supplierAddress
+                    string supplierAddress 
+
                     )
 
         {
@@ -37,11 +38,11 @@ namespace REIC_POMS
             this.FromDateNoTime = fromDate.ToString();
             this.ToDateNoTime = toDate.ToString();
             this.ItemDescription = itemDescription;
-            this.SupplierName = supplierName;
+           this.SupplierName = supplierName;
             this.SupplierPerson = supplierPerson;
             this.SupplierNumber = supplierNumber;
             this.SupplierEmail = supplierEmail;
-            this.SupplierAddress = supplierAddress;
+            this.SupplierAddress = supplierAddress; 
         }
 
         public double ComputedValue { get { return (SupplierUnitPrice * Markup / 100); } }//to compute for the value added (markup)
@@ -55,11 +56,11 @@ namespace REIC_POMS
         public string FromDateNoTime { get; set; }
         public string ToDateNoTime { get; set; }
         public string ItemDescription { get; set; }
-        public string SupplierName { get; set; }
+      public string SupplierName { get; set; }
         public string SupplierPerson { get; set; }
         public string SupplierNumber { get; set; }
         public string SupplierEmail { get; set; }
-        public string SupplierAddress { get; set; }
+        public string SupplierAddress { get; set; } 
 
     }
 }

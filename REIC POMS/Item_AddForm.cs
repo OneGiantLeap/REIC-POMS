@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Collections;
+using MySql.Data.MySqlClient;
 
 namespace REIC_POMS
 {
@@ -16,6 +17,7 @@ namespace REIC_POMS
     {
         public bool cancel;
         public bool filledOut;
+        public int dateResult;
         private ArrayList supplierList;
         private ArrayList supplierDropdownList;
 
@@ -61,7 +63,7 @@ namespace REIC_POMS
 
         private void cbbUOM_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cbbUOM.SelectedIndex = 0;
+           // cbbUOM.SelectedIndex = 0;
         }
 
         /*
@@ -117,7 +119,7 @@ namespace REIC_POMS
         {
             do
             {
-                int dateResult = DateTime.Compare(FromDate, ToDate);
+                dateResult = DateTime.Compare(FromDate, ToDate);
                 if (
                     (PartNumber.Length == 0) ||
                     (ItemName.Length == 0) ||
@@ -134,7 +136,7 @@ namespace REIC_POMS
                     (SupplierAddress.Length == 0)
                    )
                 {
-
+                    
                     DialogResult result = MessageBox.Show("All fields are required to be filled out.", "Empty Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     if (result == DialogResult.OK)
                     {
@@ -149,10 +151,18 @@ namespace REIC_POMS
                         return;
                     }
                 }
+                else if (dateResult == 0)
+                {
+                    DialogResult result = MessageBox.Show("dont be stupid, fromDate later equal toDate, ano yan joke!.", "Bawal", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (result == DialogResult.OK)
+                    {
+                        return;
+                    }
+                }
 
                 else { filledOut = true; }
 
-            } while (filledOut == false);
+            } while ((filledOut == false)||(dateResult > 0)||(dateResult ==0));
 
             cancel = false;
             this.Close();
