@@ -643,6 +643,26 @@ namespace REIC_POMS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ButtonSearch {
+            get {
+                object obj = ResourceManager.GetObject("ButtonSearch", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ButtonSearchHover {
+            get {
+                object obj = ResourceManager.GetObject("ButtonSearchHover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ButtonViewCustomer {
             get {
                 object obj = ResourceManager.GetObject("ButtonViewCustomer", resourceCulture);

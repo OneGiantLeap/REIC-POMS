@@ -14,27 +14,18 @@ namespace REIC_POMS
 {
     public partial class RFQ_MainScreen : Form
     {
-        /*---CODING NOTES/REALIZATIONS/ENIGMAS
-            [ ] Have an Arraylist implementation
-            [ ] Autogeneration of RFQ number is tricky, especially if you'll follow the "ATPI YYMM-###" format.
-            [ ] Your Reference # and Our Reference # (if we push with it; or even just the single RFQ No. formatting) will give us HELL.
-            [ ] How will you insert the RFQ's Items into the RFQ Class?
-            [ ] Database-wise, how will we save the RFQ data?
-                > For example, in Item class has SupplierID as the foreign key.
-                > But in the forms, Supplier name/person/number/etc. details are also present.
-                > Do we just save the Item details plus that lone SupplierID?
-                    - If yes, then we'll have to do some searching (maybe?) to retrieve the selected Supplier's ID.
-                      Furthermore, we can also reduce the getters in some of the forms?
-        */
-
         //ATTRIBUTES
-        private ArrayList rfqList;
+        private ArrayList rfqList; //All RFQs
+        private ArrayList rfqOrderLineList; //All RFQ Order Lines
+        private int counter; //For RFQ No.
 
         //CONSTRUCTOR
         public RFQ_MainScreen()
         {
             InitializeComponent();
             rfqList = new ArrayList();
+            rfqOrderLineList = new ArrayList();
+            counter = 0;
 
             //---ADJUST DATAGRIDVIEW COLUMN ALIGNMENT
                 //Center column headings
@@ -58,10 +49,23 @@ namespace REIC_POMS
                 while (!readin.EndOfStream)
                 {
                     string[] text = readin.ReadLine().Split('|');
-                    dgvRFQ.Rows.Add(text[3], text[4], text[5], text[7]); //Place Customer at DGV
-                    //rfqList.Add(new Customer(text[0], text[1], text[2], text[3], text[4], text[5], text[6], text[7], text[8])); //Recreate the Customer
+                    dgvRFQ.Rows.Add(text[3], text[4], text[5], text[7]); //Place RFQ at DGV
+                    rfqList.Add(new RFQ(text[0], text[1], text[2], text[3], text[4], int.Parse(text[5]), int.Parse(text[6]))); //Recreate the RFQ
+                    counter++;    
+                }
+                readin.Close();
+                fs.Close();
+            }
+            catch (Exception /*e*/) { }
 
-                    //MessageBox.Show("RFQ data added.");
+            try
+            {
+                FileStream fs = new FileStream(@"rfq_order_line.txt", FileMode.Open);
+                StreamReader readin = new StreamReader(fs);
+                while (!readin.EndOfStream)
+                {
+                    string[] text = readin.ReadLine().Split('|');
+                    rfqOrderLineList.Add(new RFQ_OrderLine(text[0], text[1], int.Parse(text[2]))); //Recreate the RFQ Order Line
                 }
                 readin.Close();
                 fs.Close();
@@ -73,34 +77,45 @@ namespace REIC_POMS
         // STREAM WRITER  |
         //-----------------
         private void saveRFQData()
-        {/* DID NOT ENABLE, DUE TO RFQITEMS. How do you even.
+        {
             try
             {
                 FileStream fs = new FileStream(@"rfq.txt", FileMode.Create);
                 StreamWriter writeout = new StreamWriter(fs);
-
                 for (int i = 0; i < rfqList.Count; i++)
                 {
-                    RFQ c = (RFQ)rfqList[i]; //Casting. So that I can retrieve attribute values from this specific RFQ.
-                    writeout.WriteLine(c.RFQNo.ToString() + "|"
-                                   + c.RequestDate + "|"
-                                   + c.PaymentTerms + "|"
-                                   + c.AccountNumber + "|"
-                                   + c.DeliveryTerms + "|"
-                                   + c.InFavorOf + "|"
-                                   + c.CustomerName + "|"
-                                   + c.SupplierName + "|"
-                                   + c.SupplierPerson + "|"
-                                   + c.SupplierNumber + "|"
-                                   + c.SupplierEmail + "|"
-                                   + c.SupplierAddress + "|"
-                                   + c.RFQItems + "|");
+                    RFQ r = (RFQ)rfqList[i]; //Casting. So that I can retrieve attribute values from this specific RFQ.
+                    writeout.WriteLine(r.RFQNo.ToString() + "|"
+                                     + r.RequestDate + "|"
+                                     + r.PaymentTerms + "|"
+                                     + r.AccountNumber + "|"
+                                     + r.DeliveryTerms + "|"
+                                     + r.CustomerID + "|"
+                                     + r.SupplierID);
                 }
-
                 writeout.Close();
                 fs.Close();
             }
-            catch (Exception e2) { }*/
+            catch (Exception /*e2*/) { }
+        }
+
+        private void saveRFQOrderLineData()
+        {
+            try
+            {
+                FileStream fs = new FileStream(@"rfq_order_line.txt", FileMode.Create);
+                StreamWriter writeout = new StreamWriter(fs);
+                for (int i = 0; i < rfqOrderLineList.Count; i++)
+                {
+                    RFQ_OrderLine rol = (RFQ_OrderLine)rfqOrderLineList[i]; //Casting. So that I can retrieve attribute values from this specific RFQ.
+                    writeout.WriteLine(rol.RFQNo.ToString() + "|"
+                                     + rol.PartNumber + "|"
+                                     + rol.Quantity);
+                }
+                writeout.Close();
+                fs.Close();
+            }
+            catch (Exception /*e2*/) { }
         }
 
         private void RFQ_MainScreen_Load(object sender, EventArgs e)
@@ -277,48 +292,44 @@ namespace REIC_POMS
         private void btnCreateRFQ_Click(object sender, EventArgs e)
         {
             RFQ_CreateForm crfq = new RFQ_CreateForm();
+            crfq.RFQNo = counter.ToString();
             crfq.ShowDialog(); //Validation happens at RFQ_CreateForm.cs
-            
+                        
             if (crfq.Cancel == false) //Meaning, will create the RFQ. If Cancel is true, nothing happens.
             {
                 //---ADD the new Request for Price Quotation to the ArrayList
-                rfqList.Add(new RFQ(crfq.RFQNo, //THIS SHOULD BE SPECIALLY CUSTOMIZED with the correct RFQ No. format (Good luck)
+                rfqList.Add(new RFQ(crfq.RFQNo,
                                     crfq.RequestDate,
                                     crfq.PaymentTerms,
                                     crfq.AccountNumber,
                                     crfq.DeliveryTerms,
-                                    //crfq.InFavorOf,
-                                    crfq.CustomerName,
-                                    crfq.SupplierName,
-                                    crfq.SupplierPerson,
-                                    crfq.SupplierNumber,
-                                    crfq.SupplierEmail,
-                                    crfq.SupplierAddress,
-                                    crfq.RFQItemsList));
-            
-                /*Saw an article, but wasn't able to finish reading it. This code snippet is interesting.
-                    What if the RFQ's item collection is another ArrayList, and then we insert that to the RFQ ArrayList?
-                    Next challenge would be passing the RFQ items' data from the Create Form.
-
-                    ArrayList<String[]> list2 = new ArrayList<String[]>();
-
-                    list2.add(new String[] { "0", "0" });
-                    list2.add(new String[] { "0", "1" });
-                    list2.add(new String[] { "1", "0" });
-                    list2.add(new String[] { "1", "1" }); */
+                                    crfq.CustomerIDFK,
+                                    crfq.SupplierIDFK));
+                
+                for (int i = 0; i < crfq.RFQOrderLineList.Count; i++)
+                {
+                    RFQ_OrderLine rol = (RFQ_OrderLine)crfq.RFQOrderLineList[i];
+                    rfqOrderLineList.Add(new RFQ_OrderLine(rol.RFQNo,
+                                                           rol.PartNumber,
+                                                           rol.Quantity));
+                    MessageBox.Show("Orderline added to comprehensive list: " + rol.RFQNo + ", " + rol.PartNumber + ", " + rol.Quantity);
+                }
 
                 //---DISPLAY the newly created RFQ in the Main Screen DGV
                 dgvRFQ.Rows.Add(crfq.RFQNo, crfq.RequestDate, crfq.SupplierName, crfq.CustomerName);
 
+                //---INSERT in database
+                //INSERT SQL STATEMENT
+
                 //---MESSAGEBOX FOR DEBUG PURPOSES
                 MessageBox.Show("RFQ CREATED: " + crfq.RFQNo + ", " + crfq.RequestDate + ", " + crfq.PaymentTerms + ", " + crfq.AccountNumber
-                                + ", " + crfq.DeliveryTerms + ", " /*+ crfq.InFavorOf*/ + ", " + crfq.CustomerName + ", " + crfq.SupplierName
-                                + ", " + crfq.SupplierPerson + ", " + crfq.SupplierNumber + ", " + crfq.SupplierEmail + ", " + crfq.SupplierAddress
-                                + "With " + crfq.RFQItemsList.Count + ". Inserted to Array [" + (rfqList.Count - 1) + " ]");
+                                + ", " + crfq.DeliveryTerms + ", " + "Customer " + crfq.CustomerIDFK + ", " + "Supplier " + crfq.SupplierIDFK + ", "
+                                + "With " + crfq.RFQOrderLineList.Count + " Orderlines. Inserted to ArrayList index [" + (rfqList.Count - 1) + " ]");
 
                 //Increments & Saving
                 //current++; *Came from Customer Main Screen. Don't know if we'll need this for RFQ.
-                //saveRFQData(); I DON'T KNOW HOW TO SAVE AN ARRAY INSIDE AN ARRAYLIST AND PULL THE ARRAY'S VALUES OUT.
+                saveRFQData();
+                saveRFQOrderLineData();
             }
 
         }
@@ -334,9 +345,35 @@ namespace REIC_POMS
         //---------------------------
         private void btnViewRFQ_Click(object sender, EventArgs e)
         {
+            //---SEARCH for the other values of the selected RFQ
+            for (int i = 0; i < rfqList.Count; i++) //Finding the RFQ in the ArrayList
+            {
+                if (rfqList[i] != null)
+                {
+                    RFQ r = (RFQ)rfqList[i]; //Casting. So I can retrieve values from this specific RFQ.
 
+                    if (r.RFQNo == dgvRFQ.SelectedRows[0].Cells[0].Value.ToString()) //If RFQ Numbers match
+                    {
+                        //---DISPLAY the view form
+                        RFQ_ViewForm rfqvf = new RFQ_ViewForm();
+                        rfqvf.RFQNoToView = r.RFQNo;
+                        rfqvf.RequestDateToView = r.RequestDate;
+                        rfqvf.PaymentTermsToView = r.PaymentTerms;
+                        rfqvf.AccountNumberToView = r.AccountNumber;
+                        rfqvf.DeliveryTermsToView = r.DeliveryTerms;
+
+                        //---Extracting details from Customer ID
+                        //SQL: Search in database. Retrieve name of Customer ID
+                        //rfqvf.CustomerNameToView = r.CustomerID;
+
+                        //---Extracting details from Supplier ID
+                        //rfqvf.SupplierNameToView = r.SupplierID;
+
+                        rfqvf.ShowDialog(); //Opens RFQ_ViewForm.cs
+                    }
+                }
+            }
         }
-
 
         private void btnViewRFQ_MouseEnter(object sender, EventArgs e)
         { btnViewRFQ.BackgroundImage = Properties.Resources.ButtonViewRFQHover; }
