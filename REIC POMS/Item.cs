@@ -38,7 +38,7 @@ namespace REIC_POMS
             this.FromDateNoTime = fromDate.ToString();
             this.ToDateNoTime = toDate.ToString();
             this.ItemDescription = itemDescription;
-           this.SupplierName = supplierName;
+            this.SupplierName = supplierName;
             this.SupplierPerson = supplierPerson;
             this.SupplierNumber = supplierNumber;
             this.SupplierEmail = supplierEmail;

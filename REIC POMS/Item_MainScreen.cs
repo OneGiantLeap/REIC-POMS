@@ -295,16 +295,16 @@ namespace REIC_POMS
                 if (itemList[i] != null)
                 {
                     Item item = (Item)itemList[i];
-
+                    
                     if (item.PartNumber == dgvItems.SelectedRows[0].Cells[0].Value.ToString())
                     {
                         //---DISPLAY the view form
                         Item_ViewForm ivf = new Item_ViewForm();
                         ivf.PartNumbertoView = item.PartNumber;
                         ivf.ItemNametoView = item.ItemName;
-                        ivf.SupplierUnitPricetoView = (item.SupplierUnitPrice).ToString();
+                        ivf.SupplierUnitPricetoView = (item.SupplierUnitPrice).ToString("0.00");
                         ivf.MarkuptoView = (item.Markup).ToString();
-                        ivf.ReicUnitPricetoView = (item.ReicUnitPrice).ToString();
+                        ivf.ReicUnitPricetoView = (item.ReicUnitPrice).ToString("0.00");
                         ivf.MoqtoView = (item.Moq).ToString();
                         ivf.UomtoView = item.Uom;
                         ivf.FromDatetoView = item.FromDateNoTime;
@@ -317,7 +317,9 @@ namespace REIC_POMS
                         ivf.SupplierAddresstoView = item.SupplierAddress;
 
                         ivf.ShowDialog();
-
+                        
+                      //  string FromDateNoTime = iuf.FromDatetoEdit.ToShortDateString();
+                      //  string ToDateNoTime = iuf.ToDatetoEdit.ToShortDateString();
                         //---UPDATE values of Item
                         if (ivf.Cancel == false)
                         {
@@ -328,7 +330,7 @@ namespace REIC_POMS
                             //item.ReicUnitPrice = ivf.ReicUnitPricetoView;
                             item.Moq = int.Parse(ivf.MoqtoView);
                             item.Uom = ivf.UomtoView;
-                            item.FromDateNoTime = ivf.FromDatetoView;
+                            item.FromDateNoTime = ivf.FromDatetoView;// the left wing does the saving in the filestream, the right wing gets input from the edit.
                             item.ToDateNoTime = ivf.ToDatetoView;
                             item.ItemDescription = ivf.ItemDescriptiontoView;
                             item.SupplierName = ivf.SupplierNametoView;

@@ -4,5 +4,4 @@
 053123|Cellphone|501|15|576.15|1|lb|04/21/2016|04/23/2016|fsd|Gulf Scientific Supplies|jl|hj|hj|kj
 132522|Kennistry|3|10|3.3|3|lb|03/24/2016|04/24/2016|THE Kennistry|Lone Star State Research Suppliers|Charles Baron|512/478-0788|cbaron@lonestar.com|198 Fayetteville Road, Memphis
 545887|Raised Floor System|9999.99|100|19999.98|1|g|04/25/2016|04/25/2016|Very high.|Precision Products|Elisabete Regis Guillaumon|(02)570517|erguillaumon@precision.com|Rua Dona Antonia De Queiros 381, Sao Paolo
-000044|Wirebonders|10|10|11|3|lb|04/28/2016|04/23/2016|Ken is|Gulf Scientific Supplies|A. Baum|4268-54-72|baum@gulfss.com|5089 Calero Avenue
-666666|HeadBand|3|10|3.3|3|lb|4/28/2016|4/29/2016|Gayle is|Research Outfitters|Gunther Spielmann|213445|gspielmann@routfitters.com|Mechitaristengasse 5, Vienna
+000044|Wirebonders|15|100|30|3|g|04/30/2016|05/10/2016|Ken is|Gulf Scientific Supplies|A. Baum|4268-54-72|baum@gulfss.com|5089 Calero Avenue
