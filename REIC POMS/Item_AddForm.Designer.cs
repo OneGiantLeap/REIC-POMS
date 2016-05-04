@@ -126,9 +126,10 @@
             this.cbbUOM.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbUOM.FormattingEnabled = true;
             this.cbbUOM.Items.AddRange(new object[] {
+            "g",
             "lb",
-            "pack",
-            "pc"});
+            "pc",
+            "pck"});
             this.cbbUOM.Location = new System.Drawing.Point(277, 245);
             this.cbbUOM.Name = "cbbUOM";
             this.cbbUOM.Size = new System.Drawing.Size(50, 27);

@@ -104,8 +104,8 @@
             this.cbbUOM.Items.AddRange(new object[] {
             "g",
             "lb",
-            "pera",
-            "pagkain"});
+            "pc",
+            "pck"});
             this.cbbUOM.Location = new System.Drawing.Point(277, 245);
             this.cbbUOM.Name = "cbbUOM";
             this.cbbUOM.Size = new System.Drawing.Size(50, 27);

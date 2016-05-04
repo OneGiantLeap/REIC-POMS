@@ -8,6 +8,7 @@ namespace REIC_POMS
 {
     class Supplier
     {
+        
         public Supplier (
                     int supplierID,
                     string supplierName,
@@ -17,6 +18,7 @@ namespace REIC_POMS
                     string supplierAddress
                     )
         {
+            
             this.SupplierID = supplierID;
             this.SupplierName = supplierName;
             this.SupplierPerson = supplierPerson;

@@ -42,7 +42,7 @@ namespace REIC_POMS
                 fs.Close();
                 supplierDropdownList.Sort(); //Sort list alphabetically
                 supplierDropdownList.Insert(0, "Select Supplier");
-                cbbSupplierName.DataSource = supplierDropdownList; //Populate the dropdown w/ all Customer Names
+                cbbSupplierName.DataSource = supplierDropdownList; //Populate the dropdown w/ all Supplier Names
             }
             catch (Exception e) { }*/
         }

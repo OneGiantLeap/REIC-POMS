@@ -157,8 +157,8 @@ namespace REIC_POMS
                 ReicUnitPricetoView = iuf.ReicUnitPricetoEdit;
                 MoqtoView = iuf.MoqtoEdit;
                 UomtoView = iuf.UomtoEdit;
-                FromDatetoView = iuf.FromDatetoEdit.ToString();
-                ToDatetoView = iuf.ToDatetoEdit.ToString();
+                FromDatetoView = iuf.FromDatetoEdit.ToString("MM/dd/yyyy");
+                ToDatetoView = iuf.ToDatetoEdit.ToString("MM/dd/yyyy");
                 ItemDescriptiontoView = iuf.ItemDescriptiontoEdit;
                 SupplierNametoView = iuf.SupplierNametoEdit;
                 SupplierPersontoView = iuf.SupplierPersontoEdit;
