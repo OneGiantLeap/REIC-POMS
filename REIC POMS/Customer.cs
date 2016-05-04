@@ -8,19 +8,8 @@ namespace REIC_POMS
 {
     class Customer
     {
-        //ATTRIBUTES 
-        /* Visual Studio says these are never used.
-        private string businessName;
-        private string tinNumber;
-        private string customerName;
-        private string customerPerson;
-        private string customerNumber;
-        private string customerEmail;
-        private string customerAddress;
-        */
-        
         //CONSTRUCTOR
-        public Customer(string customerID, //Previously int (prior to 4/15)
+        public Customer(int customerID,
                         string businessName,
                         string tinNumber,
                         string customerName,
@@ -42,7 +31,7 @@ namespace REIC_POMS
         }
 
         //PROPERTIES
-        public string CustomerID { get; set; }
+        public int CustomerID { get; set; }
         public string BusinessName { get; set; }
         public string TinNumber { get; set; }
         public string CustomerName { get; set; }

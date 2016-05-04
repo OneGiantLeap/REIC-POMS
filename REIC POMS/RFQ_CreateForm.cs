@@ -9,72 +9,51 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO; //Enables Filestream  (Temporary, since no MySQL yet)
 using System.Collections; //Enables use of ArrayList
-using MySql.Data.MySqlClient; //Ins
 
 namespace REIC_POMS
 {
     public partial class RFQ_CreateForm : Form
     {
-        private ArrayList customerList; //To temporarily store all customers (Names only). REPLACE W/ MYSQL LATER?
-        private ArrayList customerDropdownList; //Just for the text to display in the dropdown list REPLACE W/ MYSQL LATER?
-        private ArrayList supplierList; //To temporarily store all suppliers. REPLACE W/ MYSQL LATER?
-        private ArrayList supplierDropdownList; //Just for the text to display in the dropdown list REPLACE W/ MYSQL LATER?
-        private ArrayList itemList; //To temporarily store all items. REPLACE W/ MYSQL LATER?
+        //ATTRIBUTES
+        private MySQLDatabaseDriver sql;
+        private ArrayList itemList; //All Items
+        //private ArrayList customerList; //All Customers
+        private ArrayList customerDropdownList; //All Customer NAMES
+        private ArrayList supplierList; //All Suppliers
+        private ArrayList supplierDropdownList; //All Supplier NAMES
         private ArrayList rfqOrderLineList; //Items in the RFQ
-        private int customerIDFK; //Foreign Key
-        private int supplierIDFK; //Foreign Key
+        private int customerIDFK; //RFQ Foreign Key 1
+        private int supplierIDFK; //RFQ Foreign Key 2
 
+        //CONSTRUCTOR
         public RFQ_CreateForm()
         {
             InitializeComponent();
+            sql = new MySQLDatabaseDriver();
 
-            customerList = new ArrayList(); //To temporarily store all customers. REPLACE W/ MYSQL LATER?
-            customerDropdownList = new ArrayList(); //Just for the text to display in the dropdown list REPLACE W/ MYSQL LATER?
-            supplierList = new ArrayList(); //To temporarily store all suppliers. REPLACE W/ MYSQL LATER?
-            supplierDropdownList = new ArrayList(); //Just for the text to display in the dropdown list REPLACE W/ MYSQL LATER?
-            itemList = new ArrayList(); //To temporarily store all items. REPLACE W/ MYSQL LATER?
+            //Instantiate ArrayLists and populate them
+            itemList = new ArrayList();
+            //sql.SelectAllItems(itemList);
+
+            //customerList = new ArrayList();
+            //sql.SelectAllCustomers(customerList);
+
+            customerDropdownList = new ArrayList();
+            sql.SelectAllCustomerNames(customerDropdownList);
+            customerDropdownList.Sort(); //Sort list alphabetically
+            customerDropdownList.Insert(0, "Select Customer");
+            cbbCustomerName.DataSource = customerDropdownList; //Populate the dropdown
+
+            supplierList = new ArrayList(); //Need all the Supplier Details, since there's Supplier auto-complete
+            sql.SelectAllSuppliers(supplierList);
+
+            supplierDropdownList = new ArrayList();
+            sql.SelectAllSupplierNames(supplierDropdownList);
+            supplierDropdownList.Sort(); //Sort list alphabetically
+            supplierDropdownList.Insert(0, "Select Supplier");
+            cbbSupplierName.DataSource = supplierDropdownList; //Populate the dropdown
+
             rfqOrderLineList = new ArrayList();
-
-            //Populate the Customers Dropdown List (Names only) *WARNING: Temporary Streamreader. Replace w/ MySQL later
-            try
-            {
-                FileStream fs = new FileStream(@"customer.txt", FileMode.Open);
-                StreamReader readin = new StreamReader(fs);
-                while (!readin.EndOfStream)
-                {
-                    string[] text = readin.ReadLine().Split('|');
-                    customerList.Add(new Customer(text[0], text[1], text[2], text[3], text[4], text[5], text[6], text[7], text[8])); //Recreate the Customer
-                    customerDropdownList.Add(text[3]); //Just noting the Customer Names
-                }
-                readin.Close();
-                fs.Close();
-                customerDropdownList.Sort(); //Sort list alphabetically
-                customerDropdownList.Insert(0, "Select Customer");
-                cbbCustomerName.DataSource = customerDropdownList; //Populate the dropdown w/ all Customer Names
-            }
-            catch (Exception /*e*/) { }
-
-            //Populate the Suppliers Dropdown List (Names only) *WARNING: Temporary Streamreader. Replace w/ MySQL later
-            try
-            {
-                FileStream fs = new FileStream(@"supplier.txt", FileMode.Open);
-                StreamReader readin = new StreamReader(fs);
-                while (!readin.EndOfStream)
-                {
-                    string[] text = readin.ReadLine().Split('|');
-                    supplierList.Add(new Supplier(text[0], text[1], text[2], text[3], text[4], text[5])); //Recreate the Supplier
-                    supplierDropdownList.Add(text[1]); //Just the Supplier Names
-                                                       /*Reason for two ArrayLists. If I try to display the supplierList in the dropdown, what
-                                                       displays is "REIC_POMS.Supplier" I don't know how to just display a specific attribute
-                                                       from each Supplier instance.*/
-                }
-                readin.Close();
-                fs.Close();
-                supplierDropdownList.Sort(); //Sort list alphabetically
-                supplierDropdownList.Insert(0, "Select Supplier");
-                cbbSupplierName.DataSource = supplierDropdownList; //Populate the dropdown w/ all Customer Names
-            }
-            catch (Exception /*e*/) { }
 
             //Populate the Item Selection DGV *WARNING: Temporary Streamreader. Replace w/ MySQL later
             try
@@ -143,10 +122,10 @@ namespace REIC_POMS
             get { return cbbPaymentTerms.Text; }
         }
 
-        public string AccountNumber
-        { //IN DATA DICTIONARY, IT'S VARCHAR(16)
+        /*public string AccountNumber -> No longer needed
+        {
             get { return txtAccountNumber.Text; }
-        }
+        }*/
 
         public string DeliveryTerms
         {
@@ -154,7 +133,7 @@ namespace REIC_POMS
         }
 
         /*
-        public string InFavorOf
+        public string InFavorOf -> No longer needed
         {
             get { return cbbInFavorOf.Text; }
         }*/
@@ -167,7 +146,7 @@ namespace REIC_POMS
 
         public string CustomerName
         {
-            get { return cbbCustomerName.Text; } //For Main Screen DGV?
+            get { return cbbCustomerName.Text; } //For SelectCustomerID SQL function
         }
 
         public int SupplierIDFK
@@ -178,7 +157,7 @@ namespace REIC_POMS
 
         public string SupplierName
         {
-            get { return cbbSupplierName.Text; } //For Main Screen DGV?
+            get { return cbbSupplierName.Text; } //For SelectSupplierID SQL function
         }
 
         public string SupplierPerson
@@ -276,26 +255,14 @@ namespace REIC_POMS
             if (result == DialogResult.Yes)
             {
                 //---SET CUSTOMER ID Foreign Key
-                for (int i = 0; i < customerList.Count; i++)
-                {
-                    Customer c = (Customer)customerList[i]; //Casting. So can retrieve attribute values from this specific Customer.
-                    if (c.CustomerName == cbbCustomerName.Text)
-                    {
-                        CustomerIDFK = int.Parse(c.CustomerID);
-                        break; //Once set, end the search process.
-                    }
-                }
+                MessageBox.Show(CustomerName); //Debug purposes
+                CustomerIDFK = sql.SelectCustomerID(CustomerName);
+                MessageBox.Show(CustomerIDFK.ToString()); //Debug purposes
 
                 //---SET SUPPLIER ID Foreign Key
-                for (int i = 0; i < supplierList.Count; i++)
-                {
-                    Supplier s = (Supplier)supplierList[i]; //Casting. So can retrieve attribute values from this specific Supplier.
-                    if (s.SupplierName == cbbSupplierName.Text)
-                    {
-                        SupplierIDFK = int.Parse(s.SupplierID);
-                        break; //Once set, end the search process.
-                    }
-                }
+                MessageBox.Show(SupplierName); //Debug purposes
+                SupplierIDFK = sql.SelectSupplierID(SupplierName);
+                MessageBox.Show(SupplierIDFK.ToString()); //Debug purposes
 
                 //---ADD all items in RFQ to the rfqOrderLineList. (Parameters based on Data Dictionary)
                 for (int i = 0; i < dgvRFQItems.RowCount; i++)
@@ -305,10 +272,6 @@ namespace REIC_POMS
                                                            row.Cells["RFQItemPartNo"].Value.ToString(),
                                                            int.Parse(row.Cells["Qty"].Value.ToString())));
                 }
-
-                //---SAVING IN DATABASE (HERE BA?)
-                //Insert SQL Statement (rfq_t)
-                //Insert SQL Statement (rfq_order_line_t)
 
                 //---CLOSING THE FORM
                 cancel = false; //Will be used by RFQ Main Screen
@@ -338,15 +301,14 @@ namespace REIC_POMS
         }
 
         private void btnAddtoRequest_Click(object sender, EventArgs e)
-        {
-            //---GOAL: Add the selected item to the "Items in RFQ" DGV (dgvRFQItems
+        { //---GOAL: Add the selected item to the "Items in RFQ" DGV (dgvRFQItems)
             //STEP 1: Validation - CHECK if the item to be added in the RFQ has already been added.
             DataGridViewRow selectedRow = dgvItemSelection.SelectedRows[0]; //Store row number of selected row
             for (int i = 0; i < dgvRFQItems.RowCount; i++) //Loop through dgvRFQItems
             {
                 //STEP 1.1 - If yes, error message
                 //How it checks: Compares the Part Numbers of the selected item in dgvItemSelection and the rows of dgvRFQItems
-                //This is why there's a hidden Part Number column in the dgvRFQItems for searching and database purposes.
+                //This is why there's a HIDDEN Part Number column in the dgvRFQItems for searching and database purposes.
                 if (selectedRow.Cells["PartNo"].Value == dgvRFQItems.Rows[i].Cells["RFQItemPartNo"].Value)
                 {
                     MessageBox.Show("That item has already been added in the Request for Price Quotation. If you wish to change the item quantity, please remove that item and add it again.", "Item Already in RFQ", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -355,7 +317,7 @@ namespace REIC_POMS
             }
 
             //STEP 2: Add selected item to dgvRFQItems
-            dgvRFQItems.Rows.Add(selectedRow.Cells["PartNo"].Value, //Hidden, so it won't display in the DGV. But it exists for Step 1 & 3.
+            dgvRFQItems.Rows.Add(selectedRow.Cells["PartNo"].Value, //Hidden, so it won't display in the DGV. Why it exists? It's for Step 1.
                                  selectedRow.Cells["ItemName"].Value,
                                  selectedRow.Cells["Description"].Value,
                                  nupItemQuantity.Value,
@@ -365,7 +327,7 @@ namespace REIC_POMS
             1. Adding the items to the rfqOrderLineList happens at btnSave_Click, not here.
                 - Why? If it's added right away and the User later removes any item, hassle additional code needed
                   since you have to locate the item inside the rfqOrderLineList and remove it at the correct index.
-            2. Transferring of rfqOrderLineList contents to the database happens later when RFQ is saved. */
+            2. Transferring of rfqOrderLineList contents to the database happens later in the Main Screen. */
         }
 
         private void btnRemoveItem_Click(object sender, EventArgs e)
@@ -421,7 +383,7 @@ namespace REIC_POMS
         }
 
         private void txtSearchFor_LostFocus(object sender, EventArgs e)
-        { //User clicks on textbox. When he clicks elsewhre, content returns to default text.
+        { //User clicks on textbox. Then when he clicks elsewhre, content returns to default text.
             txtSearchFor.Text = "Search for...";
         }
 

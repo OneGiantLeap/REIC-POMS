@@ -57,15 +57,15 @@
             this.lblCustomerDetails = new System.Windows.Forms.Label();
             this.cbbDeliveryTerms = new System.Windows.Forms.ComboBox();
             this.cbbPaymentTerms = new System.Windows.Forms.ComboBox();
-            this.txtAccountNumber = new System.Windows.Forms.TextBox();
             this.txtRFQNo = new System.Windows.Forms.TextBox();
             this.lblDeliveryTerms = new System.Windows.Forms.Label();
-            this.lblAccountNumber = new System.Windows.Forms.Label();
             this.lblPaymentTerms = new System.Windows.Forms.Label();
             this.lblDateOfRequest = new System.Windows.Forms.Label();
             this.lblRFQNo = new System.Windows.Forms.Label();
             this.lblRequestDetails = new System.Windows.Forms.Label();
             this.tabItemDetails = new System.Windows.Forms.TabPage();
+            this.btnClearItems = new System.Windows.Forms.Button();
+            this.btnRemoveItem = new System.Windows.Forms.Button();
             this.dgvRFQItems = new System.Windows.Forms.DataGridView();
             this.RFQItemPartNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RFQItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -81,6 +81,7 @@
             this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnClearSearch = new System.Windows.Forms.Button();
             this.cbbFilterBy = new System.Windows.Forms.ComboBox();
+            this.btnSearch = new System.Windows.Forms.PictureBox();
             this.txtSearchFor = new System.Windows.Forms.TextBox();
             this.lblSelection = new System.Windows.Forms.Label();
             this.grpItemSelected = new System.Windows.Forms.GroupBox();
@@ -92,18 +93,15 @@
             this.txtItemName = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.btnClearItems = new System.Windows.Forms.Button();
-            this.btnRemoveItem = new System.Windows.Forms.Button();
-            this.btnSearch = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabRFQForm.SuspendLayout();
             this.tabRequestDetails.SuspendLayout();
             this.tabItemDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRFQItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItemSelection)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).BeginInit();
             this.grpItemSelected.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupItemQuantity)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -140,10 +138,8 @@
             this.tabRequestDetails.Controls.Add(this.lblCustomerDetails);
             this.tabRequestDetails.Controls.Add(this.cbbDeliveryTerms);
             this.tabRequestDetails.Controls.Add(this.cbbPaymentTerms);
-            this.tabRequestDetails.Controls.Add(this.txtAccountNumber);
             this.tabRequestDetails.Controls.Add(this.txtRFQNo);
             this.tabRequestDetails.Controls.Add(this.lblDeliveryTerms);
-            this.tabRequestDetails.Controls.Add(this.lblAccountNumber);
             this.tabRequestDetails.Controls.Add(this.lblPaymentTerms);
             this.tabRequestDetails.Controls.Add(this.lblDateOfRequest);
             this.tabRequestDetails.Controls.Add(this.lblRFQNo);
@@ -178,7 +174,7 @@
             this.cbbCustomerName.DisplayMember = "0";
             this.cbbCustomerName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbCustomerName.FormattingEnabled = true;
-            this.cbbCustomerName.Location = new System.Drawing.Point(35, 357);
+            this.cbbCustomerName.Location = new System.Drawing.Point(35, 341);
             this.cbbCustomerName.Name = "cbbCustomerName";
             this.cbbCustomerName.Size = new System.Drawing.Size(285, 27);
             this.cbbCustomerName.TabIndex = 6;
@@ -309,7 +305,7 @@
             this.lblCustomerName.AutoSize = true;
             this.lblCustomerName.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.lblCustomerName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.lblCustomerName.Location = new System.Drawing.Point(32, 333);
+            this.lblCustomerName.Location = new System.Drawing.Point(32, 317);
             this.lblCustomerName.Name = "lblCustomerName";
             this.lblCustomerName.Size = new System.Drawing.Size(104, 18);
             this.lblCustomerName.TabIndex = 15;
@@ -320,7 +316,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Source Sans Pro", 14F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(167, 332);
+            this.label9.Location = new System.Drawing.Point(32, 288);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(153, 18);
             this.label9.TabIndex = 14;
@@ -331,7 +327,7 @@
             this.lblCustomerDetails.AutoSize = true;
             this.lblCustomerDetails.Font = new System.Drawing.Font("Source Sans Pro", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblCustomerDetails.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(63)))), ((int)(((byte)(1)))));
-            this.lblCustomerDetails.Location = new System.Drawing.Point(28, 289);
+            this.lblCustomerDetails.Location = new System.Drawing.Point(26, 246);
             this.lblCustomerDetails.Name = "lblCustomerDetails";
             this.lblCustomerDetails.Size = new System.Drawing.Size(230, 38);
             this.lblCustomerDetails.TabIndex = 13;
@@ -353,7 +349,7 @@
             "CIF",
             "FOB",
             "DAP"});
-            this.cbbDeliveryTerms.Location = new System.Drawing.Point(35, 244);
+            this.cbbDeliveryTerms.Location = new System.Drawing.Point(201, 192);
             this.cbbDeliveryTerms.Name = "cbbDeliveryTerms";
             this.cbbDeliveryTerms.Size = new System.Drawing.Size(145, 27);
             this.cbbDeliveryTerms.TabIndex = 4;
@@ -375,22 +371,10 @@
             "15 Days",
             "30 Days",
             "60 Days"});
-            this.cbbPaymentTerms.Location = new System.Drawing.Point(35, 178);
+            this.cbbPaymentTerms.Location = new System.Drawing.Point(201, 153);
             this.cbbPaymentTerms.Name = "cbbPaymentTerms";
             this.cbbPaymentTerms.Size = new System.Drawing.Size(145, 27);
             this.cbbPaymentTerms.TabIndex = 2;
-            // 
-            // txtAccountNumber
-            // 
-            this.txtAccountNumber.BackColor = System.Drawing.Color.White;
-            this.txtAccountNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtAccountNumber.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.txtAccountNumber.Location = new System.Drawing.Point(201, 178);
-            this.txtAccountNumber.MaxLength = 16;
-            this.txtAccountNumber.Multiline = true;
-            this.txtAccountNumber.Name = "txtAccountNumber";
-            this.txtAccountNumber.Size = new System.Drawing.Size(145, 27);
-            this.txtAccountNumber.TabIndex = 3;
             // 
             // txtRFQNo
             // 
@@ -408,29 +392,18 @@
             this.lblDeliveryTerms.AutoSize = true;
             this.lblDeliveryTerms.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.lblDeliveryTerms.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.lblDeliveryTerms.Location = new System.Drawing.Point(32, 221);
+            this.lblDeliveryTerms.Location = new System.Drawing.Point(32, 196);
             this.lblDeliveryTerms.Name = "lblDeliveryTerms";
             this.lblDeliveryTerms.Size = new System.Drawing.Size(112, 18);
             this.lblDeliveryTerms.TabIndex = 5;
             this.lblDeliveryTerms.Text = "DELIVERY TERMS";
-            // 
-            // lblAccountNumber
-            // 
-            this.lblAccountNumber.AutoSize = true;
-            this.lblAccountNumber.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblAccountNumber.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.lblAccountNumber.Location = new System.Drawing.Point(198, 153);
-            this.lblAccountNumber.Name = "lblAccountNumber";
-            this.lblAccountNumber.Size = new System.Drawing.Size(122, 18);
-            this.lblAccountNumber.TabIndex = 4;
-            this.lblAccountNumber.Text = "ACCOUNT NUMBER";
             // 
             // lblPaymentTerms
             // 
             this.lblPaymentTerms.AutoSize = true;
             this.lblPaymentTerms.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.lblPaymentTerms.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.lblPaymentTerms.Location = new System.Drawing.Point(32, 153);
+            this.lblPaymentTerms.Location = new System.Drawing.Point(32, 154);
             this.lblPaymentTerms.Name = "lblPaymentTerms";
             this.lblPaymentTerms.Size = new System.Drawing.Size(110, 18);
             this.lblPaymentTerms.TabIndex = 3;
@@ -441,7 +414,7 @@
             this.lblDateOfRequest.AutoSize = true;
             this.lblDateOfRequest.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.lblDateOfRequest.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.lblDateOfRequest.Location = new System.Drawing.Point(32, 114);
+            this.lblDateOfRequest.Location = new System.Drawing.Point(32, 115);
             this.lblDateOfRequest.Name = "lblDateOfRequest";
             this.lblDateOfRequest.Size = new System.Drawing.Size(120, 18);
             this.lblDateOfRequest.TabIndex = 2;
@@ -490,6 +463,36 @@
             this.tabItemDetails.Size = new System.Drawing.Size(845, 438);
             this.tabItemDetails.TabIndex = 1;
             this.tabItemDetails.Text = "Item Details";
+            // 
+            // btnClearItems
+            // 
+            this.btnClearItems.BackgroundImage = global::REIC_POMS.Properties.Resources.ButtonClearAllItems;
+            this.btnClearItems.FlatAppearance.BorderSize = 0;
+            this.btnClearItems.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClearItems.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(107)))), ((int)(((byte)(58)))));
+            this.btnClearItems.Location = new System.Drawing.Point(754, 344);
+            this.btnClearItems.Name = "btnClearItems";
+            this.btnClearItems.Size = new System.Drawing.Size(60, 67);
+            this.btnClearItems.TabIndex = 67;
+            this.btnClearItems.UseVisualStyleBackColor = true;
+            this.btnClearItems.Click += new System.EventHandler(this.btnClearItems_Click);
+            this.btnClearItems.MouseEnter += new System.EventHandler(this.btnClearItems_MouseEnter);
+            this.btnClearItems.MouseLeave += new System.EventHandler(this.btnClearItems_MouseLeave);
+            // 
+            // btnRemoveItem
+            // 
+            this.btnRemoveItem.BackgroundImage = global::REIC_POMS.Properties.Resources.ButtonRemoveItems;
+            this.btnRemoveItem.FlatAppearance.BorderSize = 0;
+            this.btnRemoveItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemoveItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnRemoveItem.Location = new System.Drawing.Point(754, 271);
+            this.btnRemoveItem.Name = "btnRemoveItem";
+            this.btnRemoveItem.Size = new System.Drawing.Size(60, 67);
+            this.btnRemoveItem.TabIndex = 66;
+            this.btnRemoveItem.UseVisualStyleBackColor = true;
+            this.btnRemoveItem.Click += new System.EventHandler(this.btnRemoveItem_Click);
+            this.btnRemoveItem.MouseEnter += new System.EventHandler(this.btnRemoveItem_MouseEnter);
+            this.btnRemoveItem.MouseLeave += new System.EventHandler(this.btnRemoveItem_MouseLeave);
             // 
             // dgvRFQItems
             // 
@@ -716,6 +719,19 @@
             this.cbbFilterBy.Size = new System.Drawing.Size(120, 27);
             this.cbbFilterBy.TabIndex = 10;
             // 
+            // btnSearch
+            // 
+            this.btnSearch.BackgroundImage = global::REIC_POMS.Properties.Resources.ButtonSearch;
+            this.btnSearch.Location = new System.Drawing.Point(295, 27);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(24, 26);
+            this.btnSearch.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnSearch.TabIndex = 9;
+            this.btnSearch.TabStop = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            this.btnSearch.MouseEnter += new System.EventHandler(this.btnSearch_MouseEnter);
+            this.btnSearch.MouseLeave += new System.EventHandler(this.btnSearch_MouseLeave);
+            // 
             // txtSearchFor
             // 
             this.txtSearchFor.BackColor = System.Drawing.Color.White;
@@ -867,49 +883,6 @@
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // btnClearItems
-            // 
-            this.btnClearItems.BackgroundImage = global::REIC_POMS.Properties.Resources.ButtonClearAllItems;
-            this.btnClearItems.FlatAppearance.BorderSize = 0;
-            this.btnClearItems.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClearItems.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(107)))), ((int)(((byte)(58)))));
-            this.btnClearItems.Location = new System.Drawing.Point(754, 344);
-            this.btnClearItems.Name = "btnClearItems";
-            this.btnClearItems.Size = new System.Drawing.Size(60, 67);
-            this.btnClearItems.TabIndex = 67;
-            this.btnClearItems.UseVisualStyleBackColor = true;
-            this.btnClearItems.Click += new System.EventHandler(this.btnClearItems_Click);
-            this.btnClearItems.MouseEnter += new System.EventHandler(this.btnClearItems_MouseEnter);
-            this.btnClearItems.MouseLeave += new System.EventHandler(this.btnClearItems_MouseLeave);
-            // 
-            // btnRemoveItem
-            // 
-            this.btnRemoveItem.BackgroundImage = global::REIC_POMS.Properties.Resources.ButtonRemoveItems;
-            this.btnRemoveItem.FlatAppearance.BorderSize = 0;
-            this.btnRemoveItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRemoveItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnRemoveItem.Location = new System.Drawing.Point(754, 271);
-            this.btnRemoveItem.Name = "btnRemoveItem";
-            this.btnRemoveItem.Size = new System.Drawing.Size(60, 67);
-            this.btnRemoveItem.TabIndex = 66;
-            this.btnRemoveItem.UseVisualStyleBackColor = true;
-            this.btnRemoveItem.Click += new System.EventHandler(this.btnRemoveItem_Click);
-            this.btnRemoveItem.MouseEnter += new System.EventHandler(this.btnRemoveItem_MouseEnter);
-            this.btnRemoveItem.MouseLeave += new System.EventHandler(this.btnRemoveItem_MouseLeave);
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.BackgroundImage = global::REIC_POMS.Properties.Resources.ButtonSearch;
-            this.btnSearch.Location = new System.Drawing.Point(295, 27);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(24, 26);
-            this.btnSearch.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.btnSearch.TabIndex = 9;
-            this.btnSearch.TabStop = false;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            this.btnSearch.MouseEnter += new System.EventHandler(this.btnSearch_MouseEnter);
-            this.btnSearch.MouseLeave += new System.EventHandler(this.btnSearch_MouseLeave);
-            // 
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImage = global::REIC_POMS.Properties.Resources.BannerRFQCreate;
@@ -940,10 +913,10 @@
             this.tabItemDetails.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRFQItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItemSelection)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).EndInit();
             this.grpItemSelected.ResumeLayout(false);
             this.grpItemSelected.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupItemQuantity)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -956,10 +929,8 @@
         private System.Windows.Forms.TabPage tabRequestDetails;
         private System.Windows.Forms.ComboBox cbbDeliveryTerms;
         private System.Windows.Forms.ComboBox cbbPaymentTerms;
-        private System.Windows.Forms.TextBox txtAccountNumber;
         private System.Windows.Forms.TextBox txtRFQNo;
         private System.Windows.Forms.Label lblDeliveryTerms;
-        private System.Windows.Forms.Label lblAccountNumber;
         private System.Windows.Forms.Label lblPaymentTerms;
         private System.Windows.Forms.Label lblDateOfRequest;
         private System.Windows.Forms.Label lblRFQNo;

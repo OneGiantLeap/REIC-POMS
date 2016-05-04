@@ -9,7 +9,7 @@ namespace REIC_POMS
     class Supplier
     {
         public Supplier (
-                    string supplierID,
+                    int supplierID,
                     string supplierName,
                     string supplierPerson,
                     string supplierNumber,
@@ -25,7 +25,7 @@ namespace REIC_POMS
             this.SupplierAddress = supplierAddress;
         }
 
-        public string SupplierID { get; set; }
+        public int SupplierID { get; set; }
         public string SupplierName { get; set; }
         public string SupplierPerson { get; set; }
         public string SupplierNumber { get; set; }

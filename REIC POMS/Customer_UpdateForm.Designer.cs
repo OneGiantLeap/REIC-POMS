@@ -90,7 +90,7 @@
             // 
             this.txtBusinessName.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.txtBusinessName.Location = new System.Drawing.Point(30, 116);
-            this.txtBusinessName.MaxLength = 25;
+            this.txtBusinessName.MaxLength = 40;
             this.txtBusinessName.Name = "txtBusinessName";
             this.txtBusinessName.Size = new System.Drawing.Size(148, 26);
             this.txtBusinessName.TabIndex = 0;
@@ -110,7 +110,7 @@
             // 
             this.txtCustomerAddress.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.txtCustomerAddress.Location = new System.Drawing.Point(30, 402);
-            this.txtCustomerAddress.MaxLength = 150;
+            this.txtCustomerAddress.MaxLength = 255;
             this.txtCustomerAddress.Multiline = true;
             this.txtCustomerAddress.Name = "txtCustomerAddress";
             this.txtCustomerAddress.Size = new System.Drawing.Size(350, 75);
@@ -120,7 +120,7 @@
             // 
             this.txtCustomerEmail.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.txtCustomerEmail.Location = new System.Drawing.Point(30, 343);
-            this.txtCustomerEmail.MaxLength = 40;
+            this.txtCustomerEmail.MaxLength = 50;
             this.txtCustomerEmail.Name = "txtCustomerEmail";
             this.txtCustomerEmail.Size = new System.Drawing.Size(350, 26);
             this.txtCustomerEmail.TabIndex = 9;
@@ -129,7 +129,7 @@
             // 
             this.txtCustomerNumber.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.txtCustomerNumber.Location = new System.Drawing.Point(30, 284);
-            this.txtCustomerNumber.MaxLength = 13;
+            this.txtCustomerNumber.MaxLength = 25;
             this.txtCustomerNumber.Name = "txtCustomerNumber";
             this.txtCustomerNumber.Size = new System.Drawing.Size(166, 26);
             this.txtCustomerNumber.TabIndex = 7;
@@ -138,7 +138,7 @@
             // 
             this.txtCustomerPerson.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.txtCustomerPerson.Location = new System.Drawing.Point(30, 226);
-            this.txtCustomerPerson.MaxLength = 50;
+            this.txtCustomerPerson.MaxLength = 70;
             this.txtCustomerPerson.Name = "txtCustomerPerson";
             this.txtCustomerPerson.Size = new System.Drawing.Size(350, 26);
             this.txtCustomerPerson.TabIndex = 6;
@@ -147,7 +147,7 @@
             // 
             this.txtCustomerName.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.txtCustomerName.Location = new System.Drawing.Point(30, 171);
-            this.txtCustomerName.MaxLength = 50;
+            this.txtCustomerName.MaxLength = 70;
             this.txtCustomerName.Name = "txtCustomerName";
             this.txtCustomerName.Size = new System.Drawing.Size(350, 26);
             this.txtCustomerName.TabIndex = 5;
@@ -215,7 +215,7 @@
             // 
             this.txtAccountNumber.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.txtAccountNumber.Location = new System.Drawing.Point(214, 284);
-            this.txtAccountNumber.MaxLength = 16;
+            this.txtAccountNumber.MaxLength = 25;
             this.txtAccountNumber.Name = "txtAccountNumber";
             this.txtAccountNumber.Size = new System.Drawing.Size(166, 26);
             this.txtAccountNumber.TabIndex = 8;

@@ -15,6 +15,7 @@ namespace REIC_POMS
     public partial class Customer_MainScreen : Form
     {
         //ATTRIBUTES
+        private MySQLDatabaseDriver sql;
         private ArrayList customerList;
         private int customerIDCounter; //Will be used for customer ID
 
@@ -22,68 +23,22 @@ namespace REIC_POMS
         public Customer_MainScreen()
         {
             InitializeComponent();
-            customerIDCounter = 000000;
+            sql = new MySQLDatabaseDriver();
+            customerIDCounter = 0;
             customerList = new ArrayList();
 
-            //---STREAM READER
-            try
+            //---STREAMREADER (MYSQL DATABASE -> ARRAYLIST -> DGV)
+            sql.SelectAllCustomers(customerList);
+            for (int i = 0; i < customerList.Count; i++)
             {
-                FileStream fs = new FileStream(@"customer.txt", FileMode.Open);
-                StreamReader readin = new StreamReader(fs);
-                while (!readin.EndOfStream)
-                {
-                    string[] text = readin.ReadLine().Split('|');
-                    dgvCustomers.Rows.Add(text[3], text[4], text[5], text[7]); //Place Customer at DGV
-                    customerList.Add(new Customer(text[0], text[1], text[2], text[3], text[4], text[5], text[6], text[7], text[8])); //Recreate the Customer
-                    customerIDCounter++;
-                    //MessageBox.Show("Customer data added.");
-                }
-                readin.Close();
-                fs.Close();
+                Customer c = (Customer)customerList[i];
+                dgvCustomers.Rows.Add(c.CustomerName,
+                                      c.CustomerPerson,
+                                      c.CustomerNumber,
+                                      c.CustomerEmail);
             }
-            catch (Exception /*e*/) { }
-
-            //---TEST CODE (For the purpose of customizing the DGV and checking out its appearance)
-            /* Commented out, since we already have the actual logic already. These placeholders are still here just in case.
-            dgvCustomers.Rows.Add("Samsung", "Ken Maliksi", "09181234567", "ken.maliksi@obf.ateneo.edu");
-            dgvCustomers.Rows.Add("Sony", "Gayle Chua", "09334645170", "gayle.t.chua@obf.ateneo.edu");
-            dgvCustomers.Rows.Add("Aliens", "Meg Villa", "09991234567", "margarita.villa@obf.ateneo.edu");
-            dgvCustomers.Rows.Add("Apple", "Jem Tan", "09781234567", "chrissa.jem@tan.info");
-            dgvCustomers.Rows.Add("NBA", "Ish Almario", "09556874521", "ish.is.the.name@nba.com");
-            */
+            customerIDCounter = customerList.Count + 1;
         }
-
-        //-----------------
-        // STREAM WRITER  |
-        //-----------------
-        private void saveCustomerData()
-        {
-            try
-            {
-                FileStream fs = new FileStream(@"customer.txt", FileMode.Create);
-                StreamWriter writeout = new StreamWriter(fs);
-                
-                for (int i = 0; i < customerList.Count; i++)
-                {
-                    Customer c = (Customer)customerList[i]; //Casting. So that I can retrieve attribute values from this specific Customer.
-                    writeout.WriteLine(c.CustomerID.ToString() + "|"
-                                   + c.BusinessName + "|"
-                                   + c.TinNumber + "|"
-                                   + c.CustomerName + "|"
-                                   + c.CustomerPerson + "|"
-                                   + c.CustomerNumber + "|"
-                                   + c.AccountNumber + "|"
-                                   + c.CustomerEmail + "|"
-                                   + c.CustomerAddress);
-                }
-                writeout.Close();
-                fs.Close();
-            }
-            catch (Exception /*e2*/) { }
-        }
-
-        private void ItemsMainScreen_Load(object sender, EventArgs e)
-        { /*Don't know what this is for*/ }
 
         //--------------------------------------
         // MINIMIZE AND CLOSE BUTTONS METHODS  |
@@ -220,10 +175,10 @@ namespace REIC_POMS
         //-----------------------------------------------------
         private void btnSPRS_Click(object sender, EventArgs e)
         {
-            /*SPR_MainScreen sprMain = new SPR_MainScreen();
+            SPR_MainScreen sprMain = new SPR_MainScreen();
             this.Hide();
             sprMain.ShowDialog();
-            this.Close();*/
+            this.Close();
         }
 
         private void btnSPRS_MouseEnter(object sender, EventArgs e)
@@ -262,7 +217,7 @@ namespace REIC_POMS
             if (caf.Cancel == false) //Meaning, will add the Customer. If Cancel is true, nothing happens.
             {
                 //---ADD the new Customer to the ArrayList
-                customerList.Add(new Customer(customerIDCounter.ToString("D6"),
+                customerList.Add(new Customer(customerIDCounter,
                                               caf.BusinessName,
                                               caf.FullTinNumber,
                                               caf.CustomerName,
@@ -275,15 +230,16 @@ namespace REIC_POMS
                 //---DISPLAY the newly added Customer in the Main Screen DGV
                 dgvCustomers.Rows.Add(caf.CustomerName, caf.CustomerPerson, caf.CustomerNumber, caf.CustomerEmail);
 
+                //---SAVE in Database
+                Customer newCustomer = (Customer)customerList[(customerList.Count - 1)]; //Casting
+                sql.InsertCustomer(newCustomer);
+
                 //---MESSAGEBOX FOR DEBUG PURPOSES
-                MessageBox.Show("CREATE " + customerIDCounter.ToString("D6") + ", " + caf.BusinessName + ", " + caf.FullTinNumber + ", " + caf.CustomerName
+                MessageBox.Show("CREATE " + customerIDCounter + ", " + caf.BusinessName + ", " + caf.FullTinNumber + ", " + caf.CustomerName
                                 + ", " + caf.CustomerPerson + ", " + caf.CustomerNumber + ", " + caf.CustomerEmail + ", " + caf.CustomerAddress
                                 + "Inserted to Array " + (customerList.Count - 1));
-                    
-                //Increments & Saving
-                //current++;
-                customerIDCounter++; //I haven't figured out how to add padded zeros   
-                saveCustomerData(); //Streamwriter
+
+                customerIDCounter++;
             }
         }
 
@@ -334,7 +290,7 @@ namespace REIC_POMS
                         //---UPDATE values of Customer
                         if (cvf.Cancel == false) //If cancel is true, nothing happens.
                         {
-                            //Update Customer's attributes (The updated values coming from View Form)
+                            //Update Customer's ArrayList attributes (The updated values coming from View Form)
                             c.BusinessName = cvf.BNameToView;
                             c.TinNumber = cvf.TinToView;
                             c.CustomerName = cvf.NameToView;
@@ -350,14 +306,12 @@ namespace REIC_POMS
                             dgvCustomers.SelectedRows[0].Cells[2].Value = cvf.NumberToView;
                             dgvCustomers.SelectedRows[0].Cells[3].Value = cvf.EmailToView;
 
-                            saveCustomerData(); //Filestream. To replace with MySQL in the future.
+                            //Update Database
+                            sql.UpdateCustomer(c); //c refers to the Customer c at the start of this method's code
 
                             //---MESSAGEBOX FOR DEBUG PURPOSES
                             MessageBox.Show("UPDATE FREAKING SUCCESSFUL. BOO YEAH.");
                         }
-                        //---MESSAGEBOX FOR DEBUG PURPOSES
-                        //if (cvf.Cancel == true) { MessageBox.Show("No update was done. K BOSS."); } }
-
                     }
                 } //End of if (customersList[i] != null)
             } //End of for-loop 

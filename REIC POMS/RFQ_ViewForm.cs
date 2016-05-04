@@ -12,18 +12,24 @@ namespace REIC_POMS
 {
     public partial class RFQ_ViewForm : Form
     {
+        //ATTRIBUTES
+        private MySQLDatabaseDriver sql;
+
         public RFQ_ViewForm()
         {
             InitializeComponent();
+            sql = new MySQLDatabaseDriver();
+        }
 
-            //Change DGV Borderline color to gray instead of black
-            dgvRFQItems.GridColor = Color.FromArgb(137, 137, 137);
+        private void RFQ_ViewForm_Load(object sender, EventArgs e)
+        {
+            sql.SelectSpecificRFQOrderLine(RFQNoToView, dgvRFQItems); //Has to be placed HERE, not in initialize
         }
 
         //---------------------
         //  SPECIAL VARIABLES |
         //---------------------
-        private bool cancel; //Will be used by Main Screen to know if it will create the RFQ or not
+        //private bool cancel; //I probably don't need this, pero ayaw ko pa i-let go. Hay...
 
         //-------------------
         //  GETTERS-SETTERS |
@@ -40,17 +46,13 @@ namespace REIC_POMS
             set { outputPaymentTerms.Text = value; }
             get { return outputPaymentTerms.Text; } }
 
-        public string AccountNumberToView { //IN DATA DICTIONARY, IT'S VARCHAR(16)
+        /*public string AccountNumberToView { --> No longer needed
             set { outputAccountNumber.Text = value; }
-            get { return outputAccountNumber.Text; } }
+            get { return outputAccountNumber.Text; } }*/
 
         public string DeliveryTermsToView {
             set { outputDeliveryTerms.Text = value; }
             get { return outputDeliveryTerms.Text; } }
-
-        public string InFavorOfToView {
-            set { outputInFavorOf.Text = value; }
-            get { return outputInFavorOf.Text; } }
 
         public string CustomerNameToView {
             set { outputCustomerName.Text = value; }
@@ -76,13 +78,14 @@ namespace REIC_POMS
             set { outputSupplierAddress.Text = value; }
             get { return outputSupplierAddress.Text; } }
 
-        //ENIGMA: How about the RFQItems???
-        /* <--- May result to error of "Inconsistent Accessibility"
-        public Items[] RFQItems {
-            get { return RFQItems; }
+        /*public DataGridView RFQItemsToView
+        {
+            set { dgvRFQItems.DataSource = value; }
+            get;
         }*/
 
-        public bool Cancel { get { return cancel; } }
+        /*public bool Cancel {
+            get { return cancel; } }*/
 
         //-------------------
         //  BUTTON METHODS  |
@@ -94,14 +97,14 @@ namespace REIC_POMS
             */
 
             //---CLOSING THE FORM
-            cancel = false; //Will be used by RFQ Main Screen
+            //cancel = false; Still thinking if I still need thiiis
             Close(); //Only RFQ_MainScreen.cs remains
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            cancel = true;
-            Close();
+            //cancel = true; Still thinking if I still need thiiis
+            Close(); 
         }
     }
 }

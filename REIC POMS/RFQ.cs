@@ -11,9 +11,9 @@ namespace REIC_POMS
     {
         //CONSTRUCTOR
         public RFQ(string rfqNo,
-                   string requestDate, //In Data Dictionary, this is a DATE. What did Ken use in the Item class? HELP.
+                   string requestDate,
                    string paymentTerms,
-                   string accountNumber, //DOUBLE-CHECK
+                   //string accountNumber, //No longer needed
                    string deliveryTerms,
                    int customerID, //Foreign Key
                    int supplierID) //Foreign Key
@@ -31,7 +31,7 @@ namespace REIC_POMS
             RFQNo = rfqNo;
             RequestDate = requestDate;
             PaymentTerms = paymentTerms;
-            AccountNumber = accountNumber;
+            //AccountNumber = accountNumber; No longer needed
             DeliveryTerms = deliveryTerms;
             CustomerID = customerID;
             SupplierID = supplierID;
@@ -47,9 +47,9 @@ namespace REIC_POMS
 
         //PROPERTIES
         public string RFQNo { get; set; }
-        public string RequestDate { get; set; } //In Data Dictionary, this is a DATE.
+        public string RequestDate { get; set; }
         public string PaymentTerms { get; set; }
-        public string AccountNumber { get; set; }
+        //public string AccountNumber { get; set; } No longer needed
         public string DeliveryTerms { get; set; }
         public int CustomerID { get; set; }
         public int SupplierID { get; set; }

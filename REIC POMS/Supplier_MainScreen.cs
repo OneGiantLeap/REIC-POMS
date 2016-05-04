@@ -24,6 +24,7 @@ namespace REIC_POMS
             supplierIDCounter = 000000;
             supplierList = new ArrayList();
 
+            /*
             //---STREAM READER
             try
             {
@@ -39,7 +40,7 @@ namespace REIC_POMS
                 readin.Close();
                 fs.Close();
             }
-            catch (Exception /*e*/) { }
+            catch (Exception e) { }*/
 
             /*
             //ADJUST DATAGRIDVIEW COLUMN ALIGNMENT
@@ -261,7 +262,7 @@ namespace REIC_POMS
             if (saf.Cancel == false)
             {
                 supplierList.Add(new Supplier(
-                              supplierIDCounter.ToString("D6"),
+                              supplierIDCounter,
                               saf.SupplierName,
                               saf.SupplierPerson,
                               saf.SupplierNumber,

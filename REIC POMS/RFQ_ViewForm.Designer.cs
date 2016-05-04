@@ -41,9 +41,7 @@
             this.outputSupplierPerson = new System.Windows.Forms.Label();
             this.outputSupplierName = new System.Windows.Forms.Label();
             this.outputCustomerName = new System.Windows.Forms.Label();
-            this.outputInFavorOf = new System.Windows.Forms.Label();
             this.outputDeliveryTerms = new System.Windows.Forms.Label();
-            this.outputAccountNumber = new System.Windows.Forms.Label();
             this.outputPaymentTerms = new System.Windows.Forms.Label();
             this.outputDateOfRequest = new System.Windows.Forms.Label();
             this.outputRFQNo = new System.Windows.Forms.Label();
@@ -55,9 +53,7 @@
             this.lblSupplierDetails = new System.Windows.Forms.Label();
             this.lblCustomerName = new System.Windows.Forms.Label();
             this.lblCustomerDetails = new System.Windows.Forms.Label();
-            this.lblInFavorOf = new System.Windows.Forms.Label();
             this.lblDeliveryTerms = new System.Windows.Forms.Label();
-            this.lblAccountNumber = new System.Windows.Forms.Label();
             this.lblPaymentTerms = new System.Windows.Forms.Label();
             this.lblDateOfRequest = new System.Windows.Forms.Label();
             this.lblRFQNo = new System.Windows.Forms.Label();
@@ -101,9 +97,7 @@
             this.tabRequestDetails.Controls.Add(this.outputSupplierPerson);
             this.tabRequestDetails.Controls.Add(this.outputSupplierName);
             this.tabRequestDetails.Controls.Add(this.outputCustomerName);
-            this.tabRequestDetails.Controls.Add(this.outputInFavorOf);
             this.tabRequestDetails.Controls.Add(this.outputDeliveryTerms);
-            this.tabRequestDetails.Controls.Add(this.outputAccountNumber);
             this.tabRequestDetails.Controls.Add(this.outputPaymentTerms);
             this.tabRequestDetails.Controls.Add(this.outputDateOfRequest);
             this.tabRequestDetails.Controls.Add(this.outputRFQNo);
@@ -115,9 +109,7 @@
             this.tabRequestDetails.Controls.Add(this.lblSupplierDetails);
             this.tabRequestDetails.Controls.Add(this.lblCustomerName);
             this.tabRequestDetails.Controls.Add(this.lblCustomerDetails);
-            this.tabRequestDetails.Controls.Add(this.lblInFavorOf);
             this.tabRequestDetails.Controls.Add(this.lblDeliveryTerms);
-            this.tabRequestDetails.Controls.Add(this.lblAccountNumber);
             this.tabRequestDetails.Controls.Add(this.lblPaymentTerms);
             this.tabRequestDetails.Controls.Add(this.lblDateOfRequest);
             this.tabRequestDetails.Controls.Add(this.lblRFQNo);
@@ -142,7 +134,7 @@
             // 
             this.outputSupplierAddress.AutoSize = true;
             this.outputSupplierAddress.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.outputSupplierAddress.Location = new System.Drawing.Point(409, 216);
+            this.outputSupplierAddress.Location = new System.Drawing.Point(409, 212);
             this.outputSupplierAddress.Name = "outputSupplierAddress";
             this.outputSupplierAddress.Size = new System.Drawing.Size(35, 19);
             this.outputSupplierAddress.TabIndex = 73;
@@ -192,41 +184,21 @@
             // 
             this.outputCustomerName.AutoSize = true;
             this.outputCustomerName.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.outputCustomerName.Location = new System.Drawing.Point(175, 297);
+            this.outputCustomerName.Location = new System.Drawing.Point(55, 269);
             this.outputCustomerName.Name = "outputCustomerName";
             this.outputCustomerName.Size = new System.Drawing.Size(35, 19);
             this.outputCustomerName.TabIndex = 68;
             this.outputCustomerName.Text = "Text";
             // 
-            // outputInFavorOf
-            // 
-            this.outputInFavorOf.AutoSize = true;
-            this.outputInFavorOf.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.outputInFavorOf.Location = new System.Drawing.Point(175, 218);
-            this.outputInFavorOf.Name = "outputInFavorOf";
-            this.outputInFavorOf.Size = new System.Drawing.Size(35, 19);
-            this.outputInFavorOf.TabIndex = 67;
-            this.outputInFavorOf.Text = "Text";
-            // 
             // outputDeliveryTerms
             // 
             this.outputDeliveryTerms.AutoSize = true;
             this.outputDeliveryTerms.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.outputDeliveryTerms.Location = new System.Drawing.Point(175, 188);
+            this.outputDeliveryTerms.Location = new System.Drawing.Point(175, 161);
             this.outputDeliveryTerms.Name = "outputDeliveryTerms";
             this.outputDeliveryTerms.Size = new System.Drawing.Size(35, 19);
             this.outputDeliveryTerms.TabIndex = 66;
             this.outputDeliveryTerms.Text = "Text";
-            // 
-            // outputAccountNumber
-            // 
-            this.outputAccountNumber.AutoSize = true;
-            this.outputAccountNumber.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.outputAccountNumber.Location = new System.Drawing.Point(175, 158);
-            this.outputAccountNumber.Name = "outputAccountNumber";
-            this.outputAccountNumber.Size = new System.Drawing.Size(35, 19);
-            this.outputAccountNumber.TabIndex = 65;
-            this.outputAccountNumber.Text = "Text";
             // 
             // outputPaymentTerms
             // 
@@ -329,7 +301,7 @@
             this.lblCustomerName.AutoSize = true;
             this.lblCustomerName.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.lblCustomerName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.lblCustomerName.Location = new System.Drawing.Point(39, 297);
+            this.lblCustomerName.Location = new System.Drawing.Point(37, 249);
             this.lblCustomerName.Name = "lblCustomerName";
             this.lblCustomerName.Size = new System.Drawing.Size(104, 18);
             this.lblCustomerName.TabIndex = 15;
@@ -340,44 +312,22 @@
             this.lblCustomerDetails.AutoSize = true;
             this.lblCustomerDetails.Font = new System.Drawing.Font("Source Sans Pro", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblCustomerDetails.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(63)))), ((int)(((byte)(1)))));
-            this.lblCustomerDetails.Location = new System.Drawing.Point(31, 254);
+            this.lblCustomerDetails.Location = new System.Drawing.Point(29, 206);
             this.lblCustomerDetails.Name = "lblCustomerDetails";
             this.lblCustomerDetails.Size = new System.Drawing.Size(230, 38);
             this.lblCustomerDetails.TabIndex = 13;
             this.lblCustomerDetails.Text = "Customer Details";
-            // 
-            // lblInFavorOf
-            // 
-            this.lblInFavorOf.AutoSize = true;
-            this.lblInFavorOf.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.lblInFavorOf.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.lblInFavorOf.Location = new System.Drawing.Point(35, 219);
-            this.lblInFavorOf.Name = "lblInFavorOf";
-            this.lblInFavorOf.Size = new System.Drawing.Size(82, 18);
-            this.lblInFavorOf.TabIndex = 6;
-            this.lblInFavorOf.Text = "IN FAVOR OF";
             // 
             // lblDeliveryTerms
             // 
             this.lblDeliveryTerms.AutoSize = true;
             this.lblDeliveryTerms.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.lblDeliveryTerms.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.lblDeliveryTerms.Location = new System.Drawing.Point(35, 189);
+            this.lblDeliveryTerms.Location = new System.Drawing.Point(35, 162);
             this.lblDeliveryTerms.Name = "lblDeliveryTerms";
             this.lblDeliveryTerms.Size = new System.Drawing.Size(112, 18);
             this.lblDeliveryTerms.TabIndex = 5;
             this.lblDeliveryTerms.Text = "DELIVERY TERMS";
-            // 
-            // lblAccountNumber
-            // 
-            this.lblAccountNumber.AutoSize = true;
-            this.lblAccountNumber.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.lblAccountNumber.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.lblAccountNumber.Location = new System.Drawing.Point(35, 159);
-            this.lblAccountNumber.Name = "lblAccountNumber";
-            this.lblAccountNumber.Size = new System.Drawing.Size(122, 18);
-            this.lblAccountNumber.TabIndex = 4;
-            this.lblAccountNumber.Text = "ACCOUNT NUMBER";
             // 
             // lblPaymentTerms
             // 
@@ -408,9 +358,9 @@
             this.lblRFQNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.lblRFQNo.Location = new System.Drawing.Point(35, 70);
             this.lblRFQNo.Name = "lblRFQNo";
-            this.lblRFQNo.Size = new System.Drawing.Size(103, 18);
+            this.lblRFQNo.Size = new System.Drawing.Size(57, 18);
             this.lblRFQNo.TabIndex = 1;
-            this.lblRFQNo.Text = "REIC_POMS NO.";
+            this.lblRFQNo.Text = "RFQ NO.";
             // 
             // lblRequestDetails
             // 
@@ -589,6 +539,7 @@
             this.Name = "RFQ_ViewForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RFQ_VIew";
+            this.Load += new System.EventHandler(this.RFQ_ViewForm_Load);
             this.tabRFQForm.ResumeLayout(false);
             this.tabRequestDetails.ResumeLayout(false);
             this.tabRequestDetails.PerformLayout();
@@ -612,9 +563,7 @@
         private System.Windows.Forms.Label lblSupplierDetails;
         private System.Windows.Forms.Label lblCustomerName;
         private System.Windows.Forms.Label lblCustomerDetails;
-        private System.Windows.Forms.Label lblInFavorOf;
         private System.Windows.Forms.Label lblDeliveryTerms;
-        private System.Windows.Forms.Label lblAccountNumber;
         private System.Windows.Forms.Label lblPaymentTerms;
         private System.Windows.Forms.Label lblDateOfRequest;
         private System.Windows.Forms.Label lblRFQNo;
@@ -636,9 +585,7 @@
         private System.Windows.Forms.Label outputSupplierPerson;
         private System.Windows.Forms.Label outputSupplierName;
         private System.Windows.Forms.Label outputCustomerName;
-        private System.Windows.Forms.Label outputInFavorOf;
         private System.Windows.Forms.Label outputDeliveryTerms;
-        private System.Windows.Forms.Label outputAccountNumber;
         private System.Windows.Forms.Label outputPaymentTerms;
         private System.Windows.Forms.Label outputDateOfRequest;
         private System.Windows.Forms.Label outputRFQNo;

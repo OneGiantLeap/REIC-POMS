@@ -112,6 +112,7 @@
     <Compile Include="Item_MainScreen.Designer.cs">
       <DependentUpon>Item_MainScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="MySQLDatabaseDriver.cs" />
     <Compile Include="PO_MainScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -170,6 +171,12 @@
     </Compile>
     <Compile Include="SIDR_MainScreen.Designer.cs">
       <DependentUpon>SIDR_MainScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SPR_MainScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SPR_MainScreen.Designer.cs">
+      <DependentUpon>SPR_MainScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Supplier.cs" />
     <Compile Include="Supplier_AddForm.cs">
@@ -255,6 +262,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SIDR_MainScreen.resx">
       <DependentUpon>SIDR_MainScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SPR_MainScreen.resx">
+      <DependentUpon>SPR_MainScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Supplier_AddForm.resx">
       <DependentUpon>Supplier_AddForm.cs</DependentUpon>
