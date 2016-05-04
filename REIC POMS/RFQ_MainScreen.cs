@@ -219,7 +219,7 @@ namespace REIC_POMS
             //Search SQL for existing RFQs with "YYMM-%" (e.g. 1604-%). nthRFQ is +1 to the number of rows returned.
             string year = DateTime.Now.ToString("yy"); //Last two digits of year (e.g. 2016 becomes 16)
             string month = DateTime.Now.ToString("MM");
-            string nthRFQ = "006";
+            string nthRFQ = "008";
             string generatedRFQNo = year + month + "-" + nthRFQ;
 
             crfq.RFQNo = generatedRFQNo;

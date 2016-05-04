@@ -21,6 +21,7 @@ namespace REIC_POMS
             InitializeComponent();
             itemList = new ArrayList();
 
+            /*
             //---STREAM READER
             try
             {
@@ -38,7 +39,7 @@ namespace REIC_POMS
                 readin.Close();
                 fs.Close();
             }
-            catch (Exception /*e*/) { }
+            catch (Exception e) { }*/
 
             /* //TEST CODE (For the purpose of customizing the DGV and checking out its appearance)
             dgvItems.Rows.Add("000000", "Aluminum Wire Bonders A", "Supplier A");
@@ -52,6 +53,7 @@ namespace REIC_POMS
             cbbFilterBy.SelectedIndex = 0; //Sets the default combobox value to "Filter by..."
         }
 
+        /*
         //-----------------
         // STREAM WRITER  |
         //-----------------
@@ -84,9 +86,9 @@ namespace REIC_POMS
                 writeout.Close();
                 fs.Close();
             }
-            catch (Exception /*e2*/) { }
-        }
-
+            catch (Exception e2) { }
+        }*/
+    
         //--------------------------------------
         // MINIMIZE AND CLOSE BUTTONS METHODS  |
         //--------------------------------------
@@ -254,9 +256,11 @@ namespace REIC_POMS
 
             if (iaf.Cancel == false) //Meaning, will add the Item. If Cancel is true, nothing happens.
             {
+                /* ADD SUPPLIER ID (FIX also Create/Update)
                 //---ADD the new Item to the ArrayList
                 itemList.Add(new Item(iaf.PartNumber,
                               iaf.ItemName,
+                              iaf.ItemDescription,
                               double.Parse(iaf.SupplierUnitPrice),
                               int.Parse(iaf.Markup),
                               double.Parse(iaf.ReicUnitPrice),
@@ -264,18 +268,14 @@ namespace REIC_POMS
                               iaf.Uom,
                               FromDateNoTime,
                               ToDateNoTime,
-                              iaf.ItemDescription,
-                              iaf.SupplierName,
-                              iaf.SupplierPerson,
-                              iaf.SupplierNumber,
-                              iaf.SupplierEmail,
-                              iaf.SupplierAddress));
+                              );
+                */            
 
                 //---DISPLAY the newly added Item in the Main Screen DGV
                 dgvItems.Rows.Add(iaf.PartNumber, iaf.ItemName, iaf.SupplierName);
 
                 //Streamwriter
-                saveItemData();
+                //saveItemData();
             }
         }
 
@@ -309,12 +309,13 @@ namespace REIC_POMS
                         ivf.UomtoView = item.Uom;
                         ivf.FromDatetoView = item.FromDateNoTime;
                         ivf.ToDatetoView = item.ToDateNoTime;
+                        /* FIX
                         ivf.ItemDescriptiontoView = item.ItemDescription;
                         ivf.SupplierNametoView = item.SupplierName;
                         ivf.SupplierPersontoView = item.SupplierPerson;
                         ivf.SupplierNumbertoView = item.SupplierNumber;
                         ivf.SupplierEmailtoView = item.SupplierEmail;
-                        ivf.SupplierAddresstoView = item.SupplierAddress;
+                        ivf.SupplierAddresstoView = item.SupplierAddress;*/
 
                         ivf.ShowDialog();
                         
@@ -333,11 +334,12 @@ namespace REIC_POMS
                             item.FromDateNoTime = ivf.FromDatetoView;// the left wing does the saving in the filestream, the right wing gets input from the edit.
                             item.ToDateNoTime = ivf.ToDatetoView;
                             item.ItemDescription = ivf.ItemDescriptiontoView;
+                            /*---FIX
                             item.SupplierName = ivf.SupplierNametoView;
                             item.SupplierPerson = ivf.SupplierPersontoView;
                             item.SupplierNumber = ivf.SupplierNumbertoView;
                             item.SupplierEmail = ivf.SupplierEmailtoView;
-                            item.SupplierAddress = ivf.SupplierAddresstoView;
+                            item.SupplierAddress = ivf.SupplierAddresstoView;*/
 
                             //Update DGV values
                             dgvItems.SelectedRows[0].Cells[0].Value = ivf.PartNumbertoView;
@@ -345,7 +347,7 @@ namespace REIC_POMS
                             dgvItems.SelectedRows[0].Cells[2].Value = ivf.SupplierNametoView;
 
                             //Filestream
-                            saveItemData();
+                            //saveItemData();
 
                             //---MESSAGEBOX FOR DEBUG PURPOSES
                             MessageBox.Show("oh yan updated na yan ah.");

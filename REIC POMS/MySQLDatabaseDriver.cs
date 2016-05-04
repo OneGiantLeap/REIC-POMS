@@ -87,22 +87,17 @@ namespace REIC_POMS
             myReader = command.ExecuteReader();
             while (myReader.Read())
             {
-                //DOUBLECHECK & EDIT THE PARAMETERS ONCE SUPPLIER ID HAS BEEN ADDED
-                result.Add(new Item(myReader[0].ToString(),
-                                    myReader[1].ToString(),
-                                    double.Parse(myReader[2].ToString()),
-                                    double.Parse(myReader[3].ToString()),
-                                    double.Parse(myReader[4].ToString()),
-                                    int.Parse(myReader[5].ToString()),
-                                    myReader[6].ToString(),
-                                    myReader[7].ToString(),
-                                    myReader[8].ToString(),
-                                    myReader[9].ToString(),
-                                    myReader[10].ToString(),
-                                    myReader[11].ToString(),
-                                    myReader[12].ToString(),
-                                    myReader[13].ToString(),
-                                    myReader[14].ToString()));
+                result.Add(new Item(myReader["part_number"].ToString(),
+                                    myReader["item_name"].ToString(),
+                                    myReader["item_description"].ToString(),
+                                    double.Parse(myReader["supplier_unit_price"].ToString()),
+                                    int.Parse(myReader["mark_up_percentage"].ToString()),
+                                    double.Parse(myReader["reic_unit_price"].ToString()),
+                                    int.Parse(myReader["minimum_order_quantity"].ToString()),
+                                    myReader["unit_of_measurement"].ToString(),
+                                    myReader["from_date"].ToString(),
+                                    myReader["to_date"].ToString(),
+                                    int.Parse(myReader["supplier_id"].ToString())));
             }
             DisconnectFromSQL();
         }
@@ -331,9 +326,9 @@ namespace REIC_POMS
 
         public void InsertItem(Item i)
         {
-            //NEED SUPPLIER ID IN ITEM CLASS
-            //SQL does not accept our date format of DD/MM/YYYY. Either convert our to SQL's format of YYYY-MM-DD or make the attribute char.
-            /*Insert(string.Format("INSERT INTO item_t " +
+            //Need to convert SQL's date to MM/DD/YYYY
+            Insert(string.Format("INSERT INTO item_t " +
+                "(part_number, item_name, item_description, supplier_unit_price, mark_up_percentage, reic_unit_price, minimum_order_quantity, unit_of_measurement, from_date, to_date, supplier_id) " +
                 "VALUES ('{0}', '{1}', '{2}', {3}, {4}, {5}, {6}, '{7}', '{8}', '{9}', {10});", i.PartNumber,
                                                                                                i.ItemName,
                                                                                                i.ItemDescription,
@@ -344,12 +339,11 @@ namespace REIC_POMS
                                                                                                i.Uom,
                                                                                                i.FromDateNoTime,
                                                                                                i.ToDateNoTime,
-                                                                                               i.SupplierID));*/
+                                                                                               i.SupplierID));
         }
     
         public void InsertSupplier(Supplier s)
         {
-            //IN SUPPLIER CLASS, CONVERT SUPPLIERID TO INT.
             Insert(string.Format("INSERT INTO supplier_t " +
                 "(supplier_id, supplier_name, contact_person, contact_number, email_address, address) " + 
                 "VALUES ({0}, '{1}', '{2}', '{3}', '{4}', '{5}');", s.SupplierID,

@@ -9,27 +9,28 @@ namespace REIC_POMS
     class Item
     {
         //text[#] refers to the number in the Filestream
-        public Item(string partNumber, //text[0]
-                    string itemName, //text[1]
-                    double supplierUnitPrice, //text[2]
+        public Item(string partNumber,
+                    string itemName,
+                    string itemDescription,
+                    double supplierUnitPrice,
                     double markup,
                     double reicUnitPrice,
-                    int moq, //text[5]
+                    int moq,
                     string uom,
                     string fromDate,
                     string toDate,
-                    string itemDescription, //text[9]
-                    string supplierName, //text[10]
+                    int supplierID
+                    /*string supplierName, //text[10]
                     string supplierPerson,
                     string supplierNumber,
                     string supplierEmail,
-                    string supplierAddress 
-
+                    string supplierAddress */
                     )
 
         {
             this.PartNumber = partNumber;
             this.ItemName = itemName;
+            this.ItemDescription = itemDescription;
             this.SupplierUnitPrice = supplierUnitPrice;
             this.Markup = markup;
             //this.ReicUnitPrice = reicUnitPrice;//cannot be assigned since it is ReadOnly
@@ -37,12 +38,12 @@ namespace REIC_POMS
             this.Uom = uom;
             this.FromDateNoTime = fromDate.ToString();
             this.ToDateNoTime = toDate.ToString();
-            this.ItemDescription = itemDescription;
-            this.SupplierName = supplierName;
+            this.SupplierID = supplierID;
+            /*this.SupplierName = supplierName;
             this.SupplierPerson = supplierPerson;
             this.SupplierNumber = supplierNumber;
             this.SupplierEmail = supplierEmail;
-            this.SupplierAddress = supplierAddress; 
+            this.SupplierAddress = supplierAddress;*/
         }
 
         public double ComputedValue { get { return (SupplierUnitPrice * Markup / 100); } }//to compute for the value added (markup)
@@ -56,11 +57,12 @@ namespace REIC_POMS
         public string FromDateNoTime { get; set; }
         public string ToDateNoTime { get; set; }
         public string ItemDescription { get; set; }
-      public string SupplierName { get; set; }
+        public int SupplierID { get; set; }
+        /*public string SupplierName { get; set; }
         public string SupplierPerson { get; set; }
         public string SupplierNumber { get; set; }
         public string SupplierEmail { get; set; }
-        public string SupplierAddress { get; set; } 
+        public string SupplierAddress { get; set; } */
 
     }
 }

@@ -33,7 +33,17 @@ namespace REIC_POMS
 
             //Instantiate ArrayLists and populate them
             itemList = new ArrayList();
-            //sql.SelectAllItems(itemList);
+            sql.SelectAllItems(itemList);
+            for (int i = 0; i < itemList.Count; i++)
+            {
+                Item itemToAdd = (Item)itemList[i];
+                dgvItemSelection.Rows.Add(itemToAdd.PartNumber,
+                                          itemToAdd.ItemName,
+                                          itemToAdd.ItemDescription,
+                                          itemToAdd.Uom,
+                                          itemToAdd.SupplierUnitPrice.ToString("0.00"));
+                //DOUBLE-CHECK WHAT KIND OF PRICE (REIC's or Supplier's) YOU'LL PLACE IN YOUR FORMS
+            }
 
             //customerList = new ArrayList();
             //sql.SelectAllCustomers(customerList);
@@ -55,6 +65,7 @@ namespace REIC_POMS
 
             rfqOrderLineList = new ArrayList();
 
+            /*
             //Populate the Item Selection DGV *WARNING: Temporary Streamreader. Replace w/ MySQL later
             try
             {
@@ -72,7 +83,7 @@ namespace REIC_POMS
                 readin.Close();
                 fs.Close();
             }
-            catch (Exception /*e*/) { }
+            catch (Exception e) { }*/
 
             //Set default Combo Box values
             cbbFilterBy.SelectedIndex = 0; //"Filter by..."
