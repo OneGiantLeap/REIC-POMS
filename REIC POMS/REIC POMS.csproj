@@ -130,6 +130,8 @@
     </Compile>
     <Compile Include="PQ.cs" />
     <Compile Include="PQPrintout.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
       <DependentUpon>PQPrintout.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
@@ -313,7 +315,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PQPrintout.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>PQPrintout1.cs</LastGenOutput>
+      <LastGenOutput>PQPrintout.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="PQ_CreateForm.resx">
       <DependentUpon>PQ_CreateForm.cs</DependentUpon>

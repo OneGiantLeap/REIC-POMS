@@ -16,7 +16,6 @@ namespace REIC_POMS
         private MySqlCommand command;
         private MySqlCommand countCommand; //Added (used in Select methods)
         private MySqlDataReader myReader; //Added
-        private MySqlDataReader countReader; //Added (used in Select methods)
 
         //----------------
         //  CODING NOTES |
