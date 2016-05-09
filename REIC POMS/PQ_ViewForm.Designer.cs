@@ -28,27 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PQ_ViewForm));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabItemDetails = new System.Windows.Forms.TabControl();
             this.TabPage1 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
+            this.outputToDate = new System.Windows.Forms.Label();
+            this.outputRFQNo = new System.Windows.Forms.Label();
+            this.outputAddress = new System.Windows.Forms.Label();
+            this.outputEmailAddress = new System.Windows.Forms.Label();
+            this.outputContactNumber = new System.Windows.Forms.Label();
+            this.outputContactPerson = new System.Windows.Forms.Label();
+            this.outputCustomerName = new System.Windows.Forms.Label();
+            this.outputDeliveryTerms = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            this.outputFromDate = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.outputDate = new System.Windows.Forms.Label();
+            this.outputPQNo = new System.Windows.Forms.Label();
             this.lblCustomerAddress = new System.Windows.Forms.Label();
             this.lblCustomerEmail = new System.Windows.Forms.Label();
             this.lblCustomerNumber = new System.Windows.Forms.Label();
@@ -58,8 +58,8 @@
             this.lblDeliveryTerms = new System.Windows.Forms.Label();
             this.lblInFavorOf = new System.Windows.Forms.Label();
             this.lblPaymentTerms = new System.Windows.Forms.Label();
-            this.lblToDate = new System.Windows.Forms.Label();
-            this.lblFromDate = new System.Windows.Forms.Label();
+            this.outputInFavorOf = new System.Windows.Forms.Label();
+            this.outputPaymentTerms = new System.Windows.Forms.Label();
             this.Label5 = new System.Windows.Forms.Label();
             this.lblRFQNumber = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
@@ -112,19 +112,19 @@
             // TabPage1
             // 
             this.TabPage1.Controls.Add(this.panel1);
-            this.TabPage1.Controls.Add(this.label21);
-            this.TabPage1.Controls.Add(this.label19);
-            this.TabPage1.Controls.Add(this.label20);
-            this.TabPage1.Controls.Add(this.label17);
-            this.TabPage1.Controls.Add(this.label18);
-            this.TabPage1.Controls.Add(this.label16);
-            this.TabPage1.Controls.Add(this.label15);
-            this.TabPage1.Controls.Add(this.label14);
+            this.TabPage1.Controls.Add(this.outputToDate);
+            this.TabPage1.Controls.Add(this.outputRFQNo);
+            this.TabPage1.Controls.Add(this.outputAddress);
+            this.TabPage1.Controls.Add(this.outputEmailAddress);
+            this.TabPage1.Controls.Add(this.outputContactNumber);
+            this.TabPage1.Controls.Add(this.outputContactPerson);
+            this.TabPage1.Controls.Add(this.outputCustomerName);
+            this.TabPage1.Controls.Add(this.outputDeliveryTerms);
             this.TabPage1.Controls.Add(this.label13);
-            this.TabPage1.Controls.Add(this.label12);
+            this.TabPage1.Controls.Add(this.outputFromDate);
             this.TabPage1.Controls.Add(this.label11);
-            this.TabPage1.Controls.Add(this.label10);
-            this.TabPage1.Controls.Add(this.label9);
+            this.TabPage1.Controls.Add(this.outputDate);
+            this.TabPage1.Controls.Add(this.outputPQNo);
             this.TabPage1.Controls.Add(this.lblCustomerAddress);
             this.TabPage1.Controls.Add(this.lblCustomerEmail);
             this.TabPage1.Controls.Add(this.lblCustomerNumber);
@@ -134,8 +134,8 @@
             this.TabPage1.Controls.Add(this.lblDeliveryTerms);
             this.TabPage1.Controls.Add(this.lblInFavorOf);
             this.TabPage1.Controls.Add(this.lblPaymentTerms);
-            this.TabPage1.Controls.Add(this.lblToDate);
-            this.TabPage1.Controls.Add(this.lblFromDate);
+            this.TabPage1.Controls.Add(this.outputInFavorOf);
+            this.TabPage1.Controls.Add(this.outputPaymentTerms);
             this.TabPage1.Controls.Add(this.Label5);
             this.TabPage1.Controls.Add(this.lblRFQNumber);
             this.TabPage1.Controls.Add(this.lblDate);
@@ -158,86 +158,86 @@
             this.panel1.Size = new System.Drawing.Size(1, 287);
             this.panel1.TabIndex = 75;
             // 
-            // label21
+            // outputToDate
             // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(223, 173);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(75, 19);
-            this.label21.TabIndex = 40;
-            this.label21.Text = "11/05/2017";
+            this.outputToDate.AutoSize = true;
+            this.outputToDate.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.outputToDate.Location = new System.Drawing.Point(223, 173);
+            this.outputToDate.Name = "outputToDate";
+            this.outputToDate.Size = new System.Drawing.Size(75, 19);
+            this.outputToDate.TabIndex = 40;
+            this.outputToDate.Text = "11/05/2017";
             // 
-            // label19
+            // outputRFQNo
             // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(223, 125);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(37, 19);
-            this.label19.TabIndex = 39;
-            this.label19.Text = "2327";
+            this.outputRFQNo.AutoSize = true;
+            this.outputRFQNo.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.outputRFQNo.Location = new System.Drawing.Point(223, 125);
+            this.outputRFQNo.Name = "outputRFQNo";
+            this.outputRFQNo.Size = new System.Drawing.Size(37, 19);
+            this.outputRFQNo.TabIndex = 39;
+            this.outputRFQNo.Text = "2327";
             // 
-            // label20
+            // outputAddress
             // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(426, 222);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(35, 19);
-            this.label20.TabIndex = 38;
-            this.label20.Text = "Text";
+            this.outputAddress.AutoSize = true;
+            this.outputAddress.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.outputAddress.Location = new System.Drawing.Point(426, 222);
+            this.outputAddress.Name = "outputAddress";
+            this.outputAddress.Size = new System.Drawing.Size(35, 19);
+            this.outputAddress.TabIndex = 38;
+            this.outputAddress.Text = "Text";
             // 
-            // label17
+            // outputEmailAddress
             // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(542, 164);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(138, 19);
-            this.label17.TabIndex = 37;
-            this.label17.Text = "abc_co@yahoo.com";
+            this.outputEmailAddress.AutoSize = true;
+            this.outputEmailAddress.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.outputEmailAddress.Location = new System.Drawing.Point(542, 164);
+            this.outputEmailAddress.Name = "outputEmailAddress";
+            this.outputEmailAddress.Size = new System.Drawing.Size(138, 19);
+            this.outputEmailAddress.TabIndex = 37;
+            this.outputEmailAddress.Text = "abc_co@yahoo.com";
             // 
-            // label18
+            // outputContactNumber
             // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(542, 131);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(79, 19);
-            this.label18.TabIndex = 36;
-            this.label18.Text = "0915555634";
+            this.outputContactNumber.AutoSize = true;
+            this.outputContactNumber.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.outputContactNumber.Location = new System.Drawing.Point(542, 131);
+            this.outputContactNumber.Name = "outputContactNumber";
+            this.outputContactNumber.Size = new System.Drawing.Size(79, 19);
+            this.outputContactNumber.TabIndex = 36;
+            this.outputContactNumber.Text = "0915555634";
             // 
-            // label16
+            // outputContactPerson
             // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(542, 101);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(103, 19);
-            this.label16.TabIndex = 35;
-            this.label16.Text = "Victoria Carpio";
+            this.outputContactPerson.AutoSize = true;
+            this.outputContactPerson.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.outputContactPerson.Location = new System.Drawing.Point(542, 101);
+            this.outputContactPerson.Name = "outputContactPerson";
+            this.outputContactPerson.Size = new System.Drawing.Size(103, 19);
+            this.outputContactPerson.TabIndex = 35;
+            this.outputContactPerson.Text = "Victoria Carpio";
             // 
-            // label15
+            // outputCustomerName
             // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(542, 71);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(101, 19);
-            this.label15.TabIndex = 34;
-            this.label15.Text = "ABC COMPANY";
+            this.outputCustomerName.AutoSize = true;
+            this.outputCustomerName.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.outputCustomerName.Location = new System.Drawing.Point(542, 71);
+            this.outputCustomerName.Name = "outputCustomerName";
+            this.outputCustomerName.Size = new System.Drawing.Size(101, 19);
+            this.outputCustomerName.TabIndex = 34;
+            this.outputCustomerName.Text = "ABC COMPANY";
             // 
-            // label14
+            // outputDeliveryTerms
             // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(222, 277);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(29, 19);
-            this.label14.TabIndex = 33;
-            this.label14.Text = "CIF";
-            this.label14.Click += new System.EventHandler(this.label14_Click);
+            this.outputDeliveryTerms.AutoSize = true;
+            this.outputDeliveryTerms.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.outputDeliveryTerms.Location = new System.Drawing.Point(222, 277);
+            this.outputDeliveryTerms.Name = "outputDeliveryTerms";
+            this.outputDeliveryTerms.Size = new System.Drawing.Size(29, 19);
+            this.outputDeliveryTerms.TabIndex = 33;
+            this.outputDeliveryTerms.Text = "CIF";
+            this.outputDeliveryTerms.Click += new System.EventHandler(this.label14_Click);
             // 
             // label13
             // 
@@ -249,15 +249,15 @@
             this.label13.TabIndex = 32;
             this.label13.Text = "QUOTATION (MMDDYYYY)";
             // 
-            // label12
+            // outputFromDate
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(223, 158);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(91, 19);
-            this.label12.TabIndex = 31;
-            this.label12.Text = "01/01/2015 to";
+            this.outputFromDate.AutoSize = true;
+            this.outputFromDate.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.outputFromDate.Location = new System.Drawing.Point(223, 158);
+            this.outputFromDate.Name = "outputFromDate";
+            this.outputFromDate.Size = new System.Drawing.Size(91, 19);
+            this.outputFromDate.TabIndex = 31;
+            this.outputFromDate.Text = "01/01/2015 to";
             // 
             // label11
             // 
@@ -268,25 +268,25 @@
             this.label11.Size = new System.Drawing.Size(0, 18);
             this.label11.TabIndex = 30;
             // 
-            // label10
+            // outputDate
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(222, 100);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(75, 19);
-            this.label10.TabIndex = 29;
-            this.label10.Text = "11/20/2015";
+            this.outputDate.AutoSize = true;
+            this.outputDate.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.outputDate.Location = new System.Drawing.Point(222, 100);
+            this.outputDate.Name = "outputDate";
+            this.outputDate.Size = new System.Drawing.Size(75, 19);
+            this.outputDate.TabIndex = 29;
+            this.outputDate.Text = "11/20/2015";
             // 
-            // label9
+            // outputPQNo
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(223, 70);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(37, 19);
-            this.label9.TabIndex = 28;
-            this.label9.Text = "2327";
+            this.outputPQNo.AutoSize = true;
+            this.outputPQNo.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.outputPQNo.Location = new System.Drawing.Point(223, 70);
+            this.outputPQNo.Name = "outputPQNo";
+            this.outputPQNo.Size = new System.Drawing.Size(37, 19);
+            this.outputPQNo.TabIndex = 28;
+            this.outputPQNo.Text = "2327";
             // 
             // lblCustomerAddress
             // 
@@ -380,25 +380,25 @@
             this.lblPaymentTerms.TabIndex = 7;
             this.lblPaymentTerms.Text = "PAYMENT TERMS";
             // 
-            // lblToDate
+            // outputInFavorOf
             // 
-            this.lblToDate.AutoSize = true;
-            this.lblToDate.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.lblToDate.Location = new System.Drawing.Point(223, 245);
-            this.lblToDate.Name = "lblToDate";
-            this.lblToDate.Size = new System.Drawing.Size(82, 19);
-            this.lblToDate.TabIndex = 6;
-            this.lblToDate.Text = "CUSTOMER";
+            this.outputInFavorOf.AutoSize = true;
+            this.outputInFavorOf.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.outputInFavorOf.Location = new System.Drawing.Point(223, 245);
+            this.outputInFavorOf.Name = "outputInFavorOf";
+            this.outputInFavorOf.Size = new System.Drawing.Size(82, 19);
+            this.outputInFavorOf.TabIndex = 6;
+            this.outputInFavorOf.Text = "CUSTOMER";
             // 
-            // lblFromDate
+            // outputPaymentTerms
             // 
-            this.lblFromDate.AutoSize = true;
-            this.lblFromDate.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.lblFromDate.Location = new System.Drawing.Point(223, 213);
-            this.lblFromDate.Name = "lblFromDate";
-            this.lblFromDate.Size = new System.Drawing.Size(37, 19);
-            this.lblFromDate.TabIndex = 5;
-            this.lblFromDate.Text = "COD";
+            this.outputPaymentTerms.AutoSize = true;
+            this.outputPaymentTerms.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.outputPaymentTerms.Location = new System.Drawing.Point(223, 213);
+            this.outputPaymentTerms.Name = "outputPaymentTerms";
+            this.outputPaymentTerms.Size = new System.Drawing.Size(37, 19);
+            this.outputPaymentTerms.TabIndex = 5;
+            this.outputPaymentTerms.Text = "COD";
             // 
             // Label5
             // 
@@ -473,23 +473,23 @@
             this.dgvRFQItems.AllowUserToDeleteRows = false;
             this.dgvRFQItems.AllowUserToResizeColumns = false;
             this.dgvRFQItems.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Source Sans Pro", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(107)))), ((int)(((byte)(58)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            this.dgvRFQItems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Source Sans Pro", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(107)))), ((int)(((byte)(58)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvRFQItems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvRFQItems.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(249)))));
             this.dgvRFQItems.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvRFQItems.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRFQItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRFQItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvRFQItems.ColumnHeadersHeight = 24;
             this.dgvRFQItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvRFQItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -506,12 +506,12 @@
             this.dgvRFQItems.ReadOnly = true;
             this.dgvRFQItems.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvRFQItems.RowHeadersVisible = false;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(249)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Source Sans Pro", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(107)))), ((int)(((byte)(58)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
-            this.dgvRFQItems.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(249)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Source Sans Pro", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(107)))), ((int)(((byte)(58)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvRFQItems.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvRFQItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRFQItems.Size = new System.Drawing.Size(775, 218);
             this.dgvRFQItems.TabIndex = 69;
@@ -675,17 +675,17 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         internal System.Windows.Forms.TabControl tabItemDetails;
         internal System.Windows.Forms.TabPage TabPage1;
-        internal System.Windows.Forms.Label label20;
-        internal System.Windows.Forms.Label label17;
-        internal System.Windows.Forms.Label label18;
-        internal System.Windows.Forms.Label label16;
-        internal System.Windows.Forms.Label label15;
-        internal System.Windows.Forms.Label label14;
+        internal System.Windows.Forms.Label outputAddress;
+        internal System.Windows.Forms.Label outputEmailAddress;
+        internal System.Windows.Forms.Label outputContactNumber;
+        internal System.Windows.Forms.Label outputContactPerson;
+        internal System.Windows.Forms.Label outputCustomerName;
+        internal System.Windows.Forms.Label outputDeliveryTerms;
         internal System.Windows.Forms.Label label13;
-        internal System.Windows.Forms.Label label12;
+        internal System.Windows.Forms.Label outputFromDate;
         internal System.Windows.Forms.Label label11;
-        internal System.Windows.Forms.Label label10;
-        internal System.Windows.Forms.Label label9;
+        internal System.Windows.Forms.Label outputDate;
+        internal System.Windows.Forms.Label outputPQNo;
         internal System.Windows.Forms.Label lblCustomerAddress;
         internal System.Windows.Forms.Label lblCustomerEmail;
         internal System.Windows.Forms.Label lblCustomerNumber;
@@ -695,8 +695,8 @@
         internal System.Windows.Forms.Label lblDeliveryTerms;
         internal System.Windows.Forms.Label lblInFavorOf;
         internal System.Windows.Forms.Label lblPaymentTerms;
-        internal System.Windows.Forms.Label lblToDate;
-        internal System.Windows.Forms.Label lblFromDate;
+        internal System.Windows.Forms.Label outputInFavorOf;
+        internal System.Windows.Forms.Label outputPaymentTerms;
         internal System.Windows.Forms.Label Label5;
         internal System.Windows.Forms.Label lblRFQNumber;
         internal System.Windows.Forms.Label lblDate;
@@ -705,8 +705,8 @@
         internal System.Windows.Forms.TabPage TabPage2;
         internal System.Windows.Forms.Label lblTotalAmount;
         internal System.Windows.Forms.Label lblPQItems;
-        internal System.Windows.Forms.Label label21;
-        internal System.Windows.Forms.Label label19;
+        internal System.Windows.Forms.Label outputToDate;
+        internal System.Windows.Forms.Label outputRFQNo;
         internal System.Windows.Forms.Button btnCancel;
         internal System.Windows.Forms.Button btnSaveGeneratePDF;
         private System.Windows.Forms.PictureBox btnGeneratePDF;

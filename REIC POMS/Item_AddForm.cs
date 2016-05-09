@@ -15,17 +15,27 @@ namespace REIC_POMS
 {
     public partial class Item_AddForm : Form
     {
-        public bool cancel;
-        public bool filledOut;
-        public int dateResult;
+        private MySQLDatabaseDriver sql;
         private ArrayList supplierList;
         private ArrayList supplierDropdownList;
+        private bool cancel;
+        private bool filledOut;
+        private int dateResult;
+        private int supplierIDFK;
 
         public Item_AddForm()
         {
             InitializeComponent();
+            sql = new MySQLDatabaseDriver();
+
             supplierList = new ArrayList();
+            sql.SelectAllSuppliers(supplierList);
+
             supplierDropdownList = new ArrayList();
+            sql.SelectAllSupplierNames(supplierDropdownList);
+            supplierDropdownList.Sort(); //Sort list alphabetically
+            supplierDropdownList.Insert(0, "Select Supplier");
+            cbbSupplierName.DataSource = supplierDropdownList; //Populate the dropdown
 
             /*
             try
@@ -45,6 +55,7 @@ namespace REIC_POMS
                 cbbSupplierName.DataSource = supplierDropdownList; //Populate the dropdown w/ all Supplier Names
             }
             catch (Exception e) { }*/
+
         }
 
         private void Item_AddForm_Load(object sender, EventArgs e)
@@ -107,6 +118,12 @@ namespace REIC_POMS
             get { return txtSupplierAddress.Text; }
         }
 
+        public int SupplierIDFK
+        {
+            set { supplierIDFK = value; }
+            get { return supplierIDFK; }
+        }
+
         private void btnCancel_Click(object sender, EventArgs e)
         {
             cancel = true;
@@ -162,6 +179,7 @@ namespace REIC_POMS
 
             } while ((filledOut == false)||(dateResult > 0)||(dateResult ==0));
 
+            SupplierIDFK = sql.SelectSupplierID(SupplierName);
             cancel = false;
             this.Close();
         }

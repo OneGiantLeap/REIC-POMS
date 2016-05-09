@@ -103,3 +103,4 @@ C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC POMS.csp
 C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC POMS.exe
 C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC POMS.pdb
 C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC POMS.csprojResolveAssemblyReference.cache
+C:\Users\Ariel\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.SPR_MainScreen.resources

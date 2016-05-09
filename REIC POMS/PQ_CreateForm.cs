@@ -14,40 +14,51 @@ namespace REIC_POMS
 {
     public partial class PQ_CreateForm : Form
     {
+
+        private MySQLDatabaseDriver sql;
         private ArrayList customerList; //To temporarily store all customers (Names only). REPLACE W/ MYSQL LATER?
         private ArrayList customerDropdownList; //Just for the text to display in the dropdown list
-        private ArrayList itemList; //To temporarily store all items. REPLACE W/ MYSQL LATER?
+        private ArrayList itemList; //To temporarily store all items. 
         private ArrayList rfqItemList; //Items in the RFQ
+        private ArrayList pqOrderLineList;
+        private int customerIDFK;       
 
-   
 
         public PQ_CreateForm()
         {
             InitializeComponent();
-            customerList = new ArrayList(); //To temporarily store all customers. REPLACE W/ MYSQL LATER?
-            customerDropdownList = new ArrayList(); //Just for the text to display in the dropdown list
-            itemList = new ArrayList(); //To temporarily store all items. REPLACE W/ MYSQL LATER?
-            rfqItemList = new ArrayList();
+            sql = new MySQLDatabaseDriver(); 
 
-            try
+            itemList = new ArrayList();
+            sql.SelectAllItems(itemList);
+            for (int i = 0; i < itemList.Count; i++)
             {
-                FileStream fs = new FileStream(@"customer.txt", FileMode.Open);
-                StreamReader readin = new StreamReader(fs);
-                while (!readin.EndOfStream)
-                {
-                    string[] text = readin.ReadLine().Split('|');
-                  //  customerList.Add(new Customer(text[0], text[1], text[2], text[3], text[4], text[5], text[6], text[7], text[8], text[9]));                  
-                   customerDropdownList.Add(text[3]); //Just noting the Customer Names
-                }
-                readin.Close();
-                fs.Close();
-                customerList.Sort(); //Sort list alphabetically
-                customerList.Insert(0, "Select Customer");
-                cbbCustomerName.DataSource = customerList; //Populate the dropdown w/ all Customer Names
+                Item itemToAdd = (Item)itemList[i];
+                dgvItemSelection.Rows.Add(itemToAdd.PartNumber,
+                                          itemToAdd.ItemName,
+                                          itemToAdd.ItemDescription,
+                                          itemToAdd.Uom,
+                                          itemToAdd.ReicUnitPrice.ToString("0.00"));
+             
             }
-            catch (Exception /*e*/) { }
+
+
+            customerList = new ArrayList();
+            sql.SelectAllSuppliers(customerList);
+
+            customerDropdownList = new ArrayList();
+            sql.SelectAllCustomerNames(customerDropdownList);
+            customerDropdownList.Sort(); 
+            customerDropdownList.Insert(0, "Select Customer");
+            cbbCustomerName.DataSource = customerDropdownList; 
+
+            pqOrderLineList = new ArrayList();
         
-        
+        }
+
+        private void PQ_CreateForm_Load(object sender, EventArgs e)
+        {
+            sql.SelectSpecificRFQOrderLine(RFQNo, dgvPQItems); //its purpose is to have the orderline of spec. rfq in the arraylist of pq
         }
 
         public bool cancel;
@@ -84,11 +95,13 @@ namespace REIC_POMS
 
         public string PaymentTerms
         {
+            set { cbbPaymentTerms.Text = value; }
             get { return cbbPaymentTerms.Text; }
         }
 
         public string DeliveryTerms
         {
+            set { cbbDeliveryTerms.Text = value; }
             get { return cbbDeliveryTerms.Text; }
         }
 
@@ -109,7 +122,7 @@ namespace REIC_POMS
             set { cbbInFavorOf.Text = value; }
             get { return cbbInFavorOf.Text; }
         }
-
+        
         public string CustomerName
         {
             get { return cbbCustomerName.Text; }
@@ -138,10 +151,17 @@ namespace REIC_POMS
             set { txtCustomerAddress.Text = value; }
             get { return txtCustomerAddress.Text; }
         }
-
-        public ArrayList RFQItemsList
+        
+        public ArrayList PQOrderLineList
         {
-            get { return rfqItemList; }
+            set { pqOrderLineList = value; }
+            get { return pqOrderLineList; }
+        }
+
+        public int CustomerIDFK
+        {
+            set { customerIDFK = value; }
+            get { return customerIDFK; }
         }
 
         public bool Cancel
@@ -187,6 +207,20 @@ namespace REIC_POMS
                 tabPQForm.SelectedTab = tabPQForm.TabPages["tabItemDetails"]; //Directs user to the Item Details tab.
                 return;
             }
+
+            else
+            {
+                CustomerIDFK = sql.SelectCustomerID(CustomerName);
+                for (int i = 0; i < dgvPQItems.RowCount; i++)
+                {
+                    DataGridViewRow row = dgvPQItems.Rows[i]; //Store row number
+                    pqOrderLineList.Add(new PQ_OrderLine(txtPQNumber.Text,
+                                                           row.Cells["RFQItemPartNo"].Value.ToString(),
+                                                           int.Parse(row.Cells["Qty"].Value.ToString())));
+                }
+                cancel = false;
+                Close();
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -219,6 +253,42 @@ namespace REIC_POMS
                     break; //Once the other fields are auto-complated, end the search process.
                 }
             }
+        }
+
+        private void btnAddtoPQ_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow selectedRow = dgvItemSelection.SelectedRows[0]; 
+            for (int i = 0; i < dgvPQItems.RowCount; i++) 
+            {
+                if (selectedRow.Cells["PartNo"].Value == dgvPQItems.Rows[i].Cells["PQItemPartNo"].Value)
+                {
+                    MessageBox.Show("That item has already been added in the Price Quotation. If you wish to change the item quantity, please remove that item and add it again.", "Item Already in PQ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return; 
+                }
+                dgvPQItems.Rows.Add(selectedRow.Cells["PartNo"].Value, 
+                               selectedRow.Cells["ItemName"].Value,
+                               selectedRow.Cells["Description"].Value,
+                               nupItemQuantity.Value,
+                               selectedRow.Cells["UOM"].Value);
+            }
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            if (dgvPQItems.Rows.Count == 0) //Empty DGV
+            {
+                MessageBox.Show("There are no items to remove from the Price Quotation.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return; //Enables user to interact with the form again
+            }
+            dgvPQItems.Rows.RemoveAt(dgvPQItems.CurrentRow.Index);
+        }
+
+        private void btnClearItems_Click(object sender, EventArgs e)
+        {
+            if (dgvPQItems.Rows.Count == 0)
+            { MessageBox.Show("There are no items to remove from the Request for Price Quotation.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            pqOrderLineList.Clear();
+            dgvPQItems.Rows.Clear();
         }
     }
 }

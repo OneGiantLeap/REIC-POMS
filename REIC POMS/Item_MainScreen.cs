@@ -14,11 +14,13 @@ namespace REIC_POMS
 {
     public partial class Item_MainScreen : Form
     {
+        private MySQLDatabaseDriver sql;
         ArrayList itemList;
 
         public Item_MainScreen()
         {
             InitializeComponent();
+            sql = new MySQLDatabaseDriver();
             itemList = new ArrayList();
 
             /*
@@ -46,6 +48,8 @@ namespace REIC_POMS
             dgvItems.Rows.Add("000001", "Vacuum Sealer A", "Supplier A");
             dgvItems.Rows.Add("000002", "Paper Tapes A", "Supplier A");
             dgvItems.Rows.Add("000003", "Mold Press A", "Supplier A"); */
+            sql.SelectAllItemsDGV(dgvItems);
+            sql.SelectAllItems(itemList);
         }
 
         private void ItemsMainScreen_Load(object sender, EventArgs e)
@@ -256,7 +260,7 @@ namespace REIC_POMS
 
             if (iaf.Cancel == false) //Meaning, will add the Item. If Cancel is true, nothing happens.
             {
-                /* ADD SUPPLIER ID (FIX also Create/Update)
+                // ADD SUPPLIER ID (FIX also Create/Update)
                 //---ADD the new Item to the ArrayList
                 itemList.Add(new Item(iaf.PartNumber,
                               iaf.ItemName,
@@ -268,14 +272,14 @@ namespace REIC_POMS
                               iaf.Uom,
                               FromDateNoTime,
                               ToDateNoTime,
-                              );
-                */            
+                              iaf.SupplierIDFK
+                              ));
 
+                Item newItem = (Item)itemList[(itemList.Count - 1)]; //Casting
+                sql.InsertItem(newItem);
                 //---DISPLAY the newly added Item in the Main Screen DGV
                 dgvItems.Rows.Add(iaf.PartNumber, iaf.ItemName, iaf.SupplierName);
 
-                //Streamwriter
-                //saveItemData();
             }
         }
 
@@ -302,6 +306,7 @@ namespace REIC_POMS
                         Item_ViewForm ivf = new Item_ViewForm();
                         ivf.PartNumbertoView = item.PartNumber;
                         ivf.ItemNametoView = item.ItemName;
+                        ivf.ItemDescriptiontoView = item.ItemDescription;
                         ivf.SupplierUnitPricetoView = (item.SupplierUnitPrice).ToString("0.00");
                         ivf.MarkuptoView = (item.Markup).ToString();
                         ivf.ReicUnitPricetoView = (item.ReicUnitPrice).ToString("0.00");
@@ -309,8 +314,14 @@ namespace REIC_POMS
                         ivf.UomtoView = item.Uom;
                         ivf.FromDatetoView = item.FromDateNoTime;
                         ivf.ToDatetoView = item.ToDateNoTime;
+
+                        Supplier s = sql.SelectSupplierDetails(item.SupplierID);
+                        ivf.SupplierPersontoView = s.SupplierPerson;
+                        ivf.SupplierNumbertoView = s.SupplierNumber;
+                        ivf.SupplierEmailtoView = s.SupplierEmail;
+                        ivf.SupplierAddresstoView = s.SupplierAddress;
+                        
                         /* FIX
-                        ivf.ItemDescriptiontoView = item.ItemDescription;
                         ivf.SupplierNametoView = item.SupplierName;
                         ivf.SupplierPersontoView = item.SupplierPerson;
                         ivf.SupplierNumbertoView = item.SupplierNumber;
@@ -334,12 +345,14 @@ namespace REIC_POMS
                             item.FromDateNoTime = ivf.FromDatetoView;// the left wing does the saving in the filestream, the right wing gets input from the edit.
                             item.ToDateNoTime = ivf.ToDatetoView;
                             item.ItemDescription = ivf.ItemDescriptiontoView;
-                            /*---FIX
-                            item.SupplierName = ivf.SupplierNametoView;
-                            item.SupplierPerson = ivf.SupplierPersontoView;
-                            item.SupplierNumber = ivf.SupplierNumbertoView;
-                            item.SupplierEmail = ivf.SupplierEmailtoView;
-                            item.SupplierAddress = ivf.SupplierAddresstoView;*/
+
+                        
+                            
+                            s.SupplierName = ivf.SupplierNametoView;
+                            s.SupplierPerson = ivf.SupplierPersontoView;
+                            s.SupplierNumber = ivf.SupplierNumbertoView;
+                            s.SupplierEmail = ivf.SupplierEmailtoView;
+                            s.SupplierAddress = ivf.SupplierAddresstoView;
 
                             //Update DGV values
                             dgvItems.SelectedRows[0].Cells[0].Value = ivf.PartNumbertoView;

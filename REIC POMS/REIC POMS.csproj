@@ -138,6 +138,7 @@
     <Compile Include="PQ_MainScreen.Designer.cs">
       <DependentUpon>PQ_MainScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="PQ_OrderLine.cs" />
     <Compile Include="PQ_ViewForm.cs">
       <SubType>Form</SubType>
     </Compile>
