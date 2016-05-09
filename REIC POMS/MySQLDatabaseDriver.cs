@@ -52,36 +52,32 @@ namespace REIC_POMS
         //---------------------
         //  SELECT STATEMENTS |
         //---------------------
-        public int GetRowCount(string tableName, int year, int month) //Purpose: Aid in autogeneration of RFQ, PQ, and PO numbers
-        { //DO NOT USE YET. NOT YET DONE
+        public int GetRowCount(string tableName, string year, string month)
+        { //Purpose: Aid in autogeneration of RFQ, PQ, and PO numbers
             ConnectToSQL();
-            int rowCount = 0;
-            //Add: Conversion to YYYY
-            //Add: Conversion to MM
+            string yearMonth = year + month;
+            MessageBox.Show("Yearmonth:" + yearMonth);
             switch (tableName)
             {
                 case "rfq_t":
-                    countCommand = new MySqlCommand("SELECT COUNT(*) FROM rfq_t WHERE " + ";", connection);
+                    countCommand = new MySqlCommand(string.Format("SELECT COUNT(*) FROM rfq_t WHERE rfq_no LIKE '{0}%'" + ";", yearMonth), connection);
                     break;
                 case "pq_t":
+                    countCommand = new MySqlCommand(string.Format("SELECT COUNT(*) FROM pq_t WHERE pq_no LIKE '{0}%'" + ";", yearMonth), connection);
                     break;
                 case "po_t":
-                    break;
-                case "sidr_t":
+                    countCommand = new MySqlCommand(string.Format("SELECT COUNT(*) FROM po_t WHERE po_no LIKE '{0}%'" + ";", yearMonth), connection);
                     break;
             }
-            countReader = countCommand.ExecuteReader();
-            while (countReader.Read())
-            {
-                rowCount = int.Parse(countReader[0].ToString());
-            }
+            object countReader = countCommand.ExecuteScalar();
+            int rowCount = int.Parse(countReader.ToString());
+            MessageBox.Show(rowCount.ToString()); //Debug purposes
             DisconnectFromSQL();
             return rowCount;
         }
 
-        //Purpose: Streamreader data from database into ArrayList
         public void SelectAllItems(ArrayList result)
-        {
+        { //Purpose: Streamreader data from database into ArrayList
             ConnectToSQL();
             command = new MySqlCommand("SELECT * FROM item_t;", connection);
             myReader = command.ExecuteReader();
@@ -224,15 +220,15 @@ namespace REIC_POMS
         public void SelectAllRFQDGV(DataGridView dgvName)
         { //To populate the RFQ Main Screen DGV (Plus the actual Customer & Supplier names, not their IDs)
             ConnectToSQL();
-            command = new MySqlCommand("SELECT rfq_no, date_of_request, supplier_name, company_name " +
+            command = new MySqlCommand("SELECT rfq_no, DATE_FORMAT(date_of_request, '%m/%d/%Y'), supplier_name, company_name " +
                                        "FROM rfq_t, customer_t, supplier_t " +
                                        "WHERE rfq_t.customer_id = customer_t.customer_id " +
-                                       "AND rfq_t.supplier_id = supplier_t.supplier_id; ", connection);
+                                       "AND rfq_t.supplier_id = supplier_t.supplier_id;", connection);
             myReader = command.ExecuteReader();
             while (myReader.Read())
             {
                 dgvName.Rows.Add(myReader["rfq_no"].ToString(),
-                                 myReader["date_of_request"].ToString(),
+                                 myReader["DATE_FORMAT(date_of_request, '%m/%d/%Y')"].ToString(),
                                  myReader["supplier_name"].ToString(),
                                  myReader["company_name"].ToString());
             }
@@ -243,7 +239,8 @@ namespace REIC_POMS
         { //Retrieves a specific RFQ's row | Used in View Forms of RFQ
             ConnectToSQL();
             RFQ r;
-            command = new MySqlCommand(string.Format("SELECT * FROM rfq_t WHERE rfq_no={0};", rfqNo), connection);
+            command = new MySqlCommand(string.Format("SELECT rfq_no, DATE_FORMAT(date_of_request, '%m/%d/%Y'), payment_terms, delivery_terms, customer_id, supplier_id FROM rfq_t WHERE rfq_no={0};", rfqNo), connection);
+            //SELECT Statement is the same as "SELECT * FROM rfq_t WHERE rfq_no={0};" Had to mention all, since will format the date
             myReader = command.ExecuteReader();
             myReader.Read();
             r = new RFQ(rfqNo,
@@ -326,7 +323,7 @@ namespace REIC_POMS
 
         public void InsertItem(Item i)
         {
-            //Need to convert SQL's date to MM/DD/YYYY
+            //Dates must be inserted as SQL's format: YYYY-MM-DD
             Insert(string.Format("INSERT INTO item_t " +
                 "(part_number, item_name, item_description, supplier_unit_price, mark_up_percentage, reic_unit_price, minimum_order_quantity, unit_of_measurement, from_date, to_date, supplier_id) " +
                 "VALUES ('{0}', '{1}', '{2}', {3}, {4}, {5}, {6}, '{7}', '{8}', '{9}', {10});", i.PartNumber,
@@ -371,11 +368,13 @@ namespace REIC_POMS
 
         public void InsertRFQ(RFQ r)
         {
-            //If will add account number, it's {3}, after payment terms
+            //Have to convert any date from REIC's format to SQL's format (or else, what'll be saved into database is '0000-00-00')
+            string[] dateParts = r.RequestDate.Split('/'); //REIC's format: 05/06/2016 (MM/DD/YYYY)
+            string convertedDate = dateParts[2] + "-" + dateParts[0] + "-" + dateParts[1]; //SQL's format: 2016-05-06 (YYYY-MM-DD)
             Insert(string.Format("INSERT INTO rfq_t " +
                 "(rfq_no, date_of_request, payment_terms, delivery_terms, customer_id, supplier_id) " + 
                 "VALUES ('{0}', '{1}', '{2}', '{3}', {4}, {5});", r.RFQNo,
-                                                                  r.RequestDate,
+                                                                  convertedDate,
                                                                   r.PaymentTerms,
                                                                   r.DeliveryTerms,
                                                                   r.CustomerID,

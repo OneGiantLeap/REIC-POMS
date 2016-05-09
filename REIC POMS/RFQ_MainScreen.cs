@@ -17,7 +17,6 @@ namespace REIC_POMS
         //ATTRIBUTES
         private MySQLDatabaseDriver sql;
         private ArrayList rfqList; //All RFQs
-        private int counter; //For RFQ No. Still figuring out if I still need this
 
         //CONSTRUCTOR
         public RFQ_MainScreen()
@@ -25,8 +24,6 @@ namespace REIC_POMS
             InitializeComponent();
             sql = new MySQLDatabaseDriver();
             rfqList = new ArrayList();
-
-            counter = 0;
 
             //---ADJUST DATAGRIDVIEW COLUMN ALIGNMENT
             //Center column headings
@@ -219,8 +216,8 @@ namespace REIC_POMS
             //Search SQL for existing RFQs with "YYMM-%" (e.g. 1604-%). nthRFQ is +1 to the number of rows returned.
             string year = DateTime.Now.ToString("yy"); //Last two digits of year (e.g. 2016 becomes 16)
             string month = DateTime.Now.ToString("MM");
-            string nthRFQ = "008";
-            string generatedRFQNo = year + month + "-" + nthRFQ;
+            int rfqCount = sql.GetRowCount("rfq_t", year, month);
+            string generatedRFQNo = year + month + "-" + (rfqCount + 1).ToString("D3"); //D3 for padded zeroes and ensure there are 3 digits.
 
             crfq.RFQNo = generatedRFQNo;
             crfq.ShowDialog(); //Validation happens at RFQ_CreateForm.cs

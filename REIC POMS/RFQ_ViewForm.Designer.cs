@@ -35,12 +35,10 @@
             this.tabRFQForm = new System.Windows.Forms.TabControl();
             this.tabRequestDetails = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.outputSupplierAddress = new System.Windows.Forms.Label();
             this.outputSupplierEmail = new System.Windows.Forms.Label();
             this.outputSupplierNumber = new System.Windows.Forms.Label();
             this.outputSupplierPerson = new System.Windows.Forms.Label();
             this.outputSupplierName = new System.Windows.Forms.Label();
-            this.outputCustomerName = new System.Windows.Forms.Label();
             this.outputDeliveryTerms = new System.Windows.Forms.Label();
             this.outputPaymentTerms = new System.Windows.Forms.Label();
             this.outputDateOfRequest = new System.Windows.Forms.Label();
@@ -69,6 +67,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnCreatePQ = new System.Windows.Forms.Button();
+            this.outputSupplierAddress = new System.Windows.Forms.TextBox();
+            this.outputCustomerName = new System.Windows.Forms.TextBox();
             this.tabRFQForm.SuspendLayout();
             this.tabRequestDetails.SuspendLayout();
             this.tabItemDetails.SuspendLayout();
@@ -90,13 +90,13 @@
             // tabRequestDetails
             // 
             this.tabRequestDetails.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.tabRequestDetails.Controls.Add(this.panel1);
+            this.tabRequestDetails.Controls.Add(this.outputCustomerName);
             this.tabRequestDetails.Controls.Add(this.outputSupplierAddress);
+            this.tabRequestDetails.Controls.Add(this.panel1);
             this.tabRequestDetails.Controls.Add(this.outputSupplierEmail);
             this.tabRequestDetails.Controls.Add(this.outputSupplierNumber);
             this.tabRequestDetails.Controls.Add(this.outputSupplierPerson);
             this.tabRequestDetails.Controls.Add(this.outputSupplierName);
-            this.tabRequestDetails.Controls.Add(this.outputCustomerName);
             this.tabRequestDetails.Controls.Add(this.outputDeliveryTerms);
             this.tabRequestDetails.Controls.Add(this.outputPaymentTerms);
             this.tabRequestDetails.Controls.Add(this.outputDateOfRequest);
@@ -129,16 +129,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1, 287);
             this.panel1.TabIndex = 74;
-            // 
-            // outputSupplierAddress
-            // 
-            this.outputSupplierAddress.AutoSize = true;
-            this.outputSupplierAddress.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.outputSupplierAddress.Location = new System.Drawing.Point(409, 212);
-            this.outputSupplierAddress.Name = "outputSupplierAddress";
-            this.outputSupplierAddress.Size = new System.Drawing.Size(35, 19);
-            this.outputSupplierAddress.TabIndex = 73;
-            this.outputSupplierAddress.Text = "Text";
             // 
             // outputSupplierEmail
             // 
@@ -179,16 +169,6 @@
             this.outputSupplierName.Size = new System.Drawing.Size(35, 19);
             this.outputSupplierName.TabIndex = 69;
             this.outputSupplierName.Text = "Text";
-            // 
-            // outputCustomerName
-            // 
-            this.outputCustomerName.AutoSize = true;
-            this.outputCustomerName.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.outputCustomerName.Location = new System.Drawing.Point(55, 269);
-            this.outputCustomerName.Name = "outputCustomerName";
-            this.outputCustomerName.Size = new System.Drawing.Size(35, 19);
-            this.outputCustomerName.TabIndex = 68;
-            this.outputCustomerName.Text = "Text";
             // 
             // outputDeliveryTerms
             // 
@@ -417,7 +397,7 @@
             this.dgvRFQItems.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Source Sans Pro Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
@@ -525,6 +505,36 @@
             this.btnCreatePQ.UseVisualStyleBackColor = false;
             this.btnCreatePQ.Click += new System.EventHandler(this.btnCreatePQ_Click);
             // 
+            // outputSupplierAddress
+            // 
+            this.outputSupplierAddress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(249)))));
+            this.outputSupplierAddress.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.outputSupplierAddress.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.outputSupplierAddress.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.outputSupplierAddress.Location = new System.Drawing.Point(413, 212);
+            this.outputSupplierAddress.MaxLength = 150;
+            this.outputSupplierAddress.Multiline = true;
+            this.outputSupplierAddress.Name = "outputSupplierAddress";
+            this.outputSupplierAddress.ReadOnly = true;
+            this.outputSupplierAddress.Size = new System.Drawing.Size(302, 75);
+            this.outputSupplierAddress.TabIndex = 75;
+            this.outputSupplierAddress.Text = "Magic TextBox";
+            // 
+            // outputCustomerName
+            // 
+            this.outputCustomerName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(249)))));
+            this.outputCustomerName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.outputCustomerName.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.outputCustomerName.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.outputCustomerName.Location = new System.Drawing.Point(52, 270);
+            this.outputCustomerName.MaxLength = 150;
+            this.outputCustomerName.Multiline = true;
+            this.outputCustomerName.Name = "outputCustomerName";
+            this.outputCustomerName.ReadOnly = true;
+            this.outputCustomerName.Size = new System.Drawing.Size(253, 39);
+            this.outputCustomerName.TabIndex = 76;
+            this.outputCustomerName.Text = "Magic TextBox";
+            // 
             // RFQ_ViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -579,16 +589,16 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Qty;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnCreatePQ;
-        private System.Windows.Forms.Label outputSupplierAddress;
         private System.Windows.Forms.Label outputSupplierEmail;
         private System.Windows.Forms.Label outputSupplierNumber;
         private System.Windows.Forms.Label outputSupplierPerson;
         private System.Windows.Forms.Label outputSupplierName;
-        private System.Windows.Forms.Label outputCustomerName;
         private System.Windows.Forms.Label outputDeliveryTerms;
         private System.Windows.Forms.Label outputPaymentTerms;
         private System.Windows.Forms.Label outputDateOfRequest;
         private System.Windows.Forms.Label outputRFQNo;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TextBox outputSupplierAddress;
+        private System.Windows.Forms.TextBox outputCustomerName;
     }
 }

@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.6.9.8\lib\net45\MySql.Data.dll</HintPath>
       <Private>True</Private>
@@ -113,6 +116,12 @@
       <DependentUpon>Item_MainScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="MySQLDatabaseDriver.cs" />
+    <Compile Include="POPrintout.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>POPrintout.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="PO_MainScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +129,10 @@
       <DependentUpon>PO_MainScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="PQ.cs" />
+    <Compile Include="PQPrintout.cs">
+      <DependentUpon>PQPrintout.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="PQ_CreateForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,7 +159,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="reicpomsDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>reicpomsDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="RFQ.cs" />
+    <Compile Include="RFQPrintout.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RFQPrintout.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="RFQ_CreateForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,11 +196,59 @@
     <Compile Include="SIDR_MainScreen.Designer.cs">
       <DependentUpon>SIDR_MainScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="DRPrintout.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DRPrintout.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SIPrintout.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SIPrintout.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="SPR_MainScreen.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SPR_MainScreen.Designer.cs">
       <DependentUpon>SPR_MainScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SPR_POCompleted.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SPR_POCompleted.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SPR_POPending.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SPR_POPending.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SPR_PQCompleted.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SPR_PQCompleted.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SPR_PQPending.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SPR_PQPending.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SPR_RFQCompleted.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SPR_RFQCompleted.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SPR_RFQPending.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SPR_RFQPending.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Supplier.cs" />
     <Compile Include="Supplier_AddForm.cs">
@@ -231,8 +303,16 @@
       <DependentUpon>Log-in.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="POPrintout.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>POPrintout.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="PO_MainScreen.resx">
       <DependentUpon>PO_MainScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PQPrintout.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PQPrintout1.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="PQ_CreateForm.resx">
       <DependentUpon>PQ_CreateForm.cs</DependentUpon>
@@ -251,6 +331,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="RFQPrintout.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RFQPrintout.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="RFQ_CreateForm.resx">
       <DependentUpon>RFQ_CreateForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -263,8 +347,40 @@
     <EmbeddedResource Include="SIDR_MainScreen.resx">
       <DependentUpon>SIDR_MainScreen.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DRPrintout.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DRPrintout.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SIPrintout.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SIPrintout.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="SPR_MainScreen.resx">
       <DependentUpon>SPR_MainScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SPR_POCompleted.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SPR_POCompleted.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SPR_POPending.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SPR_POPending.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SPR_PQCompleted.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SPR_PQCompleted.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SPR_PQPending.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SPR_PQPending.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SPR_RFQCompleted.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SPR_RFQCompleted.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SPR_RFQPending.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SPR_RFQPending.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Supplier_AddForm.resx">
       <DependentUpon>Supplier_AddForm.cs</DependentUpon>
@@ -298,6 +414,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="reicpomsDataSet.xsc">
+      <DependentUpon>reicpomsDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="reicpomsDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>reicpomsDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="reicpomsDataSet.xss">
+      <DependentUpon>reicpomsDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Resources\BannerPQCreate.png" />
   </ItemGroup>
   <ItemGroup>
@@ -374,6 +501,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

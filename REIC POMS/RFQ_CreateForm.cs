@@ -63,28 +63,6 @@ namespace REIC_POMS
             supplierDropdownList.Insert(0, "Select Supplier");
             cbbSupplierName.DataSource = supplierDropdownList; //Populate the dropdown
 
-            rfqOrderLineList = new ArrayList();
-
-            /*
-            //Populate the Item Selection DGV *WARNING: Temporary Streamreader. Replace w/ MySQL later
-            try
-            {
-                FileStream fs = new FileStream(@"item.txt", FileMode.Open);
-                StreamReader readin = new StreamReader(fs);
-                while (!readin.EndOfStream)
-                {
-                    string[] text = readin.ReadLine().Split('|');
-                    //Place Item at Item Selection DGV (Part No., Item Name, Description, UOM, Supplier's Unit Price)
-                    dgvItemSelection.Rows.Add(text[0], text[1], text[9], text[6], decimal.Parse(text[3]).ToString("0.00"));
-                    itemList.Add(new Item(text[0], text[1], double.Parse(text[2]), double.Parse(text[3]), double.Parse(text[4]),
-                                            int.Parse(text[5]), text[6], text[7], text[8], text[9],
-                                            text[10], text[11], text[12], text[13], text[14])); //Recreate the Item
-                }
-                readin.Close();
-                fs.Close();
-            }
-            catch (Exception e) { }*/
-
             //Set default Combo Box values
             cbbFilterBy.SelectedIndex = 0; //"Filter by..."
             cbbPaymentTerms.SelectedIndex = 0; //"Select"
@@ -92,20 +70,20 @@ namespace REIC_POMS
             txtItemName.Text = dgvItemSelection.SelectedRows[0].Cells["ItemName"].Value.ToString();
 
             //---ADJUST DATAGRIDVIEW COLUMN ALIGNMENT
-            //Center column headings
-            dgvItemSelection.Columns["UOM"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgvItemSelection.Columns["UOM"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgvRFQItems.Columns["RFQUOM"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgvRFQItems.Columns["Qty"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            //Center column cell contents
-            dgvItemSelection.Columns["PartNo"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgvItemSelection.Columns["UOM"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgvRFQItems.Columns["RFQUOM"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgvRFQItems.Columns["Qty"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            //Right-align column headings
-            dgvItemSelection.Columns["UnitPrice"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-            //Right-align column cell contents
-            dgvItemSelection.Columns["UnitPrice"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                //Center column headings
+                    dgvItemSelection.Columns["UOM"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    dgvItemSelection.Columns["UOM"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    dgvRFQItems.Columns["RFQUOM"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    dgvRFQItems.Columns["Qty"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                //Center column cell contents
+                    dgvItemSelection.Columns["PartNo"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    dgvItemSelection.Columns["UOM"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    dgvRFQItems.Columns["RFQUOM"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    dgvRFQItems.Columns["Qty"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                //Right-align column headings
+                    dgvItemSelection.Columns["UnitPrice"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+                //Right-align column cell contents
+                    dgvItemSelection.Columns["UnitPrice"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
 
         //---------------------
@@ -117,13 +95,13 @@ namespace REIC_POMS
         //  GETTERS-SETTERS |
         //-------------------
         public string RFQNo
-        { //ENIGMA: Format for RFQ No.
+        {
             set { txtRFQNo.Text = value; } //Setter added, since it's auto-generated
             get { return txtRFQNo.Text; }
         }
 
         public string RequestDate
-        { //ENIGMA: string or datetime?
+        {
             set { dtpDateOfRequest.Text = value; }
             get { return dtpDateOfRequest.Text; }
         }
@@ -222,14 +200,14 @@ namespace REIC_POMS
             //If any text field that can't be null is empty, display error message.
             if (cbbPaymentTerms.Text == "Select")
             {
-                MessageBox.Show("Please select an option for Payment Terms.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please select an option for Payment Terms.", "Incomplete Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 tabRFQForm.SelectedTab = tabRFQForm.TabPages["tabRequestDetails"]; //Directs user to the Request Details tab.
                 return;
             }
 
             if (cbbDeliveryTerms.Text == "Select")
             {
-                MessageBox.Show("Please select an option for Delivery Terms.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please select an option for Delivery Terms.", "Incomplete Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 tabRFQForm.SelectedTab = tabRFQForm.TabPages["tabRequestDetails"]; //Directs user to the Request Details tab.
                 return;
             }
@@ -237,7 +215,7 @@ namespace REIC_POMS
             //If no Customer was selected
             if (cbbCustomerName.Text == "Select Customer")
             {
-                MessageBox.Show("Please select a Customer.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please select a Customer.", "Incomplete Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 tabRFQForm.SelectedTab = tabRFQForm.TabPages["tabRequestDetails"]; //Directs user to the Request Details tab.
                 return;
             }
@@ -245,7 +223,7 @@ namespace REIC_POMS
             //If no Supplier was selected
             if (cbbSupplierName.Text == "Select Supplier")
             {
-                MessageBox.Show("Please select a Supplier.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please select a Supplier.", "Incomplete Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 tabRFQForm.SelectedTab = tabRFQForm.TabPages["tabRequestDetails"]; //Directs user to the Request Details tab.
                 return;
             }
@@ -253,7 +231,7 @@ namespace REIC_POMS
             //If there are no items added to the RFQ
             if (dgvRFQItems.Rows.Count == 0)
             {
-                MessageBox.Show("Please include item(s) in the Request for Price Quotation.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please include item(s) in the Request for Price Quotation.", "Incomplete Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 tabRFQForm.SelectedTab = tabRFQForm.TabPages["tabItemDetails"]; //Directs user to the Item Details tab.
                 return;
             }
@@ -313,7 +291,16 @@ namespace REIC_POMS
 
         private void btnAddtoRequest_Click(object sender, EventArgs e)
         { //---GOAL: Add the selected item to the "Items in RFQ" DGV (dgvRFQItems)
-            //STEP 1: Validation - CHECK if the item to be added in the RFQ has already been added.
+            //STEP 1: Validate input in numericUpDown
+            int validatedItemQuantity;
+            bool isPriceInteger = int.TryParse(nupItemQuantity.Value.ToString(), out validatedItemQuantity);
+            if (isPriceInteger == false)
+            {
+                MessageBox.Show("Quantity of the item to be added must be an integer.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            //STEP 2: Validation - CHECK if the item to be added in the RFQ has already been added.
             DataGridViewRow selectedRow = dgvItemSelection.SelectedRows[0]; //Store row number of selected row
             for (int i = 0; i < dgvRFQItems.RowCount; i++) //Loop through dgvRFQItems
             {
@@ -327,7 +314,7 @@ namespace REIC_POMS
                 }
             }
 
-            //STEP 2: Add selected item to dgvRFQItems
+            //STEP 3: Add selected item to dgvRFQItems
             dgvRFQItems.Rows.Add(selectedRow.Cells["PartNo"].Value, //Hidden, so it won't display in the DGV. Why it exists? It's for Step 1.
                                  selectedRow.Cells["ItemName"].Value,
                                  selectedRow.Cells["Description"].Value,

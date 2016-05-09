@@ -34,12 +34,12 @@ namespace REIC_POMS
         //-------------------
         //  GETTERS-SETTERS |
         //-------------------
-        public string RFQNoToView { //ENIGMA: Format for RFQ No.
+        public string RFQNoToView {
             set { outputRFQNo.Text = value; }
             get { return outputRFQNo.Text; } }
 
-        public string RequestDateToView { //ENIGMA: string or datetime?
-            set { outputDateOfRequest.Text = value; } //Set it to today's date by default?
+        public string RequestDateToView {
+            set { outputDateOfRequest.Text = value; }
             get { return outputDateOfRequest.Text; } }
 
         public string PaymentTermsToView {
@@ -78,12 +78,6 @@ namespace REIC_POMS
             set { outputSupplierAddress.Text = value; }
             get { return outputSupplierAddress.Text; } }
 
-        /*public DataGridView RFQItemsToView
-        {
-            set { dgvRFQItems.DataSource = value; }
-            get;
-        }*/
-
         /*public bool Cancel {
             get { return cancel; } }*/
 
@@ -93,7 +87,9 @@ namespace REIC_POMS
         private void btnCreatePQ_Click(object sender, EventArgs e)
         {
             /*
-            
+                Logic:
+                Instantiate PQ form
+                Transfer details. FUDGE.
             */
 
             //---CLOSING THE FORM
