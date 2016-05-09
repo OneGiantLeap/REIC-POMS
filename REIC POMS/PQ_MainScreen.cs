@@ -7,18 +7,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Collections;
 
 namespace REIC_POMS
 {
     public partial class PQ_MainScreen : Form
     {
+        private MySQLDatabaseDriver sql;
+        private ArrayList pqList;
+
+
         public PQ_MainScreen()
         {
             InitializeComponent();
+            sql = new MySQLDatabaseDriver();
+            pqList = new ArrayList();
 
             //---ADJUST DATAGRIDVIEW COLUMN ALIGNMENT
-                //Center column header
-                    dgvPQ.Columns["Date"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //Center column header
+            dgvPQ.Columns["Date"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                     dgvPQ.Columns["PQNumber"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 //Center column contents
                     dgvPQ.Columns["Date"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -29,6 +36,9 @@ namespace REIC_POMS
                 dgvPQ.Rows.Add("06/10/2015", "Zen Nutrients Co.", "ATPI 1606-005", "02/01/2015 - 12/03/2017");
                 dgvPQ.Rows.Add("09/07/2015", "Colette’s Company", "ATPI 1609-048", "03/01/2015 - 09/05/2017");
                 dgvPQ.Rows.Add("07/12/2015", "Joy Luck Club", "ATPI 1607-004", "04/01/2015 - 08/02/2017");
+
+            sql.SelectAllPQDGV(dgvPQ); 
+           // sql.SelectAllQ(rfqList);
 
         }
 
@@ -169,10 +179,10 @@ namespace REIC_POMS
         //-----------------------------------------------------
         private void btnSPRS_Click(object sender, EventArgs e)
         {
-            /*SPR_MainScreen sprMain = new SPR_MainScreen();
+            SPR_MainScreen sprMain = new SPR_MainScreen();
             this.Hide();
             sprMain.ShowDialog();
-            this.Close();*/
+            this.Close();
         }
 
         private void btnSPRS_MouseEnter(object sender, EventArgs e)
@@ -205,6 +215,7 @@ namespace REIC_POMS
         //-----------------------------------------
         private void btnCreatePQ_Click(object sender, EventArgs e)
         {
+            //this would open the small screen (createfrompqform)
             PQ_CreateFromRFQForm pcf = new PQ_CreateFromRFQForm();
             pcf.ShowDialog();
         }

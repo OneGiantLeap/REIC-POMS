@@ -12,9 +12,12 @@ namespace REIC_POMS
 {
     public partial class PQ_ViewForm : Form
     {
+        private MySQLDatabaseDriver sql;
+
         public PQ_ViewForm()
         {
             InitializeComponent();
+            sql = new MySQLDatabaseDriver();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)

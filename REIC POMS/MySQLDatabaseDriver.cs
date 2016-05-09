@@ -44,6 +44,11 @@ namespace REIC_POMS
             { MessageBox.Show("Connection to SQL failed!"); }
         }
 
+        internal void SelectSpecificRFQOrderLine(string rFQNo, object dgvPQItems)
+        {
+            throw new NotImplementedException();
+        }
+
         public void DisconnectFromSQL()
         {
             connection.Close();
@@ -98,6 +103,22 @@ namespace REIC_POMS
             DisconnectFromSQL();
         }
 
+        public void SelectAllItemsDGV(DataGridView dgvName)
+        { 
+            ConnectToSQL();
+            command = new MySqlCommand("SELECT part_number, item_name, supplier_name " +
+                                       "FROM item_t " +
+                                       "WHERE item_t.supplier_id = supplier_t.supplier_id ", connection);
+            myReader = command.ExecuteReader();
+            while (myReader.Read())
+            {
+                dgvName.Rows.Add(myReader["part_number"].ToString(),
+                                 myReader["item_name"].ToString(),
+                                 myReader["supplier_name"].ToString());
+            }
+            DisconnectFromSQL();
+        }
+
         public void SelectAllCustomers(ArrayList result)
         {
             ConnectToSQL();
@@ -142,6 +163,26 @@ namespace REIC_POMS
             return idResult;
         }
 
+        public Customer SelectCustomerDetails(int id)
+        { //Retrieves a specific Customer's row | Used in PQ getting from rfq
+            ConnectToSQL();
+            Customer c;
+            command = new MySqlCommand(string.Format("SELECT * FROM customer_t WHERE customer_id={0};", id), connection);
+            myReader = command.ExecuteReader();
+            myReader.Read();
+            c = new Customer(id,
+                             myReader["business_name"].ToString(),
+                             myReader["Tin_Number"].ToString(),
+                             myReader["customer_name"].ToString(),
+                             myReader["contact_person"].ToString(),
+                             myReader["contact_number"].ToString(),
+                             myReader["account_number"].ToString(),
+                             myReader["email_address"].ToString(),
+                             myReader["address"].ToString());
+            DisconnectFromSQL();
+            return c;
+        }
+
         public void SelectAllSuppliers(ArrayList result)
         {
             ConnectToSQL();
@@ -182,7 +223,7 @@ namespace REIC_POMS
             DisconnectFromSQL();
             return idResult;
         }
-
+        
         public Supplier SelectSupplierDetails(int id)
         { //Retrieves a specific Supplier's row | Used in View Forms of RFQ and PO
             ConnectToSQL();
@@ -253,6 +294,26 @@ namespace REIC_POMS
             return r;
         }
 
+       /* public RFQ InputRFQDetails(string rfqNo) 
+        { 
+            ConnectToSQL();
+           
+            command = new MySqlCommand(string.Format("SELECT * FROM rfq_t WHERE rfq_no={0};", rfqNo), connection);
+            myReader = command.ExecuteReader();
+            myReader.Read();
+
+            PQ_CreateForm pcf = new PQ_CreateForm();
+            pcf.RFQNo = myReader["rfq_no"].ToString();
+            pcf.PaymentTerms = myReader["payment_terms"].ToString();
+            pcf.DeliveryTerms = myReader["delivery_terms"].ToString();
+            pcf.BillTo = myReader["bill_to"].ToString();
+            pcf.ShipTo = myReader["ship_to"].ToString();
+            pcf.InFavorOf = myReader["in_favor_of"].ToString();
+           
+            DisconnectFromSQL();
+            return null;
+        }
+        */
         public void SelectSpecificRFQOrderLine(string rfqNo, DataGridView dgvName)
         { //Retrieves all OrderLines of a specific RFQ | Used in View Forms
             ConnectToSQL();
@@ -279,7 +340,19 @@ namespace REIC_POMS
 
         public void SelectAllPQDGV(DataGridView dgvName)
         { //To populate the RFQ Main Screen DGV (Plus the actual Customer names, not their IDs)
-
+            ConnectToSQL();
+            command = new MySqlCommand("SELECT pq_date, company_name, pq_no, to_date " +
+                                       "FROM pq_t, customer_t " +
+                                       "WHERE pq_t.customer_id = customer_t.customer_id ", connection);
+            myReader = command.ExecuteReader();
+            while (myReader.Read())
+            {
+                dgvName.Rows.Add(myReader["pq_date"].ToString(),
+                                 myReader["company_name"].ToString(),
+                                 myReader["pq_no"].ToString(),
+                                 myReader["to_date"].ToString());
+            }
+            DisconnectFromSQL();
         }
 
         public void SelectAllPO(ArrayList result)
@@ -323,7 +396,7 @@ namespace REIC_POMS
 
         public void InsertItem(Item i)
         {
-            //Dates must be inserted as SQL's format: YYYY-MM-DD
+            //Dates must be inserted in SQL's format: YYYY-MM-DD
             Insert(string.Format("INSERT INTO item_t " +
                 "(part_number, item_name, item_description, supplier_unit_price, mark_up_percentage, reic_unit_price, minimum_order_quantity, unit_of_measurement, from_date, to_date, supplier_id) " +
                 "VALUES ('{0}', '{1}', '{2}', {3}, {4}, {5}, {6}, '{7}', '{8}', '{9}', {10});", i.PartNumber,
@@ -390,15 +463,28 @@ namespace REIC_POMS
 
         public void InsertPQ(PQ p)    
         {
-            
+            Insert(string.Format("INSERT INTO pq_t " +
+       "(pq_no, pq_date, rfq_no, from_date, to_date, payment_terms, delivery_terms, bill_to, ship_to, in_favor_of, customer_id) " +
+       "VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', {10});", p.PQNo,
+                                                         p.RFQNo,
+                                                         p.PQFromDate,
+                                                         p.PQToDate,
+                                                         p.PaymentTerms,
+                                                         p.DeliveryTerms,
+                                                         p.BillTo,
+                                                         p.ShipTo,
+                                                         p.InFavorOf,
+                                                         p.CustomerID));
         }
 
-        /*
+        
         public void InsertPQOrderLine(PQ_OrderLine pol)
         {
-
+            Insert(string.Format("INSERT INTO pq_order_line_t " +
+                "(pq_no, part_number, quantity) " +
+                "VALUES ('{0}', '{1}', {2});", pol.PQNo, pol.PartNumber, pol.Quantity));
         }
-
+        /*
         public void InsertPO(PO p)
         {
             //If will add Account Number, place it after Payment Terms
@@ -464,12 +550,12 @@ namespace REIC_POMS
         {
             Update(string.Format("UPDATE supplier_t " +
                "SET supplier_name='{0}', contact_person='{1}', contact_number='{2}', email_address='{3}', address='{4}' " +
-               "WHERE supplier_id={5};", s.SupplierID,
-                                         s.SupplierName,
+               "WHERE supplier_id={5};", s.SupplierName,
                                          s.SupplierPerson,
                                          s.SupplierNumber,
                                          s.SupplierEmail,
-                                         s.SupplierAddress));
+                                         s.SupplierAddress,
+                                         s.SupplierID));
         }
     }
 }

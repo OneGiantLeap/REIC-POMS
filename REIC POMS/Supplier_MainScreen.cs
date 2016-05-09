@@ -14,14 +14,15 @@ namespace REIC_POMS
 {
     public partial class Supplier_MainScreen : Form
     {
+        private MySQLDatabaseDriver sql;
         ArrayList supplierList;
         private int supplierIDCounter;
 
         public Supplier_MainScreen()
         {
             InitializeComponent();
-
-            supplierIDCounter = 000000;
+            sql = new MySQLDatabaseDriver();
+            supplierIDCounter = 0;
             supplierList = new ArrayList();
 
             /*
@@ -53,6 +54,16 @@ namespace REIC_POMS
             dgvSuppliers.Rows.Add("Fluora’s Shop", "Marvin Sta. Ana", "09253902271");
             dgvSuppliers.Rows.Add("Cinco Company", "Royce Goden", "09153903125");
             dgvSuppliers.Rows.Add("Mayers Balay", "Angelo Mercado", "09169833371");*/
+            sql.SelectAllSuppliers(supplierList);
+            for (int i = 0; i < supplierList.Count; i++)
+            {
+                Supplier s = (Supplier)supplierList[i];
+                dgvSuppliers.Rows.Add(s.SupplierName,
+                                      s.SupplierPerson,
+                                      s.SupplierNumber,
+                                      s.SupplierEmail);
+            }
+            supplierIDCounter = supplierList.Count + 1;
         }
 
         private void SuppliersMainScreen_Load(object sender, EventArgs e)
@@ -220,10 +231,10 @@ namespace REIC_POMS
         //-----------------------------------------------------
         private void btnSPRS_Click(object sender, EventArgs e)
         {
-            /*SPR_MainScreen sprMain = new SPR_MainScreen();
+            SPR_MainScreen sprMain = new SPR_MainScreen();
             this.Hide();
             sprMain.ShowDialog();
-            this.Close();*/
+            this.Close();
         }
 
         private void btnSPRS_MouseEnter(object sender, EventArgs e)
@@ -270,9 +281,12 @@ namespace REIC_POMS
                               saf.SupplierAddress));
 
                 dgvSuppliers.Rows.Add(saf.SupplierName, saf.SupplierPerson, saf.SupplierNumber);
-                saveSupplierData(); //Filestream
+
+                Supplier newSupplier = (Supplier)supplierList[(supplierList.Count - 1)]; //Casting
+                sql.InsertSupplier(newSupplier);
+                
                 supplierIDCounter++;
-                return;
+                //return;
             }
             else {
                 DialogResult result = MessageBox.Show("Sobra na, masasaktan ka na.", "kaibigan lang talaga", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -323,7 +337,9 @@ namespace REIC_POMS
                             dgvSuppliers.SelectedRows[0].Cells[1].Value = svf.SupplierPersontoView;
                             dgvSuppliers.SelectedRows[0].Cells[2].Value = svf.SupplierNumbertoView;
 
-                            saveSupplierData(); //Filestream
+               
+                            //Update Database
+                            sql.UpdateSupplier(s); 
                             MessageBox.Show("oh yan updated na yan ah.");
                         }
                     }

@@ -19,12 +19,7 @@ namespace REIC_POMS
                   string billTo,
                   string shipTo,
                   string inFavorOf,
-                 string customerName,
-                  string customerPerson,
-                  string customerNumber,
-                  string customerEmail,
-                  string customerAddress,
-                  ArrayList pqItems
+                  int customerID
                   )
         {
             PQNo = pqNo;
@@ -37,12 +32,13 @@ namespace REIC_POMS
             BillTo = billTo;
             ShipTo = shipTo;
             InFavorOf = inFavorOf;
-            CustomerName = customerName;
+            CustomerID = customerID;
+            /*CustomerName = customerName;
             CustomerPerson = customerPerson;
             CustomerNumber = customerNumber;
             CustomerEmail = customerEmail;
             CustomerAddress = customerAddress;
-            PQItems = pqItems;
+            PQItems = pqItems;*/
         }
 
         public string PQNo { get; set; }
@@ -55,11 +51,12 @@ namespace REIC_POMS
         public string BillTo { get; set; }
         public string ShipTo { get; set; }
         public string InFavorOf { get; set; }
-        public string CustomerName { get; set; }
-        public string CustomerPerson { get; set; }
-        public string CustomerNumber { get; set; }
-        public string CustomerEmail { get; set; }
-        public string CustomerAddress { get; set; }
-        public ArrayList PQItems { get; set; }
+        public int CustomerID { get; set; }
+        /*  public string CustomerName { get; set; }
+          public string CustomerPerson { get; set; }
+          public string CustomerNumber { get; set; }
+          public string CustomerEmail { get; set; }
+          public string CustomerAddress { get; set; }
+          public ArrayList PQItems { get; set; } */
     }
 }
