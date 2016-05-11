@@ -106,8 +106,8 @@ namespace REIC_POMS
         { 
             ConnectToSQL();
             command = new MySqlCommand("SELECT part_number, item_name, supplier_name " +
-                                       "FROM item_t " +
-                                       "WHERE item_t.supplier_id = supplier_t.supplier_id ", connection);
+                                       "FROM item_t, supplier_t " +
+                                       "WHERE item_t.supplier_id = supplier_t.supplier_id;", connection);
             myReader = command.ExecuteReader();
             while (myReader.Read())
             {
@@ -170,9 +170,9 @@ namespace REIC_POMS
             myReader = command.ExecuteReader();
             myReader.Read();
             c = new Customer(id,
-                             myReader["business_name"].ToString(),
+                             myReader["business_name_style"].ToString(),
                              myReader["Tin_Number"].ToString(),
-                             myReader["customer_name"].ToString(),
+                             myReader["company_name"].ToString(),
                              myReader["contact_person"].ToString(),
                              myReader["contact_number"].ToString(),
                              myReader["account_number"].ToString(),
@@ -252,7 +252,8 @@ namespace REIC_POMS
                                    myReader["payment_terms"].ToString(),
                                    myReader["delivery_terms"].ToString(),
                                    int.Parse(myReader["customer_id"].ToString()),
-                                   int.Parse(myReader["supplier_id"].ToString())));
+                                   int.Parse(myReader["supplier_id"].ToString()),
+                                   myReader["pq_no"].ToString()));
             }
             DisconnectFromSQL();
         }
@@ -279,16 +280,17 @@ namespace REIC_POMS
         { //Retrieves a specific RFQ's row | Used in View Forms of RFQ
             ConnectToSQL();
             RFQ r;
-            command = new MySqlCommand(string.Format("SELECT rfq_no, DATE_FORMAT(date_of_request, '%m/%d/%Y'), payment_terms, delivery_terms, customer_id, supplier_id FROM rfq_t WHERE rfq_no={0};", rfqNo), connection);
+            command = new MySqlCommand(string.Format("SELECT rfq_no, DATE_FORMAT(date_of_request, '%m/%d/%Y'), payment_terms, delivery_terms, customer_id, supplier_id, pq_no FROM rfq_t WHERE rfq_no='{0}';", rfqNo), connection);
             //SELECT Statement is the same as "SELECT * FROM rfq_t WHERE rfq_no={0};" Had to mention all, since will format the date
             myReader = command.ExecuteReader();
             myReader.Read();
             r = new RFQ(rfqNo,
-                        myReader["date_of_request"].ToString(),
+                        myReader["DATE_FORMAT(date_of_request, '%m/%d/%Y')"].ToString(),
                         myReader["payment_terms"].ToString(),
                         myReader["delivery_terms"].ToString(),
                         int.Parse(myReader["customer_id"].ToString()),
-                        int.Parse(myReader["supplier_id"].ToString()));
+                        int.Parse(myReader["supplier_id"].ToString()),
+                        myReader["pq_no"].ToString());
             DisconnectFromSQL();
             return r;
         }

@@ -16,7 +16,8 @@ namespace REIC_POMS
                    //string accountNumber, //No longer needed
                    string deliveryTerms,
                    int customerID, //Foreign Key
-                   int supplierID) //Foreign Key
+                   int supplierID, //Foreign Key
+                   string pqNo) //Foreign Key
                    /* Old (Before I realized we should base it from the Data Dictionary)
                    //string inFavorOf, No longer neededed
                    string customerName, //ENIGMA
@@ -35,6 +36,7 @@ namespace REIC_POMS
             DeliveryTerms = deliveryTerms;
             CustomerID = customerID;
             SupplierID = supplierID;
+            PQNo = pqNo;
             /*InFavorOf = inFavorOf;
             CustomerName = customerName;
             SupplierName = supplierName;
@@ -53,6 +55,7 @@ namespace REIC_POMS
         public string DeliveryTerms { get; set; }
         public int CustomerID { get; set; }
         public int SupplierID { get; set; }
+        public string PQNo { get; set; }
         /*public string InFavorOf { get; set; }
         public string CustomerName { get; set; }
         public string SupplierName { get; set; }

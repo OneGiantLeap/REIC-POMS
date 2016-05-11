@@ -69,6 +69,8 @@ namespace REIC_POMS
             cbbDeliveryTerms.SelectedIndex = 0; // "Select"
             txtItemName.Text = dgvItemSelection.SelectedRows[0].Cells["ItemName"].Value.ToString();
 
+            rfqOrderLineList = new ArrayList();
+
             //---ADJUST DATAGRIDVIEW COLUMN ALIGNMENT
                 //Center column headings
                     dgvItemSelection.Columns["UOM"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -244,9 +246,8 @@ namespace REIC_POMS
             if (result == DialogResult.Yes)
             {
                 //---SET CUSTOMER ID Foreign Key
-                MessageBox.Show(CustomerName); //Debug purposes
                 CustomerIDFK = sql.SelectCustomerID(CustomerName);
-                MessageBox.Show(CustomerIDFK.ToString()); //Debug purposes
+
 
                 //---SET SUPPLIER ID Foreign Key
                 MessageBox.Show(SupplierName); //Debug purposes

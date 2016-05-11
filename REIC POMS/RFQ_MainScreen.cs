@@ -230,7 +230,8 @@ namespace REIC_POMS
                                     crfq.PaymentTerms,
                                     crfq.DeliveryTerms,
                                     crfq.CustomerIDFK,
-                                    crfq.SupplierIDFK));
+                                    crfq.SupplierIDFK,
+                                    null)); //Null, since there's no PQ No. (Its value will only be set when its PQ has been created)
 
                 //Save to rfq_t database
                 RFQ newRFQ = (RFQ)rfqList[(rfqList.Count - 1)]; //Casting
@@ -242,7 +243,7 @@ namespace REIC_POMS
                     RFQ_OrderLine rol = (RFQ_OrderLine)crfq.RFQOrderLineList[i]; //Casting
                     /*rfqOrderLineList.Add(new RFQ_OrderLine(rol.RFQNo,
                                                            rol.PartNumber,
-                                                           rol.Quantity));*/
+                                                           rol.Quantity)); --> No need; won't use*/
                     //Save to rfq_order_line_t database
                     sql.InsertRFQOrderLine(rol);
 
