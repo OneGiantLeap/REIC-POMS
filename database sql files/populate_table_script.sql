@@ -72,7 +72,7 @@ VALUES
 ('000015', 'Industrial Cleaning Materials', 'Products that can be used for cleaning', 4, 100, 8, 1, 'lb', '2015-04-15', '2016-04-15', 8),
 
 ('000016', 'ESD and Clean Room Products', 'Products that can be used for cleaning', 69.99, 100, 139.98, 1, 'g', '2016-10-25', '2017-10-25', 9),
-('000017', 'Extruded Carriers', 'Tool for transportation', 10, 20, 12, 3, 'lb', '04/23/2016', '04/28/2016',  9),
+('000017', 'Extruded Carriers', 'Tool for transportation', 10, 20, 12, 3, 'lb', '2016-04-26', '2016-04-30',  9),
 ('000018', 'Corrugated Sheet', 'Suitable for any domestic, industrial or agricultural application', 30, 100, 60, 3, 'lb', '2016-04-05', '2016-08-05', 10),
 ('000019', 'Accessory of Corrugated Products', 'Other accessories for said product', 4, 100, 8, 1, 'lb', '2016-04-18', '2017-04-18', 10),
 ('000020', 'L-Style Holder', 'Tool for holding and storing', 4, 100, 8, 1, 'lb', '2016-05-18', '2017-05-19', 11),
