@@ -15,15 +15,23 @@ namespace REIC_POMS
 {
     public partial class Item_UpdateForm : Form
     {
+        private MySQLDatabaseDriver sql;
         private ArrayList supplierList;
         private ArrayList supplierDropdownList;
         public bool cancel;
         public Item_UpdateForm()
         {
             InitializeComponent();
-            supplierList = new ArrayList();
-            supplierDropdownList = new ArrayList();
+            sql = new MySQLDatabaseDriver();
 
+            supplierList = new ArrayList();
+            sql.SelectAllSuppliers(supplierList);
+
+            supplierDropdownList = new ArrayList();
+            sql.SelectAllSupplierNames(supplierDropdownList);
+            supplierDropdownList.Sort(); //Sort list alphabetically
+            supplierDropdownList.Insert(0, "Select Supplier");
+            cbbSupplierName.DataSource = supplierDropdownList;
             /*
             try
             {
