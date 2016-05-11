@@ -53,35 +53,35 @@ VALUES
 INSERT INTO item_t
 (part_number, item_name, item_description, supplier_unit_price, mark_up_percentage, reic_unit_price, minimum_order_quantity, unit_of_measurement, from_date, to_date, supplier_id)
 VALUES
-('000001', 'Aluminum Wire Bonders', 'Gold and aluminum wire bonding', 100, 35, 135, 1, 'g', '04/18/2016', '04/23/2016',  1),
-('000002', 'Vacuum Sealer', 'A device or substance used to seal something', 100, 25, 125, 2, 'g', '04/18/2016', '04/30/2016', 1),
-('000003', 'Paper Tapes', 'Holds data as patterns of punched holes', 1234.75, 15, 1419.96, 2, 'g', '04/18/2016', '04/30/2016',  2),
-('000004', 'Extruded Magazine', 'Type of magazine', 501, 15, 576.15, 3, 'lb', '04/21/2016', '04/23/2016', 2),
-('000005', 'Mold Press', 'Used to form and consolidate curds', 3, 10, 3.30, 4, 'lb', '03/24/2016', '04/24/2016', 3),
+('000001', 'Aluminum Wire Bonders', 'Gold and aluminum wire bonding', 100, 35, 135, 1, 'g', '2016-04-18', '2017-04-08',  1),
+('000002', 'Vacuum Sealer', 'A device or substance used to seal something', 100, 25, 125, 2, 'g', '2016-04-18', '2017-04-18', 1),
+('000003', 'Paper Tapes', 'Holds data as patterns of punched holes', 1234.75, 15, 1419.96, 2, 'g', '2015-06-30', '2016-06-30',  2),
+('000004', 'Extruded Magazine', 'Type of magazine', 501, 15, 576.15, 3, 'lb', '2015-11-21', '2016-11-21', 2),
+('000005', 'Mold Press', 'Used to form and consolidate curds', 3, 10, 3.30, 4, 'lb', '2016-03-26', '2016-04-26', 3),
 
-('000006', 'Raised Floor System', 'Provides an elevated structural floor above a solid substrate', 9999.99, 100, 19999.98, 1, 'g', '04/25/2016', '05/25/2016', 3),
-('000007', 'Wirebonders', 'Interconnections between an integrated circuit (IC) or other semiconductor device', 10, 10, 11, 3, 'lb', '04/23/2016', '04/28/2016',  4),
-('000008', 'Multifunctional Bond Testers', 'Semiconductor manufacturing equipment/material', 3, 10, 3.30, 3, 'lb', '04/28/2016', '04/29/2016', 4),
-('000009', 'Test Handlers', 'Designed to perform in-circuit tests and functional tests on printed circuit boards', 4, 100, 8, 1, 'lb', '04/20/2016', '04/29/2016', 5),
-('000010', 'Digital Flat Panel X-Ray', 'a class of solid-state x-ray digital radiography devices ', 4, 100, 8, 1, 'lb', '04/20/2016', '04/29/2016', 5),
+('000006', 'Raised Floor System', 'Provides an elevated structural floor above a solid substrate', 9999.99, 100, 19999.98, 1, 'g', '2015-07-15', '2017-05-15', 3),
+('000007', 'Wirebonders', 'Interconnections between an integrated circuit (IC) or other semiconductor device', 10, 10, 11, 3, 'lb', '2016-04-18', '2017-04-18', 4),
+('000008', 'Multifunctional Bond Testers', 'Semiconductor manufacturing equipment/material', 3, 10, 3.30, 3, 'lb', '2016-12-28', '2017-12-28', 4),
+('000009', 'Test Handlers', 'Designed to perform in-circuit tests and functional tests on printed circuit boards', 4, 100, 8, 1, 'lb', '2016-01-18', '2017-02-18', 5),
+('000010', 'Digital Flat Panel X-Ray', 'a class of solid-state x-ray digital radiography devices ', 4, 100, 8, 1, 'lb', '2016-02-18', '2017-02-18', 5),
 
-('000011', 'Reed Relay', 'A type of relay that uses an electromagnet to control one or more reed switches', 69.99, 100, 139.98, 1, 'g', '03/25/2016', '05/25/2016', 6),
-('000012', 'OEM Spare Replacement', 'Machine Tool OEM Parts', 10, 25, 12.50, 2, 'lb', '04/23/2016', '04/28/2016',  6),
-('000013', 'Wafer Handling Tools', 'Handling Tools and Accessories for Wafer', 30, 100, 60, 4, 'lb', '04/28/2016', '04/29/2016', 7),
-('000014', 'Embossed Tape and Reel Materials', 'Object around which lengths of another material (usually long and flexible) are wound for storage', 4, 100, 8, 1, 'lb', '04/20/2016', '04/29/2016', 7),
-('000015', 'Industrial Cleaning Materials', 'Products that can be used for cleaning', 4, 100, 8, 1, 'lb', '04/20/2016', '04/29/2016', 8),
+('000011', 'Reed Relay', 'A type of relay that uses an electromagnet to control one or more reed switches', 69.99, 100, 139.98, 1, 'g', '2016-03-25', '2017-03-25', 6),
+('000012', 'OEM Spare Replacement', 'Machine Tool OEM Parts', 10, 25, 12.50, 2, 'lb', '2016-04-23', '2017-04-23',  6),
+('000013', 'Wafer Handling Tools', 'Handling Tools and Accessories for Wafer', 30, 100, 60, 4, 'lb', '2016-04-30', '2017-05-31', 7),
+('000014', 'Embossed Tape and Reel Materials', 'Object around which lengths of another material (usually long and flexible) are wound for storage', 4, 100, 8, 1, 'lb', '2015-08-18', '2016-08-18', 7),
+('000015', 'Industrial Cleaning Materials', 'Products that can be used for cleaning', 4, 100, 8, 1, 'lb', '2015-04-15', '2016-04-15', 8),
 
-('000016', 'ESD and Clean Room Products', 'Products that can be used for cleaning', 69.99, 100, 139.98, 1, 'g', '03/25/2016', '05/25/2016', 9),
+('000016', 'ESD and Clean Room Products', 'Products that can be used for cleaning', 69.99, 100, 139.98, 1, 'g', '2016-10-25', '2017-10-25', 9),
 ('000017', 'Extruded Carriers', 'Tool for transportation', 10, 20, 12, 3, 'lb', '04/23/2016', '04/28/2016',  9),
-('000018', 'Corrugated Sheet', 'Suitable for any domestic, industrial or agricultural application', 30, 100, 60, 3, 'lb', '04/28/2016', '04/29/2016', 10),
-('000019', 'Accessory of Corrugated Products', 'Other accessories for said product', 4, 100, 8, 1, 'lb', '04/20/2016', '04/29/2016', 10),
-('000020', 'L-Style Holder', 'Tool for holding and storing', 4, 100, 8, 1, 'lb', '04/20/2016', '04/29/2016', 11),
+('000018', 'Corrugated Sheet', 'Suitable for any domestic, industrial or agricultural application', 30, 100, 60, 3, 'lb', '2016-04-05', '2016-08-05', 10),
+('000019', 'Accessory of Corrugated Products', 'Other accessories for said product', 4, 100, 8, 1, 'lb', '2016-04-18', '2017-04-18', 10),
+('000020', 'L-Style Holder', 'Tool for holding and storing', 4, 100, 8, 1, 'lb', '2016-05-18', '2017-05-19', 11),
 
-('000021', 'Corrugated Box', 'Corrugated fiberboard boxes with the functional physical, processing and end-use requirements', 100, 35, 135, 1, 'g', '04/18/2016', '04/23/2016',  11),
-('000022', 'ESD PDB Rack', 'Tool for holding and storing', 100, 25, 125, 2, 'g', '04/18/2016', '04/30/2016', 12),
-('000023', 'Condor Sigma', 'Most advanced bond tester on the market', 1234.75, 15, 1419.96, 2, 'g', '04/18/2016', '04/30/2016',  12),
-('000024', 'Magazine Rack', 'Tool for holding and storing', 501, 15, 576.15, 1, 'lb', '04/21/2016', '04/23/2016', 13),
-('000025', 'Hang ESD PSB Racks', 'Tool for holding and storing', 3, 10, 3.30, 3, 'lb', '03/24/2016', '04/24/2016', 13);
+('000021', 'Corrugated Box', 'Corrugated fiberboard boxes with the functional physical, processing and end-use requirements', 100, 35, 135, 1, 'g', '2016-01-18', '2016-12-18', 11),
+('000022', 'ESD PDB Rack', 'Tool for holding and storing', 100, 25, 125, 2, 'g', '2016-04-18', '2017-04-08', 12),
+('000023', 'Condor Sigma', 'Most advanced bond tester on the market', 1234.75, 15, 1419.96, 2, 'g', '2016-02-14', '2016-07-14', 12),
+('000024', 'Magazine Rack', 'Tool for holding and storing', 501, 15, 576.15, 1, 'lb', '2015-04-18', '2017-04-18', 13),
+('000025', 'Hang ESD PSB Racks', 'Tool for holding and storing', 3, 10, 3.30, 3, 'lb', '2015-11-05', '2017-11-05', 13);
 
 /*CUSTOMERS*/
 INSERT INTO customer_t
@@ -94,9 +94,9 @@ VALUES
 (5, 'Logistics', '8887-8798-2224-0154', 'AVIS', 'Wilbert Ramos', '502-3344', 'N/A', 'wilbertramos@avis.com.ph', 'Lot 4, Allegis IT Park, Carmelray Industrial Park 2, Makiling Dr, Tulo, Calamba, 4029 Laguna'),
 
 (6, 'IT', 'N/A', 'Villarica Enterprise', 'Mr. Villarica', '(02) 285 2740', 'N/A', 'support@villarica.com.ph', '3rd Floor, Lucky China Town Mall, Calle Felipe cor. La Chombre Streets Zone 28, Binondo, Manila, Metro Manila'),
-(7, 'IT', 'N/A', 'Indra', 'Samuel H. Magtanggol', '09123456789', 'N/A', 'lhco@indra.com.ph', '641 A. Mabini St, Sangandaan, Caloocan, 1116 Metro Manila'),
+(7, 'IT', 'N/A', 'Indie Enterprises', 'Samuel H. Magtanggol', '09123456789', 'N/A', 'sammagtanggol@indie.com.ph', '641 A. Mabini St, Sangandaan, Caloocan, 1116 Metro Manila'),
 (8, 'Food', 'N/A', 'Food Group', 'Perlita A. Sanchez', '09123456789', 'N/A', 'foodie@foodgroup.com.ph', 'Level 3, Cyberzone Building B, SM Megamall, EDSA, corner Doña Julia Vargas Ave., Wack-Wack Greenhills, Mandaluyong, 1550 Metro Manila'),
-(9, 'N/A', '0000-2156-5841-2587', '21/21 Co.', 'Pauline Abegonia', '09123456789', 'N/A', 'xperia@sony.com', '95 Hermogenes Street, Sofia Subdivision, Del Pilar, San Fernando City, 2000 Pampanga'),
+(9, 'N/A', '0000-2156-5841-2587', '21/21 Co.', 'Pauline Abegonia', '09123456789', 'N/A', 'pabegonia@2121company.com', '95 Hermogenes Street, Sofia Subdivision, Del Pilar, San Fernando City, 2000 Pampanga'),
 (10, 'N/A', 'N/A', 'Balay Dako', 'Paolo Vasquez', '09123456788', 'N/A', 'balaydako@yahoo.com.ph', '40th Floor, Petron Mega Plaza, 358 Sen. Gil J. Puyat Ave, Makati, Metro Manila'),
 
 (11, 'Sports', 'N/A', 'Abencia & Co.', 'Lleonora Abencia', '09153909781', 'N/A', 'labencia@yahoo.com', '12/F Tower 2, the Enterprise Center, Paseo De Roxas Cor. Ayala Avenue, Makati City'),
