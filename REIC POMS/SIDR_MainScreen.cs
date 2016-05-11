@@ -168,7 +168,10 @@ namespace REIC_POMS
         //-----------------------------------------------------
         private void btnSPRS_Click(object sender, EventArgs e)
         {
-
+            SPR_MainScreen sprMain = new SPR_MainScreen();
+            this.Hide();
+            sprMain.ShowDialog();
+            this.Close();
         }
 
         private void btnSPRS_MouseEnter(object sender, EventArgs e)

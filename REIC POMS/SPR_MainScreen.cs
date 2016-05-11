@@ -119,7 +119,12 @@ namespace REIC_POMS
         // PURCHASE ORDER NAVBAR METHODS  |
         //---------------------------------
         private void btnPO_Click(object sender, EventArgs e)
-        { /*Nothing to add here*/ }
+        {
+            PO_MainScreen poMain = new PO_MainScreen();
+            this.Hide();
+            poMain.ShowDialog();
+            this.Close();
+        }
 
         private void btnPO_MouseEnter(object sender, EventArgs e)
         { btnPO.BackgroundImage = Properties.Resources.ButtonHoverPO; }

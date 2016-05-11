@@ -60,7 +60,7 @@
             this.tabSales = new System.Windows.Forms.TabPage();
             this.btnGenerateReport = new System.Windows.Forms.Button();
             this.graphSales = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.btnFilter = new System.Windows.Forms.Button();
+            this.btnShowGraph = new System.Windows.Forms.Button();
             this.radAnnually = new System.Windows.Forms.RadioButton();
             this.radMonthly = new System.Windows.Forms.RadioButton();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -283,7 +283,7 @@
             this.tabSales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
             this.tabSales.Controls.Add(this.btnGenerateReport);
             this.tabSales.Controls.Add(this.graphSales);
-            this.tabSales.Controls.Add(this.btnFilter);
+            this.tabSales.Controls.Add(this.btnShowGraph);
             this.tabSales.Controls.Add(this.radAnnually);
             this.tabSales.Controls.Add(this.radMonthly);
             this.tabSales.Controls.Add(this.textBox1);
@@ -337,20 +337,20 @@
             this.graphSales.TabIndex = 28;
             this.graphSales.Text = "chart1";
             // 
-            // btnFilter
+            // btnShowGraph
             // 
-            this.btnFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.btnFilter.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
-            this.btnFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFilter.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.btnFilter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
-            this.btnFilter.Location = new System.Drawing.Point(423, 69);
-            this.btnFilter.Name = "btnFilter";
-            this.btnFilter.Size = new System.Drawing.Size(185, 30);
-            this.btnFilter.TabIndex = 27;
-            this.btnFilter.Text = "SHOW GRAPH";
-            this.btnFilter.UseVisualStyleBackColor = false;
-            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
+            this.btnShowGraph.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnShowGraph.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
+            this.btnShowGraph.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnShowGraph.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.btnShowGraph.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
+            this.btnShowGraph.Location = new System.Drawing.Point(423, 69);
+            this.btnShowGraph.Name = "btnShowGraph";
+            this.btnShowGraph.Size = new System.Drawing.Size(185, 30);
+            this.btnShowGraph.TabIndex = 27;
+            this.btnShowGraph.Text = "SHOW GRAPH";
+            this.btnShowGraph.UseVisualStyleBackColor = false;
+            this.btnShowGraph.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // radAnnually
             // 
@@ -1162,7 +1162,7 @@
         private System.Windows.Forms.Button btnPO;
         private System.Windows.Forms.TabControl tabSPR;
         private System.Windows.Forms.TabPage tabSales;
-        private System.Windows.Forms.Button btnFilter;
+        private System.Windows.Forms.Button btnShowGraph;
         private System.Windows.Forms.RadioButton radAnnually;
         private System.Windows.Forms.RadioButton radMonthly;
         private System.Windows.Forms.TextBox textBox1;
