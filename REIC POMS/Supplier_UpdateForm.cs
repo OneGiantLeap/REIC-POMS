@@ -68,6 +68,11 @@ namespace REIC_POMS
                 MessageBox.Show("All fields should be completed", "Empty fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            if (txtSupplierEmail.Text.Contains("@") == false)
+            {
+                MessageBox.Show("Please enter a valid e-mail.", "Error", MessageBoxButtons.OK);
+                return; //Enables user to edit the form again
+            }
 
             cancel = false;
             this.Close();

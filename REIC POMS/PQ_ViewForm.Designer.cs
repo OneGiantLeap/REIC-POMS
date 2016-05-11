@@ -38,8 +38,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.outputToDate = new System.Windows.Forms.Label();
             this.outputRFQNo = new System.Windows.Forms.Label();
-            this.outputAddress = new System.Windows.Forms.Label();
-            this.outputEmailAddress = new System.Windows.Forms.Label();
+            this.outputCustomerAddress = new System.Windows.Forms.Label();
+            this.outputCustomerEmail = new System.Windows.Forms.Label();
             this.outputContactNumber = new System.Windows.Forms.Label();
             this.outputContactPerson = new System.Windows.Forms.Label();
             this.outputCustomerName = new System.Windows.Forms.Label();
@@ -60,13 +60,13 @@
             this.lblPaymentTerms = new System.Windows.Forms.Label();
             this.outputInFavorOf = new System.Windows.Forms.Label();
             this.outputPaymentTerms = new System.Windows.Forms.Label();
-            this.Label5 = new System.Windows.Forms.Label();
+            this.lblValPeriod = new System.Windows.Forms.Label();
             this.lblRFQNumber = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
             this.lblPQNumber = new System.Windows.Forms.Label();
             this.lblQuotationDetails = new System.Windows.Forms.Label();
             this.TabPage2 = new System.Windows.Forms.TabPage();
-            this.dgvRFQItems = new System.Windows.Forms.DataGridView();
+            this.dgvPQItems = new System.Windows.Forms.DataGridView();
             this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UOM = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -84,7 +84,7 @@
             this.tabItemDetails.SuspendLayout();
             this.TabPage1.SuspendLayout();
             this.TabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRFQItems)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPQItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnGeneratePDF)).BeginInit();
             this.SuspendLayout();
             // 
@@ -114,8 +114,8 @@
             this.TabPage1.Controls.Add(this.panel1);
             this.TabPage1.Controls.Add(this.outputToDate);
             this.TabPage1.Controls.Add(this.outputRFQNo);
-            this.TabPage1.Controls.Add(this.outputAddress);
-            this.TabPage1.Controls.Add(this.outputEmailAddress);
+            this.TabPage1.Controls.Add(this.outputCustomerAddress);
+            this.TabPage1.Controls.Add(this.outputCustomerEmail);
             this.TabPage1.Controls.Add(this.outputContactNumber);
             this.TabPage1.Controls.Add(this.outputContactPerson);
             this.TabPage1.Controls.Add(this.outputCustomerName);
@@ -136,7 +136,7 @@
             this.TabPage1.Controls.Add(this.lblPaymentTerms);
             this.TabPage1.Controls.Add(this.outputInFavorOf);
             this.TabPage1.Controls.Add(this.outputPaymentTerms);
-            this.TabPage1.Controls.Add(this.Label5);
+            this.TabPage1.Controls.Add(this.lblValPeriod);
             this.TabPage1.Controls.Add(this.lblRFQNumber);
             this.TabPage1.Controls.Add(this.lblDate);
             this.TabPage1.Controls.Add(this.lblPQNumber);
@@ -178,25 +178,25 @@
             this.outputRFQNo.TabIndex = 39;
             this.outputRFQNo.Text = "2327";
             // 
-            // outputAddress
+            // outputCustomerAddress
             // 
-            this.outputAddress.AutoSize = true;
-            this.outputAddress.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.outputAddress.Location = new System.Drawing.Point(426, 222);
-            this.outputAddress.Name = "outputAddress";
-            this.outputAddress.Size = new System.Drawing.Size(35, 19);
-            this.outputAddress.TabIndex = 38;
-            this.outputAddress.Text = "Text";
+            this.outputCustomerAddress.AutoSize = true;
+            this.outputCustomerAddress.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.outputCustomerAddress.Location = new System.Drawing.Point(426, 222);
+            this.outputCustomerAddress.Name = "outputCustomerAddress";
+            this.outputCustomerAddress.Size = new System.Drawing.Size(35, 19);
+            this.outputCustomerAddress.TabIndex = 38;
+            this.outputCustomerAddress.Text = "Text";
             // 
-            // outputEmailAddress
+            // outputCustomerEmail
             // 
-            this.outputEmailAddress.AutoSize = true;
-            this.outputEmailAddress.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.outputEmailAddress.Location = new System.Drawing.Point(542, 164);
-            this.outputEmailAddress.Name = "outputEmailAddress";
-            this.outputEmailAddress.Size = new System.Drawing.Size(138, 19);
-            this.outputEmailAddress.TabIndex = 37;
-            this.outputEmailAddress.Text = "abc_co@yahoo.com";
+            this.outputCustomerEmail.AutoSize = true;
+            this.outputCustomerEmail.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.outputCustomerEmail.Location = new System.Drawing.Point(542, 164);
+            this.outputCustomerEmail.Name = "outputCustomerEmail";
+            this.outputCustomerEmail.Size = new System.Drawing.Size(138, 19);
+            this.outputCustomerEmail.TabIndex = 37;
+            this.outputCustomerEmail.Text = "abc_co@yahoo.com";
             // 
             // outputContactNumber
             // 
@@ -255,9 +255,9 @@
             this.outputFromDate.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.outputFromDate.Location = new System.Drawing.Point(223, 158);
             this.outputFromDate.Name = "outputFromDate";
-            this.outputFromDate.Size = new System.Drawing.Size(91, 19);
+            this.outputFromDate.Size = new System.Drawing.Size(75, 19);
             this.outputFromDate.TabIndex = 31;
-            this.outputFromDate.Text = "01/01/2015 to";
+            this.outputFromDate.Text = "01/01/2015";
             // 
             // label11
             // 
@@ -400,15 +400,15 @@
             this.outputPaymentTerms.TabIndex = 5;
             this.outputPaymentTerms.Text = "COD";
             // 
-            // Label5
+            // lblValPeriod
             // 
-            this.Label5.AutoSize = true;
-            this.Label5.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.Label5.Location = new System.Drawing.Point(35, 158);
-            this.Label5.Name = "Label5";
-            this.Label5.Size = new System.Drawing.Size(131, 18);
-            this.Label5.TabIndex = 4;
-            this.Label5.Text = "VALIDITY PERIOD OF";
+            this.lblValPeriod.AutoSize = true;
+            this.lblValPeriod.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblValPeriod.Location = new System.Drawing.Point(35, 158);
+            this.lblValPeriod.Name = "lblValPeriod";
+            this.lblValPeriod.Size = new System.Drawing.Size(131, 18);
+            this.lblValPeriod.TabIndex = 4;
+            this.lblValPeriod.Text = "VALIDITY PERIOD OF";
             // 
             // lblRFQNumber
             // 
@@ -453,7 +453,7 @@
             // 
             // TabPage2
             // 
-            this.TabPage2.Controls.Add(this.dgvRFQItems);
+            this.TabPage2.Controls.Add(this.dgvPQItems);
             this.TabPage2.Controls.Add(this.btnGeneratePDF);
             this.TabPage2.Controls.Add(this.btnCancel);
             this.TabPage2.Controls.Add(this.btnSaveGeneratePDF);
@@ -467,21 +467,21 @@
             this.TabPage2.Text = "Item Details";
             this.TabPage2.UseVisualStyleBackColor = true;
             // 
-            // dgvRFQItems
+            // dgvPQItems
             // 
-            this.dgvRFQItems.AllowUserToAddRows = false;
-            this.dgvRFQItems.AllowUserToDeleteRows = false;
-            this.dgvRFQItems.AllowUserToResizeColumns = false;
-            this.dgvRFQItems.AllowUserToResizeRows = false;
+            this.dgvPQItems.AllowUserToAddRows = false;
+            this.dgvPQItems.AllowUserToDeleteRows = false;
+            this.dgvPQItems.AllowUserToResizeColumns = false;
+            this.dgvPQItems.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Source Sans Pro", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(107)))), ((int)(((byte)(58)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            this.dgvRFQItems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvRFQItems.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(249)))));
-            this.dgvRFQItems.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dgvRFQItems.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvPQItems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvPQItems.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(249)))));
+            this.dgvPQItems.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgvPQItems.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
@@ -489,32 +489,32 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRFQItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvRFQItems.ColumnHeadersHeight = 24;
-            this.dgvRFQItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgvRFQItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvPQItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvPQItems.ColumnHeadersHeight = 24;
+            this.dgvPQItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvPQItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ItemName,
             this.Description,
             this.UOM,
             this.Column1,
             this.Qty,
             this.Column2});
-            this.dgvRFQItems.EnableHeadersVisualStyles = false;
-            this.dgvRFQItems.Location = new System.Drawing.Point(35, 63);
-            this.dgvRFQItems.MultiSelect = false;
-            this.dgvRFQItems.Name = "dgvRFQItems";
-            this.dgvRFQItems.ReadOnly = true;
-            this.dgvRFQItems.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dgvRFQItems.RowHeadersVisible = false;
+            this.dgvPQItems.EnableHeadersVisualStyles = false;
+            this.dgvPQItems.Location = new System.Drawing.Point(35, 63);
+            this.dgvPQItems.MultiSelect = false;
+            this.dgvPQItems.Name = "dgvPQItems";
+            this.dgvPQItems.ReadOnly = true;
+            this.dgvPQItems.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dgvPQItems.RowHeadersVisible = false;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(249)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Source Sans Pro", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(107)))), ((int)(((byte)(58)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            this.dgvRFQItems.RowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvRFQItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvRFQItems.Size = new System.Drawing.Size(775, 218);
-            this.dgvRFQItems.TabIndex = 69;
+            this.dgvPQItems.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvPQItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPQItems.Size = new System.Drawing.Size(775, 218);
+            this.dgvPQItems.TabIndex = 69;
             // 
             // ItemName
             // 
@@ -658,13 +658,14 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "PQ_ViewForm";
             this.Text = "PQ_ViewForm";
+            this.Load += new System.EventHandler(this.PQ_ViewForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabItemDetails.ResumeLayout(false);
             this.TabPage1.ResumeLayout(false);
             this.TabPage1.PerformLayout();
             this.TabPage2.ResumeLayout(false);
             this.TabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRFQItems)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPQItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnGeneratePDF)).EndInit();
             this.ResumeLayout(false);
 
@@ -675,8 +676,8 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         internal System.Windows.Forms.TabControl tabItemDetails;
         internal System.Windows.Forms.TabPage TabPage1;
-        internal System.Windows.Forms.Label outputAddress;
-        internal System.Windows.Forms.Label outputEmailAddress;
+        internal System.Windows.Forms.Label outputCustomerAddress;
+        internal System.Windows.Forms.Label outputCustomerEmail;
         internal System.Windows.Forms.Label outputContactNumber;
         internal System.Windows.Forms.Label outputContactPerson;
         internal System.Windows.Forms.Label outputCustomerName;
@@ -697,7 +698,7 @@
         internal System.Windows.Forms.Label lblPaymentTerms;
         internal System.Windows.Forms.Label outputInFavorOf;
         internal System.Windows.Forms.Label outputPaymentTerms;
-        internal System.Windows.Forms.Label Label5;
+        internal System.Windows.Forms.Label lblValPeriod;
         internal System.Windows.Forms.Label lblRFQNumber;
         internal System.Windows.Forms.Label lblDate;
         internal System.Windows.Forms.Label lblPQNumber;
@@ -712,7 +713,7 @@
         private System.Windows.Forms.PictureBox btnGeneratePDF;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView dgvRFQItems;
+        private System.Windows.Forms.DataGridView dgvPQItems;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Description;
         private System.Windows.Forms.DataGridViewTextBoxColumn UOM;

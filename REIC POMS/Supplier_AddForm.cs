@@ -53,6 +53,11 @@ namespace REIC_POMS
                         return;
                     }
                 }
+                if (txtSupplierEmail.Text.Contains("@") == false)
+                {
+                    MessageBox.Show("Please enter a valid e-mail.", "Error", MessageBoxButtons.OK);
+                    return; //Enables user to edit the form again
+                }
 
                 else { filledOut = true; }
 

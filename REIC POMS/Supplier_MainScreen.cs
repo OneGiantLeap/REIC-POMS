@@ -286,7 +286,7 @@ namespace REIC_POMS
                 sql.InsertSupplier(newSupplier);
                 
                 supplierIDCounter++;
-                //return;
+                
             }
             else {
                 DialogResult result = MessageBox.Show("Sobra na, masasaktan ka na.", "kaibigan lang talaga", MessageBoxButtons.OK, MessageBoxIcon.Error);

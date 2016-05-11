@@ -44,6 +44,13 @@ namespace REIC_POMS
                     //if the RFQno inputted, matches to any rfqnos, it would get the details of spec. rfq and put in the create form
                     PQ_CreateForm pf = new PQ_CreateForm(); //initialize the create form
                     RFQ r = sql.SelectRFQDetails(rfq.RFQNo); //use MYSQLDatabaseDriver to access SelectRFQDetails then use the RFQno inputted
+
+                    string year = DateTime.Now.ToString("yy");
+                    string month = DateTime.Now.ToString("MM");
+                    int pqCount = sql.GetRowCount("pq_t", year, month);
+                    string generatedPQNo = year + month + "-" + (pqCount + 1).ToString("D3"); 
+                    pf.PQNo = generatedPQNo;
+
                     pf.RFQNo = r.RFQNo; //details are taken from ^
                     pf.PaymentTerms = r.PaymentTerms;
                     pf.DeliveryTerms = r.DeliveryTerms;

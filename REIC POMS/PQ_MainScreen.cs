@@ -38,7 +38,7 @@ namespace REIC_POMS
                 dgvPQ.Rows.Add("07/12/2015", "Joy Luck Club", "ATPI 1607-004", "04/01/2015 - 08/02/2017");
 
             sql.SelectAllPQDGV(dgvPQ); 
-           // sql.SelectAllQ(rfqList);
+            sql.SelectAllPQ(pqList);
 
         }
 
@@ -231,7 +231,41 @@ namespace REIC_POMS
         //---------------------------------------
         private void btnViewPQ_Click(object sender, EventArgs e)
         {
+            for (int i = 0; i < pqList.Count; i++) //Finding the PQ in the ArrayList
+            {
+                if (pqList[i] != null)
+                {
+                    PQ p = (PQ)pqList[i]; //Retrieve values from this specific PQ.
 
+                    if (p.PQNo == dgvPQ.SelectedRows[0].Cells[0].Value.ToString()) //matching of PQNo with the selected row
+                    {
+                        //---SET values in forms' labels & DISPLAY the view form
+                        PQ_ViewForm pqvf = new PQ_ViewForm();
+                        pqvf.PQNoToView = p.PQNo;
+                        pqvf.PQDateToView = p.PQDate;
+                        pqvf.RFQNoToView = p.RFQNo;
+                        pqvf.FromDatetoView = p.PQFromDate;
+                        pqvf.ToDatetoView = p.PQToDate;
+                        pqvf.PaymentTermsToView = p.PaymentTerms;
+                        pqvf.InFavorOfToView = p.InFavorOf;
+                        pqvf.DeliveryTermsToView = p.DeliveryTerms;
+                        pqvf.CustomerNameToView = dgvPQ.SelectedRows[0].Cells[1].Value.ToString();
+
+                        //Retrieve other Customer Details
+                        Customer c = sql.SelectCustomerDetails(p.CustomerID);
+                        pqvf.CustomerPersonToView = c.CustomerPerson;
+                        pqvf.CustomerNumberToView = c.CustomerNumber;
+                        pqvf.CustomerEmailToView = c.CustomerEmail;
+                        pqvf.CustomerAddressToView = c.CustomerAddress;
+
+                        //Retrieve Order Line Details
+                        //Happens in View Form: at PQ_OrderLine_Load
+
+                        //Open PQ_ViewForm.cs
+                        pqvf.ShowDialog();
+                    }
+                }
+            }
         }
 
 
