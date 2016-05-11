@@ -29,7 +29,7 @@ CONSTRAINT item_t_fk FOREIGN KEY (supplier_id) REFERENCES supplier_t(supplier_id
 CREATE TABLE customer_t
 (customer_id INTEGER NOT NULL,
 business_name_style VARCHAR(40),
-tin_number CHAR(19), /*Previously 15*/
+tin_number CHAR(15),
 company_name VARCHAR(70) NOT NULL,
 contact_person VARCHAR(70) NOT NULL,
 contact_number VARCHAR(25) NOT NULL,

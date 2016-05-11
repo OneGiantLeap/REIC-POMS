@@ -87,22 +87,22 @@ VALUES
 INSERT INTO customer_t
 (customer_id, business_name_style, tin_number, company_name, contact_person, contact_number, account_number, email_address, address)
 VALUES
-(1, 'Logistics', '2242-8887-9199-8848', 'AFG Company', 'Joy Hsien', '09224445555', '0251478498568754', 'joyhsien@afg.com', '299 Tomas Morato Ave, Quezon City'),
+(1, 'Logistics', '222-887-919-888', 'AFG Company', 'Joy Hsien', '09224445555', '0251478498568754', 'joyhsien@afg.com', '299 Tomas Morato Ave, Quezon City'),
 (2, 'Food', 'N/A', 'Harurot Co.', 'Auria M. Francisco', '09999993371', 'N/A', 'afrancisco@harurot.com.ph', '75 P. Domingo Street, Carmona, Makati City, 1207 Metro Manila'),
 (3, 'Logistics', 'N/A', 'EMP Company', 'Andres Ramos', '7284878', '8748224455558888', 'aramos@empcompany.com', '7114 Kundiman Street, Sampaloc, 1008 Manila'),
-(4, 'N/A', '8888-2222-5555-7777', 'Agetro Technologies', 'Romualdo Santos', '09123456789', 'N/A', 'rsantos@agetro.com.ph', '99 Commerce & Industry Plaza, 1030 Campus Avenue, Taguig, 1634 Metro Manila'),
-(5, 'Logistics', '8887-8798-2224-0154', 'AVIS', 'Wilbert Ramos', '502-3344', 'N/A', 'wilbertramos@avis.com.ph', 'Lot 4, Allegis IT Park, Carmelray Industrial Park 2, Makiling Dr, Tulo, Calamba, 4029 Laguna'),
+(4, 'N/A', '888-222-555-777', 'Agetro Technologies', 'Romualdo Santos', '09123456789', 'N/A', 'rsantos@agetro.com.ph', '99 Commerce & Industry Plaza, 1030 Campus Avenue, Taguig, 1634 Metro Manila'),
+(5, 'Logistics', '887-898-224-014', 'AVIS', 'Wilbert Ramos', '502-3344', 'N/A', 'wilbertramos@avis.com.ph', 'Lot 4, Allegis IT Park, Carmelray Industrial Park 2, Makiling Dr, Tulo, Calamba, 4029 Laguna'),
 
 (6, 'IT', 'N/A', 'Villarica Enterprise', 'Mr. Villarica', '(02) 285 2740', 'N/A', 'support@villarica.com.ph', '3rd Floor, Lucky China Town Mall, Calle Felipe cor. La Chombre Streets Zone 28, Binondo, Manila, Metro Manila'),
 (7, 'IT', 'N/A', 'Indie Enterprises', 'Samuel H. Magtanggol', '09123456789', 'N/A', 'sammagtanggol@indie.com.ph', '641 A. Mabini St, Sangandaan, Caloocan, 1116 Metro Manila'),
 (8, 'Food', 'N/A', 'Food Group', 'Perlita A. Sanchez', '09123456789', 'N/A', 'foodie@foodgroup.com.ph', 'Level 3, Cyberzone Building B, SM Megamall, EDSA, corner Doña Julia Vargas Ave., Wack-Wack Greenhills, Mandaluyong, 1550 Metro Manila'),
-(9, 'N/A', '0000-2156-5841-2587', '21/21 Co.', 'Pauline Abegonia', '09123456789', 'N/A', 'pabegonia@2121company.com', '95 Hermogenes Street, Sofia Subdivision, Del Pilar, San Fernando City, 2000 Pampanga'),
+(9, 'N/A', '000-216-541-287', '21/21 Co.', 'Pauline Abegonia', '09123456789', 'N/A', 'pabegonia@2121company.com', '95 Hermogenes Street, Sofia Subdivision, Del Pilar, San Fernando City, 2000 Pampanga'),
 (10, 'N/A', 'N/A', 'Balay Dako', 'Paolo Vasquez', '09123456788', 'N/A', 'balaydako@yahoo.com.ph', '40th Floor, Petron Mega Plaza, 358 Sen. Gil J. Puyat Ave, Makati, Metro Manila'),
 
 (11, 'Sports', 'N/A', 'Abencia & Co.', 'Lleonora Abencia', '09153909781', 'N/A', 'labencia@yahoo.com', '12/F Tower 2, the Enterprise Center, Paseo De Roxas Cor. Ayala Avenue, Makati City'),
 (12, 'IT', 'N/A', 'Telstra', 'Laura Lee', '4317144', 'N/A', 'llee@telstra.com.ph', '10-12/F 6256 Ayala Ave., Makati City'),
 (13, 'N/A', 'N/A', 'Joy Luck Club', 'Monica Roxas', '4211111', 'N/A', 'mroxas@joyluckclub.com.ph', '18 Adb Ave., Ortigas Center, Mandaluyong, 1550 Metro Manila'),
-(14, 'N/A', '0000-2222-5841-2222', 'Dollar', 'Lorina Go', '09153903333', 'N/A', 'lorinago@yahoo.com', 'National Highway, Barangay 19 San Lorenzo, San Nicolas, 2901 Ilocos Norte'),
+(14, 'N/A', '000-222-581-222', 'Dollar', 'Lorina Go', '09153903333', 'N/A', 'lorinago@yahoo.com', 'National Highway, Barangay 19 San Lorenzo, San Nicolas, 2901 Ilocos Norte'),
 (15, 'N/A', 'N/A', 'Lucid Co.', 'Charita King', '09156666666', 'N/A', 'lucidco@yahoo.com.ph', 'San Antonio, Pasig, 1605 Kalakhang Maynila');
 
 /*PQ - PRICE QUOTATION*/
