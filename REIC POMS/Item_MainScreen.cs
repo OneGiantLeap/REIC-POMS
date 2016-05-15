@@ -25,7 +25,6 @@ namespace REIC_POMS
             itemList = new ArrayList();
             supplierList = new ArrayList();
 
-
             /*
             //---STREAM READER
             try
@@ -110,6 +109,7 @@ namespace REIC_POMS
             //TEST CODE
             DialogResult result = MessageBox.Show("Are you sure you want to exit?", "Confirm Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
+                sql.Backup();
                 Close(); //Exit the program
         }
 

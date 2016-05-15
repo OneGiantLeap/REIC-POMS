@@ -12,9 +12,12 @@ namespace REIC_POMS
 {
     public partial class SIDR_MainScreen : Form
     {
+        private MySQLDatabaseDriver sql;
+
         public SIDR_MainScreen()
         {
             InitializeComponent();
+            sql = new MySQLDatabaseDriver();
 
             //ADJUST DATAGRIDVIEW COLUMN ALIGNMENT
             dgvSIDR.Columns["Date"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter; //Center column header
@@ -46,6 +49,7 @@ namespace REIC_POMS
         {
             DialogResult result = MessageBox.Show("Are you sure you want to exit?", "Confirm Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
+                sql.Backup();
                 Close(); //Exit the program
         }
 

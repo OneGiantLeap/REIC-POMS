@@ -61,7 +61,7 @@ namespace REIC_POMS
                     (txtCustomerEmail.TextLength == 0) ||
                     (txtCustomerAddress.TextLength == 0))
                 {
-                    MessageBox.Show("All fields, except Business Style/Name and TIN Number, are required to be filled out.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("All fields, except Business Style/Name, TIN Number, and Account Number, are required to be filled out.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return; //Enables user to edit the form again
             }
 
@@ -74,9 +74,21 @@ namespace REIC_POMS
 
             //If optional fields are empty, set values to N/A (Will be useful for View Form later on.)
             if (txtBusinessName.TextLength == 0) { BusinessName = "N/A"; }
-            fullTin = txtTinNumber1.Text + "-" + txtTinNumber2.Text + "-" + txtTinNumber3.Text + "-" + txtTinNumber4.Text;
-                if (fullTin.Length == 3) { FullTinNumber = "N/A"; } //If fullTin contains no numbers; 3 because of the "-"
-                else { FullTinNumber = fullTin; }
+            fullTin = txtTinNumber1.Text + txtTinNumber2.Text + txtTinNumber3.Text + txtTinNumber4.Text; //For checking
+                if ((fullTin == "") || (fullTin.Contains("N/A") == true)) //If fullTin contains no numbers or "N/A"
+                { 
+                    FullTinNumber = "N/A";
+                } 
+                else if (fullTin.Length != 12) //If TIN input is partially complete
+                {
+                    MessageBox.Show("TIN number is incomplete.", "Error", MessageBoxButtons.OK);
+                    return; //Enables user to edit the form again
+                }
+                else //Correct
+                {
+                    fullTin = txtTinNumber1.Text + "-" + txtTinNumber2.Text + "-" + txtTinNumber3.Text + "-" + txtTinNumber4.Text;
+                    FullTinNumber = fullTin;
+                }
             if (txtAccountNumber.TextLength == 0) { AccountNumber = "N/A"; }
 
             //---CLOSE FORM
@@ -90,7 +102,35 @@ namespace REIC_POMS
             this.Close();
         }
 
+        //------------------------
+        //  OTHER FORM ELEMENTS  |
+        //------------------------
+        //If User has input 3 characters in a TIN textbox part, text cursor jumps to the next textbox part.
+        private void txtTinNumber1_TextChanged(object sender, EventArgs e)
+        {
+            if (txtTinNumber1.TextLength == 3)
+            {
+                txtTinNumber2.Select();
+                txtTinNumber2.Focus();
+            }
+        }
 
+        private void txtTinNumber2_TextChanged(object sender, EventArgs e)
+        {
+            if (txtTinNumber2.TextLength == 3)
+            {
+                txtTinNumber3.Select();
+                txtTinNumber3.Focus();
+            }
+        }
 
+        private void txtTinNumber3_TextChanged(object sender, EventArgs e)
+        {
+            if (txtTinNumber3.TextLength == 3)
+            {
+                txtTinNumber4.Select();
+                txtTinNumber4.Focus();
+            }
+        }
     }
 }

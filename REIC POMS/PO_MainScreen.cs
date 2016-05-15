@@ -12,10 +12,13 @@ namespace REIC_POMS
 {
     public partial class PO_MainScreen : Form
     {
+        private MySQLDatabaseDriver sql;
+
         public PO_MainScreen()
         {
             InitializeComponent();
-            
+            sql = new MySQLDatabaseDriver();
+
             //ADJUST DATAGRIDVIEW COLUMN ALIGNMENT
             dgvPO.Columns["OrderDate"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter; //Center column header
             dgvPO.Columns["OrderDate"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; //Center column contents
@@ -45,6 +48,7 @@ namespace REIC_POMS
         {
             DialogResult result = MessageBox.Show("Are you sure you want to exit?", "Confirm Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
+                sql.Backup();
                 Close(); //Exit the program
         }
 

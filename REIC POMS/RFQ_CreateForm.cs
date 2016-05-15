@@ -16,8 +16,9 @@ namespace REIC_POMS
     {
         //ATTRIBUTES
         private MySQLDatabaseDriver sql;
-        private ArrayList itemList; //All Items
+        //private ArrayList itemList; //All Items
         //private ArrayList customerList; //All Customers
+        private ArrayList supplierItemList; //All Items offered by the selected Supplier
         private ArrayList customerDropdownList; //All Customer NAMES
         private ArrayList supplierList; //All Suppliers
         private ArrayList supplierDropdownList; //All Supplier NAMES
@@ -32,8 +33,8 @@ namespace REIC_POMS
             sql = new MySQLDatabaseDriver();
 
             //Instantiate ArrayLists and populate them
-            itemList = new ArrayList();
-            sql.SelectAllItems(itemList);
+            //itemList = new ArrayList();
+            /*sql.SelectAllItems(itemList); --> No longer used. dgvItemSelection only displays what the selected Supplier offers.
             for (int i = 0; i < itemList.Count; i++)
             {
                 Item itemToAdd = (Item)itemList[i];
@@ -42,8 +43,9 @@ namespace REIC_POMS
                                           itemToAdd.ItemDescription,
                                           itemToAdd.Uom,
                                           itemToAdd.SupplierUnitPrice.ToString("0.00"));
-                //DOUBLE-CHECK WHAT KIND OF PRICE (REIC's or Supplier's) YOU'LL PLACE IN YOUR FORMS
-            }
+            }*/
+
+            supplierItemList = new ArrayList();
 
             //customerList = new ArrayList();
             //sql.SelectAllCustomers(customerList);
@@ -67,7 +69,7 @@ namespace REIC_POMS
             cbbFilterBy.SelectedIndex = 0; //"Filter by..."
             cbbPaymentTerms.SelectedIndex = 0; //"Select"
             cbbDeliveryTerms.SelectedIndex = 0; // "Select"
-            txtItemName.Text = dgvItemSelection.SelectedRows[0].Cells["ItemName"].Value.ToString();
+            //txtItemName.Text = dgvItemSelection.SelectedRows[0].Cells["ItemName"].Value.ToString(); --> Moved to cbbSupplierName_SelectedIndexChanged
 
             rfqOrderLineList = new ArrayList();
 
@@ -248,11 +250,8 @@ namespace REIC_POMS
                 //---SET CUSTOMER ID Foreign Key
                 CustomerIDFK = sql.SelectCustomerID(CustomerName);
 
-
                 //---SET SUPPLIER ID Foreign Key
-                MessageBox.Show(SupplierName); //Debug purposes
                 SupplierIDFK = sql.SelectSupplierID(SupplierName);
-                MessageBox.Show(SupplierIDFK.ToString()); //Debug purposes
 
                 //---ADD all items in RFQ to the rfqOrderLineList. (Parameters based on Data Dictionary)
                 for (int i = 0; i < dgvRFQItems.RowCount; i++)
@@ -351,7 +350,16 @@ namespace REIC_POMS
         //  OTHER FORM ELEMENTS  |
         //------------------------
         private void cbbSupplierName_SelectedIndexChanged(object sender, EventArgs e)
-        { //Once a Supplier has been selected, the other Supplier-related fields should be auto-completed
+        { //Once a Supplier has been selected, the other Supplier-related fields should be auto-completed. dgvItemSelection should change.
+            //Empty DGV contents (to be refilled upon Supplier selection)
+            dgvItemSelection.Rows.Clear();
+            if (dgvRFQItems.RowCount != 0) //Do we need this messagebox?
+            {
+                MessageBox.Show("Note: Items not provided by the chosen Supplier are excluded from the Request for Price Quotation.", "Important!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dgvRFQItems.Rows.Clear();
+            }
+            
+            
             if (cbbSupplierName.Text == "Select Supplier")
             {
                 SupplierPerson = null;
@@ -371,6 +379,14 @@ namespace REIC_POMS
                     SupplierNumber = s.SupplierNumber;
                     SupplierEmail = s.SupplierEmail;
                     SupplierAddress = s.SupplierAddress;
+
+                    //Populating the dgvItemSelection with what this Supplier offers
+                    sql.SelectSupplierItems(dgvItemSelection, s.SupplierID);
+                    if (dgvItemSelection.RowCount != 0) //If Supplier offers at least 1 item, set the Item Name text to the first row's item name
+                    {
+                        txtItemName.Text = dgvItemSelection.SelectedRows[0].Cells["ItemName"].Value.ToString();
+                        nupItemQuantity.Value = 1;
+                    }
                     break; //Once the other fields are auto-completed, end the search process.
                 }
             }

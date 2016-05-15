@@ -11,10 +11,18 @@ using System.Windows.Forms;
 namespace REIC_POMS
 {
     public partial class SPR_MainScreen : Form
-    {
+    {   
+        //ATTRIBUTES
+        private MySQLDatabaseDriver sql;
+
         public SPR_MainScreen()
         {
             InitializeComponent();
+            sql = new MySQLDatabaseDriver();
+
+            cbbFromMonth.SelectedIndex = 0; //"Select Month"
+            txtToMonth.Text = DateTime.Now.Month.ToString("MMMM"); //Format shows full month name
+            txtToYear.Text = DateTime.Now.Year.ToString();
         }
 
         //--------------------------------------
@@ -180,44 +188,154 @@ namespace REIC_POMS
         private void btnSignOut_MouseLeave(object sender, EventArgs e)
         { btnSignOut.BackgroundImage = Properties.Resources.ButtonInactiveSignOut; }
 
-
         //---------------------
         // SALES TAB METHODS  |
         //---------------------
         private void btnFilter_Click(object sender, EventArgs e)
         {
+            if (cbbFromMonth.Text == "Select Month")
+            {
+                MessageBox.Show("Please select a month.", "Incomplete Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
+            if (radMonthly.Checked == true)
+            {
+                //To be continued
+
+                /*From BAR SAMPLE
+                this.chart1.Series["Sales"].Points.AddXY("2007", 16391);
+                this.chart1.Series["Sales"].Points.AddXY("2008", 170033);
+                this.chart1.Series["Sales"].Points.AddXY("2009", 27727);
+                this.chart1.Series["Sales"].Points.AddXY("2010", 27178);
+                this.chart1.Series["Sales"].Points.AddXY("2011", 31263);
+                this.chart1.Series["Sales"].Points.AddXY("2012", 63371);
+                this.chart1.Series["Sales"].Points.AddXY("2013", 56083);
+                this.chart1.Series["Sales"].Points.AddXY("2014", 62155);
+                this.chart1.Series["Sales"].Points.AddXY("2015", 101231);
+                this.chart1.Series["Sales"].Points.AddXY("2016", 99865);
+                */
+            }
+
+            if (radAnnually.Checked == true)
+            {
+                //To be continued
+            }
         }
 
         private void btnGenerateReport_Click(object sender, EventArgs e)
         {
+            if (cbbFromMonth.Text == "Select Month")
+            {
+                MessageBox.Show("Please select a month.", "Incomplete Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+           
+            if (radMonthly.Checked == true)
+            {
+                //SPR_MonthlySales_PrintScreen ms = new SPR_MonthlySales_PrintScreen();
+                //ms.ShowDialog();
+            }
 
+            if (radAnnually.Checked == true)
+            {
+                //SPR_AnnualSales_PrintScreen as = new SPR_AnnualSales_PrintScreen();
+                //as.ShowDialog();
+            }
         }
 
         //--------------------------
         // STATUS: RFQ TAB METHODS |
         //--------------------------
+        private void radPendingRFQ_CheckedChanged(object sender, EventArgs e)
+        {
+            dgvRFQStatus.Rows.Clear();
+            sql.SelectPendingRFQ(dgvRFQStatus);
+        }
+
+        private void radCompletedRFQ_CheckedChanged(object sender, EventArgs e)
+        {
+            dgvRFQStatus.Rows.Clear();
+            sql.SelectCompletedRFQ(dgvRFQStatus);
+        }
+
         private void btnGenerateReportRFQ_Click(object sender, EventArgs e)
         {
+            if ((radPendingRFQ.Checked == false) && (radCompletedRFQ.Checked == false))
+            {
+                MessageBox.Show("Please select if you want to view pending or completed requests for price quotation.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
+            if (radPendingRFQ.Checked == true)
+            {
+                SPR_RFQPending_PrintScreen rfqp = new SPR_RFQPending_PrintScreen();
+                rfqp.ShowDialog();
+            }
+
+            if (radCompletedRFQ.Checked == true)
+            {
+                SPR_RFQCompleted_PrintScreen rfqc = new SPR_RFQCompleted_PrintScreen();
+                rfqc.ShowDialog();
+            }
         }
 
         //-------------------------
         // STATUS: PQ TAB METHODS |
         //-------------------------
+        private void radPendingPQ_CheckedChanged(object sender, EventArgs e)
+        {
+            dgvPQStatus.Rows.Clear();
+            sql.SelectPendingPQ(dgvPQStatus);
+        }
+
+        private void radCompletedPQ_CheckedChanged(object sender, EventArgs e)
+        {
+            dgvPQStatus.Rows.Clear();
+            sql.SelectCompletedPQ(dgvPQStatus);
+        }
+
         private void btnGenerateReportPQ_Click(object sender, EventArgs e)
         {
+            if (radPendingPQ.Checked == true)
+            {
+                //SPR_PQPending_PrintScreen pqp = new SPR_PQPending_PrintScreen();
+                //pqp.ShowDialog();
+            }
 
+            if (radCompletedPQ.Checked == true)
+            {
+                //SPR_PQCompleted_PrintScreen pqc = new SPR_PQCompleted_PrintScreen();
+                //pqc.ShowDialog();
+            }
         }
 
         //-------------------------
         // STATUS: PO TAB METHODS |
         //-------------------------
-        private void btnGenerateReportPO_Click(object sender, EventArgs e)
+        private void radPendingPO_CheckedChanged(object sender, EventArgs e)
         {
-
+            sql.SelectPendingPO(dgvPOStatus);
         }
 
+        private void radCompletedPO_CheckedChanged(object sender, EventArgs e)
+        {
+            sql.SelectCompletedPO(dgvPOStatus);
+        }
 
+        private void btnGenerateReportPO_Click(object sender, EventArgs e)
+        {
+            if (radPendingPO.Checked == true)
+            {
+                //SPR_POPending_PrintScreen pop = new SPR_POPending_PrintScreen();
+                //pop.ShowDialog();
+            }
+
+            if (radCompletedPO.Checked == true)
+            {
+                //SPR_POCompleted_PrintScreen poc = new SPR_POCompleted_PrintScreen();
+                //poc.ShowDialog();
+            }
+        }
     }
 }

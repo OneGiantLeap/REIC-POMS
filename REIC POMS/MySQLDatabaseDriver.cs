@@ -53,6 +53,54 @@ namespace REIC_POMS
             connection.Close();
         }
 
+        //--------------------
+        //  BACKUP & RESTORE |
+        //--------------------
+        // Reference: http://mysqlbackupnet.codeplex.com/
+        // using MySql.Data.MySqlClient;
+        // If access denied, try running Visual Studio as an Administrator
+        // So far, tested to backup & restore in C:\. Tried elsewhere but received an "access denied" error.
+        public void Backup()
+        { //Called everytime the User clicks on "X" to close the POMS
+            string constring = "server=localhost; user=root; pwd=; database=reicpoms;";
+            string file = "C:\\REIC Files\\reicpoms_backup.sql";
+            using (MySqlConnection conn = new MySqlConnection(constring))
+            {
+                using (MySqlCommand cmd = new MySqlCommand())
+                {
+                    using (MySqlBackup mb = new MySqlBackup(cmd))
+                    {
+                        cmd.Connection = conn;
+                        conn.Open();
+                        mb.ExportToFile(file);
+                        conn.Close();
+                        MessageBox.Show("Backup completed.");
+                    }
+                }
+            }
+        }
+
+        public void Restore()
+        { //Called upon launching the system (Log-in Screen)
+          //NOTE: This will result to an error if you don't have the reicpoms_backup.sql file in your C:\\
+            string constring = "server=localhost; user=root; pwd=; database=reicpoms;";
+            string file = "C:\\REIC Files\\reicpoms_backup.sql";
+            using (MySqlConnection conn = new MySqlConnection(constring))
+            {
+                using (MySqlCommand cmd = new MySqlCommand())
+                {
+                    using (MySqlBackup mb = new MySqlBackup(cmd))
+                    {
+                        cmd.Connection = conn;
+                        conn.Open();
+                        mb.ImportFromFile(file);
+                        conn.Close();
+                        MessageBox.Show("Restore completed.");
+                    }
+                }
+            }
+        }
+
         //---------------------
         //  SELECT STATEMENTS |
         //---------------------
@@ -226,7 +274,26 @@ namespace REIC_POMS
             DisconnectFromSQL();
             return idResult;
         }
-        
+
+        public void SelectSupplierItems(DataGridView dgvName, int supplierID)
+        { //For populating the dgvItemSelection of the forms (IMPORTANT: SUPPLIER'S PRICE)
+            ConnectToSQL();
+            command = new MySqlCommand(string.Format("SELECT part_number, item_name, item_description, unit_of_measurement, supplier_unit_price " +
+                                                     "FROM item_t, supplier_t " +
+                                                     "WHERE supplier_t.supplier_id = {0} " +
+                                                     "AND item_t.supplier_id = supplier_t.supplier_id;", supplierID), connection);
+            myReader = command.ExecuteReader();
+            while (myReader.Read())
+            {
+                dgvName.Rows.Add(myReader["part_number"].ToString(),
+                                 myReader["item_name"].ToString(),
+                                 myReader["item_description"].ToString(),
+                                 myReader["unit_of_measurement"].ToString(),
+                                 myReader["supplier_unit_price"].ToString()); //Double-check: Should have 2 decimal points
+            }
+            DisconnectFromSQL();
+        }
+
         public Supplier SelectSupplierDetails(int id)
         { //Retrieves a specific Supplier's row | Used in View Forms of RFQ and PO
             ConnectToSQL();
@@ -281,7 +348,7 @@ namespace REIC_POMS
         }
 
         public RFQ SelectRFQDetails(string rfqNo) //NEWLY ADDED
-        { //Retrieves a specific RFQ's row | Used in View Forms of RFQ
+        { //Retrieves a specific RFQ's row | Used in View Forms of RFQ & RFQPrintout Crystal Reports
             ConnectToSQL();
             RFQ r;
             command = new MySqlCommand(string.Format("SELECT rfq_no, DATE_FORMAT(date_of_request, '%m/%d/%Y'), payment_terms, delivery_terms, customer_id, supplier_id, pq_no FROM rfq_t WHERE rfq_no='{0}';", rfqNo), connection);
@@ -326,16 +393,16 @@ namespace REIC_POMS
             while (myReader.Read())
             {
                 result.Add(new PQ(myReader["pq_no"].ToString(),
-                                   myReader["pq_date"].ToString(),
-                                   myReader["rfq_no"].ToString(),
-                                   myReader["from_date"].ToString(),
-                                   myReader["to_date"].ToString(),
-                                   myReader["payment_terms"].ToString(),
-                                   myReader["delivery_terms"].ToString(),
-                                   myReader["bill_to"].ToString(),
-                                   myReader["ship_to"].ToString(),
-                                   myReader["in_favor_of"].ToString(),
-                                   int.Parse(myReader["customer_id"].ToString())));
+                                  myReader["pq_date"].ToString(),
+                                  myReader["rfq_no"].ToString(),
+                                  myReader["from_date"].ToString(),
+                                  myReader["to_date"].ToString(),
+                                  myReader["payment_terms"].ToString(),
+                                  myReader["delivery_terms"].ToString(),
+                                  myReader["bill_to"].ToString(),
+                                  myReader["ship_to"].ToString(),
+                                  myReader["in_favor_of"].ToString(),
+                                  int.Parse(myReader["customer_id"].ToString())));
             }
             DisconnectFromSQL();
         }
@@ -420,6 +487,113 @@ namespace REIC_POMS
 
         }
 
+        //-------------------------
+        //  SPR SELECT STATEMENTS |
+        //-------------------------
+        public void SelectMonthlySales()
+        {
+            //To ponder on
+        }
+
+        public void SelectAnnualSales()
+        {
+            //To ponder on
+        }
+
+        public void SelectPendingRFQ(DataGridView dgvName)
+        {
+            ConnectToSQL();
+            command = new MySqlCommand("SELECT rfq_no, DATE_FORMAT(date_of_request, '%m/%d/%Y'), supplier_name, company_name " +
+                                      "FROM rfq_t, supplier_t, customer_t " +
+                                      "WHERE pq_no IS NULL " +
+                                      "AND rfq_t.supplier_id = supplier_t.supplier_id " +
+                                      "AND rfq_t.customer_id = customer_t.customer_id " +
+                                      "ORDER BY rfq_no;", connection);
+            myReader = command.ExecuteReader();
+            while (myReader.Read())
+            {
+                dgvName.Rows.Add(myReader["rfq_no"].ToString(),
+                                 myReader["DATE_FORMAT(date_of_request, '%m/%d/%Y')"].ToString(),
+                                 myReader["supplier_name"].ToString(),
+                                 myReader["company_name"].ToString());
+            }
+            DisconnectFromSQL();
+        }
+
+        public void SelectCompletedRFQ(DataGridView dgvName)
+        {
+            ConnectToSQL();
+            command = new MySqlCommand("SELECT rfq_no, DATE_FORMAT(date_of_request, '%m/%d/%Y'), supplier_name, company_name " +
+                                      "FROM rfq_t, supplier_t, customer_t " +
+                                      "WHERE pq_no IS NOT NULL " +
+                                      "AND rfq_t.supplier_id = supplier_t.supplier_id " +
+                                      "AND rfq_t.customer_id = customer_t.customer_id " +
+                                      "ORDER BY rfq_no;", connection);
+            myReader = command.ExecuteReader();
+            while (myReader.Read())
+            {
+                dgvName.Rows.Add(myReader["rfq_no"].ToString(),
+                                 myReader["DATE_FORMAT(date_of_request, '%m/%d/%Y')"].ToString(),
+                                 myReader["supplier_name"].ToString(),
+                                 myReader["company_name"].ToString());
+            }
+            DisconnectFromSQL();
+        }
+
+
+        public void SelectPendingPQ(DataGridView dgvName)
+        {
+            ConnectToSQL();
+            command = new MySqlCommand(//"SELECT DISTINCT pq_t.pq_no, DATE_FORMAT(pq_date, '%m/%d/%Y'), DATE_FORMAT(from_date, '%m/%d/%Y'), DATE_FORMAT(to_date, '%m/%d/%Y'), pq_t.payment_terms, pq_t.delivery_terms, in_favor_of, bill_to, ship_to, pq_t.total_amount, customer_t.customer_id  " +
+                                       "SELECT DISTINCT DATE_FORMAT(pq_date, '%m/%d/%Y'), company_name, pq_t.pq_no, CONCAT(DATE_FORMAT(from_date, '%m/%d/%Y'), ' - ', DATE_FORMAT(to_date, '%m/%d/%Y'))" +
+                                       "FROM customer_t, pq_t, po_t " +
+                                       "WHERE pq_t.pq_no NOT IN (" +
+                                           "SELECT po_t.pq_no " +
+                                           "FROM po_t " +
+                                           "WHERE pq_t.pq_no = po_t.pq_no) " +
+                                       "AND pq_t.customer_id = customer_t.customer_id " +
+                                       "ORDER BY pq_t.pq_no;", connection);
+            myReader = command.ExecuteReader();
+            while (myReader.Read())
+            {
+                dgvName.Rows.Add(myReader["DATE_FORMAT(pq_date, '%m/%d/%Y')"].ToString(),
+                                 myReader["company_name"].ToString(),
+                                 myReader["pq_t.pq_no"].ToString(),
+                                 myReader["CONCAT(DATE_FORMAT(from_date, '%m/%d/%Y'), ' - ', DATE_FORMAT(to_date, '%m/%d/%Y'))"].ToString());
+            }
+            DisconnectFromSQL();
+        }
+
+        public void SelectCompletedPQ(DataGridView dgvName)
+        {
+            ConnectToSQL();
+            command = new MySqlCommand("SELECT DATE_FORMAT(pq_date, '%m/%d/%Y'), company_name, pq_t.pq_no, CONCAT(DATE_FORMAT(from_date, '%m/%d/%Y'), ' - ', DATE_FORMAT(to_date, '%m/%d/%Y'))" +
+                                       "FROM customer_t, pq_t, po_t " +
+                                       "WHERE pq_t.pq_no = po_t.pq_no" +
+                                       "AND pq_t.customer_id = customer_t.customer_id " +
+                                       "ORDER BY pq_t.pq_no;", connection);
+            myReader = command.ExecuteReader();
+            while (myReader.Read())
+            {
+                dgvName.Rows.Add(myReader["DATE_FORMAT(pq_date, '%m/%d/%Y')"].ToString(),
+                                 myReader["company_name"].ToString(),
+                                 myReader["pq_t.pq_no"].ToString(),
+                                 myReader["CONCAT(DATE_FORMAT(from_date, '%m/%d/%Y'), ' - ', DATE_FORMAT(to_date, '%m/%d/%Y'))"].ToString());
+            }
+            DisconnectFromSQL();
+        }
+
+        public void SelectPendingPO(DataGridView dgvName)
+        {
+
+        }
+
+        public void SelectCompletedPO(DataGridView dgvName)
+        {
+
+        }
+
+
         //---------------------
         //  INSERT STATEMENTS |
         //---------------------
@@ -496,17 +670,18 @@ namespace REIC_POMS
             string[] dateParts = r.RequestDate.Split('/'); //REIC's format: 05/06/2016 (MM/DD/YYYY)
             string convertedDate = dateParts[2] + "-" + dateParts[0] + "-" + dateParts[1]; //SQL's format: 2016-05-06 (YYYY-MM-DD)
             Insert(string.Format("INSERT INTO rfq_t " +
-                "(rfq_no, date_of_request, payment_terms, delivery_terms, customer_id, supplier_id) " + 
-                "VALUES ('{0}', '{1}', '{2}', '{3}', {4}, {5});", r.RFQNo,
-                                                                  convertedDate,
-                                                                  r.PaymentTerms,
-                                                                  r.DeliveryTerms,
-                                                                  r.CustomerID,
-                                                                  r.SupplierID));
+                "(rfq_no, date_of_request, payment_terms, delivery_terms, customer_id, supplier_id, pq_no) " + 
+                "VALUES ('{0}', '{1}', '{2}', '{3}', {4}, {5}, null);", r.RFQNo,
+                                                                       convertedDate,
+                                                                       r.PaymentTerms,
+                                                                       r.DeliveryTerms,
+                                                                       r.CustomerID,
+                                                                       r.SupplierID)); //PQ_No foreign key will be set when its PQ has been created
         }
 
         public void InsertRFQOrderLine(RFQ_OrderLine rol)
         {
+            MessageBox.Show("Insert Order Line");
             Insert(string.Format("INSERT INTO rfq_order_line_t " +
                 "(rfq_no, part_number, quantity) " +
                 "VALUES ('{0}', '{1}', {2});", rol.RFQNo, rol.PartNumber, rol.Quantity));

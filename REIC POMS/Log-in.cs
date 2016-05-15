@@ -12,9 +12,13 @@ namespace REIC_POMS
 {
     public partial class LoginScreen : Form
     {
+        private MySQLDatabaseDriver sql;
+
         public LoginScreen()
         {
             InitializeComponent();
+            sql = new MySQLDatabaseDriver();
+            //sql.Restore();
         }
 
         private void btnMinimize_Click(object sender, EventArgs e)

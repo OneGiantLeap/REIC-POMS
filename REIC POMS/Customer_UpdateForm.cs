@@ -23,7 +23,7 @@ namespace REIC_POMS
         private bool cancel; //Will be used by View Form to know if it will update its Customer data or not
         bool tinFilled;
         string fullTin; //Entire TIN Number (values from the 4 boxes combined)
-
+        
         //-------------------
         //  GETTERS-SETTERS |
         //-------------------
@@ -32,12 +32,17 @@ namespace REIC_POMS
             get { return txtBusinessName.Text; } }
 
         public bool TinFilled {
-            set { tinFilled = true; } }
-        
+            set { tinFilled = value; }
+            get { return tinFilled; } }
+
+        public string FullTinNumber {
+            set { fullTin = value; }
+            get { return fullTin; } }
+
         public string FullTinToEdit {
             set {
-                    txtTinNumber1.Text = value;
-                    if (tinFilled == true) //If the TIN Number from ViewForm is NOT "N/A"
+                    txtTinNumber1.Text = value; //Need this if N/A
+                    if (TinFilled == true) //Display the TIN, separated into parts
                     {
                         string[] tinPart = txtTinNumber1.Text.Split('-');
                         txtTinNumber1.Text = tinPart[0];
@@ -45,8 +50,9 @@ namespace REIC_POMS
                         txtTinNumber3.Text = tinPart[2];
                         txtTinNumber4.Text = tinPart[3];
                     }
+                    else { txtTinNumber1.Text = "N/A"; }
                 }
-            get { return fullTin; } }
+             }
 
         public string TinToEdit1 {
             set { txtTinNumber1.Text = value; }
@@ -117,9 +123,25 @@ namespace REIC_POMS
 
             //If optional fields are empty, set values to N/A (Will be useful for View Form's sake.)
             if (txtBusinessName.TextLength == 0) { BNameToEdit = "N/A"; }
-            fullTin = txtTinNumber1.Text + "-" + txtTinNumber2.Text + "-" + txtTinNumber3.Text + "-" + txtTinNumber4.Text;
-                if (fullTin.Length == 3) { FullTinToEdit = "N/A"; } //If fullTin contains no numbers; 3 because of the "-"
-                else FullTinToEdit = fullTin;
+            //fullTin = txtTinNumber1.Text + "-" + txtTinNumber2.Text + "-" + txtTinNumber3.Text + "-" + txtTinNumber4.Text;
+            fullTin = txtTinNumber1.Text + txtTinNumber2.Text + txtTinNumber3.Text + txtTinNumber4.Text; //For checking
+                if ((fullTin == "")  || (fullTin.Contains("N/A") == true)) //If fullTin contains no numbers or "N/A"
+                {
+                    TinFilled = false;
+                    FullTinNumber = "N/A";
+                }
+                else if (fullTin.Length != 12) //If TIN input is partially complete
+                {
+                    TinFilled = false;
+                    MessageBox.Show("TIN number is incomplete.", "Error", MessageBoxButtons.OK);
+                    return; //Enables user to edit the form again
+                }
+                else
+                {
+                    TinFilled = true;
+                    fullTin = txtTinNumber1.Text + "-" + txtTinNumber2.Text + "-" + txtTinNumber3.Text + "-" + txtTinNumber4.Text;
+                    FullTinNumber = fullTin;
+                }
             if ((txtAccountNumber.TextLength == 0) || (txtAccountNumber.Text.Contains("N/A")))
                 { AcctNumberToEdit = "N/A"; }
 
@@ -132,6 +154,37 @@ namespace REIC_POMS
         {
             cancel = true;
             this.Close();
+        }
+
+        //------------------------
+        //  OTHER FORM ELEMENTS  |
+        //------------------------
+        //If User has input 3 characters in a TIN textbox part, text cursor jumps to the next textbox part.
+        private void txtTinNumber1_TextChanged(object sender, EventArgs e)
+        {
+            if (txtTinNumber1.TextLength == 3)
+            {
+                txtTinNumber2.Select();
+                txtTinNumber2.Focus();
+            }
+        }
+
+        private void txtTinNumber2_TextChanged(object sender, EventArgs e)
+        {
+            if (txtTinNumber2.TextLength == 3)
+            {
+                txtTinNumber3.Select();
+                txtTinNumber3.Focus();
+            }
+        }
+
+        private void txtTinNumber3_TextChanged(object sender, EventArgs e)
+        {
+            if (txtTinNumber3.TextLength == 3)
+            {
+                txtTinNumber4.Select();
+                txtTinNumber4.Focus();
+            }
         }
     }
 }

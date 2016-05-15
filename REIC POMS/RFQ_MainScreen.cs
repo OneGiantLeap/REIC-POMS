@@ -25,7 +25,7 @@ namespace REIC_POMS
             sql = new MySQLDatabaseDriver();
             rfqList = new ArrayList();
 
-            //---ADJUST DATAGRIDVIEW COLUMN ALIGNMENT
+            //---ADJUST DATAGRIDVIEW APPEARANCE
             //Center column headings
             dgvRFQ.Columns["RequestDate"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvRFQ.Columns["RFQNo"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -36,6 +36,15 @@ namespace REIC_POMS
             //---STREAM READER
             sql.SelectAllRFQDGV(dgvRFQ); //Populate DGV
             sql.SelectAllRFQ(rfqList);
+
+            //Sort datagridview by LATEST RFQ Number
+            dgvRFQ.Sort(dgvRFQ.Columns["RFQNo"], ListSortDirection.Descending);
+
+            //Default selected row is the first row
+            if (dgvRFQ.Rows.Count != 0)
+            {
+                dgvRFQ.Rows[0].Selected = true;
+            }
         }
 
         private void RFQ_MainScreen_Load(object sender, EventArgs e)
@@ -53,6 +62,7 @@ namespace REIC_POMS
         {
             DialogResult result = MessageBox.Show("Are you sure you want to exit?", "Confirm Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
+                sql.Backup();
                 Close(); //Exit the program
         }
 
@@ -252,6 +262,12 @@ namespace REIC_POMS
 
                 //---DISPLAY the newly created RFQ in the Main Screen DGV
                 dgvRFQ.Rows.Add(crfq.RFQNo, crfq.RequestDate, crfq.SupplierName, crfq.CustomerName);
+
+                //---OPEN THE RFQ Printout Print Preview
+                RFQ_PrintScreen rfqps = new RFQ_PrintScreen();
+                rfqps.RFQNo = crfq.RFQNo; //For the Print Screen to use in its SQL statement
+                rfqps.FirstTime = true;
+                rfqps.ShowDialog();
 
                 //---MESSAGEBOX FOR DEBUG PURPOSES
                 MessageBox.Show("RFQ CREATED: " + crfq.RFQNo + ", " + crfq.RequestDate + ", " + crfq.PaymentTerms + ", " + 

@@ -56,13 +56,15 @@ namespace REIC_POMS {
         
         private global::System.Data.DataRelation relationpo_t_fk2;
         
+        private global::System.Data.DataRelation relationpo_t_fk3;
+        
+        private global::System.Data.DataRelation relationpo_t_fk4;
+        
         private global::System.Data.DataRelation relationpq_order_line_t_fk1;
         
         private global::System.Data.DataRelation relationpq_order_line_t_fk2;
         
-        private global::System.Data.DataRelation relationpq_t_fk1;
-        
-        private global::System.Data.DataRelation relationpq_t_fk2;
+        private global::System.Data.DataRelation relationpq_t_fk;
         
         private global::System.Data.DataRelation relationrfq_order_line_t_fk1;
         
@@ -72,13 +74,13 @@ namespace REIC_POMS {
         
         private global::System.Data.DataRelation relationrfq_t_fk2;
         
+        private global::System.Data.DataRelation relationrfq_t_fk3;
+        
         private global::System.Data.DataRelation relationsidr_order_line_t_fk1;
         
         private global::System.Data.DataRelation relationsidr_order_line_t_fk2;
         
-        private global::System.Data.DataRelation relationsidr_t_fk1;
-        
-        private global::System.Data.DataRelation relationsidr_t_fk2;
+        private global::System.Data.DataRelation relationsidr_t_fk;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -473,18 +475,19 @@ namespace REIC_POMS {
             this.relationpo_order_line_t_fk2 = this.Relations["po_order_line_t_fk2"];
             this.relationpo_t_fk1 = this.Relations["po_t_fk1"];
             this.relationpo_t_fk2 = this.Relations["po_t_fk2"];
+            this.relationpo_t_fk3 = this.Relations["po_t_fk3"];
+            this.relationpo_t_fk4 = this.Relations["po_t_fk4"];
             this.relationpq_order_line_t_fk1 = this.Relations["pq_order_line_t_fk1"];
             this.relationpq_order_line_t_fk2 = this.Relations["pq_order_line_t_fk2"];
-            this.relationpq_t_fk1 = this.Relations["pq_t_fk1"];
-            this.relationpq_t_fk2 = this.Relations["pq_t_fk2"];
+            this.relationpq_t_fk = this.Relations["pq_t_fk"];
             this.relationrfq_order_line_t_fk1 = this.Relations["rfq_order_line_t_fk1"];
             this.relationrfq_order_line_t_fk2 = this.Relations["rfq_order_line_t_fk2"];
             this.relationrfq_t_fk1 = this.Relations["rfq_t_fk1"];
             this.relationrfq_t_fk2 = this.Relations["rfq_t_fk2"];
+            this.relationrfq_t_fk3 = this.Relations["rfq_t_fk3"];
             this.relationsidr_order_line_t_fk1 = this.Relations["sidr_order_line_t_fk1"];
             this.relationsidr_order_line_t_fk2 = this.Relations["sidr_order_line_t_fk2"];
-            this.relationsidr_t_fk1 = this.Relations["sidr_t_fk1"];
-            this.relationsidr_t_fk2 = this.Relations["sidr_t_fk2"];
+            this.relationsidr_t_fk = this.Relations["sidr_t_fk"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -530,13 +533,21 @@ namespace REIC_POMS {
                         this.tablepo_order_line_t.part_numberColumn}, false);
             this.Relations.Add(this.relationpo_order_line_t_fk2);
             this.relationpo_t_fk1 = new global::System.Data.DataRelation("po_t_fk1", new global::System.Data.DataColumn[] {
-                        this.tablepq_t.pq_noColumn}, new global::System.Data.DataColumn[] {
-                        this.tablepo_t.pq_noColumn}, false);
-            this.Relations.Add(this.relationpo_t_fk1);
-            this.relationpo_t_fk2 = new global::System.Data.DataRelation("po_t_fk2", new global::System.Data.DataColumn[] {
                         this.tablecustomer_t.customer_idColumn}, new global::System.Data.DataColumn[] {
                         this.tablepo_t.customer_idColumn}, false);
+            this.Relations.Add(this.relationpo_t_fk1);
+            this.relationpo_t_fk2 = new global::System.Data.DataRelation("po_t_fk2", new global::System.Data.DataColumn[] {
+                        this.tablesupplier_t.supplier_idColumn}, new global::System.Data.DataColumn[] {
+                        this.tablepo_t.supplier_idColumn}, false);
             this.Relations.Add(this.relationpo_t_fk2);
+            this.relationpo_t_fk3 = new global::System.Data.DataRelation("po_t_fk3", new global::System.Data.DataColumn[] {
+                        this.tablepq_t.pq_noColumn}, new global::System.Data.DataColumn[] {
+                        this.tablepo_t.pq_noColumn}, false);
+            this.Relations.Add(this.relationpo_t_fk3);
+            this.relationpo_t_fk4 = new global::System.Data.DataRelation("po_t_fk4", new global::System.Data.DataColumn[] {
+                        this.tablesidr_t.so_noColumn}, new global::System.Data.DataColumn[] {
+                        this.tablepo_t.so_noColumn}, false);
+            this.Relations.Add(this.relationpo_t_fk4);
             this.relationpq_order_line_t_fk1 = new global::System.Data.DataRelation("pq_order_line_t_fk1", new global::System.Data.DataColumn[] {
                         this.tablepq_t.pq_noColumn}, new global::System.Data.DataColumn[] {
                         this.tablepq_order_line_t.pq_noColumn}, false);
@@ -545,14 +556,10 @@ namespace REIC_POMS {
                         this.tableitem_t.part_numberColumn}, new global::System.Data.DataColumn[] {
                         this.tablepq_order_line_t.part_numberColumn}, false);
             this.Relations.Add(this.relationpq_order_line_t_fk2);
-            this.relationpq_t_fk1 = new global::System.Data.DataRelation("pq_t_fk1", new global::System.Data.DataColumn[] {
-                        this.tablerfq_t.rfq_noColumn}, new global::System.Data.DataColumn[] {
-                        this.tablepq_t.rfq_noColumn}, false);
-            this.Relations.Add(this.relationpq_t_fk1);
-            this.relationpq_t_fk2 = new global::System.Data.DataRelation("pq_t_fk2", new global::System.Data.DataColumn[] {
+            this.relationpq_t_fk = new global::System.Data.DataRelation("pq_t_fk", new global::System.Data.DataColumn[] {
                         this.tablecustomer_t.customer_idColumn}, new global::System.Data.DataColumn[] {
                         this.tablepq_t.customer_idColumn}, false);
-            this.Relations.Add(this.relationpq_t_fk2);
+            this.Relations.Add(this.relationpq_t_fk);
             this.relationrfq_order_line_t_fk1 = new global::System.Data.DataRelation("rfq_order_line_t_fk1", new global::System.Data.DataColumn[] {
                         this.tablerfq_t.rfq_noColumn}, new global::System.Data.DataColumn[] {
                         this.tablerfq_order_line_t.rfq_noColumn}, false);
@@ -569,6 +576,10 @@ namespace REIC_POMS {
                         this.tablesupplier_t.supplier_idColumn}, new global::System.Data.DataColumn[] {
                         this.tablerfq_t.supplier_idColumn}, false);
             this.Relations.Add(this.relationrfq_t_fk2);
+            this.relationrfq_t_fk3 = new global::System.Data.DataRelation("rfq_t_fk3", new global::System.Data.DataColumn[] {
+                        this.tablepq_t.pq_noColumn}, new global::System.Data.DataColumn[] {
+                        this.tablerfq_t.pq_noColumn}, false);
+            this.Relations.Add(this.relationrfq_t_fk3);
             this.relationsidr_order_line_t_fk1 = new global::System.Data.DataRelation("sidr_order_line_t_fk1", new global::System.Data.DataColumn[] {
                         this.tablesidr_t.so_noColumn}, new global::System.Data.DataColumn[] {
                         this.tablesidr_order_line_t.so_noColumn}, false);
@@ -577,14 +588,10 @@ namespace REIC_POMS {
                         this.tableitem_t.part_numberColumn}, new global::System.Data.DataColumn[] {
                         this.tablesidr_order_line_t.part_numberColumn}, false);
             this.Relations.Add(this.relationsidr_order_line_t_fk2);
-            this.relationsidr_t_fk1 = new global::System.Data.DataRelation("sidr_t_fk1", new global::System.Data.DataColumn[] {
-                        this.tablepo_t.po_noColumn}, new global::System.Data.DataColumn[] {
-                        this.tablesidr_t.po_noColumn}, false);
-            this.Relations.Add(this.relationsidr_t_fk1);
-            this.relationsidr_t_fk2 = new global::System.Data.DataRelation("sidr_t_fk2", new global::System.Data.DataColumn[] {
+            this.relationsidr_t_fk = new global::System.Data.DataRelation("sidr_t_fk", new global::System.Data.DataColumn[] {
                         this.tablecustomer_t.customer_idColumn}, new global::System.Data.DataColumn[] {
                         this.tablesidr_t.customer_idColumn}, false);
-            this.Relations.Add(this.relationsidr_t_fk2);
+            this.Relations.Add(this.relationsidr_t_fk);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1549,11 +1556,9 @@ namespace REIC_POMS {
             
             private global::System.Data.DataColumn columnpart_number;
             
+            private global::System.Data.DataColumn columnsupplier_unit_price;
+            
             private global::System.Data.DataColumn columnquantity;
-            
-            private global::System.Data.DataColumn columnnet_item_subtotal;
-            
-            private global::System.Data.DataColumn columndelivery_cost;
             
             private global::System.Data.DataColumn columnitem_total;
             
@@ -1608,25 +1613,17 @@ namespace REIC_POMS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn supplier_unit_priceColumn {
+                get {
+                    return this.columnsupplier_unit_price;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn quantityColumn {
                 get {
                     return this.columnquantity;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn net_item_subtotalColumn {
-                get {
-                    return this.columnnet_item_subtotal;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn delivery_costColumn {
-                get {
-                    return this.columndelivery_cost;
                 }
             }
             
@@ -1675,14 +1672,13 @@ namespace REIC_POMS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public po_order_line_tRow Addpo_order_line_tRow(po_tRow parentpo_tRowBypo_order_line_t_fk1, item_tRow parentitem_tRowBypo_order_line_t_fk2, int quantity, double net_item_subtotal, double delivery_cost, double item_total) {
+            public po_order_line_tRow Addpo_order_line_tRow(po_tRow parentpo_tRowBypo_order_line_t_fk1, item_tRow parentitem_tRowBypo_order_line_t_fk2, double supplier_unit_price, int quantity, double item_total) {
                 po_order_line_tRow rowpo_order_line_tRow = ((po_order_line_tRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         null,
+                        supplier_unit_price,
                         quantity,
-                        net_item_subtotal,
-                        delivery_cost,
                         item_total};
                 if ((parentpo_tRowBypo_order_line_t_fk1 != null)) {
                     columnValuesArray[0] = parentpo_tRowBypo_order_line_t_fk1[0];
@@ -1722,9 +1718,8 @@ namespace REIC_POMS {
             internal void InitVars() {
                 this.columnpo_no = base.Columns["po_no"];
                 this.columnpart_number = base.Columns["part_number"];
+                this.columnsupplier_unit_price = base.Columns["supplier_unit_price"];
                 this.columnquantity = base.Columns["quantity"];
-                this.columnnet_item_subtotal = base.Columns["net_item_subtotal"];
-                this.columndelivery_cost = base.Columns["delivery_cost"];
                 this.columnitem_total = base.Columns["item_total"];
             }
             
@@ -1735,12 +1730,10 @@ namespace REIC_POMS {
                 base.Columns.Add(this.columnpo_no);
                 this.columnpart_number = new global::System.Data.DataColumn("part_number", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnpart_number);
+                this.columnsupplier_unit_price = new global::System.Data.DataColumn("supplier_unit_price", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsupplier_unit_price);
                 this.columnquantity = new global::System.Data.DataColumn("quantity", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnquantity);
-                this.columnnet_item_subtotal = new global::System.Data.DataColumn("net_item_subtotal", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnnet_item_subtotal);
-                this.columndelivery_cost = new global::System.Data.DataColumn("delivery_cost", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columndelivery_cost);
                 this.columnitem_total = new global::System.Data.DataColumn("item_total", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnitem_total);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
@@ -1750,8 +1743,8 @@ namespace REIC_POMS {
                 this.columnpo_no.MaxLength = 8;
                 this.columnpart_number.AllowDBNull = false;
                 this.columnpart_number.MaxLength = 11;
+                this.columnsupplier_unit_price.AllowDBNull = false;
                 this.columnquantity.AllowDBNull = false;
-                this.columnnet_item_subtotal.AllowDBNull = false;
                 this.columnitem_total.AllowDBNull = false;
             }
             
@@ -1900,11 +1893,17 @@ namespace REIC_POMS {
             
             private global::System.Data.DataColumn columndelivery_terms;
             
+            private global::System.Data.DataColumn columnnet_item_subtotal;
+            
+            private global::System.Data.DataColumn columndelivery_cost;
+            
             private global::System.Data.DataColumn columnorder_total;
             
             private global::System.Data.DataColumn columnsupplier_id;
             
             private global::System.Data.DataColumn columncustomer_id;
+            
+            private global::System.Data.DataColumn columnso_no;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -1997,6 +1996,22 @@ namespace REIC_POMS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn net_item_subtotalColumn {
+                get {
+                    return this.columnnet_item_subtotal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn delivery_costColumn {
+                get {
+                    return this.columndelivery_cost;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn order_totalColumn {
                 get {
                     return this.columnorder_total;
@@ -2016,6 +2031,14 @@ namespace REIC_POMS {
             public global::System.Data.DataColumn customer_idColumn {
                 get {
                     return this.columncustomer_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn so_noColumn {
+                get {
+                    return this.columnso_no;
                 }
             }
             
@@ -2056,7 +2079,7 @@ namespace REIC_POMS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public po_tRow Addpo_tRow(string po_no, System.DateTime order_date, System.DateTime required_delivery_date, string order_description, pq_tRow parentpq_tRowBypo_t_fk1, string payment_terms, string delivery_terms, double order_total, int supplier_id, customer_tRow parentcustomer_tRowBypo_t_fk2) {
+            public po_tRow Addpo_tRow(string po_no, System.DateTime order_date, System.DateTime required_delivery_date, string order_description, pq_tRow parentpq_tRowBypo_t_fk3, string payment_terms, string delivery_terms, double net_item_subtotal, double delivery_cost, double order_total, supplier_tRow parentsupplier_tRowBypo_t_fk2, customer_tRow parentcustomer_tRowBypo_t_fk1, sidr_tRow parentsidr_tRowBypo_t_fk4) {
                 po_tRow rowpo_tRow = ((po_tRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         po_no,
@@ -2066,14 +2089,23 @@ namespace REIC_POMS {
                         null,
                         payment_terms,
                         delivery_terms,
+                        net_item_subtotal,
+                        delivery_cost,
                         order_total,
-                        supplier_id,
+                        null,
+                        null,
                         null};
-                if ((parentpq_tRowBypo_t_fk1 != null)) {
-                    columnValuesArray[4] = parentpq_tRowBypo_t_fk1[0];
+                if ((parentpq_tRowBypo_t_fk3 != null)) {
+                    columnValuesArray[4] = parentpq_tRowBypo_t_fk3[0];
                 }
-                if ((parentcustomer_tRowBypo_t_fk2 != null)) {
-                    columnValuesArray[9] = parentcustomer_tRowBypo_t_fk2[0];
+                if ((parentsupplier_tRowBypo_t_fk2 != null)) {
+                    columnValuesArray[10] = parentsupplier_tRowBypo_t_fk2[0];
+                }
+                if ((parentcustomer_tRowBypo_t_fk1 != null)) {
+                    columnValuesArray[11] = parentcustomer_tRowBypo_t_fk1[0];
+                }
+                if ((parentsidr_tRowBypo_t_fk4 != null)) {
+                    columnValuesArray[12] = parentsidr_tRowBypo_t_fk4[0];
                 }
                 rowpo_tRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowpo_tRow);
@@ -2111,9 +2143,12 @@ namespace REIC_POMS {
                 this.columnpq_no = base.Columns["pq_no"];
                 this.columnpayment_terms = base.Columns["payment_terms"];
                 this.columndelivery_terms = base.Columns["delivery_terms"];
+                this.columnnet_item_subtotal = base.Columns["net_item_subtotal"];
+                this.columndelivery_cost = base.Columns["delivery_cost"];
                 this.columnorder_total = base.Columns["order_total"];
                 this.columnsupplier_id = base.Columns["supplier_id"];
                 this.columncustomer_id = base.Columns["customer_id"];
+                this.columnso_no = base.Columns["so_no"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2133,12 +2168,18 @@ namespace REIC_POMS {
                 base.Columns.Add(this.columnpayment_terms);
                 this.columndelivery_terms = new global::System.Data.DataColumn("delivery_terms", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columndelivery_terms);
+                this.columnnet_item_subtotal = new global::System.Data.DataColumn("net_item_subtotal", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnet_item_subtotal);
+                this.columndelivery_cost = new global::System.Data.DataColumn("delivery_cost", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndelivery_cost);
                 this.columnorder_total = new global::System.Data.DataColumn("order_total", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnorder_total);
                 this.columnsupplier_id = new global::System.Data.DataColumn("supplier_id", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnsupplier_id);
                 this.columncustomer_id = new global::System.Data.DataColumn("customer_id", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncustomer_id);
+                this.columnso_no = new global::System.Data.DataColumn("so_no", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnso_no);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnpo_no}, true));
                 this.columnpo_no.AllowDBNull = false;
@@ -2153,6 +2194,7 @@ namespace REIC_POMS {
                 this.columnpayment_terms.MaxLength = 7;
                 this.columndelivery_terms.AllowDBNull = false;
                 this.columndelivery_terms.MaxLength = 8;
+                this.columnnet_item_subtotal.AllowDBNull = false;
                 this.columnorder_total.AllowDBNull = false;
                 this.columnsupplier_id.AllowDBNull = false;
                 this.columncustomer_id.AllowDBNull = false;
@@ -2293,7 +2335,11 @@ namespace REIC_POMS {
             
             private global::System.Data.DataColumn columnpart_number;
             
+            private global::System.Data.DataColumn columnreic_unit_price;
+            
             private global::System.Data.DataColumn columnquantity;
+            
+            private global::System.Data.DataColumn columnitem_total;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -2346,9 +2392,25 @@ namespace REIC_POMS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn reic_unit_priceColumn {
+                get {
+                    return this.columnreic_unit_price;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn quantityColumn {
                 get {
                     return this.columnquantity;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn item_totalColumn {
+                get {
+                    return this.columnitem_total;
                 }
             }
             
@@ -2389,12 +2451,14 @@ namespace REIC_POMS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public pq_order_line_tRow Addpq_order_line_tRow(pq_tRow parentpq_tRowBypq_order_line_t_fk1, item_tRow parentitem_tRowBypq_order_line_t_fk2, int quantity) {
+            public pq_order_line_tRow Addpq_order_line_tRow(pq_tRow parentpq_tRowBypq_order_line_t_fk1, item_tRow parentitem_tRowBypq_order_line_t_fk2, double reic_unit_price, int quantity, double item_total) {
                 pq_order_line_tRow rowpq_order_line_tRow = ((pq_order_line_tRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         null,
-                        quantity};
+                        reic_unit_price,
+                        quantity,
+                        item_total};
                 if ((parentpq_tRowBypq_order_line_t_fk1 != null)) {
                     columnValuesArray[0] = parentpq_tRowBypq_order_line_t_fk1[0];
                 }
@@ -2433,7 +2497,9 @@ namespace REIC_POMS {
             internal void InitVars() {
                 this.columnpq_no = base.Columns["pq_no"];
                 this.columnpart_number = base.Columns["part_number"];
+                this.columnreic_unit_price = base.Columns["reic_unit_price"];
                 this.columnquantity = base.Columns["quantity"];
+                this.columnitem_total = base.Columns["item_total"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2443,8 +2509,12 @@ namespace REIC_POMS {
                 base.Columns.Add(this.columnpq_no);
                 this.columnpart_number = new global::System.Data.DataColumn("part_number", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnpart_number);
+                this.columnreic_unit_price = new global::System.Data.DataColumn("reic_unit_price", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnreic_unit_price);
                 this.columnquantity = new global::System.Data.DataColumn("quantity", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnquantity);
+                this.columnitem_total = new global::System.Data.DataColumn("item_total", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnitem_total);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnpq_no,
                                 this.columnpart_number}, true));
@@ -2452,7 +2522,9 @@ namespace REIC_POMS {
                 this.columnpq_no.MaxLength = 8;
                 this.columnpart_number.AllowDBNull = false;
                 this.columnpart_number.MaxLength = 11;
+                this.columnreic_unit_price.AllowDBNull = false;
                 this.columnquantity.AllowDBNull = false;
+                this.columnitem_total.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2590,8 +2662,6 @@ namespace REIC_POMS {
             
             private global::System.Data.DataColumn columnpq_date;
             
-            private global::System.Data.DataColumn columnrfq_no;
-            
             private global::System.Data.DataColumn columnfrom_date;
             
             private global::System.Data.DataColumn columnto_date;
@@ -2606,9 +2676,9 @@ namespace REIC_POMS {
             
             private global::System.Data.DataColumn columnin_favor_of;
             
-            private global::System.Data.DataColumn columncustomer_id;
-            
             private global::System.Data.DataColumn columntotal_amount;
+            
+            private global::System.Data.DataColumn columncustomer_id;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -2656,14 +2726,6 @@ namespace REIC_POMS {
             public global::System.Data.DataColumn pq_dateColumn {
                 get {
                     return this.columnpq_date;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn rfq_noColumn {
-                get {
-                    return this.columnrfq_no;
                 }
             }
             
@@ -2725,17 +2787,17 @@ namespace REIC_POMS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn customer_idColumn {
+            public global::System.Data.DataColumn total_amountColumn {
                 get {
-                    return this.columncustomer_id;
+                    return this.columntotal_amount;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn total_amountColumn {
+            public global::System.Data.DataColumn customer_idColumn {
                 get {
-                    return this.columntotal_amount;
+                    return this.columncustomer_id;
                 }
             }
             
@@ -2776,12 +2838,11 @@ namespace REIC_POMS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public pq_tRow Addpq_tRow(string pq_no, System.DateTime pq_date, rfq_tRow parentrfq_tRowBypq_t_fk1, System.DateTime from_date, System.DateTime to_date, string payment_terms, string delivery_terms, string bill_to, string ship_to, string in_favor_of, customer_tRow parentcustomer_tRowBypq_t_fk2, double total_amount) {
+            public pq_tRow Addpq_tRow(string pq_no, System.DateTime pq_date, System.DateTime from_date, System.DateTime to_date, string payment_terms, string delivery_terms, string bill_to, string ship_to, string in_favor_of, double total_amount, customer_tRow parentcustomer_tRowBypq_t_fk) {
                 pq_tRow rowpq_tRow = ((pq_tRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         pq_no,
                         pq_date,
-                        null,
                         from_date,
                         to_date,
                         payment_terms,
@@ -2789,13 +2850,10 @@ namespace REIC_POMS {
                         bill_to,
                         ship_to,
                         in_favor_of,
-                        null,
-                        total_amount};
-                if ((parentrfq_tRowBypq_t_fk1 != null)) {
-                    columnValuesArray[2] = parentrfq_tRowBypq_t_fk1[0];
-                }
-                if ((parentcustomer_tRowBypq_t_fk2 != null)) {
-                    columnValuesArray[10] = parentcustomer_tRowBypq_t_fk2[0];
+                        total_amount,
+                        null};
+                if ((parentcustomer_tRowBypq_t_fk != null)) {
+                    columnValuesArray[10] = parentcustomer_tRowBypq_t_fk[0];
                 }
                 rowpq_tRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowpq_tRow);
@@ -2828,7 +2886,6 @@ namespace REIC_POMS {
             internal void InitVars() {
                 this.columnpq_no = base.Columns["pq_no"];
                 this.columnpq_date = base.Columns["pq_date"];
-                this.columnrfq_no = base.Columns["rfq_no"];
                 this.columnfrom_date = base.Columns["from_date"];
                 this.columnto_date = base.Columns["to_date"];
                 this.columnpayment_terms = base.Columns["payment_terms"];
@@ -2836,8 +2893,8 @@ namespace REIC_POMS {
                 this.columnbill_to = base.Columns["bill_to"];
                 this.columnship_to = base.Columns["ship_to"];
                 this.columnin_favor_of = base.Columns["in_favor_of"];
-                this.columncustomer_id = base.Columns["customer_id"];
                 this.columntotal_amount = base.Columns["total_amount"];
+                this.columncustomer_id = base.Columns["customer_id"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2847,8 +2904,6 @@ namespace REIC_POMS {
                 base.Columns.Add(this.columnpq_no);
                 this.columnpq_date = new global::System.Data.DataColumn("pq_date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnpq_date);
-                this.columnrfq_no = new global::System.Data.DataColumn("rfq_no", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnrfq_no);
                 this.columnfrom_date = new global::System.Data.DataColumn("from_date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnfrom_date);
                 this.columnto_date = new global::System.Data.DataColumn("to_date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
@@ -2863,18 +2918,16 @@ namespace REIC_POMS {
                 base.Columns.Add(this.columnship_to);
                 this.columnin_favor_of = new global::System.Data.DataColumn("in_favor_of", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnin_favor_of);
-                this.columncustomer_id = new global::System.Data.DataColumn("customer_id", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columncustomer_id);
                 this.columntotal_amount = new global::System.Data.DataColumn("total_amount", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntotal_amount);
+                this.columncustomer_id = new global::System.Data.DataColumn("customer_id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncustomer_id);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnpq_no}, true));
                 this.columnpq_no.AllowDBNull = false;
                 this.columnpq_no.Unique = true;
                 this.columnpq_no.MaxLength = 8;
                 this.columnpq_date.AllowDBNull = false;
-                this.columnrfq_no.AllowDBNull = false;
-                this.columnrfq_no.MaxLength = 8;
                 this.columnfrom_date.AllowDBNull = false;
                 this.columnto_date.AllowDBNull = false;
                 this.columnpayment_terms.AllowDBNull = false;
@@ -2887,8 +2940,8 @@ namespace REIC_POMS {
                 this.columnship_to.MaxLength = 8;
                 this.columnin_favor_of.AllowDBNull = false;
                 this.columnin_favor_of.MaxLength = 8;
-                this.columncustomer_id.AllowDBNull = false;
                 this.columntotal_amount.AllowDBNull = false;
+                this.columncustomer_id.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3331,6 +3384,8 @@ namespace REIC_POMS {
             
             private global::System.Data.DataColumn columnsupplier_id;
             
+            private global::System.Data.DataColumn columnpq_no;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public rfq_tDataTable() {
@@ -3414,6 +3469,14 @@ namespace REIC_POMS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn pq_noColumn {
+                get {
+                    return this.columnpq_no;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -3449,7 +3512,7 @@ namespace REIC_POMS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public rfq_tRow Addrfq_tRow(string rfq_no, System.DateTime date_of_request, string payment_terms, string delivery_terms, customer_tRow parentcustomer_tRowByrfq_t_fk1, supplier_tRow parentsupplier_tRowByrfq_t_fk2) {
+            public rfq_tRow Addrfq_tRow(string rfq_no, System.DateTime date_of_request, string payment_terms, string delivery_terms, customer_tRow parentcustomer_tRowByrfq_t_fk1, supplier_tRow parentsupplier_tRowByrfq_t_fk2, pq_tRow parentpq_tRowByrfq_t_fk3) {
                 rfq_tRow rowrfq_tRow = ((rfq_tRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         rfq_no,
@@ -3457,12 +3520,16 @@ namespace REIC_POMS {
                         payment_terms,
                         delivery_terms,
                         null,
+                        null,
                         null};
                 if ((parentcustomer_tRowByrfq_t_fk1 != null)) {
                     columnValuesArray[4] = parentcustomer_tRowByrfq_t_fk1[0];
                 }
                 if ((parentsupplier_tRowByrfq_t_fk2 != null)) {
                     columnValuesArray[5] = parentsupplier_tRowByrfq_t_fk2[0];
+                }
+                if ((parentpq_tRowByrfq_t_fk3 != null)) {
+                    columnValuesArray[6] = parentpq_tRowByrfq_t_fk3[0];
                 }
                 rowrfq_tRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowrfq_tRow);
@@ -3499,6 +3566,7 @@ namespace REIC_POMS {
                 this.columndelivery_terms = base.Columns["delivery_terms"];
                 this.columncustomer_id = base.Columns["customer_id"];
                 this.columnsupplier_id = base.Columns["supplier_id"];
+                this.columnpq_no = base.Columns["pq_no"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3516,6 +3584,8 @@ namespace REIC_POMS {
                 base.Columns.Add(this.columncustomer_id);
                 this.columnsupplier_id = new global::System.Data.DataColumn("supplier_id", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnsupplier_id);
+                this.columnpq_no = new global::System.Data.DataColumn("pq_no", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnpq_no);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnrfq_no}, true));
                 this.columnrfq_no.AllowDBNull = false;
@@ -3528,6 +3598,7 @@ namespace REIC_POMS {
                 this.columndelivery_terms.MaxLength = 8;
                 this.columncustomer_id.AllowDBNull = false;
                 this.columnsupplier_id.AllowDBNull = false;
+                this.columnpq_no.MaxLength = 8;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3665,13 +3736,11 @@ namespace REIC_POMS {
             
             private global::System.Data.DataColumn columnpart_number;
             
+            private global::System.Data.DataColumn columnreic_unit_price;
+            
             private global::System.Data.DataColumn columnquantity;
             
-            private global::System.Data.DataColumn columntotal_sales;
-            
-            private global::System.Data.DataColumn columnvat_sales;
-            
-            private global::System.Data.DataColumn columnadd_12_percent_vat;
+            private global::System.Data.DataColumn columnitem_total;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -3724,6 +3793,14 @@ namespace REIC_POMS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn reic_unit_priceColumn {
+                get {
+                    return this.columnreic_unit_price;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn quantityColumn {
                 get {
                     return this.columnquantity;
@@ -3732,25 +3809,9 @@ namespace REIC_POMS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn total_salesColumn {
+            public global::System.Data.DataColumn item_totalColumn {
                 get {
-                    return this.columntotal_sales;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn vat_salesColumn {
-                get {
-                    return this.columnvat_sales;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn add_12_percent_vatColumn {
-                get {
-                    return this.columnadd_12_percent_vat;
+                    return this.columnitem_total;
                 }
             }
             
@@ -3791,15 +3852,14 @@ namespace REIC_POMS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public sidr_order_line_tRow Addsidr_order_line_tRow(sidr_tRow parentsidr_tRowBysidr_order_line_t_fk1, item_tRow parentitem_tRowBysidr_order_line_t_fk2, int quantity, double total_sales, double vat_sales, double add_12_percent_vat) {
+            public sidr_order_line_tRow Addsidr_order_line_tRow(sidr_tRow parentsidr_tRowBysidr_order_line_t_fk1, item_tRow parentitem_tRowBysidr_order_line_t_fk2, double reic_unit_price, int quantity, double item_total) {
                 sidr_order_line_tRow rowsidr_order_line_tRow = ((sidr_order_line_tRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         null,
+                        reic_unit_price,
                         quantity,
-                        total_sales,
-                        vat_sales,
-                        add_12_percent_vat};
+                        item_total};
                 if ((parentsidr_tRowBysidr_order_line_t_fk1 != null)) {
                     columnValuesArray[0] = parentsidr_tRowBysidr_order_line_t_fk1[0];
                 }
@@ -3838,10 +3898,9 @@ namespace REIC_POMS {
             internal void InitVars() {
                 this.columnso_no = base.Columns["so_no"];
                 this.columnpart_number = base.Columns["part_number"];
+                this.columnreic_unit_price = base.Columns["reic_unit_price"];
                 this.columnquantity = base.Columns["quantity"];
-                this.columntotal_sales = base.Columns["total_sales"];
-                this.columnvat_sales = base.Columns["vat_sales"];
-                this.columnadd_12_percent_vat = base.Columns["add_12_percent_vat"];
+                this.columnitem_total = base.Columns["item_total"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3851,24 +3910,21 @@ namespace REIC_POMS {
                 base.Columns.Add(this.columnso_no);
                 this.columnpart_number = new global::System.Data.DataColumn("part_number", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnpart_number);
+                this.columnreic_unit_price = new global::System.Data.DataColumn("reic_unit_price", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnreic_unit_price);
                 this.columnquantity = new global::System.Data.DataColumn("quantity", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnquantity);
-                this.columntotal_sales = new global::System.Data.DataColumn("total_sales", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columntotal_sales);
-                this.columnvat_sales = new global::System.Data.DataColumn("vat_sales", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnvat_sales);
-                this.columnadd_12_percent_vat = new global::System.Data.DataColumn("add_12_percent_vat", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnadd_12_percent_vat);
+                this.columnitem_total = new global::System.Data.DataColumn("item_total", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnitem_total);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnso_no,
                                 this.columnpart_number}, true));
                 this.columnso_no.AllowDBNull = false;
                 this.columnpart_number.AllowDBNull = false;
                 this.columnpart_number.MaxLength = 11;
+                this.columnreic_unit_price.AllowDBNull = false;
                 this.columnquantity.AllowDBNull = false;
-                this.columntotal_sales.AllowDBNull = false;
-                this.columnvat_sales.AllowDBNull = false;
-                this.columnadd_12_percent_vat.AllowDBNull = false;
+                this.columnitem_total.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4010,11 +4066,17 @@ namespace REIC_POMS {
             
             private global::System.Data.DataColumn columndelivery_terms;
             
-            private global::System.Data.DataColumn columnpo_no;
+            private global::System.Data.DataColumn columncustomer_po_no;
             
             private global::System.Data.DataColumn columnsi_no;
             
             private global::System.Data.DataColumn columndr_no;
+            
+            private global::System.Data.DataColumn columntotal_sales;
+            
+            private global::System.Data.DataColumn columnvat_sales;
+            
+            private global::System.Data.DataColumn columnadd_12_percent_vat;
             
             private global::System.Data.DataColumn columninvoice_total;
             
@@ -4085,9 +4147,9 @@ namespace REIC_POMS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn po_noColumn {
+            public global::System.Data.DataColumn customer_po_noColumn {
                 get {
-                    return this.columnpo_no;
+                    return this.columncustomer_po_no;
                 }
             }
             
@@ -4104,6 +4166,30 @@ namespace REIC_POMS {
             public global::System.Data.DataColumn dr_noColumn {
                 get {
                     return this.columndr_no;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn total_salesColumn {
+                get {
+                    return this.columntotal_sales;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn vat_salesColumn {
+                get {
+                    return this.columnvat_sales;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn add_12_percent_vatColumn {
+                get {
+                    return this.columnadd_12_percent_vat;
                 }
             }
             
@@ -4152,22 +4238,22 @@ namespace REIC_POMS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public sidr_tRow Addsidr_tRow(int so_no, customer_tRow parentcustomer_tRowBysidr_t_fk2, System.DateTime so_date, string delivery_terms, po_tRow parentpo_tRowBysidr_t_fk1, int si_no, int dr_no, double invoice_total) {
+            public sidr_tRow Addsidr_tRow(int so_no, customer_tRow parentcustomer_tRowBysidr_t_fk, System.DateTime so_date, string delivery_terms, string customer_po_no, int si_no, int dr_no, double total_sales, double vat_sales, double add_12_percent_vat, double invoice_total) {
                 sidr_tRow rowsidr_tRow = ((sidr_tRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         so_no,
                         null,
                         so_date,
                         delivery_terms,
-                        null,
+                        customer_po_no,
                         si_no,
                         dr_no,
+                        total_sales,
+                        vat_sales,
+                        add_12_percent_vat,
                         invoice_total};
-                if ((parentcustomer_tRowBysidr_t_fk2 != null)) {
-                    columnValuesArray[1] = parentcustomer_tRowBysidr_t_fk2[0];
-                }
-                if ((parentpo_tRowBysidr_t_fk1 != null)) {
-                    columnValuesArray[4] = parentpo_tRowBysidr_t_fk1[0];
+                if ((parentcustomer_tRowBysidr_t_fk != null)) {
+                    columnValuesArray[1] = parentcustomer_tRowBysidr_t_fk[0];
                 }
                 rowsidr_tRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowsidr_tRow);
@@ -4202,9 +4288,12 @@ namespace REIC_POMS {
                 this.columncustomer_id = base.Columns["customer_id"];
                 this.columnso_date = base.Columns["so_date"];
                 this.columndelivery_terms = base.Columns["delivery_terms"];
-                this.columnpo_no = base.Columns["po_no"];
+                this.columncustomer_po_no = base.Columns["customer_po_no"];
                 this.columnsi_no = base.Columns["si_no"];
                 this.columndr_no = base.Columns["dr_no"];
+                this.columntotal_sales = base.Columns["total_sales"];
+                this.columnvat_sales = base.Columns["vat_sales"];
+                this.columnadd_12_percent_vat = base.Columns["add_12_percent_vat"];
                 this.columninvoice_total = base.Columns["invoice_total"];
             }
             
@@ -4219,12 +4308,18 @@ namespace REIC_POMS {
                 base.Columns.Add(this.columnso_date);
                 this.columndelivery_terms = new global::System.Data.DataColumn("delivery_terms", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columndelivery_terms);
-                this.columnpo_no = new global::System.Data.DataColumn("po_no", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnpo_no);
+                this.columncustomer_po_no = new global::System.Data.DataColumn("customer_po_no", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncustomer_po_no);
                 this.columnsi_no = new global::System.Data.DataColumn("si_no", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnsi_no);
                 this.columndr_no = new global::System.Data.DataColumn("dr_no", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columndr_no);
+                this.columntotal_sales = new global::System.Data.DataColumn("total_sales", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntotal_sales);
+                this.columnvat_sales = new global::System.Data.DataColumn("vat_sales", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnvat_sales);
+                this.columnadd_12_percent_vat = new global::System.Data.DataColumn("add_12_percent_vat", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnadd_12_percent_vat);
                 this.columninvoice_total = new global::System.Data.DataColumn("invoice_total", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columninvoice_total);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
@@ -4235,10 +4330,13 @@ namespace REIC_POMS {
                 this.columnso_date.AllowDBNull = false;
                 this.columndelivery_terms.AllowDBNull = false;
                 this.columndelivery_terms.MaxLength = 8;
-                this.columnpo_no.AllowDBNull = false;
-                this.columnpo_no.MaxLength = 8;
+                this.columncustomer_po_no.AllowDBNull = false;
+                this.columncustomer_po_no.MaxLength = 15;
                 this.columnsi_no.AllowDBNull = false;
                 this.columndr_no.AllowDBNull = false;
+                this.columntotal_sales.AllowDBNull = false;
+                this.columnvat_sales.AllowDBNull = false;
+                this.columnadd_12_percent_vat.AllowDBNull = false;
                 this.columninvoice_total.AllowDBNull = false;
             }
             
@@ -4871,22 +4969,22 @@ namespace REIC_POMS {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public po_tRow[] Getpo_tRows() {
-                if ((this.Table.ChildRelations["po_t_fk2"] == null)) {
+                if ((this.Table.ChildRelations["po_t_fk1"] == null)) {
                     return new po_tRow[0];
                 }
                 else {
-                    return ((po_tRow[])(base.GetChildRows(this.Table.ChildRelations["po_t_fk2"])));
+                    return ((po_tRow[])(base.GetChildRows(this.Table.ChildRelations["po_t_fk1"])));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public pq_tRow[] Getpq_tRows() {
-                if ((this.Table.ChildRelations["pq_t_fk2"] == null)) {
+                if ((this.Table.ChildRelations["pq_t_fk"] == null)) {
                     return new pq_tRow[0];
                 }
                 else {
-                    return ((pq_tRow[])(base.GetChildRows(this.Table.ChildRelations["pq_t_fk2"])));
+                    return ((pq_tRow[])(base.GetChildRows(this.Table.ChildRelations["pq_t_fk"])));
                 }
             }
             
@@ -4904,11 +5002,11 @@ namespace REIC_POMS {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public sidr_tRow[] Getsidr_tRows() {
-                if ((this.Table.ChildRelations["sidr_t_fk2"] == null)) {
+                if ((this.Table.ChildRelations["sidr_t_fk"] == null)) {
                     return new sidr_tRow[0];
                 }
                 else {
-                    return ((sidr_tRow[])(base.GetChildRows(this.Table.ChildRelations["sidr_t_fk2"])));
+                    return ((sidr_tRow[])(base.GetChildRows(this.Table.ChildRelations["sidr_t_fk"])));
                 }
             }
         }
@@ -5159,39 +5257,23 @@ namespace REIC_POMS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double supplier_unit_price {
+                get {
+                    return ((double)(this[this.tablepo_order_line_t.supplier_unit_priceColumn]));
+                }
+                set {
+                    this[this.tablepo_order_line_t.supplier_unit_priceColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int quantity {
                 get {
                     return ((int)(this[this.tablepo_order_line_t.quantityColumn]));
                 }
                 set {
                     this[this.tablepo_order_line_t.quantityColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public double net_item_subtotal {
-                get {
-                    return ((double)(this[this.tablepo_order_line_t.net_item_subtotalColumn]));
-                }
-                set {
-                    this[this.tablepo_order_line_t.net_item_subtotalColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public double delivery_cost {
-                get {
-                    try {
-                        return ((double)(this[this.tablepo_order_line_t.delivery_costColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'delivery_cost\' in table \'po_order_line_t\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablepo_order_line_t.delivery_costColumn] = value;
                 }
             }
             
@@ -5226,18 +5308,6 @@ namespace REIC_POMS {
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["po_order_line_t_fk2"]);
                 }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Isdelivery_costNull() {
-                return this.IsNull(this.tablepo_order_line_t.delivery_costColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Setdelivery_costNull() {
-                this[this.tablepo_order_line_t.delivery_costColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -5339,6 +5409,33 @@ namespace REIC_POMS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double net_item_subtotal {
+                get {
+                    return ((double)(this[this.tablepo_t.net_item_subtotalColumn]));
+                }
+                set {
+                    this[this.tablepo_t.net_item_subtotalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double delivery_cost {
+                get {
+                    try {
+                        return ((double)(this[this.tablepo_t.delivery_costColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'delivery_cost\' in table \'po_t\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepo_t.delivery_costColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public double order_total {
                 get {
                     return ((double)(this[this.tablepo_t.order_totalColumn]));
@@ -5372,9 +5469,25 @@ namespace REIC_POMS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public pq_tRow pq_tRow {
+            public int so_no {
                 get {
-                    return ((pq_tRow)(this.GetParentRow(this.Table.ParentRelations["po_t_fk1"])));
+                    try {
+                        return ((int)(this[this.tablepo_t.so_noColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'so_no\' in table \'po_t\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepo_t.so_noColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public customer_tRow customer_tRow {
+                get {
+                    return ((customer_tRow)(this.GetParentRow(this.Table.ParentRelations["po_t_fk1"])));
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["po_t_fk1"]);
@@ -5383,12 +5496,34 @@ namespace REIC_POMS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public customer_tRow customer_tRow {
+            public supplier_tRow supplier_tRow {
                 get {
-                    return ((customer_tRow)(this.GetParentRow(this.Table.ParentRelations["po_t_fk2"])));
+                    return ((supplier_tRow)(this.GetParentRow(this.Table.ParentRelations["po_t_fk2"])));
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["po_t_fk2"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public pq_tRow pq_tRow {
+                get {
+                    return ((pq_tRow)(this.GetParentRow(this.Table.ParentRelations["po_t_fk3"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["po_t_fk3"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public sidr_tRow sidr_tRow {
+                get {
+                    return ((sidr_tRow)(this.GetParentRow(this.Table.ParentRelations["po_t_fk4"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["po_t_fk4"]);
                 }
             }
             
@@ -5406,23 +5541,36 @@ namespace REIC_POMS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isdelivery_costNull() {
+                return this.IsNull(this.tablepo_t.delivery_costColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setdelivery_costNull() {
+                this[this.tablepo_t.delivery_costColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isso_noNull() {
+                return this.IsNull(this.tablepo_t.so_noColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setso_noNull() {
+                this[this.tablepo_t.so_noColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public po_order_line_tRow[] Getpo_order_line_tRows() {
                 if ((this.Table.ChildRelations["po_order_line_t_fk1"] == null)) {
                     return new po_order_line_tRow[0];
                 }
                 else {
                     return ((po_order_line_tRow[])(base.GetChildRows(this.Table.ChildRelations["po_order_line_t_fk1"])));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public sidr_tRow[] Getsidr_tRows() {
-                if ((this.Table.ChildRelations["sidr_t_fk1"] == null)) {
-                    return new sidr_tRow[0];
-                }
-                else {
-                    return ((sidr_tRow[])(base.GetChildRows(this.Table.ChildRelations["sidr_t_fk1"])));
                 }
             }
         }
@@ -5465,12 +5613,34 @@ namespace REIC_POMS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double reic_unit_price {
+                get {
+                    return ((double)(this[this.tablepq_order_line_t.reic_unit_priceColumn]));
+                }
+                set {
+                    this[this.tablepq_order_line_t.reic_unit_priceColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int quantity {
                 get {
                     return ((int)(this[this.tablepq_order_line_t.quantityColumn]));
                 }
                 set {
                     this[this.tablepq_order_line_t.quantityColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double item_total {
+                get {
+                    return ((double)(this[this.tablepq_order_line_t.item_totalColumn]));
+                }
+                set {
+                    this[this.tablepq_order_line_t.item_totalColumn] = value;
                 }
             }
             
@@ -5530,17 +5700,6 @@ namespace REIC_POMS {
                 }
                 set {
                     this[this.tablepq_t.pq_dateColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string rfq_no {
-                get {
-                    return ((string)(this[this.tablepq_t.rfq_noColumn]));
-                }
-                set {
-                    this[this.tablepq_t.rfq_noColumn] = value;
                 }
             }
             
@@ -5623,17 +5782,6 @@ namespace REIC_POMS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int customer_id {
-                get {
-                    return ((int)(this[this.tablepq_t.customer_idColumn]));
-                }
-                set {
-                    this[this.tablepq_t.customer_idColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public double total_amount {
                 get {
                     return ((double)(this[this.tablepq_t.total_amountColumn]));
@@ -5645,12 +5793,12 @@ namespace REIC_POMS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public rfq_tRow rfq_tRow {
+            public int customer_id {
                 get {
-                    return ((rfq_tRow)(this.GetParentRow(this.Table.ParentRelations["pq_t_fk1"])));
+                    return ((int)(this[this.tablepq_t.customer_idColumn]));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["pq_t_fk1"]);
+                    this[this.tablepq_t.customer_idColumn] = value;
                 }
             }
             
@@ -5658,21 +5806,21 @@ namespace REIC_POMS {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public customer_tRow customer_tRow {
                 get {
-                    return ((customer_tRow)(this.GetParentRow(this.Table.ParentRelations["pq_t_fk2"])));
+                    return ((customer_tRow)(this.GetParentRow(this.Table.ParentRelations["pq_t_fk"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["pq_t_fk2"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["pq_t_fk"]);
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public po_tRow[] Getpo_tRows() {
-                if ((this.Table.ChildRelations["po_t_fk1"] == null)) {
+                if ((this.Table.ChildRelations["po_t_fk3"] == null)) {
                     return new po_tRow[0];
                 }
                 else {
-                    return ((po_tRow[])(base.GetChildRows(this.Table.ChildRelations["po_t_fk1"])));
+                    return ((po_tRow[])(base.GetChildRows(this.Table.ChildRelations["po_t_fk3"])));
                 }
             }
             
@@ -5684,6 +5832,17 @@ namespace REIC_POMS {
                 }
                 else {
                     return ((pq_order_line_tRow[])(base.GetChildRows(this.Table.ChildRelations["pq_order_line_t_fk1"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public rfq_tRow[] Getrfq_tRows() {
+                if ((this.Table.ChildRelations["rfq_t_fk3"] == null)) {
+                    return new rfq_tRow[0];
+                }
+                else {
+                    return ((rfq_tRow[])(base.GetChildRows(this.Table.ChildRelations["rfq_t_fk3"])));
                 }
             }
         }
@@ -5840,6 +5999,22 @@ namespace REIC_POMS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string pq_no {
+                get {
+                    try {
+                        return ((string)(this[this.tablerfq_t.pq_noColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'pq_no\' in table \'rfq_t\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablerfq_t.pq_noColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public customer_tRow customer_tRow {
                 get {
                     return ((customer_tRow)(this.GetParentRow(this.Table.ParentRelations["rfq_t_fk1"])));
@@ -5862,13 +6037,25 @@ namespace REIC_POMS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public pq_tRow[] Getpq_tRows() {
-                if ((this.Table.ChildRelations["pq_t_fk1"] == null)) {
-                    return new pq_tRow[0];
+            public pq_tRow pq_tRow {
+                get {
+                    return ((pq_tRow)(this.GetParentRow(this.Table.ParentRelations["rfq_t_fk3"])));
                 }
-                else {
-                    return ((pq_tRow[])(base.GetChildRows(this.Table.ChildRelations["pq_t_fk1"])));
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["rfq_t_fk3"]);
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Ispq_noNull() {
+                return this.IsNull(this.tablerfq_t.pq_noColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setpq_noNull() {
+                this[this.tablerfq_t.pq_noColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5921,6 +6108,17 @@ namespace REIC_POMS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double reic_unit_price {
+                get {
+                    return ((double)(this[this.tablesidr_order_line_t.reic_unit_priceColumn]));
+                }
+                set {
+                    this[this.tablesidr_order_line_t.reic_unit_priceColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int quantity {
                 get {
                     return ((int)(this[this.tablesidr_order_line_t.quantityColumn]));
@@ -5932,34 +6130,12 @@ namespace REIC_POMS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public double total_sales {
+            public double item_total {
                 get {
-                    return ((double)(this[this.tablesidr_order_line_t.total_salesColumn]));
+                    return ((double)(this[this.tablesidr_order_line_t.item_totalColumn]));
                 }
                 set {
-                    this[this.tablesidr_order_line_t.total_salesColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public double vat_sales {
-                get {
-                    return ((double)(this[this.tablesidr_order_line_t.vat_salesColumn]));
-                }
-                set {
-                    this[this.tablesidr_order_line_t.vat_salesColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public double add_12_percent_vat {
-                get {
-                    return ((double)(this[this.tablesidr_order_line_t.add_12_percent_vatColumn]));
-                }
-                set {
-                    this[this.tablesidr_order_line_t.add_12_percent_vatColumn] = value;
+                    this[this.tablesidr_order_line_t.item_totalColumn] = value;
                 }
             }
             
@@ -6046,12 +6222,12 @@ namespace REIC_POMS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string po_no {
+            public string customer_po_no {
                 get {
-                    return ((string)(this[this.tablesidr_t.po_noColumn]));
+                    return ((string)(this[this.tablesidr_t.customer_po_noColumn]));
                 }
                 set {
-                    this[this.tablesidr_t.po_noColumn] = value;
+                    this[this.tablesidr_t.customer_po_noColumn] = value;
                 }
             }
             
@@ -6079,6 +6255,39 @@ namespace REIC_POMS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double total_sales {
+                get {
+                    return ((double)(this[this.tablesidr_t.total_salesColumn]));
+                }
+                set {
+                    this[this.tablesidr_t.total_salesColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double vat_sales {
+                get {
+                    return ((double)(this[this.tablesidr_t.vat_salesColumn]));
+                }
+                set {
+                    this[this.tablesidr_t.vat_salesColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double add_12_percent_vat {
+                get {
+                    return ((double)(this[this.tablesidr_t.add_12_percent_vatColumn]));
+                }
+                set {
+                    this[this.tablesidr_t.add_12_percent_vatColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public double invoice_total {
                 get {
                     return ((double)(this[this.tablesidr_t.invoice_totalColumn]));
@@ -6090,23 +6299,23 @@ namespace REIC_POMS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public po_tRow po_tRow {
+            public customer_tRow customer_tRow {
                 get {
-                    return ((po_tRow)(this.GetParentRow(this.Table.ParentRelations["sidr_t_fk1"])));
+                    return ((customer_tRow)(this.GetParentRow(this.Table.ParentRelations["sidr_t_fk"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["sidr_t_fk1"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["sidr_t_fk"]);
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public customer_tRow customer_tRow {
-                get {
-                    return ((customer_tRow)(this.GetParentRow(this.Table.ParentRelations["sidr_t_fk2"])));
+            public po_tRow[] Getpo_tRows() {
+                if ((this.Table.ChildRelations["po_t_fk4"] == null)) {
+                    return new po_tRow[0];
                 }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["sidr_t_fk2"]);
+                else {
+                    return ((po_tRow[])(base.GetChildRows(this.Table.ChildRelations["po_t_fk4"])));
                 }
             }
             
@@ -6210,6 +6419,17 @@ namespace REIC_POMS {
                 }
                 else {
                     return ((item_tRow[])(base.GetChildRows(this.Table.ChildRelations["item_t_fk"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public po_tRow[] Getpo_tRows() {
+                if ((this.Table.ChildRelations["po_t_fk2"] == null)) {
+                    return new po_tRow[0];
+                }
+                else {
+                    return ((po_tRow[])(base.GetChildRows(this.Table.ChildRelations["po_t_fk2"])));
                 }
             }
             
@@ -8340,16 +8560,15 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             tableMapping.DataSetTable = "po_order_line_t";
             tableMapping.ColumnMappings.Add("po_no", "po_no");
             tableMapping.ColumnMappings.Add("part_number", "part_number");
+            tableMapping.ColumnMappings.Add("supplier_unit_price", "supplier_unit_price");
             tableMapping.ColumnMappings.Add("quantity", "quantity");
-            tableMapping.ColumnMappings.Add("net_item_subtotal", "net_item_subtotal");
-            tableMapping.ColumnMappings.Add("delivery_cost", "delivery_cost");
             tableMapping.ColumnMappings.Add("item_total", "item_total");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
             this._adapter.DeleteCommand.CommandText = "DELETE FROM `po_order_line_t` WHERE ((`po_no` = @p1) AND (`part_number` = @p2) AN" +
-                "D (`quantity` = @p3) AND (`net_item_subtotal` = @p4) AND ((@p5 = 1 AND `delivery" +
-                "_cost` IS NULL) OR (`delivery_cost` = @p6)) AND (`item_total` = @p7))";
+                "D (`supplier_unit_price` = @p3) AND (`quantity` = @p4) AND (`item_total` = @p5))" +
+                "";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p1";
@@ -8369,6 +8588,14 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p3";
+            param.DbType = global::System.Data.DbType.Double;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
+            param.IsNullable = true;
+            param.SourceColumn = "supplier_unit_price";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p4";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
@@ -8376,32 +8603,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p4";
-            param.DbType = global::System.Data.DbType.Double;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
-            param.IsNullable = true;
-            param.SourceColumn = "net_item_subtotal";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p5";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
-            param.IsNullable = true;
-            param.SourceColumn = "delivery_cost";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p6";
-            param.DbType = global::System.Data.DbType.Double;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
-            param.IsNullable = true;
-            param.SourceColumn = "delivery_cost";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p7";
             param.DbType = global::System.Data.DbType.Double;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
             param.IsNullable = true;
@@ -8410,8 +8612,8 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO `po_order_line_t` (`po_no`, `part_number`, `quantity`, `net_item_subt" +
-                "otal`, `delivery_cost`, `item_total`) VALUES (@p1, @p2, @p3, @p4, @p5, @p6)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO `po_order_line_t` (`po_no`, `part_number`, `supplier_unit_price`, `qu" +
+                "antity`, `item_total`) VALUES (@p1, @p2, @p3, @p4, @p5)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p1";
@@ -8429,27 +8631,20 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p3";
+            param.DbType = global::System.Data.DbType.Double;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
+            param.IsNullable = true;
+            param.SourceColumn = "supplier_unit_price";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p4";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
             param.SourceColumn = "quantity";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p4";
-            param.DbType = global::System.Data.DbType.Double;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
-            param.IsNullable = true;
-            param.SourceColumn = "net_item_subtotal";
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p5";
-            param.DbType = global::System.Data.DbType.Double;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
-            param.IsNullable = true;
-            param.SourceColumn = "delivery_cost";
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p6";
             param.DbType = global::System.Data.DbType.Double;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
             param.IsNullable = true;
@@ -8457,7 +8652,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE `po_order_line_t` SET `po_no` = @p1, `part_number` = @p2, `quantity` = @p3, `net_item_subtotal` = @p4, `delivery_cost` = @p5, `item_total` = @p6 WHERE ((`po_no` = @p7) AND (`part_number` = @p8) AND (`quantity` = @p9) AND (`net_item_subtotal` = @p10) AND ((@p11 = 1 AND `delivery_cost` IS NULL) OR (`delivery_cost` = @p12)) AND (`item_total` = @p13))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE `po_order_line_t` SET `po_no` = @p1, `part_number` = @p2, `supplier_unit_price` = @p3, `quantity` = @p4, `item_total` = @p5 WHERE ((`po_no` = @p6) AND (`part_number` = @p7) AND (`supplier_unit_price` = @p8) AND (`quantity` = @p9) AND (`item_total` = @p10))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p1";
@@ -8475,34 +8670,27 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p3";
+            param.DbType = global::System.Data.DbType.Double;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
+            param.IsNullable = true;
+            param.SourceColumn = "supplier_unit_price";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p4";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
             param.SourceColumn = "quantity";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p4";
-            param.DbType = global::System.Data.DbType.Double;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
-            param.IsNullable = true;
-            param.SourceColumn = "net_item_subtotal";
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p5";
-            param.DbType = global::System.Data.DbType.Double;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
-            param.IsNullable = true;
-            param.SourceColumn = "delivery_cost";
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p6";
             param.DbType = global::System.Data.DbType.Double;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
             param.IsNullable = true;
             param.SourceColumn = "item_total";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p7";
+            param.ParameterName = "@p6";
             param.DbType = global::System.Data.DbType.StringFixedLength;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.String;
             param.IsNullable = true;
@@ -8510,11 +8698,19 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p8";
+            param.ParameterName = "@p7";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
             param.SourceColumn = "part_number";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p8";
+            param.DbType = global::System.Data.DbType.Double;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
+            param.IsNullable = true;
+            param.SourceColumn = "supplier_unit_price";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
@@ -8527,31 +8723,6 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p10";
-            param.DbType = global::System.Data.DbType.Double;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
-            param.IsNullable = true;
-            param.SourceColumn = "net_item_subtotal";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p11";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
-            param.IsNullable = true;
-            param.SourceColumn = "delivery_cost";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p12";
-            param.DbType = global::System.Data.DbType.Double;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
-            param.IsNullable = true;
-            param.SourceColumn = "delivery_cost";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p13";
             param.DbType = global::System.Data.DbType.Double;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
             param.IsNullable = true;
@@ -8573,8 +8744,8 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[1];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT `po_no`, `part_number`, `quantity`, `net_item_subtotal`, `delivery_cost`, " +
-                "`item_total` FROM `po_order_line_t`";
+            this._commandCollection[0].CommandText = "SELECT `po_no`, `part_number`, `supplier_unit_price`, `quantity`, `item_total` FR" +
+                "OM `po_order_line_t`";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -8635,7 +8806,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string p1, string p2, int p3, double p4, global::System.Nullable<double> p6, double p7) {
+        public virtual int Delete(string p1, string p2, double p3, int p4, double p5) {
             if ((p1 == null)) {
                 throw new global::System.ArgumentNullException("p1");
             }
@@ -8648,17 +8819,9 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             else {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(p2));
             }
-            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(p3));
-            this.Adapter.DeleteCommand.Parameters[3].Value = ((double)(p4));
-            if ((p6.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((double)(p6.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[5].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.DeleteCommand.Parameters[6].Value = ((double)(p7));
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((double)(p3));
+            this.Adapter.DeleteCommand.Parameters[3].Value = ((int)(p4));
+            this.Adapter.DeleteCommand.Parameters[4].Value = ((double)(p5));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -8679,7 +8842,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string p1, string p2, int p3, double p4, global::System.Nullable<double> p5, double p6) {
+        public virtual int Insert(string p1, string p2, double p3, int p4, double p5) {
             if ((p1 == null)) {
                 throw new global::System.ArgumentNullException("p1");
             }
@@ -8692,15 +8855,9 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             else {
                 this.Adapter.InsertCommand.Parameters[1].Value = ((string)(p2));
             }
-            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(p3));
-            this.Adapter.InsertCommand.Parameters[3].Value = ((double)(p4));
-            if ((p5.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((double)(p5.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.InsertCommand.Parameters[5].Value = ((double)(p6));
+            this.Adapter.InsertCommand.Parameters[2].Value = ((double)(p3));
+            this.Adapter.InsertCommand.Parameters[3].Value = ((int)(p4));
+            this.Adapter.InsertCommand.Parameters[4].Value = ((double)(p5));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -8721,7 +8878,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string p1, string p2, int p3, double p4, global::System.Nullable<double> p5, double p6, string p7, string p8, int p9, double p10, global::System.Nullable<double> p12, double p13) {
+        public virtual int Update(string p1, string p2, double p3, int p4, double p5, string p6, string p7, double p8, int p9, double p10) {
             if ((p1 == null)) {
                 throw new global::System.ArgumentNullException("p1");
             }
@@ -8734,38 +8891,24 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(p2));
             }
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(p3));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((double)(p4));
-            if ((p5.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((double)(p5.Value));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((double)(p3));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(p4));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((double)(p5));
+            if ((p6 == null)) {
+                throw new global::System.ArgumentNullException("p6");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(p6));
             }
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((double)(p6));
             if ((p7 == null)) {
                 throw new global::System.ArgumentNullException("p7");
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(p7));
             }
-            if ((p8 == null)) {
-                throw new global::System.ArgumentNullException("p8");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(p8));
-            }
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((double)(p8));
             this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(p9));
             this.Adapter.UpdateCommand.Parameters[9].Value = ((double)(p10));
-            if ((p12.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((double)(p12.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.UpdateCommand.Parameters[12].Value = ((double)(p13));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -8786,8 +8929,8 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int p3, double p4, global::System.Nullable<double> p5, double p6, string p7, string p8, int p9, double p10, global::System.Nullable<double> p12, double p13) {
-            return this.Update(p7, p8, p3, p4, p5, p6, p7, p8, p9, p10, p12, p13);
+        public virtual int Update(double p3, int p4, double p5, string p6, string p7, double p8, int p9, double p10) {
+            return this.Update(p6, p7, p3, p4, p5, p6, p7, p8, p9, p10);
         }
     }
     
@@ -8919,13 +9062,16 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("pq_no", "pq_no");
             tableMapping.ColumnMappings.Add("payment_terms", "payment_terms");
             tableMapping.ColumnMappings.Add("delivery_terms", "delivery_terms");
+            tableMapping.ColumnMappings.Add("net_item_subtotal", "net_item_subtotal");
+            tableMapping.ColumnMappings.Add("delivery_cost", "delivery_cost");
             tableMapping.ColumnMappings.Add("order_total", "order_total");
             tableMapping.ColumnMappings.Add("supplier_id", "supplier_id");
             tableMapping.ColumnMappings.Add("customer_id", "customer_id");
+            tableMapping.ColumnMappings.Add("so_no", "so_no");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `po_t` WHERE ((`po_no` = @p1) AND (`order_date` = @p2) AND (`required_delivery_date` = @p3) AND (`pq_no` = @p4) AND (`payment_terms` = @p5) AND (`delivery_terms` = @p6) AND (`order_total` = @p7) AND (`supplier_id` = @p8) AND (`customer_id` = @p9))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `po_t` WHERE ((`po_no` = @p1) AND (`order_date` = @p2) AND (`required_delivery_date` = @p3) AND (`pq_no` = @p4) AND (`payment_terms` = @p5) AND (`delivery_terms` = @p6) AND (`net_item_subtotal` = @p7) AND ((@p8 = 1 AND `delivery_cost` IS NULL) OR (`delivery_cost` = @p9)) AND (`order_total` = @p10) AND (`supplier_id` = @p11) AND (`customer_id` = @p12) AND ((@p13 = 1 AND `so_no` IS NULL) OR (`so_no` = @p14)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p1";
@@ -8980,7 +9126,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.DbType = global::System.Data.DbType.Double;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
             param.IsNullable = true;
-            param.SourceColumn = "order_total";
+            param.SourceColumn = "net_item_subtotal";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
@@ -8988,22 +9134,62 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
+            param.SourceColumn = "delivery_cost";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p9";
+            param.DbType = global::System.Data.DbType.Double;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
+            param.IsNullable = true;
+            param.SourceColumn = "delivery_cost";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p10";
+            param.DbType = global::System.Data.DbType.Double;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
+            param.IsNullable = true;
+            param.SourceColumn = "order_total";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p11";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
             param.SourceColumn = "supplier_id";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p9";
+            param.ParameterName = "@p12";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
             param.SourceColumn = "customer_id";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p13";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "so_no";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p14";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "so_no";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO `po_t` (`po_no`, `order_date`, `required_delivery_date`, `order_descr" +
-                "iption`, `pq_no`, `payment_terms`, `delivery_terms`, `order_total`, `supplier_id" +
-                "`, `customer_id`) VALUES (@p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO `po_t` (`po_no`, `order_date`, `required_delivery_date`, `order_description`, `pq_no`, `payment_terms`, `delivery_terms`, `net_item_subtotal`, `delivery_cost`, `order_total`, `supplier_id`, `customer_id`, `so_no`) VALUES (@p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p1";
@@ -9058,25 +9244,46 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.DbType = global::System.Data.DbType.Double;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
             param.IsNullable = true;
-            param.SourceColumn = "order_total";
+            param.SourceColumn = "net_item_subtotal";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p9";
+            param.DbType = global::System.Data.DbType.Double;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
+            param.IsNullable = true;
+            param.SourceColumn = "delivery_cost";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p10";
+            param.DbType = global::System.Data.DbType.Double;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
+            param.IsNullable = true;
+            param.SourceColumn = "order_total";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p11";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
             param.SourceColumn = "supplier_id";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p10";
+            param.ParameterName = "@p12";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
             param.SourceColumn = "customer_id";
             this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p13";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "so_no";
+            this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE `po_t` SET `po_no` = @p1, `order_date` = @p2, `required_delivery_date` = @p3, `order_description` = @p4, `pq_no` = @p5, `payment_terms` = @p6, `delivery_terms` = @p7, `order_total` = @p8, `supplier_id` = @p9, `customer_id` = @p10 WHERE ((`po_no` = @p11) AND (`order_date` = @p12) AND (`required_delivery_date` = @p13) AND (`pq_no` = @p14) AND (`payment_terms` = @p15) AND (`delivery_terms` = @p16) AND (`order_total` = @p17) AND (`supplier_id` = @p18) AND (`customer_id` = @p19))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE `po_t` SET `po_no` = @p1, `order_date` = @p2, `required_delivery_date` = @p3, `order_description` = @p4, `pq_no` = @p5, `payment_terms` = @p6, `delivery_terms` = @p7, `net_item_subtotal` = @p8, `delivery_cost` = @p9, `order_total` = @p10, `supplier_id` = @p11, `customer_id` = @p12, `so_no` = @p13 WHERE ((`po_no` = @p14) AND (`order_date` = @p15) AND (`required_delivery_date` = @p16) AND (`pq_no` = @p17) AND (`payment_terms` = @p18) AND (`delivery_terms` = @p19) AND (`net_item_subtotal` = @p20) AND ((@p21 = 1 AND `delivery_cost` IS NULL) OR (`delivery_cost` = @p22)) AND (`order_total` = @p23) AND (`supplier_id` = @p24) AND (`customer_id` = @p25) AND ((@p26 = 1 AND `so_no` IS NULL) OR (`so_no` = @p27)))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p1";
@@ -9131,24 +9338,45 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.DbType = global::System.Data.DbType.Double;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
             param.IsNullable = true;
-            param.SourceColumn = "order_total";
+            param.SourceColumn = "net_item_subtotal";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p9";
+            param.DbType = global::System.Data.DbType.Double;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
+            param.IsNullable = true;
+            param.SourceColumn = "delivery_cost";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p10";
+            param.DbType = global::System.Data.DbType.Double;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
+            param.IsNullable = true;
+            param.SourceColumn = "order_total";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p11";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
             param.SourceColumn = "supplier_id";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p10";
+            param.ParameterName = "@p12";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
             param.SourceColumn = "customer_id";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p11";
+            param.ParameterName = "@p13";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "so_no";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p14";
             param.DbType = global::System.Data.DbType.StringFixedLength;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.String;
             param.IsNullable = true;
@@ -9156,7 +9384,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p12";
+            param.ParameterName = "@p15";
             param.DbType = global::System.Data.DbType.Date;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Date;
             param.IsNullable = true;
@@ -9164,7 +9392,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p13";
+            param.ParameterName = "@p16";
             param.DbType = global::System.Data.DbType.Date;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Date;
             param.IsNullable = true;
@@ -9172,7 +9400,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p14";
+            param.ParameterName = "@p17";
             param.DbType = global::System.Data.DbType.StringFixedLength;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.String;
             param.IsNullable = true;
@@ -9180,7 +9408,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p15";
+            param.ParameterName = "@p18";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
@@ -9188,7 +9416,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p16";
+            param.ParameterName = "@p19";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
@@ -9196,7 +9424,32 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p17";
+            param.ParameterName = "@p20";
+            param.DbType = global::System.Data.DbType.Double;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
+            param.IsNullable = true;
+            param.SourceColumn = "net_item_subtotal";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p21";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "delivery_cost";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p22";
+            param.DbType = global::System.Data.DbType.Double;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
+            param.IsNullable = true;
+            param.SourceColumn = "delivery_cost";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p23";
             param.DbType = global::System.Data.DbType.Double;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
             param.IsNullable = true;
@@ -9204,7 +9457,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p18";
+            param.ParameterName = "@p24";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
@@ -9212,11 +9465,28 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p19";
+            param.ParameterName = "@p25";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
             param.SourceColumn = "customer_id";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p26";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "so_no";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p27";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "so_no";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
         }
@@ -9235,8 +9505,8 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT `po_no`, `order_date`, `required_delivery_date`, `order_description`, `pq_" +
-                "no`, `payment_terms`, `delivery_terms`, `order_total`, `supplier_id`, `customer_" +
-                "id` FROM `po_t`";
+                "no`, `payment_terms`, `delivery_terms`, `net_item_subtotal`, `delivery_cost`, `o" +
+                "rder_total`, `supplier_id`, `customer_id`, `so_no` FROM `po_t`";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -9297,7 +9567,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string p1, System.DateTime p2, System.DateTime p3, string p4, string p5, string p6, double p7, int p8, int p9) {
+        public virtual int Delete(string p1, System.DateTime p2, System.DateTime p3, string p4, string p5, string p6, double p7, global::System.Nullable<double> p9, double p10, int p11, int p12, global::System.Nullable<int> p14) {
             if ((p1 == null)) {
                 throw new global::System.ArgumentNullException("p1");
             }
@@ -9325,8 +9595,25 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((string)(p6));
             }
             this.Adapter.DeleteCommand.Parameters[6].Value = ((double)(p7));
-            this.Adapter.DeleteCommand.Parameters[7].Value = ((int)(p8));
-            this.Adapter.DeleteCommand.Parameters[8].Value = ((int)(p9));
+            if ((p9.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((double)(p9.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.DeleteCommand.Parameters[9].Value = ((double)(p10));
+            this.Adapter.DeleteCommand.Parameters[10].Value = ((int)(p11));
+            this.Adapter.DeleteCommand.Parameters[11].Value = ((int)(p12));
+            if ((p14.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((int)(p14.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[13].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -9347,7 +9634,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string p1, System.DateTime p2, System.DateTime p3, string p4, string p5, string p6, string p7, double p8, int p9, int p10) {
+        public virtual int Insert(string p1, System.DateTime p2, System.DateTime p3, string p4, string p5, string p6, string p7, double p8, global::System.Nullable<double> p9, double p10, int p11, int p12, global::System.Nullable<int> p13) {
             if ((p1 == null)) {
                 throw new global::System.ArgumentNullException("p1");
             }
@@ -9381,8 +9668,21 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
                 this.Adapter.InsertCommand.Parameters[6].Value = ((string)(p7));
             }
             this.Adapter.InsertCommand.Parameters[7].Value = ((double)(p8));
-            this.Adapter.InsertCommand.Parameters[8].Value = ((int)(p9));
-            this.Adapter.InsertCommand.Parameters[9].Value = ((int)(p10));
+            if ((p9.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[8].Value = ((double)(p9.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.InsertCommand.Parameters[9].Value = ((double)(p10));
+            this.Adapter.InsertCommand.Parameters[10].Value = ((int)(p11));
+            this.Adapter.InsertCommand.Parameters[11].Value = ((int)(p12));
+            if ((p13.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[12].Value = ((int)(p13.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -9412,17 +9712,23 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
                     string p6, 
                     string p7, 
                     double p8, 
-                    int p9, 
-                    int p10, 
-                    string p11, 
-                    System.DateTime p12, 
-                    System.DateTime p13, 
+                    global::System.Nullable<double> p9, 
+                    double p10, 
+                    int p11, 
+                    int p12, 
+                    global::System.Nullable<int> p13, 
                     string p14, 
-                    string p15, 
-                    string p16, 
-                    double p17, 
-                    int p18, 
-                    int p19) {
+                    System.DateTime p15, 
+                    System.DateTime p16, 
+                    string p17, 
+                    string p18, 
+                    string p19, 
+                    double p20, 
+                    global::System.Nullable<double> p22, 
+                    double p23, 
+                    int p24, 
+                    int p25, 
+                    global::System.Nullable<int> p27) {
             if ((p1 == null)) {
                 throw new global::System.ArgumentNullException("p1");
             }
@@ -9456,37 +9762,67 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
                 this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(p7));
             }
             this.Adapter.UpdateCommand.Parameters[7].Value = ((double)(p8));
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(p9));
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(p10));
-            if ((p11 == null)) {
-                throw new global::System.ArgumentNullException("p11");
+            if ((p9.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((double)(p9.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(p11));
+                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((System.DateTime)(p12));
-            this.Adapter.UpdateCommand.Parameters[12].Value = ((System.DateTime)(p13));
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((double)(p10));
+            this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(p11));
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(p12));
+            if ((p13.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(p13.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
             if ((p14 == null)) {
                 throw new global::System.ArgumentNullException("p14");
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(p14));
             }
-            if ((p15 == null)) {
-                throw new global::System.ArgumentNullException("p15");
+            this.Adapter.UpdateCommand.Parameters[14].Value = ((System.DateTime)(p15));
+            this.Adapter.UpdateCommand.Parameters[15].Value = ((System.DateTime)(p16));
+            if ((p17 == null)) {
+                throw new global::System.ArgumentNullException("p17");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(p15));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(p17));
             }
-            if ((p16 == null)) {
-                throw new global::System.ArgumentNullException("p16");
+            if ((p18 == null)) {
+                throw new global::System.ArgumentNullException("p18");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(p16));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(p18));
             }
-            this.Adapter.UpdateCommand.Parameters[16].Value = ((double)(p17));
-            this.Adapter.UpdateCommand.Parameters[17].Value = ((int)(p18));
-            this.Adapter.UpdateCommand.Parameters[18].Value = ((int)(p19));
+            if ((p19 == null)) {
+                throw new global::System.ArgumentNullException("p19");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(p19));
+            }
+            this.Adapter.UpdateCommand.Parameters[19].Value = ((double)(p20));
+            if ((p22.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((double)(p22.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[22].Value = ((double)(p23));
+            this.Adapter.UpdateCommand.Parameters[23].Value = ((int)(p24));
+            this.Adapter.UpdateCommand.Parameters[24].Value = ((int)(p25));
+            if ((p27.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((int)(p27.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[26].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -9515,18 +9851,24 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
                     string p6, 
                     string p7, 
                     double p8, 
-                    int p9, 
-                    int p10, 
-                    string p11, 
-                    System.DateTime p12, 
-                    System.DateTime p13, 
+                    global::System.Nullable<double> p9, 
+                    double p10, 
+                    int p11, 
+                    int p12, 
+                    global::System.Nullable<int> p13, 
                     string p14, 
-                    string p15, 
-                    string p16, 
-                    double p17, 
-                    int p18, 
-                    int p19) {
-            return this.Update(p11, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19);
+                    System.DateTime p15, 
+                    System.DateTime p16, 
+                    string p17, 
+                    string p18, 
+                    string p19, 
+                    double p20, 
+                    global::System.Nullable<double> p22, 
+                    double p23, 
+                    int p24, 
+                    int p25, 
+                    global::System.Nullable<int> p27) {
+            return this.Update(p14, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20, p22, p23, p24, p25, p27);
         }
     }
     
@@ -9653,12 +9995,14 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             tableMapping.DataSetTable = "pq_order_line_t";
             tableMapping.ColumnMappings.Add("pq_no", "pq_no");
             tableMapping.ColumnMappings.Add("part_number", "part_number");
+            tableMapping.ColumnMappings.Add("reic_unit_price", "reic_unit_price");
             tableMapping.ColumnMappings.Add("quantity", "quantity");
+            tableMapping.ColumnMappings.Add("item_total", "item_total");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
             this._adapter.DeleteCommand.CommandText = "DELETE FROM `pq_order_line_t` WHERE ((`pq_no` = @p1) AND (`part_number` = @p2) AN" +
-                "D (`quantity` = @p3))";
+                "D (`reic_unit_price` = @p3) AND (`quantity` = @p4) AND (`item_total` = @p5))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p1";
@@ -9678,16 +10022,32 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p3";
+            param.DbType = global::System.Data.DbType.Double;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
+            param.IsNullable = true;
+            param.SourceColumn = "reic_unit_price";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p4";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
             param.SourceColumn = "quantity";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p5";
+            param.DbType = global::System.Data.DbType.Double;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
+            param.IsNullable = true;
+            param.SourceColumn = "item_total";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO `pq_order_line_t` (`pq_no`, `part_number`, `quantity`) VALUES (@p1, @" +
-                "p2, @p3)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO `pq_order_line_t` (`pq_no`, `part_number`, `reic_unit_price`, `quanti" +
+                "ty`, `item_total`) VALUES (@p1, @p2, @p3, @p4, @p5)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p1";
@@ -9705,15 +10065,31 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p3";
+            param.DbType = global::System.Data.DbType.Double;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
+            param.IsNullable = true;
+            param.SourceColumn = "reic_unit_price";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p4";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
             param.SourceColumn = "quantity";
             this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p5";
+            param.DbType = global::System.Data.DbType.Double;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
+            param.IsNullable = true;
+            param.SourceColumn = "item_total";
+            this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE `pq_order_line_t` SET `pq_no` = @p1, `part_number` = @p2, `quantity` = @p3" +
-                " WHERE ((`pq_no` = @p4) AND (`part_number` = @p5) AND (`quantity` = @p6))";
+            this._adapter.UpdateCommand.CommandText = "UPDATE `pq_order_line_t` SET `pq_no` = @p1, `part_number` = @p2, `reic_unit_price" +
+                "` = @p3, `quantity` = @p4, `item_total` = @p5 WHERE ((`pq_no` = @p6) AND (`part_" +
+                "number` = @p7) AND (`reic_unit_price` = @p8) AND (`quantity` = @p9) AND (`item_t" +
+                "otal` = @p10))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p1";
@@ -9731,13 +10107,27 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p3";
+            param.DbType = global::System.Data.DbType.Double;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
+            param.IsNullable = true;
+            param.SourceColumn = "reic_unit_price";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p4";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
             param.SourceColumn = "quantity";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p4";
+            param.ParameterName = "@p5";
+            param.DbType = global::System.Data.DbType.Double;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
+            param.IsNullable = true;
+            param.SourceColumn = "item_total";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p6";
             param.DbType = global::System.Data.DbType.StringFixedLength;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.String;
             param.IsNullable = true;
@@ -9745,7 +10135,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p5";
+            param.ParameterName = "@p7";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
@@ -9753,11 +10143,27 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p6";
+            param.ParameterName = "@p8";
+            param.DbType = global::System.Data.DbType.Double;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
+            param.IsNullable = true;
+            param.SourceColumn = "reic_unit_price";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p9";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
             param.SourceColumn = "quantity";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p10";
+            param.DbType = global::System.Data.DbType.Double;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
+            param.IsNullable = true;
+            param.SourceColumn = "item_total";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
         }
@@ -9775,7 +10181,8 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[1];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT `pq_no`, `part_number`, `quantity` FROM `pq_order_line_t`";
+            this._commandCollection[0].CommandText = "SELECT `pq_no`, `part_number`, `reic_unit_price`, `quantity`, `item_total` FROM `" +
+                "pq_order_line_t`";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -9836,7 +10243,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string p1, string p2, int p3) {
+        public virtual int Delete(string p1, string p2, double p3, int p4, double p5) {
             if ((p1 == null)) {
                 throw new global::System.ArgumentNullException("p1");
             }
@@ -9849,7 +10256,9 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             else {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(p2));
             }
-            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(p3));
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((double)(p3));
+            this.Adapter.DeleteCommand.Parameters[3].Value = ((int)(p4));
+            this.Adapter.DeleteCommand.Parameters[4].Value = ((double)(p5));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -9870,7 +10279,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string p1, string p2, int p3) {
+        public virtual int Insert(string p1, string p2, double p3, int p4, double p5) {
             if ((p1 == null)) {
                 throw new global::System.ArgumentNullException("p1");
             }
@@ -9883,7 +10292,9 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             else {
                 this.Adapter.InsertCommand.Parameters[1].Value = ((string)(p2));
             }
-            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(p3));
+            this.Adapter.InsertCommand.Parameters[2].Value = ((double)(p3));
+            this.Adapter.InsertCommand.Parameters[3].Value = ((int)(p4));
+            this.Adapter.InsertCommand.Parameters[4].Value = ((double)(p5));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -9904,7 +10315,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string p1, string p2, int p3, string p4, string p5, int p6) {
+        public virtual int Update(string p1, string p2, double p3, int p4, double p5, string p6, string p7, double p8, int p9, double p10) {
             if ((p1 == null)) {
                 throw new global::System.ArgumentNullException("p1");
             }
@@ -9917,20 +10328,24 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(p2));
             }
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(p3));
-            if ((p4 == null)) {
-                throw new global::System.ArgumentNullException("p4");
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((double)(p3));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(p4));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((double)(p5));
+            if ((p6 == null)) {
+                throw new global::System.ArgumentNullException("p6");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(p4));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(p6));
             }
-            if ((p5 == null)) {
-                throw new global::System.ArgumentNullException("p5");
+            if ((p7 == null)) {
+                throw new global::System.ArgumentNullException("p7");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(p5));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(p7));
             }
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(p6));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((double)(p8));
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(p9));
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((double)(p10));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -9951,8 +10366,8 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int p3, string p4, string p5, int p6) {
-            return this.Update(p4, p5, p3, p4, p5, p6);
+        public virtual int Update(double p3, int p4, double p5, string p6, string p7, double p8, int p9, double p10) {
+            return this.Update(p6, p7, p3, p4, p5, p6, p7, p8, p9, p10);
         }
     }
     
@@ -10079,7 +10494,6 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             tableMapping.DataSetTable = "pq_t";
             tableMapping.ColumnMappings.Add("pq_no", "pq_no");
             tableMapping.ColumnMappings.Add("pq_date", "pq_date");
-            tableMapping.ColumnMappings.Add("rfq_no", "rfq_no");
             tableMapping.ColumnMappings.Add("from_date", "from_date");
             tableMapping.ColumnMappings.Add("to_date", "to_date");
             tableMapping.ColumnMappings.Add("payment_terms", "payment_terms");
@@ -10087,12 +10501,12 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("bill_to", "bill_to");
             tableMapping.ColumnMappings.Add("ship_to", "ship_to");
             tableMapping.ColumnMappings.Add("in_favor_of", "in_favor_of");
-            tableMapping.ColumnMappings.Add("customer_id", "customer_id");
             tableMapping.ColumnMappings.Add("total_amount", "total_amount");
+            tableMapping.ColumnMappings.Add("customer_id", "customer_id");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `pq_t` WHERE ((`pq_no` = @p1) AND (`pq_date` = @p2) AND (`rfq_no` = @p3) AND (`from_date` = @p4) AND (`to_date` = @p5) AND (`payment_terms` = @p6) AND (`delivery_terms` = @p7) AND (`bill_to` = @p8) AND (`ship_to` = @p9) AND (`in_favor_of` = @p10) AND (`customer_id` = @p11) AND (`total_amount` = @p12))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `pq_t` WHERE ((`pq_no` = @p1) AND (`pq_date` = @p2) AND (`from_date` = @p3) AND (`to_date` = @p4) AND (`payment_terms` = @p5) AND (`delivery_terms` = @p6) AND (`bill_to` = @p7) AND (`ship_to` = @p8) AND (`in_favor_of` = @p9) AND (`total_amount` = @p10) AND (`customer_id` = @p11))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p1";
@@ -10112,14 +10526,6 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p3";
-            param.DbType = global::System.Data.DbType.StringFixedLength;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.String;
-            param.IsNullable = true;
-            param.SourceColumn = "rfq_no";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p4";
             param.DbType = global::System.Data.DbType.Date;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Date;
             param.IsNullable = true;
@@ -10127,7 +10533,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p5";
+            param.ParameterName = "@p4";
             param.DbType = global::System.Data.DbType.Date;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Date;
             param.IsNullable = true;
@@ -10135,7 +10541,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p6";
+            param.ParameterName = "@p5";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
@@ -10143,7 +10549,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p7";
+            param.ParameterName = "@p6";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
@@ -10151,7 +10557,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p8";
+            param.ParameterName = "@p7";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
@@ -10159,7 +10565,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p9";
+            param.ParameterName = "@p8";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
@@ -10167,11 +10573,19 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p10";
+            param.ParameterName = "@p9";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
             param.SourceColumn = "in_favor_of";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p10";
+            param.DbType = global::System.Data.DbType.Double;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
+            param.IsNullable = true;
+            param.SourceColumn = "total_amount";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
@@ -10182,20 +10596,11 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.SourceColumn = "customer_id";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p12";
-            param.DbType = global::System.Data.DbType.Double;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
-            param.IsNullable = true;
-            param.SourceColumn = "total_amount";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO `pq_t` (`pq_no`, `pq_date`, `rfq_no`, `from_date`, `to_date`, `paymen" +
-                "t_terms`, `delivery_terms`, `bill_to`, `ship_to`, `in_favor_of`, `customer_id`, " +
-                "`total_amount`) VALUES (@p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11," +
-                " @p12)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO `pq_t` (`pq_no`, `pq_date`, `from_date`, `to_date`, `payment_terms`, " +
+                "`delivery_terms`, `bill_to`, `ship_to`, `in_favor_of`, `total_amount`, `customer" +
+                "_id`) VALUES (@p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p1";
@@ -10213,59 +10618,59 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p3";
-            param.DbType = global::System.Data.DbType.StringFixedLength;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.String;
-            param.IsNullable = true;
-            param.SourceColumn = "rfq_no";
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p4";
             param.DbType = global::System.Data.DbType.Date;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Date;
             param.IsNullable = true;
             param.SourceColumn = "from_date";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p5";
+            param.ParameterName = "@p4";
             param.DbType = global::System.Data.DbType.Date;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Date;
             param.IsNullable = true;
             param.SourceColumn = "to_date";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p6";
+            param.ParameterName = "@p5";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
             param.SourceColumn = "payment_terms";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p7";
+            param.ParameterName = "@p6";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
             param.SourceColumn = "delivery_terms";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p8";
+            param.ParameterName = "@p7";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
             param.SourceColumn = "bill_to";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p9";
+            param.ParameterName = "@p8";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
             param.SourceColumn = "ship_to";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p10";
+            param.ParameterName = "@p9";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
             param.SourceColumn = "in_favor_of";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p10";
+            param.DbType = global::System.Data.DbType.Double;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
+            param.IsNullable = true;
+            param.SourceColumn = "total_amount";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p11";
@@ -10274,16 +10679,9 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.IsNullable = true;
             param.SourceColumn = "customer_id";
             this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p12";
-            param.DbType = global::System.Data.DbType.Double;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
-            param.IsNullable = true;
-            param.SourceColumn = "total_amount";
-            this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE `pq_t` SET `pq_no` = @p1, `pq_date` = @p2, `rfq_no` = @p3, `from_date` = @p4, `to_date` = @p5, `payment_terms` = @p6, `delivery_terms` = @p7, `bill_to` = @p8, `ship_to` = @p9, `in_favor_of` = @p10, `customer_id` = @p11, `total_amount` = @p12 WHERE ((`pq_no` = @p13) AND (`pq_date` = @p14) AND (`rfq_no` = @p15) AND (`from_date` = @p16) AND (`to_date` = @p17) AND (`payment_terms` = @p18) AND (`delivery_terms` = @p19) AND (`bill_to` = @p20) AND (`ship_to` = @p21) AND (`in_favor_of` = @p22) AND (`customer_id` = @p23) AND (`total_amount` = @p24))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE `pq_t` SET `pq_no` = @p1, `pq_date` = @p2, `from_date` = @p3, `to_date` = @p4, `payment_terms` = @p5, `delivery_terms` = @p6, `bill_to` = @p7, `ship_to` = @p8, `in_favor_of` = @p9, `total_amount` = @p10, `customer_id` = @p11 WHERE ((`pq_no` = @p12) AND (`pq_date` = @p13) AND (`from_date` = @p14) AND (`to_date` = @p15) AND (`payment_terms` = @p16) AND (`delivery_terms` = @p17) AND (`bill_to` = @p18) AND (`ship_to` = @p19) AND (`in_favor_of` = @p20) AND (`total_amount` = @p21) AND (`customer_id` = @p22))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p1";
@@ -10301,59 +10699,59 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p3";
-            param.DbType = global::System.Data.DbType.StringFixedLength;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.String;
-            param.IsNullable = true;
-            param.SourceColumn = "rfq_no";
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p4";
             param.DbType = global::System.Data.DbType.Date;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Date;
             param.IsNullable = true;
             param.SourceColumn = "from_date";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p5";
+            param.ParameterName = "@p4";
             param.DbType = global::System.Data.DbType.Date;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Date;
             param.IsNullable = true;
             param.SourceColumn = "to_date";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p6";
+            param.ParameterName = "@p5";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
             param.SourceColumn = "payment_terms";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p7";
+            param.ParameterName = "@p6";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
             param.SourceColumn = "delivery_terms";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p8";
+            param.ParameterName = "@p7";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
             param.SourceColumn = "bill_to";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p9";
+            param.ParameterName = "@p8";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
             param.SourceColumn = "ship_to";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p10";
+            param.ParameterName = "@p9";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
             param.SourceColumn = "in_favor_of";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p10";
+            param.DbType = global::System.Data.DbType.Double;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
+            param.IsNullable = true;
+            param.SourceColumn = "total_amount";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p11";
@@ -10364,13 +10762,6 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p12";
-            param.DbType = global::System.Data.DbType.Double;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
-            param.IsNullable = true;
-            param.SourceColumn = "total_amount";
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p13";
             param.DbType = global::System.Data.DbType.StringFixedLength;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.String;
             param.IsNullable = true;
@@ -10378,7 +10769,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p14";
+            param.ParameterName = "@p13";
             param.DbType = global::System.Data.DbType.Date;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Date;
             param.IsNullable = true;
@@ -10386,15 +10777,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p15";
-            param.DbType = global::System.Data.DbType.StringFixedLength;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.String;
-            param.IsNullable = true;
-            param.SourceColumn = "rfq_no";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p16";
+            param.ParameterName = "@p14";
             param.DbType = global::System.Data.DbType.Date;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Date;
             param.IsNullable = true;
@@ -10402,7 +10785,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p17";
+            param.ParameterName = "@p15";
             param.DbType = global::System.Data.DbType.Date;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Date;
             param.IsNullable = true;
@@ -10410,7 +10793,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p18";
+            param.ParameterName = "@p16";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
@@ -10418,7 +10801,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p19";
+            param.ParameterName = "@p17";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
@@ -10426,7 +10809,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p20";
+            param.ParameterName = "@p18";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
@@ -10434,7 +10817,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p21";
+            param.ParameterName = "@p19";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
@@ -10442,7 +10825,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p22";
+            param.ParameterName = "@p20";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
@@ -10450,19 +10833,19 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p23";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
-            param.IsNullable = true;
-            param.SourceColumn = "customer_id";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p24";
+            param.ParameterName = "@p21";
             param.DbType = global::System.Data.DbType.Double;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
             param.IsNullable = true;
             param.SourceColumn = "total_amount";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p22";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "customer_id";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
         }
@@ -10480,9 +10863,9 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[1];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT `pq_no`, `pq_date`, `rfq_no`, `from_date`, `to_date`, `payment_terms`, `de" +
-                "livery_terms`, `bill_to`, `ship_to`, `in_favor_of`, `customer_id`, `total_amount" +
-                "` FROM `pq_t`";
+            this._commandCollection[0].CommandText = "SELECT `pq_no`, `pq_date`, `from_date`, `to_date`, `payment_terms`, `delivery_ter" +
+                "ms`, `bill_to`, `ship_to`, `in_favor_of`, `total_amount`, `customer_id` FROM `pq" +
+                "_t`";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -10543,7 +10926,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string p1, System.DateTime p2, string p3, System.DateTime p4, System.DateTime p5, string p6, string p7, string p8, string p9, string p10, int p11, double p12) {
+        public virtual int Delete(string p1, System.DateTime p2, System.DateTime p3, System.DateTime p4, string p5, string p6, string p7, string p8, string p9, double p10, int p11) {
             if ((p1 == null)) {
                 throw new global::System.ArgumentNullException("p1");
             }
@@ -10551,14 +10934,14 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
                 this.Adapter.DeleteCommand.Parameters[0].Value = ((string)(p1));
             }
             this.Adapter.DeleteCommand.Parameters[1].Value = ((System.DateTime)(p2));
-            if ((p3 == null)) {
-                throw new global::System.ArgumentNullException("p3");
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((System.DateTime)(p3));
+            this.Adapter.DeleteCommand.Parameters[3].Value = ((System.DateTime)(p4));
+            if ((p5 == null)) {
+                throw new global::System.ArgumentNullException("p5");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(p3));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(p5));
             }
-            this.Adapter.DeleteCommand.Parameters[3].Value = ((System.DateTime)(p4));
-            this.Adapter.DeleteCommand.Parameters[4].Value = ((System.DateTime)(p5));
             if ((p6 == null)) {
                 throw new global::System.ArgumentNullException("p6");
             }
@@ -10583,14 +10966,8 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             else {
                 this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(p9));
             }
-            if ((p10 == null)) {
-                throw new global::System.ArgumentNullException("p10");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[9].Value = ((string)(p10));
-            }
+            this.Adapter.DeleteCommand.Parameters[9].Value = ((double)(p10));
             this.Adapter.DeleteCommand.Parameters[10].Value = ((int)(p11));
-            this.Adapter.DeleteCommand.Parameters[11].Value = ((double)(p12));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -10611,7 +10988,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string p1, System.DateTime p2, string p3, System.DateTime p4, System.DateTime p5, string p6, string p7, string p8, string p9, string p10, int p11, double p12) {
+        public virtual int Insert(string p1, System.DateTime p2, System.DateTime p3, System.DateTime p4, string p5, string p6, string p7, string p8, string p9, double p10, int p11) {
             if ((p1 == null)) {
                 throw new global::System.ArgumentNullException("p1");
             }
@@ -10619,14 +10996,14 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((string)(p1));
             }
             this.Adapter.InsertCommand.Parameters[1].Value = ((System.DateTime)(p2));
-            if ((p3 == null)) {
-                throw new global::System.ArgumentNullException("p3");
+            this.Adapter.InsertCommand.Parameters[2].Value = ((System.DateTime)(p3));
+            this.Adapter.InsertCommand.Parameters[3].Value = ((System.DateTime)(p4));
+            if ((p5 == null)) {
+                throw new global::System.ArgumentNullException("p5");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(p3));
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(p5));
             }
-            this.Adapter.InsertCommand.Parameters[3].Value = ((System.DateTime)(p4));
-            this.Adapter.InsertCommand.Parameters[4].Value = ((System.DateTime)(p5));
             if ((p6 == null)) {
                 throw new global::System.ArgumentNullException("p6");
             }
@@ -10651,14 +11028,8 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             else {
                 this.Adapter.InsertCommand.Parameters[8].Value = ((string)(p9));
             }
-            if ((p10 == null)) {
-                throw new global::System.ArgumentNullException("p10");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[9].Value = ((string)(p10));
-            }
+            this.Adapter.InsertCommand.Parameters[9].Value = ((double)(p10));
             this.Adapter.InsertCommand.Parameters[10].Value = ((int)(p11));
-            this.Adapter.InsertCommand.Parameters[11].Value = ((double)(p12));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -10682,28 +11053,26 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
         public virtual int Update(
                     string p1, 
                     System.DateTime p2, 
-                    string p3, 
+                    System.DateTime p3, 
                     System.DateTime p4, 
-                    System.DateTime p5, 
+                    string p5, 
                     string p6, 
                     string p7, 
                     string p8, 
                     string p9, 
-                    string p10, 
+                    double p10, 
                     int p11, 
-                    double p12, 
-                    string p13, 
+                    string p12, 
+                    System.DateTime p13, 
                     System.DateTime p14, 
-                    string p15, 
-                    System.DateTime p16, 
-                    System.DateTime p17, 
+                    System.DateTime p15, 
+                    string p16, 
+                    string p17, 
                     string p18, 
                     string p19, 
                     string p20, 
-                    string p21, 
-                    string p22, 
-                    int p23, 
-                    double p24) {
+                    double p21, 
+                    int p22) {
             if ((p1 == null)) {
                 throw new global::System.ArgumentNullException("p1");
             }
@@ -10711,14 +11080,14 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
                 this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(p1));
             }
             this.Adapter.UpdateCommand.Parameters[1].Value = ((System.DateTime)(p2));
-            if ((p3 == null)) {
-                throw new global::System.ArgumentNullException("p3");
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((System.DateTime)(p3));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((System.DateTime)(p4));
+            if ((p5 == null)) {
+                throw new global::System.ArgumentNullException("p5");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(p3));
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(p5));
             }
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((System.DateTime)(p4));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((System.DateTime)(p5));
             if ((p6 == null)) {
                 throw new global::System.ArgumentNullException("p6");
             }
@@ -10743,29 +11112,29 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(p9));
             }
-            if ((p10 == null)) {
-                throw new global::System.ArgumentNullException("p10");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(p10));
-            }
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((double)(p10));
             this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(p11));
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((double)(p12));
-            if ((p13 == null)) {
-                throw new global::System.ArgumentNullException("p13");
+            if ((p12 == null)) {
+                throw new global::System.ArgumentNullException("p12");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(p13));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(p12));
             }
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((System.DateTime)(p13));
             this.Adapter.UpdateCommand.Parameters[13].Value = ((System.DateTime)(p14));
-            if ((p15 == null)) {
-                throw new global::System.ArgumentNullException("p15");
+            this.Adapter.UpdateCommand.Parameters[14].Value = ((System.DateTime)(p15));
+            if ((p16 == null)) {
+                throw new global::System.ArgumentNullException("p16");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(p15));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(p16));
             }
-            this.Adapter.UpdateCommand.Parameters[15].Value = ((System.DateTime)(p16));
-            this.Adapter.UpdateCommand.Parameters[16].Value = ((System.DateTime)(p17));
+            if ((p17 == null)) {
+                throw new global::System.ArgumentNullException("p17");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(p17));
+            }
             if ((p18 == null)) {
                 throw new global::System.ArgumentNullException("p18");
             }
@@ -10784,20 +11153,8 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(p20));
             }
-            if ((p21 == null)) {
-                throw new global::System.ArgumentNullException("p21");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(p21));
-            }
-            if ((p22 == null)) {
-                throw new global::System.ArgumentNullException("p22");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((string)(p22));
-            }
-            this.Adapter.UpdateCommand.Parameters[22].Value = ((int)(p23));
-            this.Adapter.UpdateCommand.Parameters[23].Value = ((double)(p24));
+            this.Adapter.UpdateCommand.Parameters[20].Value = ((double)(p21));
+            this.Adapter.UpdateCommand.Parameters[21].Value = ((int)(p22));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -10820,29 +11177,27 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
                     System.DateTime p2, 
-                    string p3, 
+                    System.DateTime p3, 
                     System.DateTime p4, 
-                    System.DateTime p5, 
+                    string p5, 
                     string p6, 
                     string p7, 
                     string p8, 
                     string p9, 
-                    string p10, 
+                    double p10, 
                     int p11, 
-                    double p12, 
-                    string p13, 
+                    string p12, 
+                    System.DateTime p13, 
                     System.DateTime p14, 
-                    string p15, 
-                    System.DateTime p16, 
-                    System.DateTime p17, 
+                    System.DateTime p15, 
+                    string p16, 
+                    string p17, 
                     string p18, 
                     string p19, 
                     string p20, 
-                    string p21, 
-                    string p22, 
-                    int p23, 
-                    double p24) {
-            return this.Update(p13, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20, p21, p22, p23, p24);
+                    double p21, 
+                    int p22) {
+            return this.Update(p12, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20, p21, p22);
         }
     }
     
@@ -11399,12 +11754,13 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("delivery_terms", "delivery_terms");
             tableMapping.ColumnMappings.Add("customer_id", "customer_id");
             tableMapping.ColumnMappings.Add("supplier_id", "supplier_id");
+            tableMapping.ColumnMappings.Add("pq_no", "pq_no");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
             this._adapter.DeleteCommand.CommandText = "DELETE FROM `rfq_t` WHERE ((`rfq_no` = @p1) AND (`date_of_request` = @p2) AND (`p" +
                 "ayment_terms` = @p3) AND (`delivery_terms` = @p4) AND (`customer_id` = @p5) AND " +
-                "(`supplier_id` = @p6))";
+                "(`supplier_id` = @p6) AND ((@p7 = 1 AND `pq_no` IS NULL) OR (`pq_no` = @p8)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p1";
@@ -11454,10 +11810,28 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.SourceColumn = "supplier_id";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p7";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "pq_no";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p8";
+            param.DbType = global::System.Data.DbType.StringFixedLength;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.String;
+            param.IsNullable = true;
+            param.SourceColumn = "pq_no";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO `rfq_t` (`rfq_no`, `date_of_request`, `payment_terms`, `delivery_term" +
-                "s`, `customer_id`, `supplier_id`) VALUES (@p1, @p2, @p3, @p4, @p5, @p6)";
+                "s`, `customer_id`, `supplier_id`, `pq_no`) VALUES (@p1, @p2, @p3, @p4, @p5, @p6," +
+                " @p7)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p1";
@@ -11501,9 +11875,16 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.IsNullable = true;
             param.SourceColumn = "supplier_id";
             this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p7";
+            param.DbType = global::System.Data.DbType.StringFixedLength;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.String;
+            param.IsNullable = true;
+            param.SourceColumn = "pq_no";
+            this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE `rfq_t` SET `rfq_no` = @p1, `date_of_request` = @p2, `payment_terms` = @p3, `delivery_terms` = @p4, `customer_id` = @p5, `supplier_id` = @p6 WHERE ((`rfq_no` = @p7) AND (`date_of_request` = @p8) AND (`payment_terms` = @p9) AND (`delivery_terms` = @p10) AND (`customer_id` = @p11) AND (`supplier_id` = @p12))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE `rfq_t` SET `rfq_no` = @p1, `date_of_request` = @p2, `payment_terms` = @p3, `delivery_terms` = @p4, `customer_id` = @p5, `supplier_id` = @p6, `pq_no` = @p7 WHERE ((`rfq_no` = @p8) AND (`date_of_request` = @p9) AND (`payment_terms` = @p10) AND (`delivery_terms` = @p11) AND (`customer_id` = @p12) AND (`supplier_id` = @p13) AND ((@p14 = 1 AND `pq_no` IS NULL) OR (`pq_no` = @p15)))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p1";
@@ -11552,11 +11933,18 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.DbType = global::System.Data.DbType.StringFixedLength;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.String;
             param.IsNullable = true;
+            param.SourceColumn = "pq_no";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p8";
+            param.DbType = global::System.Data.DbType.StringFixedLength;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.String;
+            param.IsNullable = true;
             param.SourceColumn = "rfq_no";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p8";
+            param.ParameterName = "@p9";
             param.DbType = global::System.Data.DbType.Date;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Date;
             param.IsNullable = true;
@@ -11564,7 +11952,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p9";
+            param.ParameterName = "@p10";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
@@ -11572,7 +11960,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p10";
+            param.ParameterName = "@p11";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
@@ -11580,7 +11968,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p11";
+            param.ParameterName = "@p12";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
@@ -11588,11 +11976,28 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p12";
+            param.ParameterName = "@p13";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
             param.SourceColumn = "supplier_id";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p14";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "pq_no";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p15";
+            param.DbType = global::System.Data.DbType.StringFixedLength;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.String;
+            param.IsNullable = true;
+            param.SourceColumn = "pq_no";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
         }
@@ -11611,7 +12016,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT `rfq_no`, `date_of_request`, `payment_terms`, `delivery_terms`, `customer_" +
-                "id`, `supplier_id` FROM `rfq_t`";
+                "id`, `supplier_id`, `pq_no` FROM `rfq_t`";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -11672,7 +12077,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string p1, System.DateTime p2, string p3, string p4, int p5, int p6) {
+        public virtual int Delete(string p1, System.DateTime p2, string p3, string p4, int p5, int p6, string p8) {
             if ((p1 == null)) {
                 throw new global::System.ArgumentNullException("p1");
             }
@@ -11694,6 +12099,14 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             }
             this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(p5));
             this.Adapter.DeleteCommand.Parameters[5].Value = ((int)(p6));
+            if ((p8 == null)) {
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((string)(p8));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -11714,7 +12127,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string p1, System.DateTime p2, string p3, string p4, int p5, int p6) {
+        public virtual int Insert(string p1, System.DateTime p2, string p3, string p4, int p5, int p6, string p7) {
             if ((p1 == null)) {
                 throw new global::System.ArgumentNullException("p1");
             }
@@ -11736,6 +12149,12 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             }
             this.Adapter.InsertCommand.Parameters[4].Value = ((int)(p5));
             this.Adapter.InsertCommand.Parameters[5].Value = ((int)(p6));
+            if ((p7 == null)) {
+                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(p7));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -11756,7 +12175,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string p1, System.DateTime p2, string p3, string p4, int p5, int p6, string p7, System.DateTime p8, string p9, string p10, int p11, int p12) {
+        public virtual int Update(string p1, System.DateTime p2, string p3, string p4, int p5, int p6, string p7, string p8, System.DateTime p9, string p10, string p11, int p12, int p13, string p15) {
             if ((p1 == null)) {
                 throw new global::System.ArgumentNullException("p1");
             }
@@ -11779,26 +12198,40 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(p5));
             this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(p6));
             if ((p7 == null)) {
-                throw new global::System.ArgumentNullException("p7");
+                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(p7));
             }
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((System.DateTime)(p8));
-            if ((p9 == null)) {
-                throw new global::System.ArgumentNullException("p9");
+            if ((p8 == null)) {
+                throw new global::System.ArgumentNullException("p8");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(p9));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(p8));
             }
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((System.DateTime)(p9));
             if ((p10 == null)) {
                 throw new global::System.ArgumentNullException("p10");
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(p10));
             }
-            this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(p11));
+            if ((p11 == null)) {
+                throw new global::System.ArgumentNullException("p11");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(p11));
+            }
             this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(p12));
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(p13));
+            if ((p15 == null)) {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(p15));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -11819,8 +12252,8 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(System.DateTime p2, string p3, string p4, int p5, int p6, string p7, System.DateTime p8, string p9, string p10, int p11, int p12) {
-            return this.Update(p7, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12);
+        public virtual int Update(System.DateTime p2, string p3, string p4, int p5, int p6, string p7, string p8, System.DateTime p9, string p10, string p11, int p12, int p13, string p15) {
+            return this.Update(p8, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p15);
         }
     }
     
@@ -11947,16 +12380,14 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             tableMapping.DataSetTable = "sidr_order_line_t";
             tableMapping.ColumnMappings.Add("so_no", "so_no");
             tableMapping.ColumnMappings.Add("part_number", "part_number");
+            tableMapping.ColumnMappings.Add("reic_unit_price", "reic_unit_price");
             tableMapping.ColumnMappings.Add("quantity", "quantity");
-            tableMapping.ColumnMappings.Add("total_sales", "total_sales");
-            tableMapping.ColumnMappings.Add("vat_sales", "vat_sales");
-            tableMapping.ColumnMappings.Add("add_12_percent_vat", "add_12_percent_vat");
+            tableMapping.ColumnMappings.Add("item_total", "item_total");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
             this._adapter.DeleteCommand.CommandText = "DELETE FROM `sidr_order_line_t` WHERE ((`so_no` = @p1) AND (`part_number` = @p2) " +
-                "AND (`quantity` = @p3) AND (`total_sales` = @p4) AND (`vat_sales` = @p5) AND (`a" +
-                "dd_12_percent_vat` = @p6))";
+                "AND (`reic_unit_price` = @p3) AND (`quantity` = @p4) AND (`item_total` = @p5))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p1";
@@ -11976,6 +12407,14 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p3";
+            param.DbType = global::System.Data.DbType.Double;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
+            param.IsNullable = true;
+            param.SourceColumn = "reic_unit_price";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p4";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
@@ -11983,33 +12422,17 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p4";
-            param.DbType = global::System.Data.DbType.Double;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
-            param.IsNullable = true;
-            param.SourceColumn = "total_sales";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p5";
             param.DbType = global::System.Data.DbType.Double;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
             param.IsNullable = true;
-            param.SourceColumn = "vat_sales";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p6";
-            param.DbType = global::System.Data.DbType.Double;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
-            param.IsNullable = true;
-            param.SourceColumn = "add_12_percent_vat";
+            param.SourceColumn = "item_total";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO `sidr_order_line_t` (`so_no`, `part_number`, `quantity`, `total_sales" +
-                "`, `vat_sales`, `add_12_percent_vat`) VALUES (@p1, @p2, @p3, @p4, @p5, @p6)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO `sidr_order_line_t` (`so_no`, `part_number`, `reic_unit_price`, `quan" +
+                "tity`, `item_total`) VALUES (@p1, @p2, @p3, @p4, @p5)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p1";
@@ -12027,35 +12450,28 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p3";
+            param.DbType = global::System.Data.DbType.Double;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
+            param.IsNullable = true;
+            param.SourceColumn = "reic_unit_price";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p4";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
             param.SourceColumn = "quantity";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p4";
-            param.DbType = global::System.Data.DbType.Double;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
-            param.IsNullable = true;
-            param.SourceColumn = "total_sales";
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p5";
             param.DbType = global::System.Data.DbType.Double;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
             param.IsNullable = true;
-            param.SourceColumn = "vat_sales";
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p6";
-            param.DbType = global::System.Data.DbType.Double;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
-            param.IsNullable = true;
-            param.SourceColumn = "add_12_percent_vat";
+            param.SourceColumn = "item_total";
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE `sidr_order_line_t` SET `so_no` = @p1, `part_number` = @p2, `quantity` = @p3, `total_sales` = @p4, `vat_sales` = @p5, `add_12_percent_vat` = @p6 WHERE ((`so_no` = @p7) AND (`part_number` = @p8) AND (`quantity` = @p9) AND (`total_sales` = @p10) AND (`vat_sales` = @p11) AND (`add_12_percent_vat` = @p12))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE `sidr_order_line_t` SET `so_no` = @p1, `part_number` = @p2, `reic_unit_price` = @p3, `quantity` = @p4, `item_total` = @p5 WHERE ((`so_no` = @p6) AND (`part_number` = @p7) AND (`reic_unit_price` = @p8) AND (`quantity` = @p9) AND (`item_total` = @p10))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p1";
@@ -12073,34 +12489,27 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p3";
+            param.DbType = global::System.Data.DbType.Double;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
+            param.IsNullable = true;
+            param.SourceColumn = "reic_unit_price";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p4";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
             param.SourceColumn = "quantity";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p4";
-            param.DbType = global::System.Data.DbType.Double;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
-            param.IsNullable = true;
-            param.SourceColumn = "total_sales";
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p5";
             param.DbType = global::System.Data.DbType.Double;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
             param.IsNullable = true;
-            param.SourceColumn = "vat_sales";
+            param.SourceColumn = "item_total";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p6";
-            param.DbType = global::System.Data.DbType.Double;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
-            param.IsNullable = true;
-            param.SourceColumn = "add_12_percent_vat";
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p7";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
@@ -12108,11 +12517,19 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p8";
+            param.ParameterName = "@p7";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
             param.SourceColumn = "part_number";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p8";
+            param.DbType = global::System.Data.DbType.Double;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
+            param.IsNullable = true;
+            param.SourceColumn = "reic_unit_price";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
@@ -12128,23 +12545,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.DbType = global::System.Data.DbType.Double;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
             param.IsNullable = true;
-            param.SourceColumn = "total_sales";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p11";
-            param.DbType = global::System.Data.DbType.Double;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
-            param.IsNullable = true;
-            param.SourceColumn = "vat_sales";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p12";
-            param.DbType = global::System.Data.DbType.Double;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
-            param.IsNullable = true;
-            param.SourceColumn = "add_12_percent_vat";
+            param.SourceColumn = "item_total";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
         }
@@ -12162,8 +12563,8 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[1];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT `so_no`, `part_number`, `quantity`, `total_sales`, `vat_sales`, `add_12_pe" +
-                "rcent_vat` FROM `sidr_order_line_t`";
+            this._commandCollection[0].CommandText = "SELECT `so_no`, `part_number`, `reic_unit_price`, `quantity`, `item_total` FROM `" +
+                "sidr_order_line_t`";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -12224,7 +12625,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int p1, string p2, int p3, double p4, double p5, double p6) {
+        public virtual int Delete(int p1, string p2, double p3, int p4, double p5) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(p1));
             if ((p2 == null)) {
                 throw new global::System.ArgumentNullException("p2");
@@ -12232,10 +12633,9 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             else {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(p2));
             }
-            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(p3));
-            this.Adapter.DeleteCommand.Parameters[3].Value = ((double)(p4));
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((double)(p3));
+            this.Adapter.DeleteCommand.Parameters[3].Value = ((int)(p4));
             this.Adapter.DeleteCommand.Parameters[4].Value = ((double)(p5));
-            this.Adapter.DeleteCommand.Parameters[5].Value = ((double)(p6));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -12256,7 +12656,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int p1, string p2, int p3, double p4, double p5, double p6) {
+        public virtual int Insert(int p1, string p2, double p3, int p4, double p5) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(p1));
             if ((p2 == null)) {
                 throw new global::System.ArgumentNullException("p2");
@@ -12264,10 +12664,9 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             else {
                 this.Adapter.InsertCommand.Parameters[1].Value = ((string)(p2));
             }
-            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(p3));
-            this.Adapter.InsertCommand.Parameters[3].Value = ((double)(p4));
+            this.Adapter.InsertCommand.Parameters[2].Value = ((double)(p3));
+            this.Adapter.InsertCommand.Parameters[3].Value = ((int)(p4));
             this.Adapter.InsertCommand.Parameters[4].Value = ((double)(p5));
-            this.Adapter.InsertCommand.Parameters[5].Value = ((double)(p6));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -12288,7 +12687,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int p1, string p2, int p3, double p4, double p5, double p6, int p7, string p8, int p9, double p10, double p11, double p12) {
+        public virtual int Update(int p1, string p2, double p3, int p4, double p5, int p6, string p7, double p8, int p9, double p10) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(p1));
             if ((p2 == null)) {
                 throw new global::System.ArgumentNullException("p2");
@@ -12296,21 +12695,19 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(p2));
             }
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(p3));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((double)(p4));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((double)(p3));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(p4));
             this.Adapter.UpdateCommand.Parameters[4].Value = ((double)(p5));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((double)(p6));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(p7));
-            if ((p8 == null)) {
-                throw new global::System.ArgumentNullException("p8");
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(p6));
+            if ((p7 == null)) {
+                throw new global::System.ArgumentNullException("p7");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(p8));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(p7));
             }
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((double)(p8));
             this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(p9));
             this.Adapter.UpdateCommand.Parameters[9].Value = ((double)(p10));
-            this.Adapter.UpdateCommand.Parameters[10].Value = ((double)(p11));
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((double)(p12));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -12331,8 +12728,8 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int p3, double p4, double p5, double p6, int p7, string p8, int p9, double p10, double p11, double p12) {
-            return this.Update(p7, p8, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12);
+        public virtual int Update(double p3, int p4, double p5, int p6, string p7, double p8, int p9, double p10) {
+            return this.Update(p6, p7, p3, p4, p5, p6, p7, p8, p9, p10);
         }
     }
     
@@ -12461,16 +12858,17 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("customer_id", "customer_id");
             tableMapping.ColumnMappings.Add("so_date", "so_date");
             tableMapping.ColumnMappings.Add("delivery_terms", "delivery_terms");
-            tableMapping.ColumnMappings.Add("po_no", "po_no");
+            tableMapping.ColumnMappings.Add("customer_po_no", "customer_po_no");
             tableMapping.ColumnMappings.Add("si_no", "si_no");
             tableMapping.ColumnMappings.Add("dr_no", "dr_no");
+            tableMapping.ColumnMappings.Add("total_sales", "total_sales");
+            tableMapping.ColumnMappings.Add("vat_sales", "vat_sales");
+            tableMapping.ColumnMappings.Add("add_12_percent_vat", "add_12_percent_vat");
             tableMapping.ColumnMappings.Add("invoice_total", "invoice_total");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM `sidr_t` WHERE ((`so_no` = @p1) AND (`customer_id` = @p2) AND (`so_da" +
-                "te` = @p3) AND (`delivery_terms` = @p4) AND (`po_no` = @p5) AND (`si_no` = @p6) " +
-                "AND (`dr_no` = @p7) AND (`invoice_total` = @p8))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `sidr_t` WHERE ((`so_no` = @p1) AND (`customer_id` = @p2) AND (`so_date` = @p3) AND (`delivery_terms` = @p4) AND (`customer_po_no` = @p5) AND (`si_no` = @p6) AND (`dr_no` = @p7) AND (`total_sales` = @p8) AND (`vat_sales` = @p9) AND (`add_12_percent_vat` = @p10) AND (`invoice_total` = @p11))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p1";
@@ -12509,7 +12907,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.DbType = global::System.Data.DbType.StringFixedLength;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.String;
             param.IsNullable = true;
-            param.SourceColumn = "po_no";
+            param.SourceColumn = "customer_po_no";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
@@ -12533,14 +12931,39 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.DbType = global::System.Data.DbType.Double;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
             param.IsNullable = true;
+            param.SourceColumn = "total_sales";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p9";
+            param.DbType = global::System.Data.DbType.Double;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
+            param.IsNullable = true;
+            param.SourceColumn = "vat_sales";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p10";
+            param.DbType = global::System.Data.DbType.Double;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
+            param.IsNullable = true;
+            param.SourceColumn = "add_12_percent_vat";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p11";
+            param.DbType = global::System.Data.DbType.Double;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
+            param.IsNullable = true;
             param.SourceColumn = "invoice_total";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO `sidr_t` (`so_no`, `customer_id`, `so_date`, `delivery_terms`, `po_no" +
-                "`, `si_no`, `dr_no`, `invoice_total`) VALUES (@p1, @p2, @p3, @p4, @p5, @p6, @p7," +
-                " @p8)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO `sidr_t` (`so_no`, `customer_id`, `so_date`, `delivery_terms`, `custo" +
+                "mer_po_no`, `si_no`, `dr_no`, `total_sales`, `vat_sales`, `add_12_percent_vat`, " +
+                "`invoice_total`) VALUES (@p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11" +
+                ")";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p1";
@@ -12575,7 +12998,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.DbType = global::System.Data.DbType.StringFixedLength;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.String;
             param.IsNullable = true;
-            param.SourceColumn = "po_no";
+            param.SourceColumn = "customer_po_no";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p6";
@@ -12596,11 +13019,32 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.DbType = global::System.Data.DbType.Double;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
             param.IsNullable = true;
+            param.SourceColumn = "total_sales";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p9";
+            param.DbType = global::System.Data.DbType.Double;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
+            param.IsNullable = true;
+            param.SourceColumn = "vat_sales";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p10";
+            param.DbType = global::System.Data.DbType.Double;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
+            param.IsNullable = true;
+            param.SourceColumn = "add_12_percent_vat";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p11";
+            param.DbType = global::System.Data.DbType.Double;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
+            param.IsNullable = true;
             param.SourceColumn = "invoice_total";
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE `sidr_t` SET `so_no` = @p1, `customer_id` = @p2, `so_date` = @p3, `delivery_terms` = @p4, `po_no` = @p5, `si_no` = @p6, `dr_no` = @p7, `invoice_total` = @p8 WHERE ((`so_no` = @p9) AND (`customer_id` = @p10) AND (`so_date` = @p11) AND (`delivery_terms` = @p12) AND (`po_no` = @p13) AND (`si_no` = @p14) AND (`dr_no` = @p15) AND (`invoice_total` = @p16))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE `sidr_t` SET `so_no` = @p1, `customer_id` = @p2, `so_date` = @p3, `delivery_terms` = @p4, `customer_po_no` = @p5, `si_no` = @p6, `dr_no` = @p7, `total_sales` = @p8, `vat_sales` = @p9, `add_12_percent_vat` = @p10, `invoice_total` = @p11 WHERE ((`so_no` = @p12) AND (`customer_id` = @p13) AND (`so_date` = @p14) AND (`delivery_terms` = @p15) AND (`customer_po_no` = @p16) AND (`si_no` = @p17) AND (`dr_no` = @p18) AND (`total_sales` = @p19) AND (`vat_sales` = @p20) AND (`add_12_percent_vat` = @p21) AND (`invoice_total` = @p22))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p1";
@@ -12635,7 +13079,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.DbType = global::System.Data.DbType.StringFixedLength;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.String;
             param.IsNullable = true;
-            param.SourceColumn = "po_no";
+            param.SourceColumn = "customer_po_no";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p6";
@@ -12656,10 +13100,31 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.DbType = global::System.Data.DbType.Double;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
             param.IsNullable = true;
-            param.SourceColumn = "invoice_total";
+            param.SourceColumn = "total_sales";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p9";
+            param.DbType = global::System.Data.DbType.Double;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
+            param.IsNullable = true;
+            param.SourceColumn = "vat_sales";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p10";
+            param.DbType = global::System.Data.DbType.Double;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
+            param.IsNullable = true;
+            param.SourceColumn = "add_12_percent_vat";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p11";
+            param.DbType = global::System.Data.DbType.Double;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
+            param.IsNullable = true;
+            param.SourceColumn = "invoice_total";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p12";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
@@ -12667,7 +13132,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p10";
+            param.ParameterName = "@p13";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
@@ -12675,7 +13140,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p11";
+            param.ParameterName = "@p14";
             param.DbType = global::System.Data.DbType.Date;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Date;
             param.IsNullable = true;
@@ -12683,7 +13148,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p12";
+            param.ParameterName = "@p15";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
@@ -12691,15 +13156,15 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p13";
+            param.ParameterName = "@p16";
             param.DbType = global::System.Data.DbType.StringFixedLength;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.String;
             param.IsNullable = true;
-            param.SourceColumn = "po_no";
+            param.SourceColumn = "customer_po_no";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p14";
+            param.ParameterName = "@p17";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
@@ -12707,7 +13172,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p15";
+            param.ParameterName = "@p18";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
@@ -12715,7 +13180,31 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p16";
+            param.ParameterName = "@p19";
+            param.DbType = global::System.Data.DbType.Double;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
+            param.IsNullable = true;
+            param.SourceColumn = "total_sales";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p20";
+            param.DbType = global::System.Data.DbType.Double;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
+            param.IsNullable = true;
+            param.SourceColumn = "vat_sales";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p21";
+            param.DbType = global::System.Data.DbType.Double;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
+            param.IsNullable = true;
+            param.SourceColumn = "add_12_percent_vat";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p22";
             param.DbType = global::System.Data.DbType.Double;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
             param.IsNullable = true;
@@ -12737,8 +13226,9 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[1];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT `so_no`, `customer_id`, `so_date`, `delivery_terms`, `po_no`, `si_no`, `dr" +
-                "_no`, `invoice_total` FROM `sidr_t`";
+            this._commandCollection[0].CommandText = "SELECT `so_no`, `customer_id`, `so_date`, `delivery_terms`, `customer_po_no`, `si" +
+                "_no`, `dr_no`, `total_sales`, `vat_sales`, `add_12_percent_vat`, `invoice_total`" +
+                " FROM `sidr_t`";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -12799,7 +13289,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int p1, int p2, System.DateTime p3, string p4, string p5, int p6, int p7, double p8) {
+        public virtual int Delete(int p1, int p2, System.DateTime p3, string p4, string p5, int p6, int p7, double p8, double p9, double p10, double p11) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(p1));
             this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(p2));
             this.Adapter.DeleteCommand.Parameters[2].Value = ((System.DateTime)(p3));
@@ -12818,6 +13308,9 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             this.Adapter.DeleteCommand.Parameters[5].Value = ((int)(p6));
             this.Adapter.DeleteCommand.Parameters[6].Value = ((int)(p7));
             this.Adapter.DeleteCommand.Parameters[7].Value = ((double)(p8));
+            this.Adapter.DeleteCommand.Parameters[8].Value = ((double)(p9));
+            this.Adapter.DeleteCommand.Parameters[9].Value = ((double)(p10));
+            this.Adapter.DeleteCommand.Parameters[10].Value = ((double)(p11));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -12838,7 +13331,7 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int p1, int p2, System.DateTime p3, string p4, string p5, int p6, int p7, double p8) {
+        public virtual int Insert(int p1, int p2, System.DateTime p3, string p4, string p5, int p6, int p7, double p8, double p9, double p10, double p11) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(p1));
             this.Adapter.InsertCommand.Parameters[1].Value = ((int)(p2));
             this.Adapter.InsertCommand.Parameters[2].Value = ((System.DateTime)(p3));
@@ -12857,6 +13350,9 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             this.Adapter.InsertCommand.Parameters[5].Value = ((int)(p6));
             this.Adapter.InsertCommand.Parameters[6].Value = ((int)(p7));
             this.Adapter.InsertCommand.Parameters[7].Value = ((double)(p8));
+            this.Adapter.InsertCommand.Parameters[8].Value = ((double)(p9));
+            this.Adapter.InsertCommand.Parameters[9].Value = ((double)(p10));
+            this.Adapter.InsertCommand.Parameters[10].Value = ((double)(p11));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -12886,14 +13382,20 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
                     int p6, 
                     int p7, 
                     double p8, 
-                    int p9, 
-                    int p10, 
-                    System.DateTime p11, 
-                    string p12, 
-                    string p13, 
-                    int p14, 
-                    int p15, 
-                    double p16) {
+                    double p9, 
+                    double p10, 
+                    double p11, 
+                    int p12, 
+                    int p13, 
+                    System.DateTime p14, 
+                    string p15, 
+                    string p16, 
+                    int p17, 
+                    int p18, 
+                    double p19, 
+                    double p20, 
+                    double p21, 
+                    double p22) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(p1));
             this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(p2));
             this.Adapter.UpdateCommand.Parameters[2].Value = ((System.DateTime)(p3));
@@ -12912,24 +13414,30 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
             this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(p6));
             this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(p7));
             this.Adapter.UpdateCommand.Parameters[7].Value = ((double)(p8));
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(p9));
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(p10));
-            this.Adapter.UpdateCommand.Parameters[10].Value = ((System.DateTime)(p11));
-            if ((p12 == null)) {
-                throw new global::System.ArgumentNullException("p12");
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((double)(p9));
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((double)(p10));
+            this.Adapter.UpdateCommand.Parameters[10].Value = ((double)(p11));
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(p12));
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(p13));
+            this.Adapter.UpdateCommand.Parameters[13].Value = ((System.DateTime)(p14));
+            if ((p15 == null)) {
+                throw new global::System.ArgumentNullException("p15");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(p12));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(p15));
             }
-            if ((p13 == null)) {
-                throw new global::System.ArgumentNullException("p13");
+            if ((p16 == null)) {
+                throw new global::System.ArgumentNullException("p16");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(p13));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(p16));
             }
-            this.Adapter.UpdateCommand.Parameters[13].Value = ((int)(p14));
-            this.Adapter.UpdateCommand.Parameters[14].Value = ((int)(p15));
-            this.Adapter.UpdateCommand.Parameters[15].Value = ((double)(p16));
+            this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(p17));
+            this.Adapter.UpdateCommand.Parameters[17].Value = ((int)(p18));
+            this.Adapter.UpdateCommand.Parameters[18].Value = ((double)(p19));
+            this.Adapter.UpdateCommand.Parameters[19].Value = ((double)(p20));
+            this.Adapter.UpdateCommand.Parameters[20].Value = ((double)(p21));
+            this.Adapter.UpdateCommand.Parameters[21].Value = ((double)(p22));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -12950,8 +13458,29 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int p2, System.DateTime p3, string p4, string p5, int p6, int p7, double p8, int p9, int p10, System.DateTime p11, string p12, string p13, int p14, int p15, double p16) {
-            return this.Update(p9, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16);
+        public virtual int Update(
+                    int p2, 
+                    System.DateTime p3, 
+                    string p4, 
+                    string p5, 
+                    int p6, 
+                    int p7, 
+                    double p8, 
+                    double p9, 
+                    double p10, 
+                    double p11, 
+                    int p12, 
+                    int p13, 
+                    System.DateTime p14, 
+                    string p15, 
+                    string p16, 
+                    int p17, 
+                    int p18, 
+                    double p19, 
+                    double p20, 
+                    double p21, 
+                    double p22) {
+            return this.Update(p12, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20, p21, p22);
         }
     }
     
@@ -13879,24 +14408,6 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._supplier_tTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.supplier_t.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._supplier_tTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._rfq_tTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.rfq_t.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._rfq_tTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._pq_tTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.pq_t.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -13906,12 +14417,21 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._po_tTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.po_t.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._sidr_tTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.sidr_t.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._po_tTableAdapter.Update(updatedRows));
+                    result = (result + this._sidr_tTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._supplier_tTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.supplier_t.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._supplier_tTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -13924,12 +14444,21 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._sidr_tTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.sidr_t.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._po_tTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.po_t.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._sidr_tTableAdapter.Update(updatedRows));
+                    result = (result + this._po_tTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._rfq_tTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.rfq_t.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._rfq_tTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -13987,22 +14516,6 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._supplier_tTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.supplier_t.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._supplier_tTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._rfq_tTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.rfq_t.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._rfq_tTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._pq_tTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.pq_t.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -14011,11 +14524,19 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._po_tTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.po_t.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._sidr_tTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.sidr_t.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._po_tTableAdapter.Update(addedRows));
+                    result = (result + this._sidr_tTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._supplier_tTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.supplier_t.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._supplier_tTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -14027,11 +14548,19 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._sidr_tTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.sidr_t.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._po_tTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.po_t.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._sidr_tTableAdapter.Update(addedRows));
+                    result = (result + this._po_tTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._rfq_tTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.rfq_t.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._rfq_tTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -14109,19 +14638,11 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._sidr_tTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.sidr_t.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._rfq_tTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.rfq_t.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._sidr_tTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._item_tTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.item_t.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._item_tTableAdapter.Update(deletedRows));
+                    result = (result + this._rfq_tTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -14133,19 +14654,11 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._pq_tTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.pq_t.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._item_tTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.item_t.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._pq_tTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._rfq_tTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.rfq_t.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._rfq_tTableAdapter.Update(deletedRows));
+                    result = (result + this._item_tTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -14154,6 +14667,22 @@ namespace REIC_POMS.reicpomsDataSetTableAdapters {
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._supplier_tTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._sidr_tTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.sidr_t.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._sidr_tTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._pq_tTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.pq_t.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._pq_tTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }

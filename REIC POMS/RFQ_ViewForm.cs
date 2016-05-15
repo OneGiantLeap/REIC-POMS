@@ -19,6 +19,14 @@ namespace REIC_POMS
         {
             InitializeComponent();
             sql = new MySQLDatabaseDriver();
+
+            //---ADJUST DATAGRIDVIEW COLUMN ALIGNMENT
+            //Center column headings
+                dgvRFQItems.Columns["UOM"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvRFQItems.Columns["Qty"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //Center column cell contents
+                dgvRFQItems.Columns["UOM"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvRFQItems.Columns["Qty"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
 
         private void RFQ_ViewForm_Load(object sender, EventArgs e)
@@ -101,6 +109,13 @@ namespace REIC_POMS
         {
             //cancel = true; Still thinking if I still need thiiis
             Close(); 
+        }
+
+        private void btnGeneratePDF_Click(object sender, EventArgs e)
+        {
+            RFQ_PrintScreen rfqps = new RFQ_PrintScreen();
+            rfqps.RFQNo = RFQNoToView; //For the Print Screen to use in its SQL statement
+            rfqps.ShowDialog();
         }
     }
 }

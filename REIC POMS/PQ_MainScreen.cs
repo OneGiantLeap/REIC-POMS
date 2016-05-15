@@ -16,7 +16,6 @@ namespace REIC_POMS
         private MySQLDatabaseDriver sql;
         private ArrayList pqList;
 
-
         public PQ_MainScreen()
         {
             InitializeComponent();
@@ -57,6 +56,7 @@ namespace REIC_POMS
         {
             DialogResult result = MessageBox.Show("Are you sure you want to exit?", "Confirm Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
+                sql.Backup();
                 Close(); //Exit the program
         }
 

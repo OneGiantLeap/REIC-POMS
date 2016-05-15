@@ -34,6 +34,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabRFQForm = new System.Windows.Forms.TabControl();
             this.tabRequestDetails = new System.Windows.Forms.TabPage();
+            this.outputCustomerName = new System.Windows.Forms.TextBox();
+            this.outputSupplierAddress = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.outputSupplierEmail = new System.Windows.Forms.Label();
             this.outputSupplierNumber = new System.Windows.Forms.Label();
@@ -67,8 +69,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnCreatePQ = new System.Windows.Forms.Button();
-            this.outputSupplierAddress = new System.Windows.Forms.TextBox();
-            this.outputCustomerName = new System.Windows.Forms.TextBox();
             this.tabRFQForm.SuspendLayout();
             this.tabRequestDetails.SuspendLayout();
             this.tabItemDetails.SuspendLayout();
@@ -121,6 +121,36 @@
             this.tabRequestDetails.Size = new System.Drawing.Size(845, 345);
             this.tabRequestDetails.TabIndex = 0;
             this.tabRequestDetails.Text = "Request Details";
+            // 
+            // outputCustomerName
+            // 
+            this.outputCustomerName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(249)))));
+            this.outputCustomerName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.outputCustomerName.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.outputCustomerName.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.outputCustomerName.Location = new System.Drawing.Point(52, 270);
+            this.outputCustomerName.MaxLength = 150;
+            this.outputCustomerName.Multiline = true;
+            this.outputCustomerName.Name = "outputCustomerName";
+            this.outputCustomerName.ReadOnly = true;
+            this.outputCustomerName.Size = new System.Drawing.Size(253, 39);
+            this.outputCustomerName.TabIndex = 76;
+            this.outputCustomerName.Text = "Magic TextBox";
+            // 
+            // outputSupplierAddress
+            // 
+            this.outputSupplierAddress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(249)))));
+            this.outputSupplierAddress.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.outputSupplierAddress.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.outputSupplierAddress.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.outputSupplierAddress.Location = new System.Drawing.Point(413, 212);
+            this.outputSupplierAddress.MaxLength = 150;
+            this.outputSupplierAddress.Multiline = true;
+            this.outputSupplierAddress.Name = "outputSupplierAddress";
+            this.outputSupplierAddress.ReadOnly = true;
+            this.outputSupplierAddress.Size = new System.Drawing.Size(302, 75);
+            this.outputSupplierAddress.TabIndex = 75;
+            this.outputSupplierAddress.Text = "Magic TextBox";
             // 
             // panel1
             // 
@@ -379,6 +409,7 @@
             this.btnGeneratePDF.Size = new System.Drawing.Size(40, 40);
             this.btnGeneratePDF.TabIndex = 69;
             this.btnGeneratePDF.UseVisualStyleBackColor = true;
+            this.btnGeneratePDF.Click += new System.EventHandler(this.btnGeneratePDF_Click);
             // 
             // dgvRFQItems
             // 
@@ -397,7 +428,7 @@
             this.dgvRFQItems.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Source Sans Pro Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
@@ -504,36 +535,6 @@
             this.btnCreatePQ.Text = "CREATE PRICE QUOTATION";
             this.btnCreatePQ.UseVisualStyleBackColor = false;
             this.btnCreatePQ.Click += new System.EventHandler(this.btnCreatePQ_Click);
-            // 
-            // outputSupplierAddress
-            // 
-            this.outputSupplierAddress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(249)))));
-            this.outputSupplierAddress.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.outputSupplierAddress.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.outputSupplierAddress.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.outputSupplierAddress.Location = new System.Drawing.Point(413, 212);
-            this.outputSupplierAddress.MaxLength = 150;
-            this.outputSupplierAddress.Multiline = true;
-            this.outputSupplierAddress.Name = "outputSupplierAddress";
-            this.outputSupplierAddress.ReadOnly = true;
-            this.outputSupplierAddress.Size = new System.Drawing.Size(302, 75);
-            this.outputSupplierAddress.TabIndex = 75;
-            this.outputSupplierAddress.Text = "Magic TextBox";
-            // 
-            // outputCustomerName
-            // 
-            this.outputCustomerName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(249)))));
-            this.outputCustomerName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.outputCustomerName.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.outputCustomerName.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.outputCustomerName.Location = new System.Drawing.Point(52, 270);
-            this.outputCustomerName.MaxLength = 150;
-            this.outputCustomerName.Multiline = true;
-            this.outputCustomerName.Name = "outputCustomerName";
-            this.outputCustomerName.ReadOnly = true;
-            this.outputCustomerName.Size = new System.Drawing.Size(253, 39);
-            this.outputCustomerName.TabIndex = 76;
-            this.outputCustomerName.Text = "Magic TextBox";
             // 
             // RFQ_ViewForm
             // 

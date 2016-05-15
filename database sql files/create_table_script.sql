@@ -33,7 +33,7 @@ tin_number CHAR(15),
 company_name VARCHAR(70) NOT NULL,
 contact_person VARCHAR(70) NOT NULL,
 contact_number VARCHAR(25) NOT NULL,
-account_number VARCHAR(16),
+account_number VARCHAR(16), /*WHY NOT INT???*/
 email_address VARCHAR(50) NOT NULL,
 address VARCHAR(255) NOT NULL,
 CONSTRAINT customer_t_pk PRIMARY KEY (customer_id));
@@ -104,7 +104,7 @@ delivery_cost DOUBLE,
 order_total DOUBLE NOT NULL,
 supplier_id INTEGER NOT NULL,
 customer_id INTEGER NOT NULL,
-so_no INTEGER, /*Added (051016)*/
+so_no INTEGER DEFAULT NULL, /*Added (051016)*/
 CONSTRAINT po_t_pk PRIMARY KEY (po_no),
 CONSTRAINT po_t_fk1 FOREIGN KEY (customer_id) REFERENCES customer_t(customer_id),
 CONSTRAINT po_t_fk2 FOREIGN KEY (supplier_id) REFERENCES supplier_t(supplier_id), /*Added (051016)*/
@@ -129,7 +129,7 @@ payment_terms VARCHAR(7) NOT NULL,
 delivery_terms VARCHAR(8) NOT NULL,
 customer_id INTEGER NOT NULL,
 supplier_id INTEGER NOT NULL,
-pq_no CHAR(8) NOT NULL, /*Not Null for SPR needs*/
+pq_no CHAR(8) DEFAULT NULL, /*Null for SPR needs*/
 CONSTRAINT rfq_t_pk PRIMARY KEY (rfq_no),
 CONSTRAINT rfq_t_fk1 FOREIGN KEY (customer_id) REFERENCES customer_t(customer_id),
 CONSTRAINT rfq_t_fk2 FOREIGN KEY (supplier_id) REFERENCES supplier_t(supplier_id),

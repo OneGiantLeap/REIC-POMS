@@ -234,7 +234,7 @@
             // 
             this.txtTinNumber4.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.txtTinNumber4.Location = new System.Drawing.Point(342, 116);
-            this.txtTinNumber4.MaxLength = 4;
+            this.txtTinNumber4.MaxLength = 3;
             this.txtTinNumber4.Name = "txtTinNumber4";
             this.txtTinNumber4.Size = new System.Drawing.Size(38, 26);
             this.txtTinNumber4.TabIndex = 4;
@@ -243,28 +243,31 @@
             // 
             this.txtTinNumber3.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.txtTinNumber3.Location = new System.Drawing.Point(293, 116);
-            this.txtTinNumber3.MaxLength = 4;
+            this.txtTinNumber3.MaxLength = 3;
             this.txtTinNumber3.Name = "txtTinNumber3";
             this.txtTinNumber3.Size = new System.Drawing.Size(38, 26);
             this.txtTinNumber3.TabIndex = 3;
+            this.txtTinNumber3.TextChanged += new System.EventHandler(this.txtTinNumber3_TextChanged);
             // 
             // txtTinNumber2
             // 
             this.txtTinNumber2.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.txtTinNumber2.Location = new System.Drawing.Point(243, 116);
-            this.txtTinNumber2.MaxLength = 4;
+            this.txtTinNumber2.MaxLength = 3;
             this.txtTinNumber2.Name = "txtTinNumber2";
             this.txtTinNumber2.Size = new System.Drawing.Size(38, 26);
             this.txtTinNumber2.TabIndex = 2;
+            this.txtTinNumber2.TextChanged += new System.EventHandler(this.txtTinNumber2_TextChanged);
             // 
             // txtTinNumber1
             // 
             this.txtTinNumber1.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.txtTinNumber1.Location = new System.Drawing.Point(194, 116);
-            this.txtTinNumber1.MaxLength = 4;
+            this.txtTinNumber1.MaxLength = 3;
             this.txtTinNumber1.Name = "txtTinNumber1";
             this.txtTinNumber1.Size = new System.Drawing.Size(38, 26);
             this.txtTinNumber1.TabIndex = 1;
+            this.txtTinNumber1.TextChanged += new System.EventHandler(this.txtTinNumber1_TextChanged);
             // 
             // lblDash3
             // 

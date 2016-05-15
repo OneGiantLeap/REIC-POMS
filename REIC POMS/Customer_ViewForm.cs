@@ -73,8 +73,9 @@ namespace REIC_POMS
             Customer_UpdateForm cuf = new Customer_UpdateForm();
             //Fill out Update Form's textBoxes + Open Update Form
                 cuf.BNameToEdit = BNameToView;
-                if (TinToView != "N/A")
-                    { cuf.TinFilled = true; }//Tells Update Form that it has to split the "TIN Number" to the 4 text boxes
+                if (TinToView.Contains("N/A") == true)
+                    { cuf.TinFilled = false; }
+                else { cuf.TinFilled = true; }
                 cuf.FullTinToEdit = TinToView;
                 cuf.NameToEdit = NameToView;
                 cuf.PersonToEdit = PersonToView;
@@ -88,7 +89,7 @@ namespace REIC_POMS
             if (cuf.Cancel == false) //Customer values were updated
             { //Update values in View Form so Main Screen can obtain them (Data passing from Update -> View -> Main Screen)
                 BNameToView = cuf.BNameToEdit;
-                TinToView = cuf.FullTinToEdit;
+                TinToView = cuf.FullTinNumber;
                 NameToView = cuf.NameToEdit;
                 PersonToView = cuf.PersonToEdit;
                 NumberToView = cuf.NumberToEdit;
