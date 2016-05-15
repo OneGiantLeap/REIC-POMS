@@ -39,7 +39,6 @@
             this.outputCustomerAddress = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.outputToDate = new System.Windows.Forms.Label();
-            this.outputRFQNo = new System.Windows.Forms.Label();
             this.outputCustomerEmail = new System.Windows.Forms.Label();
             this.outputContactNumber = new System.Windows.Forms.Label();
             this.outputContactPerson = new System.Windows.Forms.Label();
@@ -62,13 +61,18 @@
             this.outputInFavorOf = new System.Windows.Forms.Label();
             this.outputPaymentTerms = new System.Windows.Forms.Label();
             this.lblValPeriod = new System.Windows.Forms.Label();
-            this.lblRFQNumber = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
             this.lblPQNumber = new System.Windows.Forms.Label();
             this.lblQuotationDetails = new System.Windows.Forms.Label();
             this.TabPage2 = new System.Windows.Forms.TabPage();
             this.lblAmount = new System.Windows.Forms.Label();
             this.dgvPQItems = new System.Windows.Forms.DataGridView();
+            this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UOM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnGeneratePDF = new System.Windows.Forms.PictureBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSaveGeneratePDF = new System.Windows.Forms.Button();
@@ -76,12 +80,8 @@
             this.lblPQItems = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnCreatePO = new System.Windows.Forms.Button();
-            this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UOM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TotalItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblRFQNumber = new System.Windows.Forms.Label();
+            this.outputRFQNo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabItemDetails.SuspendLayout();
             this.TabPage1.SuspendLayout();
@@ -194,16 +194,6 @@
             this.outputToDate.Size = new System.Drawing.Size(75, 19);
             this.outputToDate.TabIndex = 40;
             this.outputToDate.Text = "11/05/2017";
-            // 
-            // outputRFQNo
-            // 
-            this.outputRFQNo.AutoSize = true;
-            this.outputRFQNo.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.outputRFQNo.Location = new System.Drawing.Point(223, 125);
-            this.outputRFQNo.Name = "outputRFQNo";
-            this.outputRFQNo.Size = new System.Drawing.Size(37, 19);
-            this.outputRFQNo.TabIndex = 39;
-            this.outputRFQNo.Text = "2327";
             // 
             // outputCustomerEmail
             // 
@@ -427,16 +417,6 @@
             this.lblValPeriod.TabIndex = 4;
             this.lblValPeriod.Text = "VALIDITY PERIOD OF";
             // 
-            // lblRFQNumber
-            // 
-            this.lblRFQNumber.AutoSize = true;
-            this.lblRFQNumber.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.lblRFQNumber.Location = new System.Drawing.Point(35, 125);
-            this.lblRFQNumber.Name = "lblRFQNumber";
-            this.lblRFQNumber.Size = new System.Drawing.Size(57, 18);
-            this.lblRFQNumber.TabIndex = 3;
-            this.lblRFQNumber.Text = "RFQ NO.";
-            // 
             // lblDate
             // 
             this.lblDate.AutoSize = true;
@@ -547,6 +527,48 @@
             this.dgvPQItems.TabIndex = 69;
             this.dgvPQItems.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvPQItems_RowsAdded);
             // 
+            // ItemName
+            // 
+            this.ItemName.HeaderText = "ITEM NAME";
+            this.ItemName.Name = "ItemName";
+            this.ItemName.ReadOnly = true;
+            this.ItemName.Width = 235;
+            // 
+            // Description
+            // 
+            this.Description.HeaderText = "DESCRIPTION";
+            this.Description.Name = "Description";
+            this.Description.ReadOnly = true;
+            this.Description.Width = 248;
+            // 
+            // UOM
+            // 
+            this.UOM.HeaderText = "UOM";
+            this.UOM.Name = "UOM";
+            this.UOM.ReadOnly = true;
+            this.UOM.Width = 50;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "UNIT PRICE";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 95;
+            // 
+            // Qty
+            // 
+            this.Qty.HeaderText = "QTY.";
+            this.Qty.Name = "Qty";
+            this.Qty.ReadOnly = true;
+            this.Qty.Width = 50;
+            // 
+            // TotalItem
+            // 
+            this.TotalItem.HeaderText = "ITEM TOTAL";
+            this.TotalItem.Name = "TotalItem";
+            this.TotalItem.ReadOnly = true;
+            this.TotalItem.Width = 95;
+            // 
             // btnGeneratePDF
             // 
             this.btnGeneratePDF.Image = ((System.Drawing.Image)(resources.GetObject("btnGeneratePDF.Image")));
@@ -634,47 +656,25 @@
             this.btnCreatePO.UseVisualStyleBackColor = false;
             this.btnCreatePO.Click += new System.EventHandler(this.btnCreatePO_Click);
             // 
-            // ItemName
+            // lblRFQNumber
             // 
-            this.ItemName.HeaderText = "ITEM NAME";
-            this.ItemName.Name = "ItemName";
-            this.ItemName.ReadOnly = true;
-            this.ItemName.Width = 235;
+            this.lblRFQNumber.AutoSize = true;
+            this.lblRFQNumber.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblRFQNumber.Location = new System.Drawing.Point(35, 125);
+            this.lblRFQNumber.Name = "lblRFQNumber";
+            this.lblRFQNumber.Size = new System.Drawing.Size(57, 18);
+            this.lblRFQNumber.TabIndex = 3;
+            this.lblRFQNumber.Text = "RFQ NO.";
             // 
-            // Description
+            // outputRFQNo
             // 
-            this.Description.HeaderText = "DESCRIPTION";
-            this.Description.Name = "Description";
-            this.Description.ReadOnly = true;
-            this.Description.Width = 248;
-            // 
-            // UOM
-            // 
-            this.UOM.HeaderText = "UOM";
-            this.UOM.Name = "UOM";
-            this.UOM.ReadOnly = true;
-            this.UOM.Width = 50;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "UNIT PRICE";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 95;
-            // 
-            // Qty
-            // 
-            this.Qty.HeaderText = "QTY.";
-            this.Qty.Name = "Qty";
-            this.Qty.ReadOnly = true;
-            this.Qty.Width = 50;
-            // 
-            // TotalItem
-            // 
-            this.TotalItem.HeaderText = "ITEM TOTAL";
-            this.TotalItem.Name = "TotalItem";
-            this.TotalItem.ReadOnly = true;
-            this.TotalItem.Width = 95;
+            this.outputRFQNo.AutoSize = true;
+            this.outputRFQNo.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.outputRFQNo.Location = new System.Drawing.Point(223, 125);
+            this.outputRFQNo.Name = "outputRFQNo";
+            this.outputRFQNo.Size = new System.Drawing.Size(37, 19);
+            this.outputRFQNo.TabIndex = 39;
+            this.outputRFQNo.Text = "2327";
             // 
             // PQ_ViewForm
             // 
@@ -688,6 +688,7 @@
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "PQ_ViewForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PQ_ViewForm";
             this.Load += new System.EventHandler(this.PQ_ViewForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -729,7 +730,6 @@
         internal System.Windows.Forms.Label outputInFavorOf;
         internal System.Windows.Forms.Label outputPaymentTerms;
         internal System.Windows.Forms.Label lblValPeriod;
-        internal System.Windows.Forms.Label lblRFQNumber;
         internal System.Windows.Forms.Label lblDate;
         internal System.Windows.Forms.Label lblPQNumber;
         internal System.Windows.Forms.Label lblQuotationDetails;
@@ -737,7 +737,6 @@
         internal System.Windows.Forms.Label lblTotal;
         internal System.Windows.Forms.Label lblPQItems;
         internal System.Windows.Forms.Label outputToDate;
-        internal System.Windows.Forms.Label outputRFQNo;
         internal System.Windows.Forms.Button btnCancel;
         internal System.Windows.Forms.Button btnSaveGeneratePDF;
         private System.Windows.Forms.PictureBox btnGeneratePDF;
@@ -754,5 +753,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Qty;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalItem;
+        internal System.Windows.Forms.Label outputRFQNo;
+        internal System.Windows.Forms.Label lblRFQNumber;
     }
 }

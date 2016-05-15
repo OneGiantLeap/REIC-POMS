@@ -341,7 +341,7 @@ namespace REIC_POMS
         private void btnClearItems_Click(object sender, EventArgs e)
             {
                 if (dgvPQItems.Rows.Count == 0)
-                    { MessageBox.Show("There are no items to remove from the Request for Price Quotation.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+                    { MessageBox.Show("There are no items to remove from the Price Quotation.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
 
                 dgvPQItems.Rows.Clear();
             }
