@@ -52,14 +52,12 @@
             this.lblCustomerPerson = new System.Windows.Forms.Label();
             this.lblTotalAmount = new System.Windows.Forms.Label();
             this.cbbDeliveryTerms = new System.Windows.Forms.ComboBox();
-            this.cbbCustomerName = new System.Windows.Forms.ComboBox();
             this.cbbPaymentTerms = new System.Windows.Forms.ComboBox();
             this.dtpToDate = new System.Windows.Forms.DateTimePicker();
             this.dtpFromDate = new System.Windows.Forms.DateTimePicker();
             this.lblItemQuantity = new System.Windows.Forms.Label();
             this.dtpDate = new System.Windows.Forms.DateTimePicker();
             this.txtUnitPrice = new System.Windows.Forms.TextBox();
-            this.txtRFQNumber = new System.Windows.Forms.TextBox();
             this.txtPQNumber = new System.Windows.Forms.TextBox();
             this.lblDeliveryTerms = new System.Windows.Forms.Label();
             this.lblInFavorOf = new System.Windows.Forms.Label();
@@ -68,7 +66,6 @@
             this.lblFromDate = new System.Windows.Forms.Label();
             this.Label5 = new System.Windows.Forms.Label();
             this.nupItemQuantity = new System.Windows.Forms.NumericUpDown();
-            this.lblRFQNumber = new System.Windows.Forms.Label();
             this.lblItemTotal = new System.Windows.Forms.Label();
             this.lblUnitPrice = new System.Windows.Forms.Label();
             this.grpItemSelected = new System.Windows.Forms.GroupBox();
@@ -76,16 +73,17 @@
             this.lblItemName = new System.Windows.Forms.Label();
             this.lblItemSelected = new System.Windows.Forms.Label();
             this.txtItemTotal = new System.Windows.Forms.TextBox();
-            this.TabPage2 = new System.Windows.Forms.TabPage();
+            this.TabItemDetails = new System.Windows.Forms.TabPage();
             this.btnClearItems = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
             this.dgvPQItems = new System.Windows.Forms.DataGridView();
             this.RFQItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PQItemPartNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RFQDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitREICPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RFQUOM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblRFQItems = new System.Windows.Forms.Label();
             this.dgvItemSelection = new System.Windows.Forms.DataGridView();
             this.PartNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -102,7 +100,9 @@
             this.lblPQNumber = new System.Windows.Forms.Label();
             this.lblQuotationDetails = new System.Windows.Forms.Label();
             this.tabPQForm = new System.Windows.Forms.TabControl();
-            this.TabPage1 = new System.Windows.Forms.TabPage();
+            this.TabQuotationDetails = new System.Windows.Forms.TabPage();
+            this.txtRFQNumber = new System.Windows.Forms.TextBox();
+            this.txtCustomerName = new System.Windows.Forms.TextBox();
             this.cbbShipTo = new System.Windows.Forms.ComboBox();
             this.lblShipTo = new System.Windows.Forms.Label();
             this.cbbBillTo = new System.Windows.Forms.ComboBox();
@@ -113,12 +113,12 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.nupItemQuantity)).BeginInit();
             this.grpItemSelected.SuspendLayout();
-            this.TabPage2.SuspendLayout();
+            this.TabItemDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPQItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItemSelection)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabPQForm.SuspendLayout();
-            this.TabPage1.SuspendLayout();
+            this.TabQuotationDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -145,6 +145,7 @@
             this.txtTotalAmount.Name = "txtTotalAmount";
             this.txtTotalAmount.Size = new System.Drawing.Size(100, 26);
             this.txtTotalAmount.TabIndex = 11;
+            this.txtTotalAmount.TextChanged += new System.EventHandler(this.txtTotalAmount_TextChanged);
             // 
             // cbbInFavorOf
             // 
@@ -154,10 +155,10 @@
             "Select",
             "Customer",
             "REIC"});
-            this.cbbInFavorOf.Location = new System.Drawing.Point(33, 390);
+            this.cbbInFavorOf.Location = new System.Drawing.Point(33, 355);
             this.cbbInFavorOf.Name = "cbbInFavorOf";
             this.cbbInFavorOf.Size = new System.Drawing.Size(135, 27);
-            this.cbbInFavorOf.TabIndex = 9;
+            this.cbbInFavorOf.TabIndex = 8;
             // 
             // txtCustomerAddress
             // 
@@ -290,20 +291,10 @@
             "CIF",
             "FOB",
             "DAP"});
-            this.cbbDeliveryTerms.Location = new System.Drawing.Point(199, 271);
+            this.cbbDeliveryTerms.Location = new System.Drawing.Point(199, 236);
             this.cbbDeliveryTerms.Name = "cbbDeliveryTerms";
             this.cbbDeliveryTerms.Size = new System.Drawing.Size(135, 27);
-            this.cbbDeliveryTerms.TabIndex = 6;
-            // 
-            // cbbCustomerName
-            // 
-            this.cbbCustomerName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbCustomerName.FormattingEnabled = true;
-            this.cbbCustomerName.Location = new System.Drawing.Point(556, 78);
-            this.cbbCustomerName.Name = "cbbCustomerName";
-            this.cbbCustomerName.Size = new System.Drawing.Size(250, 27);
-            this.cbbCustomerName.TabIndex = 10;
-            this.cbbCustomerName.SelectedIndexChanged += new System.EventHandler(this.cbbCustomerName_SelectedIndexChanged);
+            this.cbbDeliveryTerms.TabIndex = 5;
             // 
             // cbbPaymentTerms
             // 
@@ -315,30 +306,30 @@
             "15 Days",
             "30 Days",
             "60 Days"});
-            this.cbbPaymentTerms.Location = new System.Drawing.Point(33, 271);
+            this.cbbPaymentTerms.Location = new System.Drawing.Point(33, 236);
             this.cbbPaymentTerms.Name = "cbbPaymentTerms";
             this.cbbPaymentTerms.Size = new System.Drawing.Size(135, 27);
-            this.cbbPaymentTerms.TabIndex = 5;
+            this.cbbPaymentTerms.TabIndex = 4;
             // 
             // dtpToDate
             // 
             this.dtpToDate.CustomFormat = "MM/dd/yyyy";
             this.dtpToDate.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.dtpToDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpToDate.Location = new System.Drawing.Point(222, 211);
+            this.dtpToDate.Location = new System.Drawing.Point(222, 176);
             this.dtpToDate.Name = "dtpToDate";
             this.dtpToDate.Size = new System.Drawing.Size(112, 26);
-            this.dtpToDate.TabIndex = 4;
+            this.dtpToDate.TabIndex = 3;
             // 
             // dtpFromDate
             // 
             this.dtpFromDate.CustomFormat = "MM/dd/yyyy";
             this.dtpFromDate.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.dtpFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFromDate.Location = new System.Drawing.Point(79, 211);
+            this.dtpFromDate.Location = new System.Drawing.Point(79, 176);
             this.dtpFromDate.Name = "dtpFromDate";
             this.dtpFromDate.Size = new System.Drawing.Size(112, 26);
-            this.dtpFromDate.TabIndex = 3;
+            this.dtpFromDate.TabIndex = 2;
             // 
             // lblItemQuantity
             // 
@@ -372,16 +363,7 @@
             this.txtUnitPrice.Size = new System.Drawing.Size(85, 26);
             this.txtUnitPrice.TabIndex = 14;
             this.txtUnitPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtRFQNumber
-            // 
-            this.txtRFQNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtRFQNumber.Enabled = false;
-            this.txtRFQNumber.Location = new System.Drawing.Point(219, 153);
-            this.txtRFQNumber.Multiline = true;
-            this.txtRFQNumber.Name = "txtRFQNumber";
-            this.txtRFQNumber.Size = new System.Drawing.Size(115, 27);
-            this.txtRFQNumber.TabIndex = 2;
+            this.txtUnitPrice.TextChanged += new System.EventHandler(this.txtUnitPrice_TextChanged);
             // 
             // txtPQNumber
             // 
@@ -399,7 +381,7 @@
             this.lblDeliveryTerms.AutoSize = true;
             this.lblDeliveryTerms.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblDeliveryTerms.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.lblDeliveryTerms.Location = new System.Drawing.Point(196, 250);
+            this.lblDeliveryTerms.Location = new System.Drawing.Point(196, 215);
             this.lblDeliveryTerms.Name = "lblDeliveryTerms";
             this.lblDeliveryTerms.Size = new System.Drawing.Size(112, 18);
             this.lblDeliveryTerms.TabIndex = 9;
@@ -410,7 +392,7 @@
             this.lblInFavorOf.AutoSize = true;
             this.lblInFavorOf.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblInFavorOf.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.lblInFavorOf.Location = new System.Drawing.Point(30, 369);
+            this.lblInFavorOf.Location = new System.Drawing.Point(30, 334);
             this.lblInFavorOf.Name = "lblInFavorOf";
             this.lblInFavorOf.Size = new System.Drawing.Size(82, 18);
             this.lblInFavorOf.TabIndex = 8;
@@ -421,7 +403,7 @@
             this.lblPaymentTerms.AutoSize = true;
             this.lblPaymentTerms.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblPaymentTerms.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.lblPaymentTerms.Location = new System.Drawing.Point(30, 250);
+            this.lblPaymentTerms.Location = new System.Drawing.Point(30, 215);
             this.lblPaymentTerms.Name = "lblPaymentTerms";
             this.lblPaymentTerms.Size = new System.Drawing.Size(110, 18);
             this.lblPaymentTerms.TabIndex = 7;
@@ -432,7 +414,7 @@
             this.lblToDate.AutoSize = true;
             this.lblToDate.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblToDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.lblToDate.Location = new System.Drawing.Point(195, 214);
+            this.lblToDate.Location = new System.Drawing.Point(195, 179);
             this.lblToDate.Name = "lblToDate";
             this.lblToDate.Size = new System.Drawing.Size(24, 19);
             this.lblToDate.TabIndex = 6;
@@ -443,7 +425,7 @@
             this.lblFromDate.AutoSize = true;
             this.lblFromDate.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblFromDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.lblFromDate.Location = new System.Drawing.Point(30, 214);
+            this.lblFromDate.Location = new System.Drawing.Point(30, 179);
             this.lblFromDate.Name = "lblFromDate";
             this.lblFromDate.Size = new System.Drawing.Size(41, 19);
             this.lblFromDate.TabIndex = 5;
@@ -454,7 +436,7 @@
             this.Label5.AutoSize = true;
             this.Label5.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.Label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.Label5.Location = new System.Drawing.Point(30, 190);
+            this.Label5.Location = new System.Drawing.Point(30, 155);
             this.Label5.Name = "Label5";
             this.Label5.Size = new System.Drawing.Size(205, 18);
             this.Label5.TabIndex = 4;
@@ -468,17 +450,7 @@
             this.nupItemQuantity.Size = new System.Drawing.Size(44, 26);
             this.nupItemQuantity.TabIndex = 13;
             this.nupItemQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // lblRFQNumber
-            // 
-            this.lblRFQNumber.AutoSize = true;
-            this.lblRFQNumber.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.lblRFQNumber.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.lblRFQNumber.Location = new System.Drawing.Point(30, 156);
-            this.lblRFQNumber.Name = "lblRFQNumber";
-            this.lblRFQNumber.Size = new System.Drawing.Size(57, 18);
-            this.lblRFQNumber.TabIndex = 3;
-            this.lblRFQNumber.Text = "RFQ NO.";
+            this.nupItemQuantity.ValueChanged += new System.EventHandler(this.nupItemQuantity_ValueChanged);
             // 
             // lblItemTotal
             // 
@@ -571,29 +543,30 @@
             this.txtItemTotal.Size = new System.Drawing.Size(84, 26);
             this.txtItemTotal.TabIndex = 15;
             this.txtItemTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtItemTotal.TextChanged += new System.EventHandler(this.txtItemTotal_TextChanged);
             // 
-            // TabPage2
+            // TabItemDetails
             // 
-            this.TabPage2.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.TabPage2.Controls.Add(this.btnClearItems);
-            this.TabPage2.Controls.Add(this.btnRemove);
-            this.TabPage2.Controls.Add(this.dgvPQItems);
-            this.TabPage2.Controls.Add(this.lblRFQItems);
-            this.TabPage2.Controls.Add(this.dgvItemSelection);
-            this.TabPage2.Controls.Add(this.btnClearSearch);
-            this.TabPage2.Controls.Add(this.cbbFilterBy);
-            this.TabPage2.Controls.Add(this.txtSearchFor);
-            this.TabPage2.Controls.Add(this.lblSelection);
-            this.TabPage2.Controls.Add(this.grpItemSelected);
-            this.TabPage2.Controls.Add(this.txtTotalAmount);
-            this.TabPage2.Controls.Add(this.lblTotalAmount);
-            this.TabPage2.Controls.Add(this.pictureBox2);
-            this.TabPage2.Location = new System.Drawing.Point(4, 28);
-            this.TabPage2.Name = "TabPage2";
-            this.TabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.TabPage2.Size = new System.Drawing.Size(845, 437);
-            this.TabPage2.TabIndex = 1;
-            this.TabPage2.Text = "Item Details";
+            this.TabItemDetails.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.TabItemDetails.Controls.Add(this.btnClearItems);
+            this.TabItemDetails.Controls.Add(this.btnRemove);
+            this.TabItemDetails.Controls.Add(this.dgvPQItems);
+            this.TabItemDetails.Controls.Add(this.lblRFQItems);
+            this.TabItemDetails.Controls.Add(this.dgvItemSelection);
+            this.TabItemDetails.Controls.Add(this.btnClearSearch);
+            this.TabItemDetails.Controls.Add(this.cbbFilterBy);
+            this.TabItemDetails.Controls.Add(this.txtSearchFor);
+            this.TabItemDetails.Controls.Add(this.lblSelection);
+            this.TabItemDetails.Controls.Add(this.grpItemSelected);
+            this.TabItemDetails.Controls.Add(this.txtTotalAmount);
+            this.TabItemDetails.Controls.Add(this.lblTotalAmount);
+            this.TabItemDetails.Controls.Add(this.pictureBox2);
+            this.TabItemDetails.Location = new System.Drawing.Point(4, 28);
+            this.TabItemDetails.Name = "TabItemDetails";
+            this.TabItemDetails.Padding = new System.Windows.Forms.Padding(3);
+            this.TabItemDetails.Size = new System.Drawing.Size(845, 437);
+            this.TabItemDetails.TabIndex = 1;
+            this.TabItemDetails.Text = "Item Details";
             // 
             // btnClearItems
             // 
@@ -648,11 +621,12 @@
             this.dgvPQItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvPQItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.RFQItemName,
+            this.PQItemPartNo,
             this.RFQDescription,
-            this.Column1,
+            this.UnitREICPrice,
             this.Qty,
             this.RFQUOM,
-            this.Column2});
+            this.totalItem});
             this.dgvPQItems.EnableHeadersVisualStyles = false;
             this.dgvPQItems.Location = new System.Drawing.Point(32, 275);
             this.dgvPQItems.MultiSelect = false;
@@ -677,6 +651,8 @@
             this.dgvPQItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPQItems.Size = new System.Drawing.Size(710, 140);
             this.dgvPQItems.TabIndex = 72;
+            this.dgvPQItems.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvPQItems_RowsAdded);
+            this.dgvPQItems.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgvPQItems_RowsRemoved);
             // 
             // RFQItemName
             // 
@@ -685,6 +661,13 @@
             this.RFQItemName.ReadOnly = true;
             this.RFQItemName.Width = 208;
             // 
+            // PQItemPartNo
+            // 
+            this.PQItemPartNo.HeaderText = "Column3";
+            this.PQItemPartNo.Name = "PQItemPartNo";
+            this.PQItemPartNo.ReadOnly = true;
+            this.PQItemPartNo.Visible = false;
+            // 
             // RFQDescription
             // 
             this.RFQDescription.HeaderText = "DESCRIPTION";
@@ -692,12 +675,12 @@
             this.RFQDescription.ReadOnly = true;
             this.RFQDescription.Width = 240;
             // 
-            // Column1
+            // UnitREICPrice
             // 
-            this.Column1.HeaderText = "UNIT PRICE";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 90;
+            this.UnitREICPrice.HeaderText = "UNIT PRICE";
+            this.UnitREICPrice.Name = "UnitREICPrice";
+            this.UnitREICPrice.ReadOnly = true;
+            this.UnitREICPrice.Width = 90;
             // 
             // Qty
             // 
@@ -713,12 +696,12 @@
             this.RFQUOM.ReadOnly = true;
             this.RFQUOM.Width = 40;
             // 
-            // Column2
+            // totalItem
             // 
-            this.Column2.HeaderText = "ITEM TOTAL";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 90;
+            this.totalItem.HeaderText = "ITEM TOTAL";
+            this.totalItem.Name = "totalItem";
+            this.totalItem.ReadOnly = true;
+            this.totalItem.Width = 90;
             // 
             // lblRFQItems
             // 
@@ -786,6 +769,7 @@
             this.dgvItemSelection.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvItemSelection.Size = new System.Drawing.Size(515, 150);
             this.dgvItemSelection.TabIndex = 73;
+            this.dgvItemSelection.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItemSelection_CellContentClick);
             // 
             // PartNo
             // 
@@ -915,8 +899,8 @@
             // 
             // tabPQForm
             // 
-            this.tabPQForm.Controls.Add(this.TabPage1);
-            this.tabPQForm.Controls.Add(this.TabPage2);
+            this.tabPQForm.Controls.Add(this.TabQuotationDetails);
+            this.tabPQForm.Controls.Add(this.TabItemDetails);
             this.tabPQForm.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.tabPQForm.Location = new System.Drawing.Point(1, 71);
             this.tabPQForm.Name = "tabPQForm";
@@ -924,49 +908,68 @@
             this.tabPQForm.Size = new System.Drawing.Size(853, 469);
             this.tabPQForm.TabIndex = 3;
             // 
-            // TabPage1
+            // TabQuotationDetails
             // 
-            this.TabPage1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.TabPage1.Controls.Add(this.cbbShipTo);
-            this.TabPage1.Controls.Add(this.lblShipTo);
-            this.TabPage1.Controls.Add(this.cbbBillTo);
-            this.TabPage1.Controls.Add(this.lblBillTo);
-            this.TabPage1.Controls.Add(this.panel1);
-            this.TabPage1.Controls.Add(this.cbbInFavorOf);
-            this.TabPage1.Controls.Add(this.txtCustomerAddress);
-            this.TabPage1.Controls.Add(this.lblCustomerAddress);
-            this.TabPage1.Controls.Add(this.txtCustomerEmail);
-            this.TabPage1.Controls.Add(this.lblCustomerEmail);
-            this.TabPage1.Controls.Add(this.txtCustomerNumber);
-            this.TabPage1.Controls.Add(this.lblCustomerNumber);
-            this.TabPage1.Controls.Add(this.txtCustomerPerson);
-            this.TabPage1.Controls.Add(this.lblCustomerPerson);
-            this.TabPage1.Controls.Add(this.lblCustomerName);
-            this.TabPage1.Controls.Add(this.lblCustomerDetails);
-            this.TabPage1.Controls.Add(this.cbbDeliveryTerms);
-            this.TabPage1.Controls.Add(this.cbbCustomerName);
-            this.TabPage1.Controls.Add(this.cbbPaymentTerms);
-            this.TabPage1.Controls.Add(this.dtpToDate);
-            this.TabPage1.Controls.Add(this.dtpFromDate);
-            this.TabPage1.Controls.Add(this.dtpDate);
-            this.TabPage1.Controls.Add(this.txtRFQNumber);
-            this.TabPage1.Controls.Add(this.txtPQNumber);
-            this.TabPage1.Controls.Add(this.lblDeliveryTerms);
-            this.TabPage1.Controls.Add(this.lblInFavorOf);
-            this.TabPage1.Controls.Add(this.lblPaymentTerms);
-            this.TabPage1.Controls.Add(this.lblToDate);
-            this.TabPage1.Controls.Add(this.lblFromDate);
-            this.TabPage1.Controls.Add(this.Label5);
-            this.TabPage1.Controls.Add(this.lblRFQNumber);
-            this.TabPage1.Controls.Add(this.lblDate);
-            this.TabPage1.Controls.Add(this.lblPQNumber);
-            this.TabPage1.Controls.Add(this.lblQuotationDetails);
-            this.TabPage1.Location = new System.Drawing.Point(4, 28);
-            this.TabPage1.Name = "TabPage1";
-            this.TabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.TabPage1.Size = new System.Drawing.Size(845, 437);
-            this.TabPage1.TabIndex = 0;
-            this.TabPage1.Text = "Quotation & Customer Details";
+            this.TabQuotationDetails.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.TabQuotationDetails.Controls.Add(this.txtRFQNumber);
+            this.TabQuotationDetails.Controls.Add(this.txtCustomerName);
+            this.TabQuotationDetails.Controls.Add(this.cbbShipTo);
+            this.TabQuotationDetails.Controls.Add(this.lblShipTo);
+            this.TabQuotationDetails.Controls.Add(this.cbbBillTo);
+            this.TabQuotationDetails.Controls.Add(this.lblBillTo);
+            this.TabQuotationDetails.Controls.Add(this.panel1);
+            this.TabQuotationDetails.Controls.Add(this.cbbInFavorOf);
+            this.TabQuotationDetails.Controls.Add(this.txtCustomerAddress);
+            this.TabQuotationDetails.Controls.Add(this.lblCustomerAddress);
+            this.TabQuotationDetails.Controls.Add(this.txtCustomerEmail);
+            this.TabQuotationDetails.Controls.Add(this.lblCustomerEmail);
+            this.TabQuotationDetails.Controls.Add(this.txtCustomerNumber);
+            this.TabQuotationDetails.Controls.Add(this.lblCustomerNumber);
+            this.TabQuotationDetails.Controls.Add(this.txtCustomerPerson);
+            this.TabQuotationDetails.Controls.Add(this.lblCustomerPerson);
+            this.TabQuotationDetails.Controls.Add(this.lblCustomerName);
+            this.TabQuotationDetails.Controls.Add(this.lblCustomerDetails);
+            this.TabQuotationDetails.Controls.Add(this.cbbDeliveryTerms);
+            this.TabQuotationDetails.Controls.Add(this.cbbPaymentTerms);
+            this.TabQuotationDetails.Controls.Add(this.dtpToDate);
+            this.TabQuotationDetails.Controls.Add(this.dtpFromDate);
+            this.TabQuotationDetails.Controls.Add(this.dtpDate);
+            this.TabQuotationDetails.Controls.Add(this.txtPQNumber);
+            this.TabQuotationDetails.Controls.Add(this.lblDeliveryTerms);
+            this.TabQuotationDetails.Controls.Add(this.lblInFavorOf);
+            this.TabQuotationDetails.Controls.Add(this.lblPaymentTerms);
+            this.TabQuotationDetails.Controls.Add(this.lblToDate);
+            this.TabQuotationDetails.Controls.Add(this.lblFromDate);
+            this.TabQuotationDetails.Controls.Add(this.Label5);
+            this.TabQuotationDetails.Controls.Add(this.lblDate);
+            this.TabQuotationDetails.Controls.Add(this.lblPQNumber);
+            this.TabQuotationDetails.Controls.Add(this.lblQuotationDetails);
+            this.TabQuotationDetails.Location = new System.Drawing.Point(4, 28);
+            this.TabQuotationDetails.Name = "TabQuotationDetails";
+            this.TabQuotationDetails.Padding = new System.Windows.Forms.Padding(3);
+            this.TabQuotationDetails.Size = new System.Drawing.Size(845, 437);
+            this.TabQuotationDetails.TabIndex = 0;
+            this.TabQuotationDetails.Text = "Quotation & Customer Details";
+            // 
+            // txtRFQNumber
+            // 
+            this.txtRFQNumber.Location = new System.Drawing.Point(199, 356);
+            this.txtRFQNumber.Name = "txtRFQNumber";
+            this.txtRFQNumber.Size = new System.Drawing.Size(135, 26);
+            this.txtRFQNumber.TabIndex = 34;
+            this.txtRFQNumber.Text = "Hidden-RFQNo";
+            this.txtRFQNumber.Visible = false;
+            // 
+            // txtCustomerName
+            // 
+            this.txtCustomerName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.txtCustomerName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCustomerName.Enabled = false;
+            this.txtCustomerName.Location = new System.Drawing.Point(556, 75);
+            this.txtCustomerName.Multiline = true;
+            this.txtCustomerName.Name = "txtCustomerName";
+            this.txtCustomerName.Size = new System.Drawing.Size(250, 25);
+            this.txtCustomerName.TabIndex = 33;
             // 
             // cbbShipTo
             // 
@@ -976,17 +979,17 @@
             "Select",
             "Customer",
             "REIC"});
-            this.cbbShipTo.Location = new System.Drawing.Point(199, 328);
+            this.cbbShipTo.Location = new System.Drawing.Point(199, 293);
             this.cbbShipTo.Name = "cbbShipTo";
             this.cbbShipTo.Size = new System.Drawing.Size(135, 27);
-            this.cbbShipTo.TabIndex = 8;
+            this.cbbShipTo.TabIndex = 7;
             // 
             // lblShipTo
             // 
             this.lblShipTo.AutoSize = true;
             this.lblShipTo.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblShipTo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.lblShipTo.Location = new System.Drawing.Point(196, 307);
+            this.lblShipTo.Location = new System.Drawing.Point(196, 272);
             this.lblShipTo.Name = "lblShipTo";
             this.lblShipTo.Size = new System.Drawing.Size(57, 18);
             this.lblShipTo.TabIndex = 32;
@@ -1000,17 +1003,17 @@
             "Select",
             "Customer",
             "REIC"});
-            this.cbbBillTo.Location = new System.Drawing.Point(33, 328);
+            this.cbbBillTo.Location = new System.Drawing.Point(33, 293);
             this.cbbBillTo.Name = "cbbBillTo";
             this.cbbBillTo.Size = new System.Drawing.Size(135, 27);
-            this.cbbBillTo.TabIndex = 7;
+            this.cbbBillTo.TabIndex = 6;
             // 
             // lblBillTo
             // 
             this.lblBillTo.AutoSize = true;
             this.lblBillTo.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblBillTo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.lblBillTo.Location = new System.Drawing.Point(30, 307);
+            this.lblBillTo.Location = new System.Drawing.Point(30, 272);
             this.lblBillTo.Name = "lblBillTo";
             this.lblBillTo.Size = new System.Drawing.Size(54, 18);
             this.lblBillTo.TabIndex = 30;
@@ -1081,14 +1084,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.nupItemQuantity)).EndInit();
             this.grpItemSelected.ResumeLayout(false);
             this.grpItemSelected.PerformLayout();
-            this.TabPage2.ResumeLayout(false);
-            this.TabPage2.PerformLayout();
+            this.TabItemDetails.ResumeLayout(false);
+            this.TabItemDetails.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPQItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItemSelection)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.tabPQForm.ResumeLayout(false);
-            this.TabPage1.ResumeLayout(false);
-            this.TabPage1.PerformLayout();
+            this.TabQuotationDetails.ResumeLayout(false);
+            this.TabQuotationDetails.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -1111,14 +1114,12 @@
         internal System.Windows.Forms.Label lblCustomerPerson;
         internal System.Windows.Forms.Label lblTotalAmount;
         internal System.Windows.Forms.ComboBox cbbDeliveryTerms;
-        internal System.Windows.Forms.ComboBox cbbCustomerName;
         internal System.Windows.Forms.ComboBox cbbPaymentTerms;
         internal System.Windows.Forms.DateTimePicker dtpToDate;
         internal System.Windows.Forms.DateTimePicker dtpFromDate;
         internal System.Windows.Forms.Label lblItemQuantity;
         internal System.Windows.Forms.DateTimePicker dtpDate;
         internal System.Windows.Forms.TextBox txtUnitPrice;
-        internal System.Windows.Forms.TextBox txtRFQNumber;
         internal System.Windows.Forms.TextBox txtPQNumber;
         internal System.Windows.Forms.Label lblDeliveryTerms;
         internal System.Windows.Forms.Label lblInFavorOf;
@@ -1127,17 +1128,16 @@
         internal System.Windows.Forms.Label lblFromDate;
         internal System.Windows.Forms.Label Label5;
         internal System.Windows.Forms.NumericUpDown nupItemQuantity;
-        internal System.Windows.Forms.Label lblRFQNumber;
         internal System.Windows.Forms.Label lblItemTotal;
         internal System.Windows.Forms.Label lblUnitPrice;
         internal System.Windows.Forms.GroupBox grpItemSelected;
         internal System.Windows.Forms.TextBox txtItemTotal;
-        internal System.Windows.Forms.TabPage TabPage2;
+        internal System.Windows.Forms.TabPage TabItemDetails;
         internal System.Windows.Forms.Label lblDate;
         internal System.Windows.Forms.Label lblPQNumber;
         internal System.Windows.Forms.Label lblQuotationDetails;
         internal System.Windows.Forms.TabControl tabPQForm;
-        internal System.Windows.Forms.TabPage TabPage1;
+        internal System.Windows.Forms.TabPage TabQuotationDetails;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnSave;
@@ -1164,12 +1164,15 @@
         internal System.Windows.Forms.Label lblShipTo;
         internal System.Windows.Forms.ComboBox cbbBillTo;
         internal System.Windows.Forms.Label lblBillTo;
+        internal System.Windows.Forms.TextBox txtCustomerName;
+        private System.Windows.Forms.TextBox txtRFQNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn RFQItemName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PQItemPartNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn RFQDescription;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UnitREICPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn Qty;
         private System.Windows.Forms.DataGridViewTextBoxColumn RFQUOM;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn totalItem;
     }
 }
 

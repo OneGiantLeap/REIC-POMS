@@ -25,32 +25,6 @@ namespace REIC_POMS
             itemList = new ArrayList();
             supplierList = new ArrayList();
 
-
-            /*
-            //---STREAM READER
-            try
-            {
-                FileStream fs = new FileStream(@"item.txt", FileMode.Open);
-                StreamReader readin = new StreamReader(fs);
-                while (!readin.EndOfStream)
-                {
-                    string[] text = readin.ReadLine().Split('|');
-                    dgvItems.Rows.Add(text[0], text[1], text[10]); //Place Item at DGV
-                    itemList.Add(new Item(text[0], text[1], double.Parse(text[2]), double.Parse(text[3]), double.Parse(text[4]),
-                                          int.Parse(text[5]), text[6], text[7], text[8], text[9],
-                                          text[10], text[11], text[12], text[13], text[14])); //Recreate the Item
-                    //MessageBox.Show("Item data added.");
-                }
-                readin.Close();
-                fs.Close();
-            }
-            catch (Exception e) { }*/
-
-            /* //TEST CODE (For the purpose of customizing the DGV and checking out its appearance)
-            dgvItems.Rows.Add("000000", "Aluminum Wire Bonders A", "Supplier A");
-            dgvItems.Rows.Add("000001", "Vacuum Sealer A", "Supplier A");
-            dgvItems.Rows.Add("000002", "Paper Tapes A", "Supplier A");
-            dgvItems.Rows.Add("000003", "Mold Press A", "Supplier A"); */
             sql.SelectAllItemsDGV(dgvItems);
             sql.SelectAllItems(itemList);
         }
@@ -60,41 +34,6 @@ namespace REIC_POMS
             cbbFilterBy.SelectedIndex = 0; //Sets the default combobox value to "Filter by..."
         }
 
-        /*
-        //-----------------
-        // STREAM WRITER  |
-        //-----------------
-        private void saveItemData()
-        {
-            try
-            {
-                FileStream fs = new FileStream(@"item.txt", FileMode.Create);
-                StreamWriter writeout = new StreamWriter(fs);
-
-                for (int i = 0; i < itemList.Count; i++)
-                {
-                    Item item = (Item)itemList[i]; //Casting. So that I can retrieve attribute values from this specific Customer.
-                    writeout.WriteLine(item.PartNumber + "|"
-                                   + item.ItemName + "|"
-                                   + item.SupplierUnitPrice + "|"
-                                   + item.Markup + "|"
-                                   + item.ReicUnitPrice + "|"
-                                   + item.Moq + "|"
-                                   + item.Uom + "|"
-                                   + item.FromDateNoTime + "|"
-                                   + item.ToDateNoTime + "|"
-                                   + item.ItemDescription + "|"
-                                   + item.SupplierName + "|"
-                                   + item.SupplierPerson + "|"
-                                   + item.SupplierNumber + "|"
-                                   + item.SupplierEmail + "|"
-                                   + item.SupplierAddress);
-                }
-                writeout.Close();
-                fs.Close();
-            }
-            catch (Exception e2) { }
-        }*/
     
         //--------------------------------------
         // MINIMIZE AND CLOSE BUTTONS METHODS  |
@@ -263,7 +202,7 @@ namespace REIC_POMS
 
             if (iaf.Cancel == false) //Meaning, will add the Item. If Cancel is true, nothing happens.
             {
-                // ADD SUPPLIER ID (FIX also Create/Update)
+             
                 //---ADD the new Item to the ArrayList
                 itemList.Add(new Item(iaf.PartNumber,
                               iaf.ItemName,
@@ -324,53 +263,41 @@ namespace REIC_POMS
                         ivf.SupplierNumbertoView = s.SupplierNumber;
                         ivf.SupplierEmailtoView = s.SupplierEmail;
                         ivf.SupplierAddresstoView = s.SupplierAddress;
-                        
-                        /* FIX
-                        ivf.SupplierNametoView = item.SupplierName;
-                        ivf.SupplierPersontoView = item.SupplierPerson;
-                        ivf.SupplierNumbertoView = item.SupplierNumber;
-                        ivf.SupplierEmailtoView = item.SupplierEmail;
-                        ivf.SupplierAddresstoView = item.SupplierAddress;*/
-
+                      
                         ivf.ShowDialog();
-                        
-                      //  string FromDateNoTime = iuf.FromDatetoEdit.ToShortDateString();
-                      //  string ToDateNoTime = iuf.ToDatetoEdit.ToShortDateString();
+
                         //---UPDATE values of Item
                         if (ivf.Cancel == false)
                         {
+                                                      
                             item.PartNumber = ivf.PartNumbertoView;
                             item.ItemName = ivf.ItemNametoView;
+                            item.ItemDescription = ivf.ItemDescriptiontoView;
                             item.SupplierUnitPrice = double.Parse(ivf.SupplierUnitPricetoView);
                             item.Markup = double.Parse(ivf.MarkuptoView);
-                            //item.ReicUnitPrice = ivf.ReicUnitPricetoView;
+                            item.ReicUnitPrice = double.Parse(ivf.ReicUnitPricetoView);
                             item.Moq = int.Parse(ivf.MoqtoView);
                             item.Uom = ivf.UomtoView;
                             item.FromDateNoTime = ivf.FromDatetoView;// the left wing does the saving in the filestream, the right wing gets input from the edit.
                             item.ToDateNoTime = ivf.ToDatetoView;
-                            item.ItemDescription = ivf.ItemDescriptiontoView;
-
-
-                            //  Supplier supplierNames = (Supplier)supplierList[(supplierList.Count - 1)];
-                            //  s.SupplierName = sql.SelectAllSupplierNames(supplierNames);
+                            
+                                                                               
                             s.SupplierName = ivf.SupplierNametoView;
                             s.SupplierPerson = ivf.SupplierPersontoView;
                             s.SupplierNumber = ivf.SupplierNumbertoView;
                             s.SupplierEmail = ivf.SupplierEmailtoView;
                             s.SupplierAddress = ivf.SupplierAddresstoView;
-
+                            
                             item.SupplierID = sql.SelectSupplierID(s.SupplierName);
 
                             //Update DGV values
                             dgvItems.SelectedRows[0].Cells[0].Value = ivf.PartNumbertoView;
                             dgvItems.SelectedRows[0].Cells[1].Value = ivf.ItemNametoView;
-                            dgvItems.SelectedRows[0].Cells[2].Value = s.SupplierName;
-
+                            dgvItems.SelectedRows[0].Cells[2].Value = ivf.SupplierNametoView;
+                           
                             sql.UpdateItem(item);
 
-                            //Filestream
-                            //saveItemData();
-
+                            
                             //---MESSAGEBOX FOR DEBUG PURPOSES
                             MessageBox.Show("oh yan updated na yan ah.");
                         }

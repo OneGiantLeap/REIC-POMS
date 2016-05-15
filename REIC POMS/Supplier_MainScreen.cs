@@ -74,7 +74,7 @@ namespace REIC_POMS
         //-----------------
         // STREAM WRITER  |
         //-----------------
-        private void saveSupplierData()
+        /*private void saveSupplierData()
         {
             try
             {
@@ -94,8 +94,7 @@ namespace REIC_POMS
                 writeout.Close();
                 fs.Close();
             }
-            catch (Exception /*e2*/) { }
-        }
+        }*/
 
         //--------------------------------------
         // MINIMIZE AND CLOSE BUTTONS METHODS  |
@@ -288,13 +287,7 @@ namespace REIC_POMS
                 supplierIDCounter++;
                 
             }
-            else {
-                DialogResult result = MessageBox.Show("Sobra na, masasaktan ka na.", "kaibigan lang talaga", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                if (result == DialogResult.OK)
-                {
-                    return;
-                }
-            }
+            
         }
 
         private void btnAddSupplier_MouseEnter(object sender, EventArgs e)
@@ -338,7 +331,6 @@ namespace REIC_POMS
                             dgvSuppliers.SelectedRows[0].Cells[2].Value = svf.SupplierNumbertoView;
 
                
-                            //Update Database
                             sql.UpdateSupplier(s); 
                             MessageBox.Show("oh yan updated na yan ah.");
                         }

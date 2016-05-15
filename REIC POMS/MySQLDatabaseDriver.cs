@@ -33,7 +33,7 @@ namespace REIC_POMS
         //------------------------
         public void ConnectToSQL() //Activate the connection between VS and MySQL
         {
-            connection = new MySqlConnection("server=localhost; database=reicpoms; user=root; password=; convert zero datetime=true; allow zero datetime=true;");
+            connection = new MySqlConnection("server=localhost; database=reicpoms; user=root; password=root; convert zero datetime=true; allow zero datetime=true;");
             connection.Open();
 
             //DEBUG MESSAGES
@@ -121,6 +121,35 @@ namespace REIC_POMS
             }
             DisconnectFromSQL();
         }
+
+        public double SelectItemPrice(string partNumber)
+        {
+            ConnectToSQL();
+            double priceResult;
+            command = new MySqlCommand(string.Format("SELECT reic_unit_price FROM item_t WHERE part_number = '{0}';",partNumber), connection);
+            object queryPrice = command.ExecuteScalar();
+            MessageBox.Show("Unit Price: " + queryPrice.ToString()); //Debug purposes
+            priceResult = double.Parse(queryPrice.ToString());
+            DisconnectFromSQL();
+            return priceResult;
+        }
+
+        
+
+        public int GetPNCount(string partNumber)
+        { //Purpose: Count if partnumber already exist
+            ConnectToSQL();
+            MessageBox.Show("code runs until here"); //debug
+            { 
+                    countCommand = new MySqlCommand(string.Format("SELECT COUNT(*) FROM item_t WHERE part_number LIKE '{0}%'" + ";", partNumber), connection);
+            }
+            object countReader = countCommand.ExecuteScalar();
+            int rowCount = int.Parse(countReader.ToString());
+            MessageBox.Show(rowCount.ToString()); //Debug purposes
+            DisconnectFromSQL();
+            return rowCount;
+        }
+
 
         public void SelectAllCustomers(ArrayList result)
         {
@@ -279,6 +308,7 @@ namespace REIC_POMS
             }
             DisconnectFromSQL();
         }
+              
 
         public RFQ SelectRFQDetails(string rfqNo) //NEWLY ADDED
         { //Retrieves a specific RFQ's row | Used in View Forms of RFQ
@@ -302,10 +332,10 @@ namespace REIC_POMS
         public void SelectSpecificRFQOrderLine(string rfqNo, DataGridView dgvName)
         { //Retrieves all OrderLines of a specific RFQ | Used in View Forms
             ConnectToSQL();
-            command = new MySqlCommand(string.Format("SELECT item_name, item_description, unit_of_measurement, quantity " +
-                                                     "FROM rfq_order_line_t, item_t " +
+            command = new MySqlCommand(string.Format("SELECT item_name, item_description, quantity, unit_of_measurement " +
+                                                     "FROM rfq_order_line_t, item_t p " +
                                                      "WHERE rfq_no='{0}' " +
-                                                     "AND rfq_order_line_t.part_number = item_t.part_number; ", rfqNo), connection);
+                                                     "AND rfq_order_line_t.part_number = p.part_number; ", rfqNo), connection);
             myReader = command.ExecuteReader();
             while (myReader.Read())
             {
@@ -313,10 +343,37 @@ namespace REIC_POMS
                                  myReader["item_description"].ToString(),
                                  myReader["unit_of_measurement"].ToString(),
                                  int.Parse(myReader["quantity"].ToString()));
+                
                 MessageBox.Show("Added");
             }
             DisconnectFromSQL();
         }
+
+        public void SelectSpecificPQRFQOrderLine(string rfqNo, DataGridView dgvName) //newly Added to avoid conflict with Gayle's use of selectspecificRFQOL
+        { //Retrieves all OrderLines of a specific RFQ | Used in View Forms
+            ConnectToSQL();
+            command = new MySqlCommand(string.Format("SELECT item_name, p.part_number, item_description, reic_unit_price, quantity, unit_of_measurement, (reic_unit_price*quantity) tprice " +
+                                                     "FROM rfq_order_line_t, item_t p " +
+                                                     "WHERE rfq_no='{0}' " +
+                                                     "AND rfq_order_line_t.part_number = p.part_number; ", rfqNo), connection);
+            myReader = command.ExecuteReader();
+            while (myReader.Read())
+            {
+                double totalPrice = double.Parse(myReader["tprice"].ToString()); //to be able to put decimal point on the amount .ToString("0.00")
+                dgvName.Rows.Add(myReader["item_name"].ToString(),
+                                 myReader["part_number"].ToString(),
+                                 myReader["item_description"].ToString(),
+                                 myReader["reic_unit_price"].ToString(),
+                                 int.Parse(myReader["quantity"].ToString()),
+                                 myReader["unit_of_measurement"].ToString(),
+                                 totalPrice.ToString("0.00")
+                                );
+
+                MessageBox.Show("Added");
+            }
+            DisconnectFromSQL();
+        }
+
 
         public void SelectAllPQ(ArrayList result)
         { //For the ArrayList containing ALL PQ
@@ -327,7 +384,6 @@ namespace REIC_POMS
             {
                 result.Add(new PQ(myReader["pq_no"].ToString(),
                                    myReader["pq_date"].ToString(),
-                                   myReader["rfq_no"].ToString(),
                                    myReader["from_date"].ToString(),
                                    myReader["to_date"].ToString(),
                                    myReader["payment_terms"].ToString(),
@@ -335,15 +391,16 @@ namespace REIC_POMS
                                    myReader["bill_to"].ToString(),
                                    myReader["ship_to"].ToString(),
                                    myReader["in_favor_of"].ToString(),
+                                   double.Parse(myReader["total_amount"].ToString()),
                                    int.Parse(myReader["customer_id"].ToString())));
             }
             DisconnectFromSQL();
         }
-
+        
         public void SelectAllPQDGV(DataGridView dgvName)
-        { //To populate the RFQ Main Screen DGV (Plus the actual Customer names, not their IDs)
+        { //To populate the PQ Main Screen DGV (Plus the actual Customer names, not their IDs)
             ConnectToSQL(); 
-            command = new MySqlCommand("SELECT DATE_FORMAT(pq_date, '%m/%d/%Y'), company_name, pq_no, to_date " +
+            command = new MySqlCommand("SELECT DATE_FORMAT(pq_date, '%m/%d/%Y'), company_name, pq_no, CONCAT(DATE_FORMAT(from_date, '%m/%d/%Y'), ' - ', DATE_FORMAT(to_date, '%m/%d/%Y'))" +
                                        "FROM pq_t, customer_t " +
                                        "WHERE pq_t.customer_id = customer_t.customer_id ", connection);
             myReader = command.ExecuteReader();
@@ -352,7 +409,7 @@ namespace REIC_POMS
                 dgvName.Rows.Add(myReader["DATE_FORMAT(pq_date, '%m/%d/%Y')"].ToString(),
                                  myReader["company_name"].ToString(),
                                  myReader["pq_no"].ToString(),
-                                 myReader["to_date"].ToString());
+                                 myReader["CONCAT(DATE_FORMAT(from_date, '%m/%d/%Y'), ' - ', DATE_FORMAT(to_date, '%m/%d/%Y'))"].ToString());
             }
             DisconnectFromSQL();
         }
@@ -361,40 +418,42 @@ namespace REIC_POMS
         { //Retrieves a specific PQ's row | Used in View Forms of PQ
             ConnectToSQL();
             PQ p;
-            command = new MySqlCommand(string.Format("SELECT pq_no, DATE_FORMAT(pq_date, '%m/%d/%Y'), rfq_no, DATE_FORMAT(from_date, '%m/%d/%Y'), DATE_FORMAT(to_date, '%m/%d/%Y'), payment_terms, delivery_terms, bill_to, ship_to, in_favor_of, customer_id FROM pq_t WHERE pq_no={0};", pqNo), connection);
+            command = new MySqlCommand(string.Format("SELECT pq_no, DATE_FORMAT(pq_date, '%m/%d/%Y'), DATE_FORMAT(from_date, '%m/%d/%Y'), DATE_FORMAT(to_date, '%m/%d/%Y'), payment_terms, delivery_terms, bill_to, ship_to, in_favor_of, total_amount, customer_id FROM pq_t WHERE pq_no='{0}';", pqNo), connection);
             myReader = command.ExecuteReader();
             myReader.Read();
             p = new PQ(pqNo,
-                        myReader["pq_date"].ToString(),
-                                   myReader["rfq_no"].ToString(),
-                                   myReader["from_date"].ToString(),
-                                   myReader["to_date"].ToString(),
+                                   myReader["DATE_FORMAT(pq_date, '%m/%d/%Y')"].ToString(),
+                                   myReader["DATE_FORMAT(from_date, '%m/%d/%Y')"].ToString(),
+                                   myReader["DATE_FORMAT(to_date, '%m/%d/%Y')"].ToString(),
                                    myReader["payment_terms"].ToString(),
                                    myReader["delivery_terms"].ToString(),
                                    myReader["bill_to"].ToString(),
                                    myReader["ship_to"].ToString(),
                                    myReader["in_favor_of"].ToString(),
+                                   double.Parse(myReader["total_amount"].ToString()),
                                    int.Parse(myReader["customer_id"].ToString()));
             DisconnectFromSQL();
             return p;
         }
-            
-
 
     public void SelectSpecificPQOrderLine(string pqNo, DataGridView dgvName)
         { //Retrieves all OrderLines of a specific PQ | Used in View Forms
             ConnectToSQL();
-            command = new MySqlCommand(string.Format("SELECT item_name, item_description, unit_of_measurement, quantity " +
+            command = new MySqlCommand(string.Format("SELECT item_name, item_description, unit_of_measurement, item_t.reic_unit_price, quantity, item_total " +
                                                      "FROM pq_order_line_t, item_t " +
                                                      "WHERE pq_no='{0}' " +
                                                      "AND pq_order_line_t.part_number = item_t.part_number; ", pqNo), connection);
             myReader = command.ExecuteReader();
             while (myReader.Read())
             {
+                double reic_unit_price = double.Parse(myReader["reic_unit_price"].ToString());
+                double total_item = double.Parse(myReader["item_total"].ToString());
                 dgvName.Rows.Add(myReader["item_name"].ToString(),
                                  myReader["item_description"].ToString(),
                                  myReader["unit_of_measurement"].ToString(),
-                                 int.Parse(myReader["quantity"].ToString()));
+                                 reic_unit_price.ToString("0.00"),
+                                 int.Parse(myReader["quantity"].ToString()),
+                                 total_item.ToString("0.00"));
                 MessageBox.Show("Added");
             }
             DisconnectFromSQL();
@@ -521,10 +580,9 @@ namespace REIC_POMS
             string[] dateToParts = p.PQToDate.Split('/');
             string convertedToDate = dateToParts[2] + "-" + dateToParts[0] + "-" + dateToParts[1];
             Insert(string.Format("INSERT INTO pq_t " +
-       "(pq_no, pq_date, rfq_no, from_date, to_date, payment_terms, delivery_terms, bill_to, ship_to, in_favor_of, customer_id) " +
-       "VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', {10});", p.PQNo,
+       "(pq_no, pq_date, from_date, to_date, payment_terms, delivery_terms, bill_to, ship_to, in_favor_of, total_amount, customer_id) " +
+       "VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', {9}, '{10}');", p.PQNo,
                                                          convertedPQDate,
-                                                         p.RFQNo,
                                                          convertedFromDate,
                                                          convertedToDate,
                                                          p.PaymentTerms,
@@ -532,6 +590,7 @@ namespace REIC_POMS
                                                          p.BillTo,
                                                          p.ShipTo,
                                                          p.InFavorOf,
+                                                         p.TotalAmount,
                                                          p.CustomerID));
         }
 
@@ -539,8 +598,8 @@ namespace REIC_POMS
         public void InsertPQOrderLine(PQ_OrderLine pol)
         {
             Insert(string.Format("INSERT INTO pq_order_line_t " +
-                "(pq_no, part_number, quantity) " +
-                "VALUES ('{0}', '{1}', {2});", pol.PQNo, pol.PartNumber, pol.Quantity));
+                "(pq_no, part_number, reic_unit_price, quantity, item_total) " +
+                "VALUES ('{0}', '{1}', {2}, {3}, {4});", pol.PQNo, pol.PartNumber, pol.ReicUnitPrice, pol.Quantity, pol.ItemTotal));
         }
         /*
         public void InsertPO(PO p)
@@ -591,19 +650,34 @@ namespace REIC_POMS
             string[] dateToParts = i.ToDateNoTime.Split('/');
             string convertedToDate = dateToParts[2] + "-" + dateToParts[0] + "-" + dateToParts[1];
 
+            /* Update(string.Format("UPDATE item_t " +
+             "SET part_number='{0}', item_name='{1}', item_description='{2}', supplier_unit_price={3}, mark_up_percentage={4}, reic_unit_price={5}, minimum_order_quantity={6}, unit_of_measurement='{7}', from_date='{8}', to_date='{9}', supplier_id={10} " +
+             "WHERE part_number= '{0}';", i.PartNumber,
+                                       i.ItemName,
+                                       i.ItemDescription,
+                                       i.SupplierUnitPrice,
+                                       i.Markup,
+                                       i.ReicUnitPrice,
+                                       i.Moq,
+                                       i.Uom,
+                                       convertedFromDate,
+                                       convertedToDate,
+                                       i.SupplierID)); */
+
             Update(string.Format("UPDATE item_t " +
-          "SET part_number='{0}', item_name='{1}', item_description='{2}', supplier_unit_price='{3}', mark_up_percentage='{4}', reic_unit_price='{5}', minimum_order_quantity='{6}', unit_of_measurement='{7}', from_date='{8}', to_date='{9}', supplier_id='{10}' " +
-          "WHERE supplier_id={10};", i.PartNumber,
-                                    i.ItemName,
-                                    i.ItemDescription,
-                                    i.SupplierUnitPrice,
-                                    i.Markup,
-                                    i.ReicUnitPrice,
-                                    i.Moq,
-                                    i.Uom,
-                                    convertedFromDate,
-                                    convertedToDate,
-                                    i.SupplierID));
+           "SET item_name='{0}', item_description='{1}', supplier_unit_price={2}, mark_up_percentage={3}, reic_unit_price={4}, minimum_order_quantity={5}, unit_of_measurement='{6}', from_date='{7}', to_date='{8}', supplier_id={9} " +
+           "WHERE part_number= '{10}';",
+                                     i.ItemName,
+                                     i.ItemDescription,
+                                     i.SupplierUnitPrice,
+                                     i.Markup,
+                                     i.ReicUnitPrice,
+                                     i.Moq,
+                                     i.Uom,
+                                     convertedFromDate,
+                                     convertedToDate,
+                                     i.SupplierID,
+                                     i.PartNumber));
         }
 
         public void UpdateCustomer(Customer c)

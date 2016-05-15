@@ -33,7 +33,7 @@ namespace REIC_POMS
             this.ItemDescription = itemDescription;
             this.SupplierUnitPrice = supplierUnitPrice;
             this.Markup = markup;
-            //this.ReicUnitPrice = reicUnitPrice;//cannot be assigned since it is ReadOnly
+            this.ReicUnitPrice = reicUnitPrice;//cannot be assigned since it is ReadOnly
             this.Moq = moq;
             this.Uom = uom;
             this.FromDateNoTime = fromDate.ToString();
@@ -51,7 +51,8 @@ namespace REIC_POMS
         public string ItemName { get; set; }
         public double SupplierUnitPrice { get; set; }
         public double Markup { get; set; }
-        public double ReicUnitPrice { get { return (SupplierUnitPrice + ComputedValue); } }//to compute for the reic unit price
+        //public double ReicUnitPrice{ get { return (SupplierUnitPrice + ComputedValue); } }//to compute for the reic unit price
+        public double ReicUnitPrice { get; set; }
         public int Moq { get; set; }
         public string Uom { get; set; }
         public string FromDateNoTime { get; set; }

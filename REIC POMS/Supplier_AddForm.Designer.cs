@@ -78,6 +78,7 @@
             // 
             this.txtSupplierAddress.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.txtSupplierAddress.Location = new System.Drawing.Point(40, 345);
+            this.txtSupplierAddress.MaxLength = 255;
             this.txtSupplierAddress.Multiline = true;
             this.txtSupplierAddress.Name = "txtSupplierAddress";
             this.txtSupplierAddress.Size = new System.Drawing.Size(298, 75);
@@ -87,6 +88,7 @@
             // 
             this.txtSupplierEmail.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.txtSupplierEmail.Location = new System.Drawing.Point(40, 286);
+            this.txtSupplierEmail.MaxLength = 50;
             this.txtSupplierEmail.Name = "txtSupplierEmail";
             this.txtSupplierEmail.Size = new System.Drawing.Size(298, 26);
             this.txtSupplierEmail.TabIndex = 4;
@@ -95,6 +97,7 @@
             // 
             this.txtSupplierNumber.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.txtSupplierNumber.Location = new System.Drawing.Point(40, 228);
+            this.txtSupplierNumber.MaxLength = 25;
             this.txtSupplierNumber.Name = "txtSupplierNumber";
             this.txtSupplierNumber.Size = new System.Drawing.Size(298, 26);
             this.txtSupplierNumber.TabIndex = 3;
@@ -103,6 +106,7 @@
             // 
             this.txtSupplierPerson.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.txtSupplierPerson.Location = new System.Drawing.Point(40, 169);
+            this.txtSupplierPerson.MaxLength = 70;
             this.txtSupplierPerson.Name = "txtSupplierPerson";
             this.txtSupplierPerson.Size = new System.Drawing.Size(298, 26);
             this.txtSupplierPerson.TabIndex = 2;
@@ -111,6 +115,7 @@
             // 
             this.txtSupplierName.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.txtSupplierName.Location = new System.Drawing.Point(40, 111);
+            this.txtSupplierName.MaxLength = 70;
             this.txtSupplierName.Name = "txtSupplierName";
             this.txtSupplierName.Size = new System.Drawing.Size(298, 26);
             this.txtSupplierName.TabIndex = 1;

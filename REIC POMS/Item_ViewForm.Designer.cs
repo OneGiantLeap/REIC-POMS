@@ -56,7 +56,6 @@
             this.outputUOM = new System.Windows.Forms.Label();
             this.outputFromDate = new System.Windows.Forms.Label();
             this.outputToDate = new System.Windows.Forms.Label();
-            this.outputSupplierName = new System.Windows.Forms.Label();
             this.outputSupplierPerson = new System.Windows.Forms.Label();
             this.outputSupplierNumber = new System.Windows.Forms.Label();
             this.outputSupplierEmail = new System.Windows.Forms.Label();
@@ -64,6 +63,7 @@
             this.outputSupplierAddress = new System.Windows.Forms.TextBox();
             this.outputItemDesc = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.outputSupplierName = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.imgViewItem)).BeginInit();
             this.SuspendLayout();
             // 
@@ -192,7 +192,7 @@
             this.lblSupplierAddress.AutoSize = true;
             this.lblSupplierAddress.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblSupplierAddress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.lblSupplierAddress.Location = new System.Drawing.Point(379, 278);
+            this.lblSupplierAddress.Location = new System.Drawing.Point(379, 284);
             this.lblSupplierAddress.Name = "lblSupplierAddress";
             this.lblSupplierAddress.Size = new System.Drawing.Size(66, 18);
             this.lblSupplierAddress.TabIndex = 50;
@@ -203,7 +203,7 @@
             this.lblSupplierEmail.AutoSize = true;
             this.lblSupplierEmail.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblSupplierEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.lblSupplierEmail.Location = new System.Drawing.Point(379, 243);
+            this.lblSupplierEmail.Location = new System.Drawing.Point(379, 249);
             this.lblSupplierEmail.Name = "lblSupplierEmail";
             this.lblSupplierEmail.Size = new System.Drawing.Size(111, 18);
             this.lblSupplierEmail.TabIndex = 49;
@@ -214,7 +214,7 @@
             this.lblSupplierNumber.AutoSize = true;
             this.lblSupplierNumber.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblSupplierNumber.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.lblSupplierNumber.Location = new System.Drawing.Point(379, 208);
+            this.lblSupplierNumber.Location = new System.Drawing.Point(379, 214);
             this.lblSupplierNumber.Name = "lblSupplierNumber";
             this.lblSupplierNumber.Size = new System.Drawing.Size(120, 18);
             this.lblSupplierNumber.TabIndex = 48;
@@ -225,7 +225,7 @@
             this.lblSupplierPerson.AutoSize = true;
             this.lblSupplierPerson.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblSupplierPerson.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.lblSupplierPerson.Location = new System.Drawing.Point(379, 172);
+            this.lblSupplierPerson.Location = new System.Drawing.Point(379, 178);
             this.lblSupplierPerson.Name = "lblSupplierPerson";
             this.lblSupplierPerson.Size = new System.Drawing.Size(118, 18);
             this.lblSupplierPerson.TabIndex = 47;
@@ -373,21 +373,11 @@
             this.outputToDate.TabIndex = 66;
             this.outputToDate.Text = "label2";
             // 
-            // outputSupplierName
-            // 
-            this.outputSupplierName.AutoSize = true;
-            this.outputSupplierName.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.outputSupplierName.Location = new System.Drawing.Point(530, 132);
-            this.outputSupplierName.Name = "outputSupplierName";
-            this.outputSupplierName.Size = new System.Drawing.Size(47, 19);
-            this.outputSupplierName.TabIndex = 68;
-            this.outputSupplierName.Text = "label1";
-            // 
             // outputSupplierPerson
             // 
             this.outputSupplierPerson.AutoSize = true;
             this.outputSupplierPerson.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.outputSupplierPerson.Location = new System.Drawing.Point(530, 171);
+            this.outputSupplierPerson.Location = new System.Drawing.Point(530, 177);
             this.outputSupplierPerson.Name = "outputSupplierPerson";
             this.outputSupplierPerson.Size = new System.Drawing.Size(47, 19);
             this.outputSupplierPerson.TabIndex = 69;
@@ -397,7 +387,7 @@
             // 
             this.outputSupplierNumber.AutoSize = true;
             this.outputSupplierNumber.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.outputSupplierNumber.Location = new System.Drawing.Point(530, 207);
+            this.outputSupplierNumber.Location = new System.Drawing.Point(530, 213);
             this.outputSupplierNumber.Name = "outputSupplierNumber";
             this.outputSupplierNumber.Size = new System.Drawing.Size(47, 19);
             this.outputSupplierNumber.TabIndex = 70;
@@ -407,7 +397,7 @@
             // 
             this.outputSupplierEmail.AutoSize = true;
             this.outputSupplierEmail.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.outputSupplierEmail.Location = new System.Drawing.Point(530, 241);
+            this.outputSupplierEmail.Location = new System.Drawing.Point(530, 247);
             this.outputSupplierEmail.Name = "outputSupplierEmail";
             this.outputSupplierEmail.Size = new System.Drawing.Size(47, 19);
             this.outputSupplierEmail.TabIndex = 71;
@@ -429,7 +419,7 @@
             this.outputSupplierAddress.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.outputSupplierAddress.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.outputSupplierAddress.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.outputSupplierAddress.Location = new System.Drawing.Point(398, 298);
+            this.outputSupplierAddress.Location = new System.Drawing.Point(398, 304);
             this.outputSupplierAddress.MaxLength = 150;
             this.outputSupplierAddress.Multiline = true;
             this.outputSupplierAddress.Name = "outputSupplierAddress";
@@ -461,12 +451,28 @@
             this.panel1.Size = new System.Drawing.Size(1, 397);
             this.panel1.TabIndex = 76;
             // 
+            // outputSupplierName
+            // 
+            this.outputSupplierName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(249)))));
+            this.outputSupplierName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.outputSupplierName.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.outputSupplierName.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.outputSupplierName.Location = new System.Drawing.Point(534, 133);
+            this.outputSupplierName.MaxLength = 150;
+            this.outputSupplierName.Multiline = true;
+            this.outputSupplierName.Name = "outputSupplierName";
+            this.outputSupplierName.ReadOnly = true;
+            this.outputSupplierName.Size = new System.Drawing.Size(157, 41);
+            this.outputSupplierName.TabIndex = 75;
+            this.outputSupplierName.Text = "Magic TextBox";
+            // 
             // Item_ViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(249)))));
             this.ClientSize = new System.Drawing.Size(720, 535);
+            this.Controls.Add(this.outputSupplierName);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.outputItemDesc);
             this.Controls.Add(this.outputSupplierAddress);
@@ -474,7 +480,6 @@
             this.Controls.Add(this.outputSupplierEmail);
             this.Controls.Add(this.outputSupplierNumber);
             this.Controls.Add(this.outputSupplierPerson);
-            this.Controls.Add(this.outputSupplierName);
             this.Controls.Add(this.outputToDate);
             this.Controls.Add(this.outputFromDate);
             this.Controls.Add(this.outputUOM);
@@ -544,7 +549,6 @@
         private System.Windows.Forms.Label outputUOM;
         private System.Windows.Forms.Label outputFromDate;
         private System.Windows.Forms.Label outputToDate;
-        private System.Windows.Forms.Label outputSupplierName;
         private System.Windows.Forms.Label outputSupplierPerson;
         private System.Windows.Forms.Label outputSupplierNumber;
         private System.Windows.Forms.Label outputSupplierEmail;
@@ -552,5 +556,6 @@
         private System.Windows.Forms.TextBox outputSupplierAddress;
         private System.Windows.Forms.TextBox outputItemDesc;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TextBox outputSupplierName;
     }
 }

@@ -32,26 +32,7 @@ namespace REIC_POMS
             supplierDropdownList.Sort(); //Sort list alphabetically
             supplierDropdownList.Insert(0, "Select Supplier");
             cbbSupplierName.DataSource = supplierDropdownList;
-            /*
-            try
-            {
-                FileStream fs = new FileStream(@"supplier.txt", FileMode.Open);
-                StreamReader readin = new StreamReader(fs);
-                while (!readin.EndOfStream)
-                {
-                    string[] text = readin.ReadLine().Split('|');
-                    supplierList.Add(new Supplier(text[0], text[1], text[2], text[3], text[4], text[5])); //Recreate the Supplier
-                    supplierDropdownList.Add(text[1]); //Just the Supplier Names
-                }
-                readin.Close();
-                fs.Close();
-                supplierDropdownList.Sort(); //Sort list alphabetically
-                                             // supplierDropdownList.Insert(0, "Select Supplier");
-                cbbSupplierName.DataSource = supplierDropdownList; //Populate the dropdown w/ all Customer Names
-            }
-            catch (Exception e) { }*/
-
-
+            
         }
 
         public string PartNumbertoEdit
@@ -152,39 +133,55 @@ namespace REIC_POMS
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            int numericPartNumber;
+            bool numberNumeric = int.TryParse(PartNumbertoEdit, out numericPartNumber);
             int dateResult = DateTime.Compare(FromDatetoEdit, ToDatetoEdit);
+
             if ((PartNumbertoEdit.Length == 0) ||
                 (ItemNametoEdit.Length == 0) ||
                 (SupplierUnitPricetoEdit.Length == 0) ||
                 (MarkuptoEdit.Length == 0) ||
                 (ReicUnitPricetoEdit.Length == 0) ||
                 (MoqtoEdit.Length == 0) ||
-                (UomtoEdit.Length == 0) ||
-                (SupplierNametoEdit.Length == 0) ||
-                (SupplierPersontoEdit.Length == 0) ||
-                (SupplierNumbertoEdit.Length == 0) ||
-                (SupplierEmailtoEdit.Length == 0) ||
-                (SupplierAddresstoEdit.Length == 0))
-
+                (UomtoEdit.Length == 0))
             {
-                MessageBox.Show("All fields should be completed", "Empty fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("All Fields are Required to be Filled out.", "Incomplete Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tabItemForm.SelectedTab = tabItemForm.TabPages["tabItemDetails"];
                 return;
             }
-            else if (dateResult > 0)
+
+            if (numberNumeric == false) //to check if partNumber only consists of numbers.
             {
-                DialogResult result = MessageBox.Show("dont be stupid, fromDate later than toDate, ano yan joke!.", "Bawal", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                if (result == DialogResult.OK)
-                {
-                    return;
-                }
+                MessageBox.Show("Part Number consists of Alphabet.", "Incorrect Field", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tabItemForm.SelectedTab = tabItemForm.TabPages["tabItemDetails"];
+                return;
             }
-            else if (dateResult == 0)
+
+            if (nudSuppPrice.Text == "0") //SuppPrice cannot be zero
             {
-                DialogResult result = MessageBox.Show("dont be stupid, fromDate later equal toDate, ano yan joke!.", "Bawal", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                if (result == DialogResult.OK)
-                {
-                    return;
-                }
+                MessageBox.Show("Supplier's Unit Price cannot be zero.", "Incorrect Field", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tabItemForm.SelectedTab = tabItemForm.TabPages["tabItemDetails"];
+                return;
+            }
+
+            if (cbbSupplierName.Text == "Select Supplier")
+            {
+                MessageBox.Show("Please Select a Supplier.", "Incomplete Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tabItemForm.SelectedTab = tabItemForm.TabPages["tabSupplierDetails"];
+                return;
+            }
+
+            if (dateResult > 0)
+            {
+                MessageBox.Show("To Date of Validity Period should be later than FromDate.", "Invalid Date", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tabItemForm.SelectedTab = tabItemForm.TabPages["tabItemDetails"];
+                return;
+            }
+            if (dateResult == 0)
+            {
+                MessageBox.Show("To Date of Validity Period should be later than From Date.", "Invalid Date", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tabItemForm.SelectedTab = tabItemForm.TabPages["tabItemDetails"];
+                return;
             }
 
             cancel = false;

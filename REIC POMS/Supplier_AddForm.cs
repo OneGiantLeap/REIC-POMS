@@ -13,7 +13,6 @@ namespace REIC_POMS
     public partial class Supplier_AddForm : Form
     {
         public bool cancel;
-        public bool filledOut;
 
 
         public Supplier_AddForm()
@@ -36,9 +35,7 @@ namespace REIC_POMS
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            do
-            {
-                if (
+               if (
                     (SupplierName.Length == 0) ||
                     (SupplierPerson.Length == 0) ||
                     (SupplierNumber.Length == 0) ||
@@ -46,22 +43,16 @@ namespace REIC_POMS
                     (SupplierAddress.Length == 0)
                    )
                 {
-
-                    DialogResult result = MessageBox.Show("All fields are required to be filled out.", "Empty Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    if (result == DialogResult.OK)
-                    {
-                        return;
-                    }
+                    MessageBox.Show("All Fields are Required to be Filled out.", "Incomplete Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
+
                 if (txtSupplierEmail.Text.Contains("@") == false)
                 {
                     MessageBox.Show("Please enter a valid e-mail.", "Error", MessageBoxButtons.OK);
-                    return; //Enables user to edit the form again
+                    return; 
                 }
-
-                else { filledOut = true; }
-
-            } while (filledOut == false);
+ 
 
             cancel = false;
             this.Close();

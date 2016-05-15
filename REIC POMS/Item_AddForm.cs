@@ -18,8 +18,8 @@ namespace REIC_POMS
         private MySQLDatabaseDriver sql;
         private ArrayList supplierList;
         private ArrayList supplierDropdownList;
+        private ArrayList itemList;
         private bool cancel;
-        private bool filledOut;
         private int dateResult;
         private int supplierIDFK;
 
@@ -28,6 +28,7 @@ namespace REIC_POMS
             InitializeComponent();
             sql = new MySQLDatabaseDriver();
 
+            itemList = new ArrayList();
             supplierList = new ArrayList();
             sql.SelectAllSuppliers(supplierList);
 
@@ -37,24 +38,6 @@ namespace REIC_POMS
             supplierDropdownList.Insert(0, "Select Supplier");
             cbbSupplierName.DataSource = supplierDropdownList; //Populate the dropdown
 
-            /*
-            try
-            {
-                FileStream fs = new FileStream(@"supplier.txt", FileMode.Open);
-                StreamReader readin = new StreamReader(fs);
-                while (!readin.EndOfStream)
-                {
-                    string[] text = readin.ReadLine().Split('|');
-                    supplierList.Add(new Supplier(int.Parse(text[0]), text[1], text[2], text[3], text[4], text[5])); //Recreate the Supplier
-                    supplierDropdownList.Add(text[1]); //Just the Supplier Names
-                }
-                readin.Close();
-                fs.Close();
-                supplierDropdownList.Sort(); //Sort list alphabetically
-                supplierDropdownList.Insert(0, "Select Supplier");
-                cbbSupplierName.DataSource = supplierDropdownList; //Populate the dropdown w/ all Supplier Names
-            }
-            catch (Exception e) { }*/
 
         }
 
@@ -90,10 +73,6 @@ namespace REIC_POMS
         public DateTime ToDate { get { return dtpToDate.Value; } }
         public string ItemDescription { get { return txtItemDesc.Text; } }
         public string SupplierName { get { return cbbSupplierName.Text; } }
-        /*public string SupplierPerson { get { return txtSupplierPerson.Text; } }
-        public string SupplierNumber { get { return txtSupplierNumber.Text; } }
-        public string SupplierEmail { get { return txtSupplierEmail.Text; } }
-        public string SupplierAddress { get { return txtSupplierAddress.Text; } }*/
         public string SupplierPerson
         {
             set { txtSupplierPerson.Text = value; }
@@ -132,9 +111,24 @@ namespace REIC_POMS
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            do
-            {
+            //   do
+            //  {
+            /*  for (int i = 0; i < itemList.Count; i++)
+              {
+                  Item item = (Item)itemList[i]; //retrieve attribute values from this specific RFQ.
+                  if (item.PartNumber == txtPartNumber.Text)
+                  {
+                      MessageBox.Show("PartNumber already exist", "Incomplete Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                      tabItemForm.SelectedTab = tabItemForm.TabPages["tabItemDetails"];
+                      return;
+                  } */
+            
+                
+                int numericPartNumber;
+                bool numberNumeric = int.TryParse(PartNumber, out numericPartNumber);
+                int countPartNumber = sql.GetPNCount(PartNumber); //call db to check if there is already that part number that exist
                 dateResult = DateTime.Compare(FromDate, ToDate);
+
                 if (
                     (PartNumber.Length == 0) ||
                     (ItemName.Length == 0) ||
@@ -142,46 +136,62 @@ namespace REIC_POMS
                     (Markup.Length == 0) ||
                     (ReicUnitPrice.Length == 0) ||
                     (Moq.Length == 0) ||
-                    (Uom.Length == 0) ||
-                    (ItemDescription.Length == 0) ||
-                    (SupplierName.Length == 0) ||
-                    (SupplierPerson.Length == 0) ||
-                    (SupplierNumber.Length == 0) ||
-                    (SupplierEmail.Length == 0) ||
-                    (SupplierAddress.Length == 0)
-                   )
+                    (Uom.Length == 0)
+                    )
                 {
-                    
-                    DialogResult result = MessageBox.Show("All fields are required to be filled out.", "Empty Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    if (result == DialogResult.OK)
-                    {
-                        return;
-                    }
+                    MessageBox.Show("All Fields are Required to be Filled out.", "Incomplete Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    tabItemForm.SelectedTab = tabItemForm.TabPages["tabItemDetails"];
+                    return;
                 }
-                else if (dateResult > 0)
+                               
+                if (numberNumeric == false) //to check if partNumber only consists of numbers.
                 {
-                    DialogResult result = MessageBox.Show("dont be stupid, fromDate later than toDate, ano yan joke!.", "Bawal", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    if (result == DialogResult.OK)
-                    {
-                        return;
-                    }
-                }
-                else if (dateResult == 0)
-                {
-                    DialogResult result = MessageBox.Show("dont be stupid, fromDate later equal toDate, ano yan joke!.", "Bawal", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    if (result == DialogResult.OK)
-                    {
-                        return;
-                    }
+                    MessageBox.Show("Part Number consists of Alphabet.", "Incorrect Field", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    tabItemForm.SelectedTab = tabItemForm.TabPages["tabItemDetails"];
+                    return;
                 }
 
-                else { filledOut = true; }
+                if (countPartNumber > 0)
+                {
+                MessageBox.Show("Part Number already exist.", "Incorrect Field", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tabItemForm.SelectedTab = tabItemForm.TabPages["tabItemDetails"];
+                return;
+                }
 
-            } while ((filledOut == false)||(dateResult > 0)||(dateResult ==0));
+                if (nudSuppPrice.Text == "0") //SuppPrice cannot be zero
+                {
+                    MessageBox.Show("Supplier's Unit Price cannot be zero.", "Incorrect Field", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    tabItemForm.SelectedTab = tabItemForm.TabPages["tabItemDetails"];
+                    return;
+                }
 
-            SupplierIDFK = sql.SelectSupplierID(SupplierName);
+                if (cbbSupplierName.Text == "Select Supplier")
+                {
+                    MessageBox.Show("Please Select a Supplier.", "Incomplete Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    tabItemForm.SelectedTab = tabItemForm.TabPages["tabSupplierDetails"];
+                    return;
+                }
+
+                if (dateResult > 0)
+                {
+                    MessageBox.Show("To Date of Validity Period should be later than From Date.", "Invalid Date", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    tabItemForm.SelectedTab = tabItemForm.TabPages["tabItemDetails"];
+                    return;
+                }
+
+
+                if (dateResult == 0)
+                {
+                    MessageBox.Show("To Date of Validity Period should be later than From Date.", "Invalid Date", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    tabItemForm.SelectedTab = tabItemForm.TabPages["tabItemDetails"];
+                    return;
+                }
+                SupplierIDFK = sql.SelectSupplierID(SupplierName);
+          
+            
             cancel = false;
             this.Close();
+            
         }
 
         public bool Cancel
