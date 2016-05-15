@@ -65,7 +65,7 @@ namespace REIC_POMS
                 (SupplierAddresstoEdit.Length == 0))
 
             {
-                MessageBox.Show("All fields should be completed", "Empty fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("All Fields are Required to be Filled out.", "Incomplete Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (txtSupplierEmail.Text.Contains("@") == false)

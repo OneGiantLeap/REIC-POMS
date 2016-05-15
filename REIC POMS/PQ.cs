@@ -11,7 +11,6 @@ namespace REIC_POMS
     {
         public PQ(string pqNo,
                   string pqDate,
-                  string rfqNo,
                   string pqFromDate,
                   string pqToDate,
                   string paymentTerms,
@@ -19,12 +18,13 @@ namespace REIC_POMS
                   string billTo,
                   string shipTo,
                   string inFavorOf,
+                  double totalAmount,
                   int customerID
                   )
         {
             PQNo = pqNo;
             PQDate = pqDate;
-            RFQNo = rfqNo;
+          //  RFQNo = rfqNo;
             PQFromDate = pqFromDate;
             PQToDate = pqToDate;
             PaymentTerms = paymentTerms;
@@ -32,6 +32,7 @@ namespace REIC_POMS
             BillTo = billTo;
             ShipTo = shipTo;
             InFavorOf = inFavorOf;
+            TotalAmount = totalAmount;
             CustomerID = customerID;
             /*CustomerName = customerName;
             CustomerPerson = customerPerson;
@@ -43,7 +44,7 @@ namespace REIC_POMS
 
         public string PQNo { get; set; }
         public string PQDate { get; set; }
-        public string RFQNo { get; set; }
+      //  public string RFQNo { get; set; }
         public string PQFromDate { get; set; }
         public string PQToDate { get; set; }
         public string PaymentTerms { get; set; }
@@ -51,6 +52,7 @@ namespace REIC_POMS
         public string BillTo { get; set; }
         public string ShipTo { get; set; }
         public string InFavorOf { get; set; }
+        public double TotalAmount { get; set; }
         public int CustomerID { get; set; }
         /*  public string CustomerName { get; set; }
           public string CustomerPerson { get; set; }

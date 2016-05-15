@@ -218,6 +218,13 @@ namespace REIC_POMS
             //this would open the small screen (createfrompqform)
             PQ_CreateFromRFQForm pcf = new PQ_CreateFromRFQForm();
             pcf.ShowDialog();
+
+            /*PQ_CreateForm pf = new PQ_CreateForm();
+            if (pf.Cancel == false)
+            {
+                sql.SelectAllPQ(pqList);
+            }*/
+            
         }
 
         private void btnCreatePQ_MouseEnter(object sender, EventArgs e)
@@ -231,19 +238,13 @@ namespace REIC_POMS
         //---------------------------------------
         private void btnViewPQ_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < pqList.Count; i++) //Finding the PQ in the ArrayList
-            {
-                if (pqList[i] != null)
-                {
-                    PQ p = (PQ)pqList[i]; //Retrieve values from this specific PQ.
+            string pqNo = dgvPQ.SelectedRows[0].Cells[2].Value.ToString();
+            PQ p = sql.SelectPQDetails(pqNo);
 
-                    if (p.PQNo == dgvPQ.SelectedRows[0].Cells[0].Value.ToString()) //matching of PQNo with the selected row
-                    {
                         //---SET values in forms' labels & DISPLAY the view form
                         PQ_ViewForm pqvf = new PQ_ViewForm();
                         pqvf.PQNoToView = p.PQNo;
                         pqvf.PQDateToView = p.PQDate;
-                        pqvf.RFQNoToView = p.RFQNo;
                         pqvf.FromDatetoView = p.PQFromDate;
                         pqvf.ToDatetoView = p.PQToDate;
                         pqvf.PaymentTermsToView = p.PaymentTerms;
@@ -262,10 +263,7 @@ namespace REIC_POMS
                         //Happens in View Form: at PQ_OrderLine_Load
 
                         //Open PQ_ViewForm.cs
-                        pqvf.ShowDialog();
-                    }
-                }
-            }
+                        pqvf.ShowDialog();                    
         }
 
 

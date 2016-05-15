@@ -189,12 +189,12 @@
             this.outputSupplierName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.outputSupplierName.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.outputSupplierName.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.outputSupplierName.Location = new System.Drawing.Point(143, 100);
+            this.outputSupplierName.Location = new System.Drawing.Point(171, 100);
             this.outputSupplierName.MaxLength = 150;
             this.outputSupplierName.Multiline = true;
             this.outputSupplierName.Name = "outputSupplierName";
             this.outputSupplierName.ReadOnly = true;
-            this.outputSupplierName.Size = new System.Drawing.Size(207, 39);
+            this.outputSupplierName.Size = new System.Drawing.Size(179, 39);
             this.outputSupplierName.TabIndex = 87;
             this.outputSupplierName.Text = "Magic TextBox";
             // 

@@ -28,17 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PQ_ViewForm));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabItemDetails = new System.Windows.Forms.TabControl();
             this.TabPage1 = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.outputCustomerAddress = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.outputToDate = new System.Windows.Forms.Label();
             this.outputRFQNo = new System.Windows.Forms.Label();
-            this.outputCustomerAddress = new System.Windows.Forms.Label();
             this.outputCustomerEmail = new System.Windows.Forms.Label();
             this.outputContactNumber = new System.Windows.Forms.Label();
             this.outputContactPerson = new System.Windows.Forms.Label();
@@ -66,20 +67,21 @@
             this.lblPQNumber = new System.Windows.Forms.Label();
             this.lblQuotationDetails = new System.Windows.Forms.Label();
             this.TabPage2 = new System.Windows.Forms.TabPage();
+            this.lblAmount = new System.Windows.Forms.Label();
             this.dgvPQItems = new System.Windows.Forms.DataGridView();
+            this.btnGeneratePDF = new System.Windows.Forms.PictureBox();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnSaveGeneratePDF = new System.Windows.Forms.Button();
+            this.lblTotal = new System.Windows.Forms.Label();
+            this.lblPQItems = new System.Windows.Forms.Label();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnCreatePO = new System.Windows.Forms.Button();
             this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UOM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnGeneratePDF = new System.Windows.Forms.PictureBox();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.btnSaveGeneratePDF = new System.Windows.Forms.Button();
-            this.lblTotalAmount = new System.Windows.Forms.Label();
-            this.lblPQItems = new System.Windows.Forms.Label();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.btnCreatePO = new System.Windows.Forms.Button();
+            this.TotalItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabItemDetails.SuspendLayout();
             this.TabPage1.SuspendLayout();
@@ -111,10 +113,11 @@
             // 
             // TabPage1
             // 
+            this.TabPage1.Controls.Add(this.label1);
+            this.TabPage1.Controls.Add(this.outputCustomerAddress);
             this.TabPage1.Controls.Add(this.panel1);
             this.TabPage1.Controls.Add(this.outputToDate);
             this.TabPage1.Controls.Add(this.outputRFQNo);
-            this.TabPage1.Controls.Add(this.outputCustomerAddress);
             this.TabPage1.Controls.Add(this.outputCustomerEmail);
             this.TabPage1.Controls.Add(this.outputContactNumber);
             this.TabPage1.Controls.Add(this.outputContactPerson);
@@ -150,6 +153,30 @@
             this.TabPage1.Text = "Quotation & Customer Details";
             this.TabPage1.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(308, 158);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(21, 18);
+            this.label1.TabIndex = 77;
+            this.label1.Text = "to";
+            // 
+            // outputCustomerAddress
+            // 
+            this.outputCustomerAddress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(249)))));
+            this.outputCustomerAddress.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.outputCustomerAddress.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.outputCustomerAddress.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.outputCustomerAddress.Location = new System.Drawing.Point(429, 223);
+            this.outputCustomerAddress.MaxLength = 150;
+            this.outputCustomerAddress.Multiline = true;
+            this.outputCustomerAddress.Name = "outputCustomerAddress";
+            this.outputCustomerAddress.ReadOnly = true;
+            this.outputCustomerAddress.Size = new System.Drawing.Size(322, 64);
+            this.outputCustomerAddress.TabIndex = 76;
+            this.outputCustomerAddress.Text = "Magic TextBox";
+            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -177,16 +204,6 @@
             this.outputRFQNo.Size = new System.Drawing.Size(37, 19);
             this.outputRFQNo.TabIndex = 39;
             this.outputRFQNo.Text = "2327";
-            // 
-            // outputCustomerAddress
-            // 
-            this.outputCustomerAddress.AutoSize = true;
-            this.outputCustomerAddress.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.outputCustomerAddress.Location = new System.Drawing.Point(426, 222);
-            this.outputCustomerAddress.Name = "outputCustomerAddress";
-            this.outputCustomerAddress.Size = new System.Drawing.Size(35, 19);
-            this.outputCustomerAddress.TabIndex = 38;
-            this.outputCustomerAddress.Text = "Text";
             // 
             // outputCustomerEmail
             // 
@@ -453,11 +470,12 @@
             // 
             // TabPage2
             // 
+            this.TabPage2.Controls.Add(this.lblAmount);
             this.TabPage2.Controls.Add(this.dgvPQItems);
             this.TabPage2.Controls.Add(this.btnGeneratePDF);
             this.TabPage2.Controls.Add(this.btnCancel);
             this.TabPage2.Controls.Add(this.btnSaveGeneratePDF);
-            this.TabPage2.Controls.Add(this.lblTotalAmount);
+            this.TabPage2.Controls.Add(this.lblTotal);
             this.TabPage2.Controls.Add(this.lblPQItems);
             this.TabPage2.Location = new System.Drawing.Point(4, 28);
             this.TabPage2.Name = "TabPage2";
@@ -467,29 +485,41 @@
             this.TabPage2.Text = "Item Details";
             this.TabPage2.UseVisualStyleBackColor = true;
             // 
+            // lblAmount
+            // 
+            this.lblAmount.AutoSize = true;
+            this.lblAmount.Font = new System.Drawing.Font("Source Sans Pro", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblAmount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(63)))), ((int)(((byte)(1)))));
+            this.lblAmount.Location = new System.Drawing.Point(689, 284);
+            this.lblAmount.Name = "lblAmount";
+            this.lblAmount.Size = new System.Drawing.Size(121, 38);
+            this.lblAmount.TabIndex = 70;
+            this.lblAmount.Text = "6,699.99";
+            this.lblAmount.TextChanged += new System.EventHandler(this.lblAmount_TextChanged);
+            // 
             // dgvPQItems
             // 
             this.dgvPQItems.AllowUserToAddRows = false;
             this.dgvPQItems.AllowUserToDeleteRows = false;
             this.dgvPQItems.AllowUserToResizeColumns = false;
             this.dgvPQItems.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Source Sans Pro", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(107)))), ((int)(((byte)(58)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            this.dgvPQItems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Source Sans Pro", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(107)))), ((int)(((byte)(58)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvPQItems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvPQItems.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(249)))));
             this.dgvPQItems.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvPQItems.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPQItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPQItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvPQItems.ColumnHeadersHeight = 24;
             this.dgvPQItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvPQItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -498,7 +528,7 @@
             this.UOM,
             this.Column1,
             this.Qty,
-            this.Column2});
+            this.TotalItem});
             this.dgvPQItems.EnableHeadersVisualStyles = false;
             this.dgvPQItems.Location = new System.Drawing.Point(35, 63);
             this.dgvPQItems.MultiSelect = false;
@@ -506,57 +536,16 @@
             this.dgvPQItems.ReadOnly = true;
             this.dgvPQItems.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvPQItems.RowHeadersVisible = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(249)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Source Sans Pro", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(107)))), ((int)(((byte)(58)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            this.dgvPQItems.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(249)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Source Sans Pro", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(107)))), ((int)(((byte)(58)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvPQItems.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvPQItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPQItems.Size = new System.Drawing.Size(775, 218);
             this.dgvPQItems.TabIndex = 69;
-            // 
-            // ItemName
-            // 
-            this.ItemName.HeaderText = "ITEM NAME";
-            this.ItemName.Name = "ItemName";
-            this.ItemName.ReadOnly = true;
-            this.ItemName.Width = 235;
-            // 
-            // Description
-            // 
-            this.Description.HeaderText = "DESCRIPTION";
-            this.Description.Name = "Description";
-            this.Description.ReadOnly = true;
-            this.Description.Width = 248;
-            // 
-            // UOM
-            // 
-            this.UOM.HeaderText = "UOM";
-            this.UOM.Name = "UOM";
-            this.UOM.ReadOnly = true;
-            this.UOM.Width = 50;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "UNIT PRICE";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 95;
-            // 
-            // Qty
-            // 
-            this.Qty.HeaderText = "QTY.";
-            this.Qty.Name = "Qty";
-            this.Qty.ReadOnly = true;
-            this.Qty.Width = 50;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "ITEM TOTAL";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 95;
+            this.dgvPQItems.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvPQItems_RowsAdded);
             // 
             // btnGeneratePDF
             // 
@@ -593,16 +582,16 @@
             this.btnSaveGeneratePDF.Text = "CREATE PURCHASE ORDER";
             this.btnSaveGeneratePDF.UseVisualStyleBackColor = false;
             // 
-            // lblTotalAmount
+            // lblTotal
             // 
-            this.lblTotalAmount.AutoSize = true;
-            this.lblTotalAmount.Font = new System.Drawing.Font("Source Sans Pro", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.lblTotalAmount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(63)))), ((int)(((byte)(1)))));
-            this.lblTotalAmount.Location = new System.Drawing.Point(594, 284);
-            this.lblTotalAmount.Name = "lblTotalAmount";
-            this.lblTotalAmount.Size = new System.Drawing.Size(207, 38);
-            this.lblTotalAmount.TabIndex = 3;
-            this.lblTotalAmount.Text = "TOTAL 7,408.50";
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Font = new System.Drawing.Font("Source Sans Pro", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(63)))), ((int)(((byte)(1)))));
+            this.lblTotal.Location = new System.Drawing.Point(518, 284);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(104, 38);
+            this.lblTotal.TabIndex = 3;
+            this.lblTotal.Text = "TOTAL:";
             // 
             // lblPQItems
             // 
@@ -645,6 +634,48 @@
             this.btnCreatePO.UseVisualStyleBackColor = false;
             this.btnCreatePO.Click += new System.EventHandler(this.btnCreatePO_Click);
             // 
+            // ItemName
+            // 
+            this.ItemName.HeaderText = "ITEM NAME";
+            this.ItemName.Name = "ItemName";
+            this.ItemName.ReadOnly = true;
+            this.ItemName.Width = 235;
+            // 
+            // Description
+            // 
+            this.Description.HeaderText = "DESCRIPTION";
+            this.Description.Name = "Description";
+            this.Description.ReadOnly = true;
+            this.Description.Width = 248;
+            // 
+            // UOM
+            // 
+            this.UOM.HeaderText = "UOM";
+            this.UOM.Name = "UOM";
+            this.UOM.ReadOnly = true;
+            this.UOM.Width = 50;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "UNIT PRICE";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 95;
+            // 
+            // Qty
+            // 
+            this.Qty.HeaderText = "QTY.";
+            this.Qty.Name = "Qty";
+            this.Qty.ReadOnly = true;
+            this.Qty.Width = 50;
+            // 
+            // TotalItem
+            // 
+            this.TotalItem.HeaderText = "ITEM TOTAL";
+            this.TotalItem.Name = "TotalItem";
+            this.TotalItem.ReadOnly = true;
+            this.TotalItem.Width = 95;
+            // 
             // PQ_ViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -676,7 +707,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         internal System.Windows.Forms.TabControl tabItemDetails;
         internal System.Windows.Forms.TabPage TabPage1;
-        internal System.Windows.Forms.Label outputCustomerAddress;
         internal System.Windows.Forms.Label outputCustomerEmail;
         internal System.Windows.Forms.Label outputContactNumber;
         internal System.Windows.Forms.Label outputContactPerson;
@@ -704,7 +734,7 @@
         internal System.Windows.Forms.Label lblPQNumber;
         internal System.Windows.Forms.Label lblQuotationDetails;
         internal System.Windows.Forms.TabPage TabPage2;
-        internal System.Windows.Forms.Label lblTotalAmount;
+        internal System.Windows.Forms.Label lblTotal;
         internal System.Windows.Forms.Label lblPQItems;
         internal System.Windows.Forms.Label outputToDate;
         internal System.Windows.Forms.Label outputRFQNo;
@@ -714,12 +744,15 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dgvPQItems;
+        private System.Windows.Forms.Button btnCreatePO;
+        private System.Windows.Forms.TextBox outputCustomerAddress;
+        private System.Windows.Forms.Label label1;
+        internal System.Windows.Forms.Label lblAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Description;
         private System.Windows.Forms.DataGridViewTextBoxColumn UOM;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Qty;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.Button btnCreatePO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TotalItem;
     }
 }

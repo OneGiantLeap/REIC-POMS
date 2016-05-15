@@ -11,16 +11,23 @@ namespace REIC_POMS
         
         public PQ_OrderLine(string pqNo,
                              string partNumber,
-                             int quantity)
+                             double reicUnitPrice,
+                             int quantity,
+                             double itemTotal)
         {
             PQNo = pqNo;
             PartNumber = partNumber;
             Quantity = quantity;
+            ReicUnitPrice = reicUnitPrice;
+            ItemTotal = itemTotal;
         }
 
        
         public string PQNo { get; set; }
         public string PartNumber { get; set; }
+        public double ReicUnitPrice { get; set; }
         public int Quantity { get; set; }
+        public double ItemTotal { get; set; }
+        
     }
 }

@@ -279,6 +279,9 @@
             // 
             // txtPartNumber
             // 
+            this.txtPartNumber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.txtPartNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPartNumber.Enabled = false;
             this.txtPartNumber.Location = new System.Drawing.Point(127, 70);
             this.txtPartNumber.MaxLength = 6;
             this.txtPartNumber.Multiline = true;

@@ -127,7 +127,32 @@ namespace REIC_POMS
 
         private void btnClose_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
 
+        private void lblAmount_TextChanged(object sender, EventArgs e)
+        {
+            CalculateTotal();
+        }
+
+        void CalculateTotal()
+        {
+            double itemTotal = 0;
+            double itemPrice;
+
+            for (int i = 0; i < dgvPQItems.Rows.Count; i++)
+            {
+                {
+                    itemPrice = double.Parse(dgvPQItems.Rows[i].Cells["TotalItem"].Value.ToString());
+                }
+                itemTotal += itemPrice;
+            }
+            lblAmount.Text = itemTotal.ToString("0.00");
+        }
+
+        private void dgvPQItems_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            CalculateTotal();
         }
     }
 }
