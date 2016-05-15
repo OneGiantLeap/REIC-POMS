@@ -1,0 +1,9 @@
+Updated REIC-POMS
+https://github.com/OneGiantLeap/REIC-POMS
+
+Note:
+1. Have XAMPP/MySQL and Crystal Reports installed
+2. Create reicpoms database. Run create_table_script.sql and populate_table_script.sql (Updated versions are always in the GitHub)
+3. Add the "REIC Files" folder to your C:\\Drive
+4. Run Visual Studio as an administrator (that's how I got the Backup and Restore to work...) | If Restore is storbo when debugging, you may comment it out in the Log-in.cs.
+5. Message before you push your changes, or if you want to know if there are updates that haven't been pushed.
