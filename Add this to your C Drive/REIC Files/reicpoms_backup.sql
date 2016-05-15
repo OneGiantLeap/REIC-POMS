@@ -1,5 +1,5 @@
 -- MySqlBackup.NET 2.0.9.3
--- Dump Time: 2016-05-15 21:12:10
+-- Dump Time: 2016-05-15 21:27:13
 -- --------------------------------------
 -- Server version 5.6.26 MySQL Community Server (GPL)
 
@@ -53,7 +53,7 @@ INSERT INTO `customer_t`(`customer_id`,`business_name_style`,`tin_number`,`compa
 (13,'N/A','N/A','Joy Luck Club','Monica Roxas','4211111','N/A','mroxas@joyluckclub.com.ph','18 Adb Ave., Ortigas Center, Mandaluyong, 1550 Metro Manila'),
 (14,'N/A','000-222-581-222','Dollar','Lorina Go','09153903333','N/A','lorinago@yahoo.com','National Highway, Barangay 19 San Lorenzo, San Nicolas, 2901 Ilocos Norte'),
 (15,'N/A','N/A','Lucid Co.','Charita King','09156666666','N/A','lucidco@yahoo.com.ph','San Antonio, Pasig, 1605 Kalakhang Maynila'),
-(16,'N/A','ee2-ddd-dee-ess','e','e','e','2','@','e');
+(16,'N/A','888-345-442-012','Colette’s Company','Colette Roden','09353403371','N/A','croden@colettes.com','8 Visayas Ave, Vasra Diliman, Quezon City, 1128 Metro Manila');
 /*!40000 ALTER TABLE `customer_t` ENABLE KEYS */;
 
 -- 
@@ -532,5 +532,5 @@ INSERT INTO `supplier_t`(`supplier_id`,`supplier_name`,`contact_person`,`contact
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 
--- Dump completed on 2016-05-15 21:12:11
--- Total time: 0:0:0:0:926 (d:h:m:s:ms)
+-- Dump completed on 2016-05-15 21:27:14
+-- Total time: 0:0:0:0:329 (d:h:m:s:ms)
