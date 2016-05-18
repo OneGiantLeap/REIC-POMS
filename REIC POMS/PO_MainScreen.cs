@@ -48,7 +48,7 @@ namespace REIC_POMS
         {
             DialogResult result = MessageBox.Show("Are you sure you want to exit?", "Confirm Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
-                sql.Backup();
+         //       sql.Backup();
                 Close(); //Exit the program
         }
 
@@ -207,7 +207,8 @@ namespace REIC_POMS
         //----------------------------------------
         private void btnCreatePO_Click(object sender, EventArgs e)
         {
-
+            PO_CreateFromPQ pcp = new PO_CreateFromPQ();
+            pcp.ShowDialog();
         }
 
         private void btnCreatePO_MouseEnter(object sender, EventArgs e)

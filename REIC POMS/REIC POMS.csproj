@@ -124,11 +124,24 @@
       <DependentUpon>Item_MainScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="MySQLDatabaseDriver.cs" />
+    <Compile Include="PO.cs" />
     <Compile Include="POPrintout.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>POPrintout.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PO_CreateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PO_CreateForm.Designer.cs">
+      <DependentUpon>PO_CreateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PO_CreateFromPQ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PO_CreateFromPQ.Designer.cs">
+      <DependentUpon>PO_CreateFromPQ.cs</DependentUpon>
     </Compile>
     <Compile Include="PO_MainScreen.cs">
       <SubType>Form</SubType>
@@ -136,11 +149,18 @@
     <Compile Include="PO_MainScreen.Designer.cs">
       <DependentUpon>PO_MainScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="PO_OrderLine.cs" />
     <Compile Include="PO_PrintScreen.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PO_PrintScreen.Designer.cs">
       <DependentUpon>PO_PrintScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PO_ViewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PO_ViewForm.Designer.cs">
+      <DependentUpon>PO_ViewForm.cs</DependentUpon>
     </Compile>
     <Compile Include="PQ.cs" />
     <Compile Include="PQPrintout.cs">
@@ -348,11 +368,20 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>POPrintout.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="PO_CreateForm.resx">
+      <DependentUpon>PO_CreateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PO_CreateFromPQ.resx">
+      <DependentUpon>PO_CreateFromPQ.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PO_MainScreen.resx">
       <DependentUpon>PO_MainScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PO_PrintScreen.resx">
       <DependentUpon>PO_PrintScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PO_ViewForm.resx">
+      <DependentUpon>PO_ViewForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PQPrintout.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

@@ -18,7 +18,7 @@ namespace REIC_POMS
         {
             InitializeComponent();
             sql = new MySQLDatabaseDriver();
-            sql.Restore();
+     //       sql.Restore();
         }
 
         private void btnMinimize_Click(object sender, EventArgs e)

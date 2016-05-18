@@ -48,7 +48,7 @@ namespace REIC_POMS
             //TEST CODE
             DialogResult result = MessageBox.Show("Are you sure you want to exit?", "Confirm Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
-                sql.Backup();
+           //     sql.Backup();
                 Close(); //Exit the program
         }
 
@@ -317,6 +317,31 @@ namespace REIC_POMS
         //---------------------------
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            string partNumber = (txtSearch.Text.ToString());
+            string filterSearch = cbbFilterBy.Text.ToString();
+
+            if (filterSearch == "Filter by...")
+            {
+                MessageBox.Show("Choose Filter option", "No Filter", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+           /* if (inputSearch.Length == 0)
+            {
+                MessageBox.Show("What do you want to search", "Nothing to Search", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }*/
+
+            if (filterSearch == "Item Name")
+            {
+                
+             //   sql.SearchItems(dgvItems, itemName);
+            }
+            else if (filterSearch == "Part Number")
+            {
+                sql.SearchPNItems(dgvItems, partNumber);
+            
+            }
+
+            
             //Insert code that changes "Search for..." to blank when textbox is clicked
         }
 
@@ -326,5 +351,13 @@ namespace REIC_POMS
             cbbFilterBy.SelectedIndex = 0; //Sets the combobox value to "Filter by..."
         }
 
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            string input = (txtSearch.Text.ToString());
+            if (input.Length == 0)
+            {
+                sql.SelectAllItemsDGV(dgvItems);
+            }
+        }
     }
 }
