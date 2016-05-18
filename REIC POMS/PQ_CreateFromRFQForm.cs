@@ -185,7 +185,22 @@ namespace REIC_POMS
                         sql.InsertPQOrderLine(pol);
                         MessageBox.Show("OrderLine added to comprehensive list: " + pol.PQNo + ", " + pol.PartNumber + ", " + pol.ReicUnitPrice + "," + pol.Quantity + "," + pol.ItemTotal);
                     }
-                
+
+                //---OPEN THE PQ Printout Print Preview
+                if (pf.InFavorOf == "Supplier")
+                {
+                    PQ_PrintScreen_IFOSupplier pq = new PQ_PrintScreen_IFOSupplier();
+                    pq.PQNo = pf.PQNo;
+                    pq.FirstTime = false;
+                    pq.ShowDialog();
+                }
+                else
+                {
+                    PQ_PrintScreen pq = new PQ_PrintScreen();
+                    pq.PQNo = pf.PQNo;
+                    pq.FirstTime = false;
+                    pq.ShowDialog();
+                }
             }
 
         }

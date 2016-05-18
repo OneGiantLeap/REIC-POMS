@@ -68,7 +68,7 @@ namespace REIC_POMS
 
         private void SuppliersMainScreen_Load(object sender, EventArgs e)
         {
-            cbbFilterBy.SelectedIndex = 0; //Sets the default combobox value to "Filter by..."
+            //cbbFilterBy.SelectedIndex = 0; //Sets the default combobox value to "Filter by..."
         }
 
         //-----------------
@@ -358,7 +358,7 @@ namespace REIC_POMS
         private void btnClearSearch_Click(object sender, EventArgs e)
         {
             txtSearch.Text = "Search for...";
-            cbbFilterBy.SelectedIndex = 0; //Sets the combobox value to "Filter by..."
+            //cbbFilterBy.SelectedIndex = 0; //Sets the combobox value to "Filter by..."
         }
 
     }

@@ -44,6 +44,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvPQ = new System.Windows.Forms.DataGridView();
+            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PQNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ValidityPeriod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnItems = new System.Windows.Forms.Button();
             this.btnSignOut = new System.Windows.Forms.Button();
             this.btnSPRS = new System.Windows.Forms.Button();
@@ -57,10 +61,6 @@
             this.btnCreatePQ = new System.Windows.Forms.PictureBox();
             this.btnSuppliers = new System.Windows.Forms.Button();
             this.btnPQ = new System.Windows.Forms.Button();
-            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PQNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ValidityPeriod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPQ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgREICLogo)).BeginInit();
@@ -159,8 +159,9 @@
             this.cbbFilterBy.FormattingEnabled = true;
             this.cbbFilterBy.Items.AddRange(new object[] {
             "Filter by...",
-            "Item Name",
-            "Part Number"});
+            "Customer Name",
+            "PQ No.",
+            "Quotation Date"});
             this.cbbFilterBy.Location = new System.Drawing.Point(876, 330);
             this.cbbFilterBy.Name = "cbbFilterBy";
             this.cbbFilterBy.Size = new System.Drawing.Size(130, 26);
@@ -261,6 +262,34 @@
             this.dgvPQ.ShowCellErrors = false;
             this.dgvPQ.Size = new System.Drawing.Size(644, 693);
             this.dgvPQ.TabIndex = 41;
+            // 
+            // Date
+            // 
+            this.Date.HeaderText = "DATE";
+            this.Date.Name = "Date";
+            this.Date.ReadOnly = true;
+            this.Date.Width = 99;
+            // 
+            // Customer
+            // 
+            this.Customer.HeaderText = "CUSTOMER";
+            this.Customer.Name = "Customer";
+            this.Customer.ReadOnly = true;
+            this.Customer.Width = 255;
+            // 
+            // PQNumber
+            // 
+            this.PQNumber.HeaderText = "PQ NO.";
+            this.PQNumber.Name = "PQNumber";
+            this.PQNumber.ReadOnly = true;
+            this.PQNumber.Width = 130;
+            // 
+            // ValidityPeriod
+            // 
+            this.ValidityPeriod.HeaderText = "VALIDITY PERIOD";
+            this.ValidityPeriod.Name = "ValidityPeriod";
+            this.ValidityPeriod.ReadOnly = true;
+            this.ValidityPeriod.Width = 158;
             // 
             // btnItems
             // 
@@ -432,34 +461,6 @@
             this.btnPQ.Size = new System.Drawing.Size(213, 48);
             this.btnPQ.TabIndex = 43;
             this.btnPQ.UseVisualStyleBackColor = true;
-            // 
-            // Date
-            // 
-            this.Date.HeaderText = "DATE";
-            this.Date.Name = "Date";
-            this.Date.ReadOnly = true;
-            this.Date.Width = 99;
-            // 
-            // Customer
-            // 
-            this.Customer.HeaderText = "CUSTOMER";
-            this.Customer.Name = "Customer";
-            this.Customer.ReadOnly = true;
-            this.Customer.Width = 255;
-            // 
-            // PQNumber
-            // 
-            this.PQNumber.HeaderText = "PQ NO.";
-            this.PQNumber.Name = "PQNumber";
-            this.PQNumber.ReadOnly = true;
-            this.PQNumber.Width = 130;
-            // 
-            // ValidityPeriod
-            // 
-            this.ValidityPeriod.HeaderText = "VALIDITY PERIOD";
-            this.ValidityPeriod.Name = "ValidityPeriod";
-            this.ValidityPeriod.ReadOnly = true;
-            this.ValidityPeriod.Width = 158;
             // 
             // PQ_MainScreen
             // 

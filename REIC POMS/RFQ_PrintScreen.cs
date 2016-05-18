@@ -81,16 +81,26 @@ namespace REIC_POMS
 
             reicpomsds = new reicpomsDataSet();
 
-            //Data from supplier_t
-            string selectRFQSupplier = string.Format("SELECT supplier_t.supplier_id, supplier_name, contact_person, contact_number, email_address, address " +
+            //Data from supplier_t (RFQ's Supplier)
+            string selectRFQSupplier = string.Format("SELECT supplier_t.* " +
                                                   "FROM rfq_t, supplier_t " +
                                                   "WHERE rfq_no = '{0}' " +
                                                   "AND rfq_t.supplier_id = supplier_t.supplier_id;", rfqNo);
             adapter = new MySqlDataAdapter(selectRFQSupplier, connection);
+            adapter.Fill(reicpomsds, "supplier_t_rfq");
+
+            //Further data from supplier_t (Supplier of all the items in the RFQ OrderLine | For some reason, if an item's supplier changes, the item won't appear in the RFQ anymore)
+            string selectAllItemSupplier = string.Format("SELECT DISTINCT supplier_t.* " +
+                                                         "FROM rfq_order_line_t, item_t, supplier_t " +
+                                                         "WHERE rfq_no = '{0}' " +
+                                                         "AND rfq_order_line_t.part_number = item_t.part_number " +
+                                                         "AND item_t.supplier_id = supplier_t.supplier_id;", rfqNo);
+            adapter = new MySqlDataAdapter(selectAllItemSupplier, connection);
             adapter.Fill(reicpomsds, "supplier_t");
 
             //Data from rfq_order_line_t, inserted into item_t
-            string selectRFQOrderLineItems = string.Format("SELECT item_t.part_number, item_name, item_description, supplier_unit_price, mark_up_percentage, reic_unit_price, minimum_order_quantity, unit_of_measurement, from_date, to_date, supplier_id " +
+            string selectRFQOrderLineItems = string.Format(//"SELECT item_t.part_number, item_name, item_description, supplier_unit_price, mark_up_percentage, reic_unit_price, minimum_order_quantity, unit_of_measurement, from_date, to_date, supplier_id " +
+                                                        "SELECT item_t.*" +
                                                         "FROM rfq_order_line_t, item_t " +
                                                         "WHERE rfq_no = '{0}' " +
                                                         "AND rfq_order_line_t.part_number = item_t.part_number;", rfqNo);

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization; //Added for timeparsing
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,8 +22,34 @@ namespace REIC_POMS
             sql = new MySQLDatabaseDriver();
 
             cbbFromMonth.SelectedIndex = 0; //"Select Month"
-            txtToMonth.Text = DateTime.Now.Month.ToString("MMMM"); //Format shows full month name
+            txtToMonth.Text = DateTime.Now.ToString("MMMM"); //Format shows full month name
             txtToYear.Text = DateTime.Now.Year.ToString();
+
+            //---ADJUST DATAGRIDVIEW APPEARANCE
+            //REQUESTS FOR PRICE QUOTATION
+            dgvRFQStatus.Columns["RequestDate"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvRFQStatus.Columns["RFQNo"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            dgvRFQStatus.Columns["RFQNo"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvRFQStatus.Columns["RequestDate"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            //PRICE QUOTATIONS
+            dgvPQStatus.Columns["Date"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvPQStatus.Columns["PQNo"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvPQStatus.Columns["ValidityPeriod"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            dgvPQStatus.Columns["Date"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvPQStatus.Columns["PQNo"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvPQStatus.Columns["ValidityPeriod"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            //PURCHASE ORDERS
+            dgvPOStatus.Columns["POOrderDate"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvPOStatus.Columns["PODeliveryDate"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvPOStatus.Columns["PONo"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            dgvPOStatus.Columns["POOrderDate"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvPOStatus.Columns["PODeliveryDate"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvPOStatus.Columns["PONo"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
 
         //--------------------------------------
@@ -35,6 +62,7 @@ namespace REIC_POMS
         {
             DialogResult result = MessageBox.Show("Are you sure you want to exit?", "Confirm Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
+                sql.Backup();
                 Close(); //Exit the program
         }
 
@@ -191,7 +219,7 @@ namespace REIC_POMS
         //---------------------
         // SALES TAB METHODS  |
         //---------------------
-        private void btnFilter_Click(object sender, EventArgs e)
+        private void btnShowGraph_Click(object sender, EventArgs e)
         {
             if (cbbFromMonth.Text == "Select Month")
             {
@@ -201,7 +229,18 @@ namespace REIC_POMS
 
             if (radMonthly.Checked == true)
             {
-                //To be continued
+                /* ACTION PLAN
+                    - Hide the Monthly Bar graph
+                    - Show the Annually Line graph and clear its contents
+                    - Convert input dates into SQL-worthy date format
+                    - Create an ArrayList. Each element contains the year and the total sales for that year.
+                    - For each
+                    - Select all SIDR ranging between "YYYY-MM%" and "YYYY-MM%"
+                    - 
+                */
+                graphAnnually.Hide();
+                graphMonthly.Series.Clear();
+                graphMonthly.Show();
 
                 /*From BAR SAMPLE
                 this.chart1.Series["Sales"].Points.AddXY("2007", 16391);
@@ -219,7 +258,57 @@ namespace REIC_POMS
 
             if (radAnnually.Checked == true)
             {
-                //To be continued
+                graphMonthly.Hide();
+                graphAnnually.Series.Clear();
+                graphAnnually.Show();
+
+                int fromMonth = DateTime.ParseExact(cbbFromMonth.Text, "MMMM", CultureInfo.InvariantCulture).Month;
+                int fromYear = int.Parse(nupFromYear.Text);
+                int toMonth = DateTime.ParseExact(txtToMonth.Text, "MMMM", CultureInfo.InvariantCulture).Month;
+                int toYear = int.Parse(txtToYear.Text);
+                
+                MessageBox.Show("Yo" + fromMonth + fromYear + toMonth + toYear);
+
+                double[] salesPerYear = new double[toYear - fromYear + 1];
+                int counter = 0; //nth array slot
+
+                for (int i = fromYear; i <= toYear; i++)
+                {
+                    MessageBox.Show(i.ToString());
+                    double yearSales = 0;
+
+                    if ((fromYear >= fromYear + 1) && (fromYear != toYear)) //In between, not yet the toYear
+                    {
+                        for (int j = 1; j <= 12; j++)
+                        {
+                            string dateToQuery = fromYear.ToString() + "-" + fromMonth.ToString("D2");
+                            double monthSales = sql.SelectAnnualSales(dateToQuery);
+                            yearSales += monthSales;
+                        }
+                    }
+                    else if (fromYear == toYear)
+                    {
+                        for (int j = 1; j <= toMonth; j++)
+                        {
+                            string dateToQuery = fromYear.ToString() + "-" + fromMonth.ToString("D2");
+                            double monthSales = sql.SelectAnnualSales(dateToQuery);
+                            yearSales += monthSales;
+                        }
+                    }
+                    else //First month eva
+                    {
+                        for (int j = fromMonth; j <= 12; j++)
+                        {
+                            string dateToQuery = fromYear.ToString() + "-" + fromMonth.ToString("D2");
+                            double monthSales = sql.SelectAnnualSales(dateToQuery);
+                            yearSales += monthSales;
+                        }
+                    }
+
+                    salesPerYear[counter] = yearSales;
+                    MessageBox.Show("Sales for " + fromYear + " " + yearSales.ToString());
+                    counter++;
+                }
             }
         }
 
@@ -259,24 +348,33 @@ namespace REIC_POMS
             sql.SelectCompletedRFQ(dgvRFQStatus);
         }
 
+        private void radAllRFQ_CheckedChanged(object sender, EventArgs e)
+        {
+            dgvRFQStatus.Rows.Clear();
+            sql.SelectAllRFQSPR(dgvRFQStatus);
+        }
+
         private void btnGenerateReportRFQ_Click(object sender, EventArgs e)
         {
-            if ((radPendingRFQ.Checked == false) && (radCompletedRFQ.Checked == false))
+            if ((radPendingRFQ.Checked == false) && (radCompletedRFQ.Checked == false) && (radAllRFQ.Checked == false))
             {
-                MessageBox.Show("Please select if you want to view pending or completed requests for price quotation.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please select if you want to view pending, completed, or all requests for price quotation.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
             if (radPendingRFQ.Checked == true)
             {
                 SPR_RFQPending_PrintScreen rfqp = new SPR_RFQPending_PrintScreen();
                 rfqp.ShowDialog();
             }
-
             if (radCompletedRFQ.Checked == true)
             {
                 SPR_RFQCompleted_PrintScreen rfqc = new SPR_RFQCompleted_PrintScreen();
                 rfqc.ShowDialog();
+            }
+            if (radAllRFQ.Checked == true)
+            {
+                SPR_RFQAll_PrintScreen rfq = new SPR_RFQAll_PrintScreen();
+                rfq.ShowDialog();
             }
         }
 
@@ -295,18 +393,34 @@ namespace REIC_POMS
             sql.SelectCompletedPQ(dgvPQStatus);
         }
 
+        private void radAllPQ_CheckedChanged(object sender, EventArgs e)
+        {
+            dgvPQStatus.Rows.Clear();
+            sql.SelectAllPQSPR(dgvPQStatus);
+        }
+
+
         private void btnGenerateReportPQ_Click(object sender, EventArgs e)
         {
+            if ((radPendingPQ.Checked == false) && (radCompletedPQ.Checked == false) && (radAllPQ.Checked == false))
+            {
+                MessageBox.Show("Please select if you want to view pending, completed, or all price quotations.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (radPendingPQ.Checked == true)
             {
-                //SPR_PQPending_PrintScreen pqp = new SPR_PQPending_PrintScreen();
-                //pqp.ShowDialog();
+                SPR_PQPending_PrintScreen pqp = new SPR_PQPending_PrintScreen();
+                pqp.ShowDialog();
             }
-
             if (radCompletedPQ.Checked == true)
             {
-                //SPR_PQCompleted_PrintScreen pqc = new SPR_PQCompleted_PrintScreen();
-                //pqc.ShowDialog();
+                SPR_PQCompleted_PrintScreen pqc = new SPR_PQCompleted_PrintScreen();
+                pqc.ShowDialog();
+            }
+            if (radAllPQ.Checked == true)
+            {
+                SPR_PQAll_PrintScreen pq = new SPR_PQAll_PrintScreen();
+                pq.ShowDialog();
             }
         }
 
@@ -315,26 +429,43 @@ namespace REIC_POMS
         //-------------------------
         private void radPendingPO_CheckedChanged(object sender, EventArgs e)
         {
+            dgvPOStatus.Rows.Clear();
             sql.SelectPendingPO(dgvPOStatus);
         }
 
         private void radCompletedPO_CheckedChanged(object sender, EventArgs e)
         {
+            dgvPOStatus.Rows.Clear();
             sql.SelectCompletedPO(dgvPOStatus);
+        }
+
+        private void radAllPO_CheckedChanged(object sender, EventArgs e)
+        {
+            dgvPOStatus.Rows.Clear();
+            sql.SelectAllPOSPR(dgvPOStatus);
         }
 
         private void btnGenerateReportPO_Click(object sender, EventArgs e)
         {
+            if ((radPendingPO.Checked == false) && (radCompletedPO.Checked == false) && (radAllPO.Checked == false))
+            {
+                MessageBox.Show("Please select if you want to view pending, completed, or all purchase orders.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (radPendingPO.Checked == true)
             {
-                //SPR_POPending_PrintScreen pop = new SPR_POPending_PrintScreen();
-                //pop.ShowDialog();
+                SPR_POPending_PrintScreen pop = new SPR_POPending_PrintScreen();
+                pop.ShowDialog();
             }
-
             if (radCompletedPO.Checked == true)
             {
-                //SPR_POCompleted_PrintScreen poc = new SPR_POCompleted_PrintScreen();
-                //poc.ShowDialog();
+                SPR_POCompleted_PrintScreen poc = new SPR_POCompleted_PrintScreen();
+                poc.ShowDialog();
+            }
+            if (radAllPO.Checked == true)
+            {
+                SPR_POAll_PrintScreen po = new SPR_POAll_PrintScreen();
+                po.ShowDialog();
             }
         }
     }

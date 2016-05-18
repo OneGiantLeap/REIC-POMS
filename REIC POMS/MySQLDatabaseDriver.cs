@@ -7,6 +7,7 @@ using System.Data; //Enables use of DataTable
 using MySql.Data.MySqlClient; //Enables connection to MySQL
 using System.Windows.Forms;
 using System.Collections; //Enables use of ArrayList
+using System.Globalization;
 
 namespace REIC_POMS
 {
@@ -38,10 +39,10 @@ namespace REIC_POMS
             connection.Open();
 
             //DEBUG MESSAGES
-            if (connection.State == System.Data.ConnectionState.Open)
+            /*if (connection.State == System.Data.ConnectionState.Open)
             { MessageBox.Show("Connection to SQL successful!"); }
             else
-            { MessageBox.Show("Connection to SQL failed!"); }
+            { MessageBox.Show("Connection to SQL failed!"); }*/
         }
 
         internal void SelectSpecificRFQOrderLine(string rFQNo, object dgvPQItems)
@@ -109,7 +110,7 @@ namespace REIC_POMS
         { //Purpose: Aid in autogeneration of RFQ, PQ, and PO numbers
             ConnectToSQL();
             string yearMonth = year + month;
-            MessageBox.Show("Yearmonth:" + yearMonth);
+            //MessageBox.Show("Yearmonth:" + yearMonth);
             switch (tableName)
             {
                 case "rfq_t":
@@ -124,7 +125,7 @@ namespace REIC_POMS
             }
             object countReader = countCommand.ExecuteScalar();
             int rowCount = int.Parse(countReader.ToString());
-            MessageBox.Show(rowCount.ToString()); //Debug purposes
+            //MessageBox.Show(rowCount.ToString()); //Debug purposes
             DisconnectFromSQL();
             return rowCount;
         }
@@ -177,7 +178,7 @@ namespace REIC_POMS
             double priceResult;
             command = new MySqlCommand(string.Format("SELECT reic_unit_price FROM item_t WHERE part_number = '{0}';",partNumber), connection);
             object queryPrice = command.ExecuteScalar();
-            MessageBox.Show("Unit Price: " + queryPrice.ToString()); //Debug purposes
+            //MessageBox.Show("Unit Price: " + queryPrice.ToString()); //Debug purposes
             priceResult = double.Parse(queryPrice.ToString());
             DisconnectFromSQL();
             return priceResult;
@@ -188,13 +189,13 @@ namespace REIC_POMS
         public int GetPNCount(string partNumber)
         { //Purpose: Count if partnumber already exist
             ConnectToSQL();
-            MessageBox.Show("code runs until here"); //debug
+            //MessageBox.Show("code runs until here"); //debug
             { 
                     countCommand = new MySqlCommand(string.Format("SELECT COUNT(*) FROM item_t WHERE part_number LIKE '{0}%'" + ";", partNumber), connection);
             }
             object countReader = countCommand.ExecuteScalar();
             int rowCount = int.Parse(countReader.ToString());
-            MessageBox.Show(rowCount.ToString()); //Debug purposes
+            //MessageBox.Show(rowCount.ToString()); //Debug purposes
             DisconnectFromSQL();
             return rowCount;
         }
@@ -238,7 +239,7 @@ namespace REIC_POMS
             int idResult;
             command = new MySqlCommand(string.Format("SELECT customer_id FROM customer_t WHERE company_name='{0}';", customerName), connection);
             object queryResult = command.ExecuteScalar();
-            MessageBox.Show("Customer ID: " + queryResult.ToString()); //Debug purposes
+            //MessageBox.Show("Customer ID: " + queryResult.ToString()); //Debug purposes
             idResult = int.Parse(queryResult.ToString());
             DisconnectFromSQL();
             return idResult;
@@ -299,7 +300,7 @@ namespace REIC_POMS
             int idResult;
             command = new MySqlCommand(string.Format("SELECT supplier_id FROM supplier_t WHERE supplier_name='{0}';", supplierName), connection);
             object queryResult = command.ExecuteScalar();
-            MessageBox.Show("Supplier ID: " + queryResult.ToString()); //Debug purposes
+            //MessageBox.Show("Supplier ID: " + queryResult.ToString()); //Debug purposes
             idResult = int.Parse(queryResult.ToString());
             DisconnectFromSQL();
             return idResult;
@@ -412,7 +413,7 @@ namespace REIC_POMS
                                  myReader["unit_of_measurement"].ToString(),
                                  int.Parse(myReader["quantity"].ToString()));
                 
-                MessageBox.Show("Added");
+                //MessageBox.Show("Added");
             }
             DisconnectFromSQL();
         }
@@ -437,7 +438,7 @@ namespace REIC_POMS
                                  totalPrice.ToString("0.00")
                                 );
 
-                MessageBox.Show("Added");
+                //MessageBox.Show("Added");
             }
             DisconnectFromSQL();
         }
@@ -522,7 +523,7 @@ namespace REIC_POMS
                                  reic_unit_price.ToString("0.00"),
                                  int.Parse(myReader["quantity"].ToString()),
                                  total_item.ToString("0.00"));
-                MessageBox.Show("Added");
+                //MessageBox.Show("Added");
             }
             DisconnectFromSQL();
         }
@@ -534,7 +535,21 @@ namespace REIC_POMS
 
         public void SelectAllPODGV(DataGridView dgvName)
         { //To populate the PO Main Screen DGV (Plus the actual Customer and Supplier names, not their IDs)
-
+            ConnectToSQL();
+            command = new MySqlCommand("SELECT DATE_FORMAT(order_date, '%m/%d/%Y'), DATE_FORMAT(required_delivery_date, '%m/%d/%Y'), company_name, po_no, supplier_name " +
+                                       "FROM po_t, customer_t, supplier_t " +
+                                       "WHERE po_t.customer_id = customer_t.customer_id " +
+                                       "AND po_t.supplier_id = supplier_t.supplier_id;", connection);
+            myReader = command.ExecuteReader();
+            while (myReader.Read())
+            {
+                dgvName.Rows.Add(myReader["DATE_FORMAT(order_date, '%m/%d/%Y')"].ToString(),
+                                 myReader["DATE_FORMAT(required_delivery_date, '%m/%d/%Y')"].ToString(),
+                                 myReader["company_name"].ToString(),
+                                 myReader["po_no"].ToString(),
+                                 myReader["supplier_name"].ToString());
+            }
+            DisconnectFromSQL();
         }
 
         public void SelectAllSIDR(ArrayList result)
@@ -547,6 +562,163 @@ namespace REIC_POMS
 
         }
 
+        //---------------------------------
+        //  MAIN SCREEN SEARCH STATEMENTS |
+        //---------------------------------
+        public void SearchCustomer(string textToSearch, DataGridView dgvResults)
+        { //Main Screen: 
+            ConnectToSQL();
+            command = new MySqlCommand(string.Format("SELECT company_name, contact_person, contact_number, email_address " +
+                                                    "FROM customer_t " +
+                                                    "WHERE company_name LIKE '%{0}%'; ", textToSearch), connection);
+            myReader = command.ExecuteReader();
+            if (myReader.Read()) //Has laman, so for sure have to empty the dgvResults
+            {
+                dgvResults.Rows.Clear();
+            }
+            while (myReader.Read())
+            {
+                dgvResults.Rows.Add(myReader["company_name"].ToString(),
+                         myReader["contact_person"].ToString(),
+                         myReader["contact_number"].ToString(),
+                         myReader["email_address"].ToString());
+            }
+            DisconnectFromSQL();
+        }
+
+        public void SearchRFQ(string searchType, string textToSearch, DataGridView dgvResults)
+        { //Main Screen: 
+            ConnectToSQL();
+            switch (searchType)
+            {
+                case "Customer Name":
+                    command = new MySqlCommand(string.Format("SELECT rfq_no, DATE_FORMAT(date_of_request, '%m/%d/%Y'), supplier_name, company_name " +
+                                                                  "FROM rfq_t, supplier_t, customer_t " +
+                                                                  "WHERE rfq_t.customer_id = customer_t.customer_id " +
+                                                                  "AND rfq_t.supplier_id = supplier_t.supplier_id " +
+                                                                  "AND company_name LIKE '%{0}%' " +
+                                                                  "ORDER BY rfq_no DESC;", textToSearch), connection);
+                    break;
+                case "RFQ No.":
+                    command = new MySqlCommand(string.Format("SELECT rfq_no, DATE_FORMAT(date_of_request, '%m/%d/%Y'), supplier_name, company_name " +
+                                                             "FROM rfq_t, supplier_t, customer_t " +
+                                                             "WHERE rfq_no LIKE '%{0}%' " +
+                                                             "AND rfq_t.customer_id = customer_t.customer_id " +
+                                                             "AND rfq_t.supplier_id = supplier_t.supplier_id " +
+                                                             "ORDER BY rfq_no DESC;", textToSearch), connection);
+                    break;
+                case "Request Date":
+                    command = new MySqlCommand(string.Format("SELECT rfq_no, DATE_FORMAT(date_of_request, '%m/%d/%Y'), supplier_name, company_name " +
+                                                             "FROM rfq_t, supplier_t, customer_t " +
+                                                             "WHERE date_of_request LIKE '%{0}%' " +
+                                                             "AND rfq_t.customer_id = customer_t.customer_id " +
+                                                             "AND rfq_t.supplier_id = supplier_t.supplier_id " +
+                                                             "ORDER BY rfq_no DESC;", textToSearch), connection);
+                    break;
+            }
+            myReader = command.ExecuteReader();
+            if (myReader.Read()) //Has laman, so for sure have to empty the dgvResults
+            {
+                dgvResults.Rows.Clear();
+            }
+            while (myReader.Read())
+            {
+                dgvResults.Rows.Add(myReader["rfq_no"].ToString(),
+                                     myReader["DATE_FORMAT(date_of_request, '%m/%d/%Y')"].ToString(),
+                                     myReader["supplier_name"].ToString(),
+                                     myReader["company_name"].ToString());
+            }
+            DisconnectFromSQL();
+        }
+
+        public void SearchPQ(string searchType, string textToSearch, DataGridView dgvResults)
+        { //Main Screen: 
+            ConnectToSQL();
+            switch (searchType)
+            {
+                case "Customer Name":
+                    command = new MySqlCommand(string.Format("SELECT DATE_FORMAT(pq_date, '%m/%d/%Y'), company_name, pq_no, CONCAT(DATE_FORMAT(from_date, '%m/%d/%Y'), ' - ', DATE_FORMAT(to_date, '%m/%d/%Y')) " +
+                                                                  "FROM pq_t, customer_t " +
+                                                                  "WHERE pq_t.customer_id = customer_t.customer_id " +
+                                                                  "AND company_name LIKE '%{0}%' " +
+                                                                  "ORDER BY pq_no DESC;", textToSearch), connection);
+                    break;
+                case "PQ No.":
+                    command = new MySqlCommand(string.Format("SELECT DATE_FORMAT(pq_date, '%m/%d/%Y'), company_name, pq_no, CONCAT(DATE_FORMAT(from_date, '%m/%d/%Y'), ' - ', DATE_FORMAT(to_date, '%m/%d/%Y')) " +
+                                                             "FROM pq_t, customer_t " +
+                                                             "WHERE pq_no LIKE '%{0}%' " +
+                                                             "AND pq_t.customer_id = customer_t.customer_id " +
+                                                             "ORDER BY pq_no DESC;", textToSearch), connection);
+                    break;
+                case "Quotation Date":
+                    command = new MySqlCommand(string.Format("SELECT DATE_FORMAT(pq_date, '%m/%d/%Y'), company_name, pq_no, CONCAT(DATE_FORMAT(from_date, '%m/%d/%Y'), ' - ', DATE_FORMAT(to_date, '%m/%d/%Y')) " +
+                                                             "FROM pq_t, customer_t " +
+                                                             "WHERE pq_date LIKE '%{0}%' " +
+                                                             "AND pq_t.customer_id = customer_t.customer_id " +
+                                                             "ORDER BY pq_no DESC;", textToSearch), connection);
+                    break;
+            }
+            myReader = command.ExecuteReader();
+            if (myReader.Read()) //Has laman, so for sure have to empty the dgvResults
+            {
+                dgvResults.Rows.Clear();
+            }
+            while (myReader.Read())
+            {
+                dgvResults.Rows.Add(myReader["DATE_FORMAT(pq_date, '%m/%d/%Y')"].ToString(),
+                                     myReader["company_name"].ToString(),
+                                     myReader["pq_no"].ToString(),
+                                     myReader["CONCAT(DATE_FORMAT(from_date, '%m/%d/%Y'), ' - ', DATE_FORMAT(to_date, '%m/%d/%Y'))"].ToString());
+            }
+            DisconnectFromSQL();
+        }
+
+        public void SearchPO(string searchType, string textToSearch, DataGridView dgvResults)
+        { //Main Screen: 
+            ConnectToSQL();
+            switch (searchType)
+            {
+                case "Customer Name":
+                    command = new MySqlCommand(string.Format("SELECT DATE_FORMAT(order_date, '%m/%d/%Y'), DATE_FORMAT(required_delivery_date, '%m/%d/%Y'), company_name, po_no, supplier_name " +
+                                                                  "FROM po_t, customer_t, supplier_t " +
+                                                                  "WHERE company_name LIKE '%{0}%' " +
+                                                                  "AND po_t.customer_id = customer_t.customer_id " +
+                                                                  "AND po_t.supplier_id = supplier_t.supplier_id " +
+                                                                  "ORDER BY po_no DESC;", textToSearch), connection);
+                    break;
+                case "PO No.":
+                    command = new MySqlCommand(string.Format("SELECT DATE_FORMAT(order_date, '%m/%d/%Y'), DATE_FORMAT(required_delivery_date, '%m/%d/%Y'), company_name, po_no, supplier_name " +
+                                                             "FROM po_t, customer_t, supplier_t " +
+                                                             "WHERE pq_no LIKE '%{0}%' " +
+                                                             "AND po_t.customer_id = customer_t.customer_id " +
+                                                             "AND po_t.supplier_id = supplier_t.supplier_id " +
+                                                             "ORDER BY po_no DESC;", textToSearch), connection);
+                    break;
+                case "Order Date":
+                    command = new MySqlCommand(string.Format("SELECT DATE_FORMAT(order_date, '%m/%d/%Y'), DATE_FORMAT(required_delivery_date, '%m/%d/%Y'), company_name, po_no, supplier_name " +
+                                                             "FROM po_t, customer_t, supplier_t " +
+                                                             "WHERE DATE_FORMAT(order_date, '%m/%d/%Y') LIKE '%{0}%' " +
+                                                             "AND po_t.customer_id = customer_t.customer_id " +
+                                                             "AND po_t.supplier_id = supplier_t.supplier_id " +
+                                                             "ORDER BY po_no DESC;", textToSearch), connection);
+                    break;
+            }
+            myReader = command.ExecuteReader();
+            if (myReader.Read()) //Has laman, so for sure have to empty the dgvResults
+            {
+                dgvResults.Rows.Clear();
+            }
+            while (myReader.Read())
+            {
+                dgvResults.Rows.Add(myReader["DATE_FORMAT(order_date, '%m/%d/%Y')"].ToString(),
+                                     myReader["DATE_FORMAT(required_delivery_date, '%m/%d/%Y')"].ToString(),
+                                     myReader["company_name"].ToString(),
+                                     myReader["po_no"].ToString(),
+                                     myReader["supplier_name"].ToString());
+            }
+            DisconnectFromSQL();
+        }
+
         //-------------------------
         //  SPR SELECT STATEMENTS |
         //-------------------------
@@ -555,9 +727,18 @@ namespace REIC_POMS
             //To ponder on
         }
 
-        public void SelectAnnualSales()
-        {
-            //To ponder on
+        public double SelectAnnualSales(string dateToQuery)
+        { //Have to break it down into months, or I'll go crazy.
+            ConnectToSQL();
+            double salesResult = 0;
+            command = new MySqlCommand(string.Format("SELECT SUM(invoice_total)FROM sidr_t WHERE so_date LIKE '{0}%';", dateToQuery), connection);
+            object queryResult = command.ExecuteScalar();
+            if (queryResult.ToString() != null)
+            {
+                salesResult = double.Parse(queryResult.ToString(), CultureInfo.InvariantCulture); //FormatException
+            }
+            DisconnectFromSQL();
+            return salesResult;
         }
 
         public void SelectPendingRFQ(DataGridView dgvName)
@@ -568,7 +749,7 @@ namespace REIC_POMS
                                       "WHERE pq_no IS NULL " +
                                       "AND rfq_t.supplier_id = supplier_t.supplier_id " +
                                       "AND rfq_t.customer_id = customer_t.customer_id " +
-                                      "ORDER BY rfq_no;", connection);
+                                      "ORDER BY rfq_no DESC;", connection);
             myReader = command.ExecuteReader();
             while (myReader.Read())
             {
@@ -588,7 +769,7 @@ namespace REIC_POMS
                                       "WHERE pq_no IS NOT NULL " +
                                       "AND rfq_t.supplier_id = supplier_t.supplier_id " +
                                       "AND rfq_t.customer_id = customer_t.customer_id " +
-                                      "ORDER BY rfq_no;", connection);
+                                      "ORDER BY rfq_no DESC;", connection);
             myReader = command.ExecuteReader();
             while (myReader.Read())
             {
@@ -600,25 +781,43 @@ namespace REIC_POMS
             DisconnectFromSQL();
         }
 
+        public void SelectAllRFQSPR(DataGridView dgvName)
+        {
+            ConnectToSQL();
+            command = new MySqlCommand("SELECT rfq_no, DATE_FORMAT(date_of_request, '%m/%d/%Y'), supplier_name, company_name " +
+                                      "FROM rfq_t, supplier_t, customer_t " +
+                                      "WHERE rfq_t.supplier_id = supplier_t.supplier_id " +
+                                      "AND rfq_t.customer_id = customer_t.customer_id " +
+                                      "ORDER BY rfq_no DESC;", connection);
+            myReader = command.ExecuteReader();
+            while (myReader.Read())
+            {
+                dgvName.Rows.Add(myReader["rfq_no"].ToString(),
+                                 myReader["DATE_FORMAT(date_of_request, '%m/%d/%Y')"].ToString(),
+                                 myReader["supplier_name"].ToString(),
+                                 myReader["company_name"].ToString());
+            }
+            DisconnectFromSQL();
+        }
 
         public void SelectPendingPQ(DataGridView dgvName)
         {
             ConnectToSQL();
             command = new MySqlCommand(//"SELECT DISTINCT pq_t.pq_no, DATE_FORMAT(pq_date, '%m/%d/%Y'), DATE_FORMAT(from_date, '%m/%d/%Y'), DATE_FORMAT(to_date, '%m/%d/%Y'), pq_t.payment_terms, pq_t.delivery_terms, in_favor_of, bill_to, ship_to, pq_t.total_amount, customer_t.customer_id  " +
-                                       "SELECT DISTINCT DATE_FORMAT(pq_date, '%m/%d/%Y'), company_name, pq_t.pq_no, CONCAT(DATE_FORMAT(from_date, '%m/%d/%Y'), ' - ', DATE_FORMAT(to_date, '%m/%d/%Y'))" +
+                                       "SELECT DISTINCT DATE_FORMAT(pq_date, '%m/%d/%Y'), company_name, pq_t.pq_no, CONCAT(DATE_FORMAT(from_date, '%m/%d/%Y'), ' - ', DATE_FORMAT(to_date, '%m/%d/%Y')) " +
                                        "FROM customer_t, pq_t, po_t " +
                                        "WHERE pq_t.pq_no NOT IN (" +
                                            "SELECT po_t.pq_no " +
                                            "FROM po_t " +
                                            "WHERE pq_t.pq_no = po_t.pq_no) " +
                                        "AND pq_t.customer_id = customer_t.customer_id " +
-                                       "ORDER BY pq_t.pq_no;", connection);
+                                       "ORDER BY pq_t.pq_no DESC;", connection);
             myReader = command.ExecuteReader();
             while (myReader.Read())
             {
                 dgvName.Rows.Add(myReader["DATE_FORMAT(pq_date, '%m/%d/%Y')"].ToString(),
                                  myReader["company_name"].ToString(),
-                                 myReader["pq_t.pq_no"].ToString(),
+                                 myReader["pq_no"].ToString(),
                                  myReader["CONCAT(DATE_FORMAT(from_date, '%m/%d/%Y'), ' - ', DATE_FORMAT(to_date, '%m/%d/%Y'))"].ToString());
             }
             DisconnectFromSQL();
@@ -627,17 +826,35 @@ namespace REIC_POMS
         public void SelectCompletedPQ(DataGridView dgvName)
         {
             ConnectToSQL();
-            command = new MySqlCommand("SELECT DATE_FORMAT(pq_date, '%m/%d/%Y'), company_name, pq_t.pq_no, CONCAT(DATE_FORMAT(from_date, '%m/%d/%Y'), ' - ', DATE_FORMAT(to_date, '%m/%d/%Y'))" +
+            command = new MySqlCommand("SELECT DISTINCT DATE_FORMAT(pq_date, '%m/%d/%Y'), company_name, pq_t.pq_no, CONCAT(DATE_FORMAT(from_date, '%m/%d/%Y'), ' - ', DATE_FORMAT(to_date, '%m/%d/%Y')) " +
                                        "FROM customer_t, pq_t, po_t " +
-                                       "WHERE pq_t.pq_no = po_t.pq_no" +
+                                       "WHERE pq_t.pq_no = po_t.pq_no " +
                                        "AND pq_t.customer_id = customer_t.customer_id " +
-                                       "ORDER BY pq_t.pq_no;", connection);
+                                       "ORDER BY pq_t.pq_no DESC;", connection);
             myReader = command.ExecuteReader();
             while (myReader.Read())
             {
                 dgvName.Rows.Add(myReader["DATE_FORMAT(pq_date, '%m/%d/%Y')"].ToString(),
                                  myReader["company_name"].ToString(),
-                                 myReader["pq_t.pq_no"].ToString(),
+                                 myReader["pq_no"].ToString(),
+                                 myReader["CONCAT(DATE_FORMAT(from_date, '%m/%d/%Y'), ' - ', DATE_FORMAT(to_date, '%m/%d/%Y'))"].ToString());
+            }
+            DisconnectFromSQL();
+        }
+
+        public void SelectAllPQSPR(DataGridView dgvName)
+        {
+            ConnectToSQL();
+            command = new MySqlCommand("SELECT DISTINCT DATE_FORMAT(pq_date, '%m/%d/%Y'), company_name, pq_t.pq_no, CONCAT(DATE_FORMAT(from_date, '%m/%d/%Y'), ' - ', DATE_FORMAT(to_date, '%m/%d/%Y')) " +
+                                       "FROM customer_t, pq_t, po_t " +
+                                       "WHERE pq_t.customer_id = customer_t.customer_id " +
+                                       "ORDER BY pq_t.pq_no DESC;", connection);
+            myReader = command.ExecuteReader();
+            while (myReader.Read())
+            {
+                dgvName.Rows.Add(myReader["DATE_FORMAT(pq_date, '%m/%d/%Y')"].ToString(),
+                                 myReader["company_name"].ToString(),
+                                 myReader["pq_no"].ToString(),
                                  myReader["CONCAT(DATE_FORMAT(from_date, '%m/%d/%Y'), ' - ', DATE_FORMAT(to_date, '%m/%d/%Y'))"].ToString());
             }
             DisconnectFromSQL();
@@ -645,14 +862,65 @@ namespace REIC_POMS
 
         public void SelectPendingPO(DataGridView dgvName)
         {
-
+            ConnectToSQL();
+            command = new MySqlCommand("SELECT DATE_FORMAT(order_date, '%m/%d/%Y'), DATE_FORMAT(required_delivery_date, '%m/%d/%Y'), company_name, po_no, supplier_name " +
+                                       "FROM po_t, customer_t, supplier_t " +
+                                       "WHERE so_no IS NULL " +
+                                       "AND po_t.customer_id = customer_t.customer_id " +
+                                       "AND po_t.supplier_id = supplier_t.supplier_id " +
+                                       "ORDER BY po_no DESC;", connection);
+            myReader = command.ExecuteReader();
+            while (myReader.Read())
+            {
+                dgvName.Rows.Add(myReader["DATE_FORMAT(order_date, '%m/%d/%Y')"].ToString(),
+                                 myReader["DATE_FORMAT(required_delivery_date, '%m/%d/%Y')"].ToString(),
+                                 myReader["company_name"].ToString(),
+                                 myReader["po_no"].ToString(),
+                                 myReader["supplier_name"].ToString());
+            }
+            DisconnectFromSQL();
         }
 
         public void SelectCompletedPO(DataGridView dgvName)
         {
-
+            ConnectToSQL();
+            command = new MySqlCommand("SELECT DATE_FORMAT(order_date, '%m/%d/%Y'), DATE_FORMAT(required_delivery_date, '%m/%d/%Y'), company_name, po_no, supplier_name " +
+                                       "FROM po_t, customer_t, supplier_t " +
+                                       "WHERE so_no IS NOT NULL " +
+                                       "AND po_t.customer_id = customer_t.customer_id " +
+                                       "AND po_t.supplier_id = supplier_t.supplier_id " +
+                                       "ORDER BY po_no DESC;", connection);
+            myReader = command.ExecuteReader();
+            while (myReader.Read())
+            {
+                dgvName.Rows.Add(myReader["DATE_FORMAT(order_date, '%m/%d/%Y')"].ToString(),
+                                 myReader["DATE_FORMAT(required_delivery_date, '%m/%d/%Y')"].ToString(),
+                                 myReader["company_name"].ToString(),
+                                 myReader["po_no"].ToString(),
+                                 myReader["supplier_name"].ToString());
+            }
+            DisconnectFromSQL();
         }
 
+        public void SelectAllPOSPR(DataGridView dgvName)
+        {
+            ConnectToSQL();
+            command = new MySqlCommand("SELECT DATE_FORMAT(order_date, '%m/%d/%Y'), DATE_FORMAT(required_delivery_date, '%m/%d/%Y'), company_name, po_no, supplier_name " +
+                                       "FROM po_t, customer_t, supplier_t " +
+                                       "WHERE po_t.customer_id = customer_t.customer_id " +
+                                       "AND po_t.supplier_id = supplier_t.supplier_id " +
+                                       "ORDER BY po_no DESC;", connection);
+            myReader = command.ExecuteReader();
+            while (myReader.Read())
+            {
+                dgvName.Rows.Add(myReader["DATE_FORMAT(order_date, '%m/%d/%Y')"].ToString(),
+                                 myReader["DATE_FORMAT(required_delivery_date, '%m/%d/%Y')"].ToString(),
+                                 myReader["company_name"].ToString(),
+                                 myReader["po_no"].ToString(),
+                                 myReader["supplier_name"].ToString());
+            }
+            DisconnectFromSQL();
+        }
 
         //---------------------
         //  INSERT STATEMENTS |
@@ -664,11 +932,11 @@ namespace REIC_POMS
                 ConnectToSQL();
                 command = new MySqlCommand(insertStatement, connection);
                 command.ExecuteNonQuery();
-                MessageBox.Show("Save successful.");
+                //MessageBox.Show("Save successful.");
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                //MessageBox.Show(ex.Message);
             }
             DisconnectFromSQL();
         }
@@ -741,7 +1009,7 @@ namespace REIC_POMS
 
         public void InsertRFQOrderLine(RFQ_OrderLine rol)
         {
-            MessageBox.Show("Insert Order Line");
+            //MessageBox.Show("Insert Order Line");
             Insert(string.Format("INSERT INTO rfq_order_line_t " +
                 "(rfq_no, part_number, quantity) " +
                 "VALUES ('{0}', '{1}', {2});", rol.RFQNo, rol.PartNumber, rol.Quantity));
@@ -810,11 +1078,11 @@ namespace REIC_POMS
                 ConnectToSQL();
                 command = new MySqlCommand(updateStatement, connection);
                 command.ExecuteNonQuery();
-                MessageBox.Show("Update successful.");
+                //MessageBox.Show("Update successful.");
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                //MessageBox.Show(ex.Message);
             }
             DisconnectFromSQL();
         }

@@ -43,7 +43,45 @@ namespace REIC_POMS
             //---SELECT Statements
             reicpomsds = new reicpomsDataSet();
 
-            //Data from ALL supplier_t (Needed to avoid a ContstraintException in selectPendingRFQ)
+            //Data from RFQ Suppliers
+            //Old, slower: string selectAllSuppliers = "SELECT * FROM supplier_t;"; --> Data from ALL supplier_t (Needed to avoid a ContstraintException in selectPendingRFQ)
+            string selectAllSuppliers = string.Format("SELECT DISTINCT supplier_t.* " +
+                                                      "FROM supplier_t, rfq_t " +
+                                                      "WHERE pq_no IS NULL " +
+                                                      "AND rfq_t.supplier_id = supplier_t.supplier_id " +
+                                                      "ORDER BY rfq_no DESC;");
+            adapter = new MySqlDataAdapter(selectAllSuppliers, connection);
+            adapter.Fill(reicpomsds, "supplier_t");
+
+            //Data from RFQ Customers
+            //Old, slower: string selectAllCustomers = "SELECT * FROM customer_t;"; --> Data from ALL customer_t (Needed to avoid a ContstraintException in selectRFQCustomer)
+            string selectAllCustomers = string.Format("SELECT DISTINCT customer_t.* " +
+                                                      "FROM customer_t, rfq_t " +
+                                                      "WHERE pq_no IS NULL " +
+                                                      "AND rfq_t.customer_id = customer_t.customer_id " +
+                                                      "ORDER BY rfq_no DESC;");
+            adapter = new MySqlDataAdapter(selectAllCustomers, connection);
+            adapter.Fill(reicpomsds, "customer_t");
+
+            //Data from rfq_t
+            string selectPendingRFQ = "SELECT * FROM rfq_t WHERE pq_no IS NULL ORDER BY rfq_no DESC;";
+            adapter = new MySqlDataAdapter(selectPendingRFQ, connection);
+            adapter.Fill(reicpomsds, "rfq_t");
+
+            connection.Close();
+
+            //---INSTANTIATE CRYSTAL REPORT
+            SPR_RFQPending rfqpending = new SPR_RFQPending();
+            rfqpending.Load();
+            rfqpending.SetDataSource(reicpomsds); //Added a code snippet in app.config file. If else, will result to a System.IOFileNotFoundException error.
+            string currentDateTime = DateTime.Now.ToString("yyyy-MM-dd hhmmtt");
+            string fileName = "C:\\REIC Files\\Sales Performance Report & Summary\\Requests for Price Quotation - Pending\\Pending RFQ (" + currentDateTime + ").pdf";
+            rfqpending.ExportToDisk(ExportFormatType.PortableDocFormat, fileName);
+            MessageBox.Show("A PDF file of this report on pending requests for price quotation can be found in C:\\REIC Files\\Sales Performance Report & Summary\\\nRequests for Price Quotation - Pending.");
+            CrystalReportViewer.ReportSource = rfqpending; //Display SPR_RFQPending.rpt in the print preview
+
+            //---OLD SELECT STATEMENTS
+            /*//Data from ALL supplier_t (Needed to avoid a ContstraintException in selectPendingRFQ)
             string selectAllSuppliers = "SELECT * FROM supplier_t;";
             adapter = new MySqlDataAdapter(selectAllSuppliers, connection);
             adapter.Fill(reicpomsds, "supplier_t");
@@ -59,32 +97,17 @@ namespace REIC_POMS
                                                      "WHERE pq_no IS NULL " +
                                                      "AND rfq_t.customer_id = customer_t.customer_id;");
             adapter = new MySqlDataAdapter(selectRFQCustomer, connection);
-            adapter.Fill(reicpomsds, "customer_t"); //Overwrites the customer_t
+            adapter.Fill(reicpomsds, "customer_t"); //Overwrites the customer_t*/
 
-            //Data from rfq_t
-            string selectPendingRFQ = "SELECT * FROM rfq_t WHERE pq_no IS NULL;";
-            adapter = new MySqlDataAdapter(selectPendingRFQ, connection);
-            adapter.Fill(reicpomsds, "rfq_t");
+            //SelectPendingRFQ
 
             //Data from supplier_t
-            string selectRFQSupplier = string.Format("SELECT supplier_t.supplier_id, supplier_name, contact_person, contact_number, email_address, address " +
+            /*string selectRFQSupplier = string.Format("SELECT supplier_t.supplier_id, supplier_name, contact_person, contact_number, email_address, address " +
                                                      "FROM rfq_t, supplier_t " +
                                                      "WHERE pq_no IS NULL " +
                                                      "AND rfq_t.supplier_id = supplier_t.supplier_id;");
             adapter = new MySqlDataAdapter(selectRFQSupplier, connection);
-            adapter.Fill(reicpomsds, "supplier_t"); //Overwrites the supplier_t
-
-            connection.Close();
-
-            //---INSTANTIATE CRYSTAL REPORT
-            SPR_RFQPending rfqpending = new SPR_RFQPending();
-            rfqpending.Load();
-            rfqpending.SetDataSource(reicpomsds); //Added a code snippet in app.config file. If else, will result to a System.IOFileNotFoundException error.
-            string currentDateTime = DateTime.Now.ToString("yyyy-MM-dd hhmmtt");
-            string fileName = "C:\\REIC Files\\Report - Pending RFQ\\Pending RFQ (" + currentDateTime + ").pdf";
-            rfqpending.ExportToDisk(ExportFormatType.PortableDocFormat, fileName);
-            MessageBox.Show("A PDF file of this report on pending requests for price quotation can be found in \nC:\\REIC Files\\Report - Pending RFQ.");
-            CrystalReportViewer.ReportSource = rfqpending; //Display SPR_RFQPending.rpt in the print preview
+            adapter.Fill(reicpomsds, "supplier_t"); //Overwrites the supplier_t*/
         }
     }
 }

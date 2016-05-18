@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PQ_ViewForm));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabItemDetails = new System.Windows.Forms.TabControl();
@@ -39,6 +39,7 @@
             this.outputCustomerAddress = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.outputToDate = new System.Windows.Forms.Label();
+            this.outputRFQNo = new System.Windows.Forms.Label();
             this.outputCustomerEmail = new System.Windows.Forms.Label();
             this.outputContactNumber = new System.Windows.Forms.Label();
             this.outputContactPerson = new System.Windows.Forms.Label();
@@ -61,6 +62,7 @@
             this.outputInFavorOf = new System.Windows.Forms.Label();
             this.outputPaymentTerms = new System.Windows.Forms.Label();
             this.lblValPeriod = new System.Windows.Forms.Label();
+            this.lblRFQNumber = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
             this.lblPQNumber = new System.Windows.Forms.Label();
             this.lblQuotationDetails = new System.Windows.Forms.Label();
@@ -80,8 +82,6 @@
             this.lblPQItems = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnCreatePO = new System.Windows.Forms.Button();
-            this.lblRFQNumber = new System.Windows.Forms.Label();
-            this.outputRFQNo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabItemDetails.SuspendLayout();
             this.TabPage1.SuspendLayout();
@@ -194,6 +194,16 @@
             this.outputToDate.Size = new System.Drawing.Size(75, 19);
             this.outputToDate.TabIndex = 40;
             this.outputToDate.Text = "11/05/2017";
+            // 
+            // outputRFQNo
+            // 
+            this.outputRFQNo.AutoSize = true;
+            this.outputRFQNo.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.outputRFQNo.Location = new System.Drawing.Point(223, 125);
+            this.outputRFQNo.Name = "outputRFQNo";
+            this.outputRFQNo.Size = new System.Drawing.Size(37, 19);
+            this.outputRFQNo.TabIndex = 39;
+            this.outputRFQNo.Text = "2327";
             // 
             // outputCustomerEmail
             // 
@@ -417,6 +427,16 @@
             this.lblValPeriod.TabIndex = 4;
             this.lblValPeriod.Text = "VALIDITY PERIOD OF";
             // 
+            // lblRFQNumber
+            // 
+            this.lblRFQNumber.AutoSize = true;
+            this.lblRFQNumber.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblRFQNumber.Location = new System.Drawing.Point(35, 125);
+            this.lblRFQNumber.Name = "lblRFQNumber";
+            this.lblRFQNumber.Size = new System.Drawing.Size(57, 18);
+            this.lblRFQNumber.TabIndex = 3;
+            this.lblRFQNumber.Text = "RFQ NO.";
+            // 
             // lblDate
             // 
             this.lblDate.AutoSize = true;
@@ -483,23 +503,23 @@
             this.dgvPQItems.AllowUserToDeleteRows = false;
             this.dgvPQItems.AllowUserToResizeColumns = false;
             this.dgvPQItems.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Source Sans Pro", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(107)))), ((int)(((byte)(58)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            this.dgvPQItems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Source Sans Pro", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(107)))), ((int)(((byte)(58)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvPQItems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvPQItems.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(249)))));
             this.dgvPQItems.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvPQItems.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPQItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPQItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvPQItems.ColumnHeadersHeight = 24;
             this.dgvPQItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvPQItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -516,12 +536,12 @@
             this.dgvPQItems.ReadOnly = true;
             this.dgvPQItems.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvPQItems.RowHeadersVisible = false;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(249)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Source Sans Pro", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(107)))), ((int)(((byte)(58)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
-            this.dgvPQItems.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(249)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Source Sans Pro", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(107)))), ((int)(((byte)(58)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvPQItems.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvPQItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPQItems.Size = new System.Drawing.Size(775, 218);
             this.dgvPQItems.TabIndex = 69;
@@ -577,6 +597,7 @@
             this.btnGeneratePDF.Size = new System.Drawing.Size(40, 40);
             this.btnGeneratePDF.TabIndex = 16;
             this.btnGeneratePDF.TabStop = false;
+            this.btnGeneratePDF.Click += new System.EventHandler(this.btnGeneratePDF_Click);
             // 
             // btnCancel
             // 
@@ -655,26 +676,6 @@
             this.btnCreatePO.Text = "CREATE PURCHASE ORDER";
             this.btnCreatePO.UseVisualStyleBackColor = false;
             this.btnCreatePO.Click += new System.EventHandler(this.btnCreatePO_Click);
-            // 
-            // lblRFQNumber
-            // 
-            this.lblRFQNumber.AutoSize = true;
-            this.lblRFQNumber.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.lblRFQNumber.Location = new System.Drawing.Point(35, 125);
-            this.lblRFQNumber.Name = "lblRFQNumber";
-            this.lblRFQNumber.Size = new System.Drawing.Size(57, 18);
-            this.lblRFQNumber.TabIndex = 3;
-            this.lblRFQNumber.Text = "RFQ NO.";
-            // 
-            // outputRFQNo
-            // 
-            this.outputRFQNo.AutoSize = true;
-            this.outputRFQNo.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.outputRFQNo.Location = new System.Drawing.Point(223, 125);
-            this.outputRFQNo.Name = "outputRFQNo";
-            this.outputRFQNo.Size = new System.Drawing.Size(37, 19);
-            this.outputRFQNo.TabIndex = 39;
-            this.outputRFQNo.Text = "2327";
             // 
             // PQ_ViewForm
             // 

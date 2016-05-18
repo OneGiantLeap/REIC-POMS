@@ -257,7 +257,7 @@ namespace REIC_POMS
                     //Save to rfq_order_line_t database
                     sql.InsertRFQOrderLine(rol);
 
-                    MessageBox.Show("OrderLine added to comprehensive list: " + rol.RFQNo + ", " + rol.PartNumber + ", " + rol.Quantity);
+                    //MessageBox.Show("OrderLine added to comprehensive list: " + rol.RFQNo + ", " + rol.PartNumber + ", " + rol.Quantity);
                 }
 
                 //---DISPLAY the newly created RFQ in the Main Screen DGV
@@ -270,9 +270,10 @@ namespace REIC_POMS
                 rfqps.ShowDialog();
 
                 //---MESSAGEBOX FOR DEBUG PURPOSES
-                MessageBox.Show("RFQ CREATED: " + crfq.RFQNo + ", " + crfq.RequestDate + ", " + crfq.PaymentTerms + ", " + 
+                /*MessageBox.Show("RFQ CREATED: " + crfq.RFQNo + ", " + crfq.RequestDate + ", " + crfq.PaymentTerms + ", " + 
                                 crfq.DeliveryTerms + ", " + "Customer " + crfq.CustomerIDFK + ", " + "Supplier " + crfq.SupplierIDFK + ", "
                                 + "With " + crfq.RFQOrderLineList.Count + " Orderlines. Inserted to ArrayList index [" + (rfqList.Count - 1) + "]");
+                */
             }
 
         }
@@ -303,8 +304,8 @@ namespace REIC_POMS
                         rfqvf.RequestDateToView = r.RequestDate;
                         rfqvf.PaymentTermsToView = r.PaymentTerms;
                         rfqvf.DeliveryTermsToView = r.DeliveryTerms;
-                        rfqvf.CustomerNameToView = dgvRFQ.SelectedRows[0].Cells[2].Value.ToString();
-                        rfqvf.SupplierNameToView = dgvRFQ.SelectedRows[0].Cells[3].Value.ToString();
+                        rfqvf.CustomerNameToView = dgvRFQ.SelectedRows[0].Cells["Customer"].Value.ToString();
+                        rfqvf.SupplierNameToView = dgvRFQ.SelectedRows[0].Cells["Supplier"].Value.ToString();
 
                         //Retrieve other Supplier Details
                         Supplier s = sql.SelectSupplierDetails(r.SupplierID);
@@ -334,11 +335,39 @@ namespace REIC_POMS
         //---------------------------
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            //INSERT SEARCH MAGIC HERE
+            //Wrong Inputs
+            if (txtSearch.Text == "Search for...")
+            {
+                MessageBox.Show("Please input something to search for.", "Nothing to Search", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (txtSearch.Text == null)
+            {
+                MessageBox.Show("There is nothing to search.", "Blank Field", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (cbbFilterBy.Text == "Filter by...")
+            {
+                MessageBox.Show("Please select a filter option.", "No Filter Option", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            //Valid
+            sql.SearchRFQ(cbbFilterBy.Text, txtSearch.Text, dgvRFQ);
+            if (dgvRFQ.Rows.Count == 0)
+            {
+                MessageBox.Show("No such request for price quotation was found.", "Empty Search Results", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void btnClearSearch_Click(object sender, EventArgs e)
-        {
+        { //Minor flaw: If you click ClearSearch multiple times, the dgv gets populated again, even though nothing was searched. Hehe.
+            dgvRFQ.Rows.Clear();
+            sql.SelectAllRFQDGV(dgvRFQ); //Populate DGV
+
+            //Sort datagridview by LATEST RFQ Number
+            dgvRFQ.Sort(dgvRFQ.Columns["RFQNo"], ListSortDirection.Descending);
+
             txtSearch.Text = "Search for...";
             cbbFilterBy.SelectedIndex = 0; //Sets the combobox value to "Filter by..."
         }

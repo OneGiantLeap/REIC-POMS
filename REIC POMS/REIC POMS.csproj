@@ -168,11 +168,23 @@
       <DependentUpon>PQ_MainScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="PQ_OrderLine.cs" />
+    <Compile Include="PQ_Printout_IFOSupplier.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PQ_Printout_IFOSupplier.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="PQ_PrintScreen.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PQ_PrintScreen.Designer.cs">
       <DependentUpon>PQ_PrintScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PQ_PrintScreen_IFOSupplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PQ_PrintScreen_IFOSupplier.Designer.cs">
+      <DependentUpon>PQ_PrintScreen_IFOSupplier.cs</DependentUpon>
     </Compile>
     <Compile Include="PQ_ViewForm.cs">
       <SubType>Form</SubType>
@@ -243,11 +255,29 @@
     <Compile Include="SPR_MainScreen.Designer.cs">
       <DependentUpon>SPR_MainScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="SPR_POAll.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SPR_POAll.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SPR_POAll_PrintScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SPR_POAll_PrintScreen.Designer.cs">
+      <DependentUpon>SPR_POAll_PrintScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="SPR_POCompleted.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SPR_POCompleted.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SPR_POCompleted_PrintScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SPR_POCompleted_PrintScreen.Designer.cs">
+      <DependentUpon>SPR_POCompleted_PrintScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="SPR_POPending.cs">
       <AutoGen>True</AutoGen>
@@ -255,17 +285,59 @@
       <DependentUpon>SPR_POPending.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="SPR_POPending_PrintScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SPR_POPending_PrintScreen.Designer.cs">
+      <DependentUpon>SPR_POPending_PrintScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SPR_PQAll.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SPR_PQAll.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SPR_PQAll_PrintScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SPR_PQAll_PrintScreen.Designer.cs">
+      <DependentUpon>SPR_PQAll_PrintScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="SPR_PQCompleted.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SPR_PQCompleted.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="SPR_PQCompleted_PrintScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SPR_PQCompleted_PrintScreen.Designer.cs">
+      <DependentUpon>SPR_PQCompleted_PrintScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="SPR_PQPending.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SPR_PQPending.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SPR_PQPending_PrintScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SPR_PQPending_PrintScreen.Designer.cs">
+      <DependentUpon>SPR_PQPending_PrintScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SPR_RFQAll.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SPR_RFQAll.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SPR_RFQAll_PrintScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SPR_RFQAll_PrintScreen.Designer.cs">
+      <DependentUpon>SPR_RFQAll_PrintScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="SPR_RFQCompleted.cs">
       <AutoGen>True</AutoGen>
@@ -367,8 +439,15 @@
     <EmbeddedResource Include="PQ_MainScreen.resx">
       <DependentUpon>PQ_MainScreen.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PQ_Printout_IFOSupplier.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PQ_Printout_IFOSupplier.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="PQ_PrintScreen.resx">
       <DependentUpon>PQ_PrintScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PQ_PrintScreen_IFOSupplier.resx">
+      <DependentUpon>PQ_PrintScreen_IFOSupplier.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PQ_ViewForm.resx">
       <DependentUpon>PQ_ViewForm.cs</DependentUpon>
@@ -408,21 +487,54 @@
     <EmbeddedResource Include="SPR_MainScreen.resx">
       <DependentUpon>SPR_MainScreen.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SPR_POAll.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SPR_POAll.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SPR_POAll_PrintScreen.resx">
+      <DependentUpon>SPR_POAll_PrintScreen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SPR_POCompleted.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>SPR_POCompleted.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SPR_POCompleted_PrintScreen.resx">
+      <DependentUpon>SPR_POCompleted_PrintScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SPR_POPending.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>SPR_POPending.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="SPR_POPending_PrintScreen.resx">
+      <DependentUpon>SPR_POPending_PrintScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SPR_PQAll.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SPR_PQAll.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SPR_PQAll_PrintScreen.resx">
+      <DependentUpon>SPR_PQAll_PrintScreen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SPR_PQCompleted.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>SPR_PQCompleted.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="SPR_PQCompleted_PrintScreen.resx">
+      <DependentUpon>SPR_PQCompleted_PrintScreen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SPR_PQPending.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>SPR_PQPending.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SPR_PQPending_PrintScreen.resx">
+      <DependentUpon>SPR_PQPending_PrintScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SPR_RFQAll.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SPR_RFQAll.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SPR_RFQAll_PrintScreen.resx">
+      <DependentUpon>SPR_RFQAll_PrintScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SPR_RFQCompleted.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -450,6 +562,7 @@
     <EmbeddedResource Include="Supplier_ViewForm.resx">
       <DependentUpon>Supplier_ViewForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
