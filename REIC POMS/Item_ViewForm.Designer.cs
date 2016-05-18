@@ -139,9 +139,9 @@
             this.lblMarkup.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.lblMarkup.Location = new System.Drawing.Point(42, 243);
             this.lblMarkup.Name = "lblMarkup";
-            this.lblMarkup.Size = new System.Drawing.Size(147, 18);
+            this.lblMarkup.Size = new System.Drawing.Size(172, 18);
             this.lblMarkup.TabIndex = 27;
-            this.lblMarkup.Text = "MARK-UP PERCENTAGE";
+            this.lblMarkup.Text = "MARK-UP PERCENTAGE (%)";
             // 
             // lblSuppPrice
             // 

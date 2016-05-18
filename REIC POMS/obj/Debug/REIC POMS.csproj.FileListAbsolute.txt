@@ -150,3 +150,23 @@ C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC POMS.csp
 C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC POMS.exe
 C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC POMS.pdb
 C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC POMS.csprojResolveAssemblyReference.cache
+C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\bin\Debug\CrystalDecisions.Windows.Forms.dll
+C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\bin\Debug\FlashControlV71.dll
+C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\bin\Debug\ShockwaveFlashObjects.dll
+C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.RFQ_PrintScreen.resources
+C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\bin\Debug\MySqlBackup.dll
+C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC POMS.csprojResolveAssemblyReference.cache
+C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.PO_PrintScreen.resources
+C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.PQ_PrintScreen.resources
+C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.SPR_RFQPending_PrintScreen.resources
+C:\Users\Gayle Chua\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.SPR_RFQCompleted_PrintScreen.resources
+C:\Users\Ariel\Documents\GitHub\REIC-POMS\REIC POMS\bin\Debug\MySqlBackup.dll
+C:\Users\Ariel\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.PO_PrintScreen.resources
+C:\Users\Ariel\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.PQ_PrintScreen.resources
+C:\Users\Ariel\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.RFQ_PrintScreen.resources
+C:\Users\Ariel\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.SPR_RFQCompleted_PrintScreen.resources
+C:\Users\Ariel\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.SPR_RFQPending_PrintScreen.resources
+C:\Users\Ariel\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.PO_ViewForm.resources
+C:\Users\Ariel\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC POMS.csprojResolveAssemblyReference.cache
+C:\Users\Ariel\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.PO_CreateForm.resources
+C:\Users\Ariel\Documents\GitHub\REIC-POMS\REIC POMS\obj\Debug\REIC_POMS.PO_CreateFromPQ.resources
