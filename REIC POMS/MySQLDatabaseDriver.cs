@@ -35,7 +35,7 @@ namespace REIC_POMS
 	    // IMPORTANT: Please change the password depending on your MySQL configuration.
         public void ConnectToSQL() //Activate the connection between VS and MySQL
         {
-            connection = new MySqlConnection("server=localhost; database=reicpoms; user=root; password=root; convert zero datetime=true; allow zero datetime=true;");
+            connection = new MySqlConnection("server=localhost; database=reicpoms; user=root; password=; convert zero datetime=true; allow zero datetime=true;");
             connection.Open();
 
             //DEBUG MESSAGES

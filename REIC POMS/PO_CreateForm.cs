@@ -276,7 +276,7 @@ namespace REIC_POMS
                     DataGridViewRow row = dgvPOItems.Rows[i]; //Store row number
                     poList.Add(new PO_OrderLine(txtPQNumber.Text,
                                                            row.Cells["POItemPartNo"].Value.ToString(),
-                                                           double.Parse(row.Cells["UnitREICPrice"].Value.ToString()),
+                                                           double.Parse(row.Cells["SupplierREICPrice"].Value.ToString()),
                                                            int.Parse(row.Cells["Qty"].Value.ToString()),
                                                            double.Parse(row.Cells["TotalItem"].Value.ToString())));
                 }
