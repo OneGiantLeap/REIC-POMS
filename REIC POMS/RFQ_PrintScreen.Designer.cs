@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.CrystalReportViewer = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.RFQPrintout1 = new REIC_POMS.RFQPrintout();
+            this.RFQ_Printout1 = new REIC_POMS.RFQ_Printout();
             this.SuspendLayout();
             // 
             // CrystalReportViewer
@@ -41,7 +41,7 @@
             this.CrystalReportViewer.Font = new System.Drawing.Font("Source Sans Pro", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CrystalReportViewer.Location = new System.Drawing.Point(0, 0);
             this.CrystalReportViewer.Name = "CrystalReportViewer";
-            this.CrystalReportViewer.ReportSource = this.RFQPrintout1;
+            this.CrystalReportViewer.ReportSource = this.RFQ_Printout1;
             this.CrystalReportViewer.ShowGroupTreeButton = false;
             this.CrystalReportViewer.ShowLogo = false;
             this.CrystalReportViewer.ShowParameterPanelButton = false;
@@ -68,6 +68,7 @@
         #endregion
 
         private CrystalDecisions.Windows.Forms.CrystalReportViewer CrystalReportViewer;
-        private RFQPrintout RFQPrintout1;
+        private RFQ_Printout RFQPrintout1;
+        private RFQ_Printout RFQ_Printout1;
     }
 }

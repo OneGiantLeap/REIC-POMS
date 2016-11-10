@@ -30,14 +30,8 @@ namespace REIC_POMS
         private void SPR_RFQCompleted_PrintScreen_Load(object sender, EventArgs e)
         {
             //---MYSQL CONNECTION
-            connection = new MySqlConnection("server=localhost; database=reicpoms; user=root; password=; convert zero datetime=true; allow zero datetime=true;");
+            connection = new MySqlConnection(ConnectionStringManager.reicpomsConnection.ConnectionString);
             connection.Open();
-
-            //DEBUG MESSAGES
-            if (connection.State == System.Data.ConnectionState.Open)
-            { MessageBox.Show("Crystal Report: Connection to SQL successful!"); }
-            else
-            { MessageBox.Show("Crystal Report: Connection to SQL failed!"); }
 
             //---SELECT Statements
             reicpomsds = new reicpomsDataSet();
@@ -79,52 +73,6 @@ namespace REIC_POMS
 
             MessageBox.Show("A PDF file of this report on completed requests for price quotation can be found in C:\\REIC Files\\Sales Performance Report & Summary\\\nRequests for Price Quotation - Completed.");
             CrystalReportViewer.ReportSource = rfqc; //Display SPR_RFQPending.rpt in the print preview
-
-
-            //---OLD SELECT STATEMENTS
-            //Old, slower: string selectAllSuppliers = "SELECT * FROM supplier_t;"; --> Data from ALL supplier_t (Needed to avoid a ContstraintException in selectPendingRFQ)
-
-            //Old, slower: string selectAllCustomers = "SELECT * FROM customer_t;"; --> Data from ALL customer_t (Needed to avoid a ContstraintException in selectRFQCustomer)
-
-            //NOTE: Was able to trim the supplier_t and customer_t results, so no need for overwriting
-            //Data from customer
-            /*string selectRFQCustomer = string.Format("SELECT customer_t.customer_id, business_name_style, tin_number, company_name, contact_person, contact_number, account_number, email_address, address " +
-                                                     "FROM rfq_t, customer_t " +
-                                                     "WHERE pq_no IS NOT NULL " +
-                                                     "AND rfq_t.customer_id = customer_t.customer_id;");
-            adapter = new MySqlDataAdapter(selectRFQCustomer, connection);
-            adapter.Fill(reicpomsds, "customer_t"); //Overwrites the customer_t*/
-
-            //NOTE: Was able to trim the supplier_t and customer_t results, so no need for overwriting
-            //Data from supplier_t
-            /*string selectRFQSupplier = string.Format("SELECT supplier_t.supplier_id, supplier_name, contact_person, contact_number, email_address, address " +
-                                                     "FROM rfq_t, supplier_t " +
-                                                     "WHERE pq_no IS NOT NULL " +
-                                                     "AND rfq_t.supplier_id = supplier_t.supplier_id;");
-            adapter = new MySqlDataAdapter(selectRFQSupplier, connection);
-            adapter.Fill(reicpomsds, "supplier_t"); //Overwrites the supplier_t*/
-
-            //---ANOTHER EXPORT CODE
-            //Fluffier code (works the same way, though)
-            /*try
-            {
-                ExportOptions CrExportOptions;
-                DiskFileDestinationOptions CrDiskFileDestinationOptions = new DiskFileDestinationOptions();
-                PdfRtfWordFormatOptions CrFormatTypeOptions = new PdfRtfWordFormatOptions();
-                CrDiskFileDestinationOptions.DiskFileName = filePath;
-                CrExportOptions = rfqc.ExportOptions;
-                {
-                    CrExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
-                    CrExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
-                    CrExportOptions.DestinationOptions = CrDiskFileDestinationOptions;
-                    CrExportOptions.FormatOptions = CrFormatTypeOptions;
-                }
-                rfqc.Export();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }*/
         }
     }
 }

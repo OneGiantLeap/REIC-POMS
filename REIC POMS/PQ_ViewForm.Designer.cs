@@ -31,7 +31,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PQ_ViewForm));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabItemDetails = new System.Windows.Forms.TabControl();
             this.TabPage1 = new System.Windows.Forms.TabPage();
@@ -39,7 +38,6 @@
             this.outputCustomerAddress = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.outputToDate = new System.Windows.Forms.Label();
-            this.outputRFQNo = new System.Windows.Forms.Label();
             this.outputCustomerEmail = new System.Windows.Forms.Label();
             this.outputContactNumber = new System.Windows.Forms.Label();
             this.outputContactPerson = new System.Windows.Forms.Label();
@@ -62,7 +60,6 @@
             this.outputInFavorOf = new System.Windows.Forms.Label();
             this.outputPaymentTerms = new System.Windows.Forms.Label();
             this.lblValPeriod = new System.Windows.Forms.Label();
-            this.lblRFQNumber = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
             this.lblPQNumber = new System.Windows.Forms.Label();
             this.lblQuotationDetails = new System.Windows.Forms.Label();
@@ -75,18 +72,19 @@
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TotalItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnGeneratePDF = new System.Windows.Forms.PictureBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSaveGeneratePDF = new System.Windows.Forms.Button();
             this.lblTotal = new System.Windows.Forms.Label();
             this.lblPQItems = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
-            this.btnCreatePO = new System.Windows.Forms.Button();
+            this.btnCreatePO = new System.Windows.Forms.PictureBox();
+            this.btnGeneratePDF = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabItemDetails.SuspendLayout();
             this.TabPage1.SuspendLayout();
             this.TabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPQItems)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCreatePO)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnGeneratePDF)).BeginInit();
             this.SuspendLayout();
             // 
@@ -117,7 +115,6 @@
             this.TabPage1.Controls.Add(this.outputCustomerAddress);
             this.TabPage1.Controls.Add(this.panel1);
             this.TabPage1.Controls.Add(this.outputToDate);
-            this.TabPage1.Controls.Add(this.outputRFQNo);
             this.TabPage1.Controls.Add(this.outputCustomerEmail);
             this.TabPage1.Controls.Add(this.outputContactNumber);
             this.TabPage1.Controls.Add(this.outputContactPerson);
@@ -140,7 +137,6 @@
             this.TabPage1.Controls.Add(this.outputInFavorOf);
             this.TabPage1.Controls.Add(this.outputPaymentTerms);
             this.TabPage1.Controls.Add(this.lblValPeriod);
-            this.TabPage1.Controls.Add(this.lblRFQNumber);
             this.TabPage1.Controls.Add(this.lblDate);
             this.TabPage1.Controls.Add(this.lblPQNumber);
             this.TabPage1.Controls.Add(this.lblQuotationDetails);
@@ -156,7 +152,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(308, 158);
+            this.label1.Location = new System.Drawing.Point(308, 134);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(21, 18);
             this.label1.TabIndex = 77;
@@ -164,7 +160,7 @@
             // 
             // outputCustomerAddress
             // 
-            this.outputCustomerAddress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(249)))));
+            this.outputCustomerAddress.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.outputCustomerAddress.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.outputCustomerAddress.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.outputCustomerAddress.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -189,21 +185,11 @@
             // 
             this.outputToDate.AutoSize = true;
             this.outputToDate.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.outputToDate.Location = new System.Drawing.Point(223, 173);
+            this.outputToDate.Location = new System.Drawing.Point(223, 149);
             this.outputToDate.Name = "outputToDate";
             this.outputToDate.Size = new System.Drawing.Size(75, 19);
             this.outputToDate.TabIndex = 40;
             this.outputToDate.Text = "11/05/2017";
-            // 
-            // outputRFQNo
-            // 
-            this.outputRFQNo.AutoSize = true;
-            this.outputRFQNo.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.outputRFQNo.Location = new System.Drawing.Point(223, 125);
-            this.outputRFQNo.Name = "outputRFQNo";
-            this.outputRFQNo.Size = new System.Drawing.Size(37, 19);
-            this.outputRFQNo.TabIndex = 39;
-            this.outputRFQNo.Text = "2327";
             // 
             // outputCustomerEmail
             // 
@@ -249,7 +235,7 @@
             // 
             this.outputDeliveryTerms.AutoSize = true;
             this.outputDeliveryTerms.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.outputDeliveryTerms.Location = new System.Drawing.Point(222, 277);
+            this.outputDeliveryTerms.Location = new System.Drawing.Point(222, 253);
             this.outputDeliveryTerms.Name = "outputDeliveryTerms";
             this.outputDeliveryTerms.Size = new System.Drawing.Size(29, 19);
             this.outputDeliveryTerms.TabIndex = 33;
@@ -260,7 +246,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(35, 176);
+            this.label13.Location = new System.Drawing.Point(35, 152);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(158, 18);
             this.label13.TabIndex = 32;
@@ -270,7 +256,7 @@
             // 
             this.outputFromDate.AutoSize = true;
             this.outputFromDate.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.outputFromDate.Location = new System.Drawing.Point(223, 158);
+            this.outputFromDate.Location = new System.Drawing.Point(223, 134);
             this.outputFromDate.Name = "outputFromDate";
             this.outputFromDate.Size = new System.Drawing.Size(75, 19);
             this.outputFromDate.TabIndex = 31;
@@ -280,7 +266,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Source Sans Pro", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(193, 165);
+            this.label11.Location = new System.Drawing.Point(193, 141);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(0, 18);
             this.label11.TabIndex = 30;
@@ -370,7 +356,7 @@
             // 
             this.lblDeliveryTerms.AutoSize = true;
             this.lblDeliveryTerms.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.lblDeliveryTerms.Location = new System.Drawing.Point(35, 278);
+            this.lblDeliveryTerms.Location = new System.Drawing.Point(35, 254);
             this.lblDeliveryTerms.Name = "lblDeliveryTerms";
             this.lblDeliveryTerms.Size = new System.Drawing.Size(112, 18);
             this.lblDeliveryTerms.TabIndex = 9;
@@ -381,7 +367,7 @@
             // 
             this.lblInFavorOf.AutoSize = true;
             this.lblInFavorOf.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.lblInFavorOf.Location = new System.Drawing.Point(35, 245);
+            this.lblInFavorOf.Location = new System.Drawing.Point(35, 221);
             this.lblInFavorOf.Name = "lblInFavorOf";
             this.lblInFavorOf.Size = new System.Drawing.Size(82, 18);
             this.lblInFavorOf.TabIndex = 8;
@@ -391,7 +377,7 @@
             // 
             this.lblPaymentTerms.AutoSize = true;
             this.lblPaymentTerms.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.lblPaymentTerms.Location = new System.Drawing.Point(35, 213);
+            this.lblPaymentTerms.Location = new System.Drawing.Point(35, 189);
             this.lblPaymentTerms.Name = "lblPaymentTerms";
             this.lblPaymentTerms.Size = new System.Drawing.Size(110, 18);
             this.lblPaymentTerms.TabIndex = 7;
@@ -401,7 +387,7 @@
             // 
             this.outputInFavorOf.AutoSize = true;
             this.outputInFavorOf.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.outputInFavorOf.Location = new System.Drawing.Point(223, 245);
+            this.outputInFavorOf.Location = new System.Drawing.Point(223, 221);
             this.outputInFavorOf.Name = "outputInFavorOf";
             this.outputInFavorOf.Size = new System.Drawing.Size(82, 19);
             this.outputInFavorOf.TabIndex = 6;
@@ -411,7 +397,7 @@
             // 
             this.outputPaymentTerms.AutoSize = true;
             this.outputPaymentTerms.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.outputPaymentTerms.Location = new System.Drawing.Point(223, 213);
+            this.outputPaymentTerms.Location = new System.Drawing.Point(223, 189);
             this.outputPaymentTerms.Name = "outputPaymentTerms";
             this.outputPaymentTerms.Size = new System.Drawing.Size(37, 19);
             this.outputPaymentTerms.TabIndex = 5;
@@ -421,21 +407,11 @@
             // 
             this.lblValPeriod.AutoSize = true;
             this.lblValPeriod.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.lblValPeriod.Location = new System.Drawing.Point(35, 158);
+            this.lblValPeriod.Location = new System.Drawing.Point(35, 134);
             this.lblValPeriod.Name = "lblValPeriod";
             this.lblValPeriod.Size = new System.Drawing.Size(131, 18);
             this.lblValPeriod.TabIndex = 4;
             this.lblValPeriod.Text = "VALIDITY PERIOD OF";
-            // 
-            // lblRFQNumber
-            // 
-            this.lblRFQNumber.AutoSize = true;
-            this.lblRFQNumber.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.lblRFQNumber.Location = new System.Drawing.Point(35, 125);
-            this.lblRFQNumber.Name = "lblRFQNumber";
-            this.lblRFQNumber.Size = new System.Drawing.Size(57, 18);
-            this.lblRFQNumber.TabIndex = 3;
-            this.lblRFQNumber.Text = "RFQ NO.";
             // 
             // lblDate
             // 
@@ -470,9 +446,9 @@
             // 
             // TabPage2
             // 
+            this.TabPage2.Controls.Add(this.btnGeneratePDF);
             this.TabPage2.Controls.Add(this.lblAmount);
             this.TabPage2.Controls.Add(this.dgvPQItems);
-            this.TabPage2.Controls.Add(this.btnGeneratePDF);
             this.TabPage2.Controls.Add(this.btnCancel);
             this.TabPage2.Controls.Add(this.btnSaveGeneratePDF);
             this.TabPage2.Controls.Add(this.lblTotal);
@@ -589,16 +565,6 @@
             this.TotalItem.ReadOnly = true;
             this.TotalItem.Width = 95;
             // 
-            // btnGeneratePDF
-            // 
-            this.btnGeneratePDF.Image = ((System.Drawing.Image)(resources.GetObject("btnGeneratePDF.Image")));
-            this.btnGeneratePDF.Location = new System.Drawing.Point(761, 18);
-            this.btnGeneratePDF.Name = "btnGeneratePDF";
-            this.btnGeneratePDF.Size = new System.Drawing.Size(40, 40);
-            this.btnGeneratePDF.TabIndex = 16;
-            this.btnGeneratePDF.TabStop = false;
-            this.btnGeneratePDF.Click += new System.EventHandler(this.btnGeneratePDF_Click);
-            // 
             // btnCancel
             // 
             this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(107)))), ((int)(((byte)(58)))));
@@ -664,18 +630,26 @@
             // 
             // btnCreatePO
             // 
-            this.btnCreatePO.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(107)))), ((int)(((byte)(58)))));
-            this.btnCreatePO.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(63)))), ((int)(((byte)(1)))));
-            this.btnCreatePO.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCreatePO.Font = new System.Drawing.Font("Source Sans Pro", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.btnCreatePO.ForeColor = System.Drawing.Color.White;
-            this.btnCreatePO.Location = new System.Drawing.Point(508, 456);
+            this.btnCreatePO.BackgroundImage = global::REIC_POMS.Properties.Resources.ButtonCreatePOFromViewPQ;
+            this.btnCreatePO.Location = new System.Drawing.Point(483, 456);
             this.btnCreatePO.Name = "btnCreatePO";
-            this.btnCreatePO.Size = new System.Drawing.Size(225, 35);
-            this.btnCreatePO.TabIndex = 67;
-            this.btnCreatePO.Text = "CREATE PURCHASE ORDER";
-            this.btnCreatePO.UseVisualStyleBackColor = false;
-            this.btnCreatePO.Click += new System.EventHandler(this.btnCreatePO_Click);
+            this.btnCreatePO.Size = new System.Drawing.Size(250, 35);
+            this.btnCreatePO.TabIndex = 71;
+            this.btnCreatePO.TabStop = false;
+            this.btnCreatePO.MouseEnter += new System.EventHandler(this.btnCreatePO_MouseEnter);
+            this.btnCreatePO.MouseLeave += new System.EventHandler(this.btnCreatePO_MouseLeave);
+            // 
+            // btnGeneratePDF
+            // 
+            this.btnGeneratePDF.BackgroundImage = global::REIC_POMS.Properties.Resources.ButtonPDF;
+            this.btnGeneratePDF.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGeneratePDF.Location = new System.Drawing.Point(761, 18);
+            this.btnGeneratePDF.Name = "btnGeneratePDF";
+            this.btnGeneratePDF.Size = new System.Drawing.Size(40, 40);
+            this.btnGeneratePDF.TabIndex = 72;
+            this.btnGeneratePDF.TabStop = false;
+            this.btnGeneratePDF.MouseEnter += new System.EventHandler(this.btnGeneratePDF_MouseEnter);
+            this.btnGeneratePDF.MouseLeave += new System.EventHandler(this.btnGeneratePDF_MouseLeave);
             // 
             // PQ_ViewForm
             // 
@@ -699,6 +673,7 @@
             this.TabPage2.ResumeLayout(false);
             this.TabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPQItems)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCreatePO)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnGeneratePDF)).EndInit();
             this.ResumeLayout(false);
 
@@ -740,11 +715,9 @@
         internal System.Windows.Forms.Label outputToDate;
         internal System.Windows.Forms.Button btnCancel;
         internal System.Windows.Forms.Button btnSaveGeneratePDF;
-        private System.Windows.Forms.PictureBox btnGeneratePDF;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dgvPQItems;
-        private System.Windows.Forms.Button btnCreatePO;
         private System.Windows.Forms.TextBox outputCustomerAddress;
         private System.Windows.Forms.Label label1;
         internal System.Windows.Forms.Label lblAmount;
@@ -754,7 +727,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Qty;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalItem;
-        internal System.Windows.Forms.Label outputRFQNo;
-        internal System.Windows.Forms.Label lblRFQNumber;
+        private System.Windows.Forms.PictureBox btnCreatePO;
+        private System.Windows.Forms.PictureBox btnGeneratePDF;
     }
 }

@@ -74,8 +74,10 @@
             this.lblItemSelected = new System.Windows.Forms.Label();
             this.txtItemTotal = new System.Windows.Forms.TextBox();
             this.TabItemDetails = new System.Windows.Forms.TabPage();
+            this.btnSearch = new System.Windows.Forms.PictureBox();
+            this.txtSearchFor = new System.Windows.Forms.TextBox();
             this.btnClearItems = new System.Windows.Forms.Button();
-            this.btnRemove = new System.Windows.Forms.Button();
+            this.btnRemoveItem = new System.Windows.Forms.Button();
             this.dgvPQItems = new System.Windows.Forms.DataGridView();
             this.RFQItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PQItemPartNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -93,9 +95,7 @@
             this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnClearSearch = new System.Windows.Forms.Button();
             this.cbbFilterBy = new System.Windows.Forms.ComboBox();
-            this.txtSearchFor = new System.Windows.Forms.TextBox();
             this.lblSelection = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.lblDate = new System.Windows.Forms.Label();
             this.lblPQNumber = new System.Windows.Forms.Label();
             this.lblQuotationDetails = new System.Windows.Forms.Label();
@@ -114,9 +114,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.nupItemQuantity)).BeginInit();
             this.grpItemSelected.SuspendLayout();
             this.TabItemDetails.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPQItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItemSelection)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabPQForm.SuspendLayout();
             this.TabQuotationDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -548,25 +548,50 @@
             // TabItemDetails
             // 
             this.TabItemDetails.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.TabItemDetails.Controls.Add(this.btnSearch);
+            this.TabItemDetails.Controls.Add(this.txtSearchFor);
             this.TabItemDetails.Controls.Add(this.btnClearItems);
-            this.TabItemDetails.Controls.Add(this.btnRemove);
+            this.TabItemDetails.Controls.Add(this.btnRemoveItem);
             this.TabItemDetails.Controls.Add(this.dgvPQItems);
             this.TabItemDetails.Controls.Add(this.lblRFQItems);
             this.TabItemDetails.Controls.Add(this.dgvItemSelection);
             this.TabItemDetails.Controls.Add(this.btnClearSearch);
             this.TabItemDetails.Controls.Add(this.cbbFilterBy);
-            this.TabItemDetails.Controls.Add(this.txtSearchFor);
             this.TabItemDetails.Controls.Add(this.lblSelection);
             this.TabItemDetails.Controls.Add(this.grpItemSelected);
             this.TabItemDetails.Controls.Add(this.txtTotalAmount);
             this.TabItemDetails.Controls.Add(this.lblTotalAmount);
-            this.TabItemDetails.Controls.Add(this.pictureBox2);
             this.TabItemDetails.Location = new System.Drawing.Point(4, 28);
             this.TabItemDetails.Name = "TabItemDetails";
             this.TabItemDetails.Padding = new System.Windows.Forms.Padding(3);
             this.TabItemDetails.Size = new System.Drawing.Size(845, 437);
             this.TabItemDetails.TabIndex = 1;
             this.TabItemDetails.Text = "Item Details";
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.BackgroundImage = global::REIC_POMS.Properties.Resources.ButtonSearch;
+            this.btnSearch.Location = new System.Drawing.Point(300, 31);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(24, 26);
+            this.btnSearch.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnSearch.TabIndex = 79;
+            this.btnSearch.TabStop = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            this.btnSearch.MouseEnter += new System.EventHandler(this.btnSearch_MouseEnter);
+            this.btnSearch.MouseLeave += new System.EventHandler(this.btnSearch_MouseLeave);
+            // 
+            // txtSearchFor
+            // 
+            this.txtSearchFor.BackColor = System.Drawing.Color.White;
+            this.txtSearchFor.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.txtSearchFor.Location = new System.Drawing.Point(165, 31);
+            this.txtSearchFor.Name = "txtSearchFor";
+            this.txtSearchFor.Size = new System.Drawing.Size(136, 26);
+            this.txtSearchFor.TabIndex = 78;
+            this.txtSearchFor.Text = "Search for...";
+            this.txtSearchFor.GotFocus += new System.EventHandler(this.txtSearchFor_GotFocus);
+            this.txtSearchFor.LostFocus += new System.EventHandler(this.txtSearchFor_LostFocus);
             // 
             // btnClearItems
             // 
@@ -580,19 +605,23 @@
             this.btnClearItems.TabIndex = 77;
             this.btnClearItems.UseVisualStyleBackColor = true;
             this.btnClearItems.Click += new System.EventHandler(this.btnClearItems_Click);
+            this.btnClearItems.MouseEnter += new System.EventHandler(this.btnClearItems_MouseEnter);
+            this.btnClearItems.MouseLeave += new System.EventHandler(this.btnClearItems_MouseLeave);
             // 
-            // btnRemove
+            // btnRemoveItem
             // 
-            this.btnRemove.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRemove.BackgroundImage")));
-            this.btnRemove.FlatAppearance.BorderSize = 0;
-            this.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRemove.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnRemove.Location = new System.Drawing.Point(759, 275);
-            this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(60, 67);
-            this.btnRemove.TabIndex = 76;
-            this.btnRemove.UseVisualStyleBackColor = true;
-            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            this.btnRemoveItem.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRemoveItem.BackgroundImage")));
+            this.btnRemoveItem.FlatAppearance.BorderSize = 0;
+            this.btnRemoveItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemoveItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnRemoveItem.Location = new System.Drawing.Point(759, 275);
+            this.btnRemoveItem.Name = "btnRemoveItem";
+            this.btnRemoveItem.Size = new System.Drawing.Size(60, 67);
+            this.btnRemoveItem.TabIndex = 76;
+            this.btnRemoveItem.UseVisualStyleBackColor = true;
+            this.btnRemoveItem.Click += new System.EventHandler(this.btnRemove_Click);
+            this.btnRemoveItem.MouseEnter += new System.EventHandler(this.btnRemoveItem_MouseEnter);
+            this.btnRemoveItem.MouseLeave += new System.EventHandler(this.btnRemoveItem_MouseLeave);
             // 
             // dgvPQItems
             // 
@@ -827,21 +856,13 @@
             this.cbbFilterBy.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.cbbFilterBy.FormattingEnabled = true;
             this.cbbFilterBy.Items.AddRange(new object[] {
-            "Filter by..."});
+            "Filter by...",
+            "Part Number",
+            "Item Name"});
             this.cbbFilterBy.Location = new System.Drawing.Point(332, 31);
             this.cbbFilterBy.Name = "cbbFilterBy";
             this.cbbFilterBy.Size = new System.Drawing.Size(120, 27);
             this.cbbFilterBy.TabIndex = 71;
-            // 
-            // txtSearchFor
-            // 
-            this.txtSearchFor.BackColor = System.Drawing.Color.White;
-            this.txtSearchFor.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.txtSearchFor.Location = new System.Drawing.Point(174, 31);
-            this.txtSearchFor.Name = "txtSearchFor";
-            this.txtSearchFor.Size = new System.Drawing.Size(130, 26);
-            this.txtSearchFor.TabIndex = 69;
-            this.txtSearchFor.Text = "Search for...";
             // 
             // lblSelection
             // 
@@ -853,16 +874,6 @@
             this.lblSelection.Size = new System.Drawing.Size(134, 38);
             this.lblSelection.TabIndex = 68;
             this.lblSelection.Text = "Selection";
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(302, 31);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(23, 26);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 70;
-            this.pictureBox2.TabStop = false;
             // 
             // lblDate
             // 
@@ -1086,9 +1097,9 @@
             this.grpItemSelected.PerformLayout();
             this.TabItemDetails.ResumeLayout(false);
             this.TabItemDetails.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPQItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItemSelection)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.tabPQForm.ResumeLayout(false);
             this.TabQuotationDetails.ResumeLayout(false);
             this.TabQuotationDetails.PerformLayout();
@@ -1143,7 +1154,7 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnClearItems;
-        private System.Windows.Forms.Button btnRemove;
+        private System.Windows.Forms.Button btnRemoveItem;
         private System.Windows.Forms.DataGridView dgvPQItems;
         private System.Windows.Forms.Label lblRFQItems;
         private System.Windows.Forms.DataGridView dgvItemSelection;
@@ -1154,8 +1165,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn UnitPrice;
         private System.Windows.Forms.Button btnClearSearch;
         private System.Windows.Forms.ComboBox cbbFilterBy;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.TextBox txtSearchFor;
         private System.Windows.Forms.Label lblSelection;
         private System.Windows.Forms.Button btnAddtoPQ;
         private System.Windows.Forms.Label lblItemName;
@@ -1173,6 +1182,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Qty;
         private System.Windows.Forms.DataGridViewTextBoxColumn RFQUOM;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalItem;
+        private System.Windows.Forms.PictureBox btnSearch;
+        private System.Windows.Forms.TextBox txtSearchFor;
     }
 }
 

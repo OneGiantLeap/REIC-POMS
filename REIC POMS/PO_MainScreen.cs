@@ -23,10 +23,15 @@ namespace REIC_POMS
             poList = new ArrayList();
 
             //ADJUST DATAGRIDVIEW COLUMN ALIGNMENT
-            dgvPO.Columns["OrderDate"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter; //Center column header
-            dgvPO.Columns["OrderDate"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; //Center column contents
-            dgvPO.Columns["DeliveryDate"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter; //Center column header
-            dgvPO.Columns["DeliveryDate"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; //Center column contents
+            //Center column headers
+            dgvPO.Columns["OrderDate"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvPO.Columns["DeliveryDate"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvPO.Columns["PONumber"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            //Center column contents
+            dgvPO.Columns["OrderDate"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvPO.Columns["DeliveryDate"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvPO.Columns["PONumber"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             //TEST CODE (For the purpose of customizing the DGV and checking out its appearance)
             /*dgvPO.Rows.Add("09/24/2015", "09/30/2015", "Fat Shaolin Jaideite Kiosk", "BPO#1609-018", "Lucid Co.");
@@ -35,6 +40,8 @@ namespace REIC_POMS
             dgvPO.Rows.Add("08/23/2015", "09/15/2015", "Basic Co.", "BPO#1608-041", "Mayers Balay");*/
 
             sql.SelectAllPODGV(dgvPO);
+            dgvPO.Sort(dgvPO.Columns["PONumber"], ListSortDirection.Descending); //Sort datagridview by LATEST PO Number (Note: When you add a PO, it should appear at the top of the DGV)
+
             sql.SelectAllPO(poList);
         }
 
@@ -53,8 +60,10 @@ namespace REIC_POMS
         {
             DialogResult result = MessageBox.Show("Are you sure you want to exit?", "Confirm Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
-         //       sql.Backup();
+            {
+                sql.Backup();
                 Close(); //Exit the program
+            }
         }
 
         //------------------------
@@ -176,10 +185,10 @@ namespace REIC_POMS
         //-----------------------------------------------------
         private void btnSPRS_Click(object sender, EventArgs e)
         {
-            /*SPR_MainScreen sprMain = new SPR_MainScreen();
+            SPR_MainScreen sprMain = new SPR_MainScreen();
             this.Hide();
             sprMain.ShowDialog();
-            this.Close();*/
+            this.Close();
         }
 
         private void btnSPRS_MouseEnter(object sender, EventArgs e)

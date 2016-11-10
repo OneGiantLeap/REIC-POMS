@@ -30,7 +30,7 @@ namespace REIC_POMS
         private void SPR_POCompleted_PrintScreen_Load(object sender, EventArgs e)
         {
             //---MYSQL CONNECTION
-            connection = new MySqlConnection("server=localhost; database=reicpoms; user=root; password=; convert zero datetime=true; allow zero datetime=true;");
+            connection = new MySqlConnection(ConnectionStringManager.reicpomsConnection.ConnectionString);
             connection.Open();
 
             //---SELECT Statements

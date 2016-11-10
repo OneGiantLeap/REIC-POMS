@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RFQ_ViewForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -59,21 +58,23 @@
             this.lblRFQNo = new System.Windows.Forms.Label();
             this.lblRequestDetails = new System.Windows.Forms.Label();
             this.tabItemDetails = new System.Windows.Forms.TabPage();
-            this.btnGeneratePDF = new System.Windows.Forms.Button();
+            this.btnGeneratePDF = new System.Windows.Forms.PictureBox();
             this.dgvRFQItems = new System.Windows.Forms.DataGridView();
             this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UOM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblRFQItems = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnClose = new System.Windows.Forms.Button();
-            this.btnCreatePQ = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnCreatePQ = new System.Windows.Forms.PictureBox();
             this.tabRFQForm.SuspendLayout();
             this.tabRequestDetails.SuspendLayout();
             this.tabItemDetails.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnGeneratePDF)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRFQItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCreatePQ)).BeginInit();
             this.SuspendLayout();
             // 
             // tabRFQForm
@@ -399,17 +400,15 @@
             // 
             // btnGeneratePDF
             // 
-            this.btnGeneratePDF.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnGeneratePDF.BackgroundImage")));
-            this.btnGeneratePDF.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnGeneratePDF.FlatAppearance.BorderSize = 0;
-            this.btnGeneratePDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGeneratePDF.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnGeneratePDF.BackgroundImage = global::REIC_POMS.Properties.Resources.ButtonPDF;
+            this.btnGeneratePDF.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnGeneratePDF.Location = new System.Drawing.Point(768, 25);
             this.btnGeneratePDF.Name = "btnGeneratePDF";
             this.btnGeneratePDF.Size = new System.Drawing.Size(40, 40);
-            this.btnGeneratePDF.TabIndex = 69;
-            this.btnGeneratePDF.UseVisualStyleBackColor = true;
-            this.btnGeneratePDF.Click += new System.EventHandler(this.btnGeneratePDF_Click);
+            this.btnGeneratePDF.TabIndex = 71;
+            this.btnGeneratePDF.TabStop = false;
+            this.btnGeneratePDF.MouseEnter += new System.EventHandler(this.btnGeneratePDF_MouseEnter);
+            this.btnGeneratePDF.MouseLeave += new System.EventHandler(this.btnGeneratePDF_MouseLeave);
             // 
             // dgvRFQItems
             // 
@@ -428,7 +427,7 @@
             this.dgvRFQItems.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Source Sans Pro Semibold", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
@@ -497,15 +496,6 @@
             this.lblRFQItems.TabIndex = 64;
             this.lblRFQItems.Text = "Items in Request for Price Quotation";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::REIC_POMS.Properties.Resources.BannerRFQView;
-            this.pictureBox1.Location = new System.Drawing.Point(1, 1);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(853, 70);
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
-            // 
             // btnClose
             // 
             this.btnClose.BackColor = System.Drawing.Color.White;
@@ -521,20 +511,25 @@
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::REIC_POMS.Properties.Resources.BannerRFQView;
+            this.pictureBox1.Location = new System.Drawing.Point(1, 1);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(853, 70);
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            // 
             // btnCreatePQ
             // 
-            this.btnCreatePQ.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(107)))), ((int)(((byte)(58)))));
-            this.btnCreatePQ.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(63)))), ((int)(((byte)(1)))));
-            this.btnCreatePQ.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCreatePQ.Font = new System.Drawing.Font("Source Sans Pro", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.btnCreatePQ.ForeColor = System.Drawing.Color.White;
-            this.btnCreatePQ.Location = new System.Drawing.Point(506, 456);
+            this.btnCreatePQ.BackgroundImage = global::REIC_POMS.Properties.Resources.ButtonCreatePQFromViewRFQ;
+            this.btnCreatePQ.Location = new System.Drawing.Point(483, 456);
             this.btnCreatePQ.Name = "btnCreatePQ";
-            this.btnCreatePQ.Size = new System.Drawing.Size(225, 35);
-            this.btnCreatePQ.TabIndex = 64;
-            this.btnCreatePQ.Text = "CREATE PRICE QUOTATION";
-            this.btnCreatePQ.UseVisualStyleBackColor = false;
-            this.btnCreatePQ.Click += new System.EventHandler(this.btnCreatePQ_Click);
+            this.btnCreatePQ.Size = new System.Drawing.Size(250, 35);
+            this.btnCreatePQ.TabIndex = 70;
+            this.btnCreatePQ.TabStop = false;
+            this.btnCreatePQ.MouseEnter += new System.EventHandler(this.btnCreatePQ_MouseEnter);
+            this.btnCreatePQ.MouseLeave += new System.EventHandler(this.btnCreatePQ_MouseLeave);
             // 
             // RFQ_ViewForm
             // 
@@ -542,8 +537,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(249)))));
             this.ClientSize = new System.Drawing.Size(855, 500);
-            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnCreatePQ);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.tabRFQForm);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -556,8 +551,10 @@
             this.tabRequestDetails.PerformLayout();
             this.tabItemDetails.ResumeLayout(false);
             this.tabItemDetails.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnGeneratePDF)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRFQItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCreatePQ)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -583,13 +580,11 @@
         private System.Windows.Forms.Label lblRFQItems;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.DataGridView dgvRFQItems;
-        private System.Windows.Forms.Button btnGeneratePDF;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Description;
         private System.Windows.Forms.DataGridViewTextBoxColumn UOM;
         private System.Windows.Forms.DataGridViewTextBoxColumn Qty;
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.Button btnCreatePQ;
         private System.Windows.Forms.Label outputSupplierEmail;
         private System.Windows.Forms.Label outputSupplierNumber;
         private System.Windows.Forms.Label outputSupplierPerson;
@@ -601,5 +596,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox outputSupplierAddress;
         private System.Windows.Forms.TextBox outputCustomerName;
+        private System.Windows.Forms.PictureBox btnCreatePQ;
+        private System.Windows.Forms.PictureBox btnGeneratePDF;
     }
 }

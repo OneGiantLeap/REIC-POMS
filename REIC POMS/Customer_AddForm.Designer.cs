@@ -183,6 +183,7 @@
             // 
             // txtTinNumber1
             // 
+            this.txtTinNumber1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTinNumber1.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.txtTinNumber1.Location = new System.Drawing.Point(194, 116);
             this.txtTinNumber1.MaxLength = 3;
@@ -253,6 +254,7 @@
             // 
             // txtTinNumber2
             // 
+            this.txtTinNumber2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTinNumber2.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.txtTinNumber2.Location = new System.Drawing.Point(243, 116);
             this.txtTinNumber2.MaxLength = 3;
@@ -263,6 +265,7 @@
             // 
             // txtTinNumber3
             // 
+            this.txtTinNumber3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTinNumber3.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.txtTinNumber3.Location = new System.Drawing.Point(293, 116);
             this.txtTinNumber3.MaxLength = 3;
@@ -273,6 +276,7 @@
             // 
             // txtTinNumber4
             // 
+            this.txtTinNumber4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTinNumber4.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.txtTinNumber4.Location = new System.Drawing.Point(342, 116);
             this.txtTinNumber4.MaxLength = 3;

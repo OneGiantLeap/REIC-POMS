@@ -62,8 +62,10 @@ namespace REIC_POMS
         {
             DialogResult result = MessageBox.Show("Are you sure you want to exit?", "Confirm Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
+            {
                 sql.Backup();
                 Close(); //Exit the program
+            }
         }
 
         //------------------------
@@ -216,99 +218,185 @@ namespace REIC_POMS
         private void btnSignOut_MouseLeave(object sender, EventArgs e)
         { btnSignOut.BackgroundImage = Properties.Resources.ButtonInactiveSignOut; }
 
-        //---------------------
-        // SALES TAB METHODS  |
-        //---------------------
+        //--------------------------------------------------------
+        // SALES TAB METHODS - FORM ELEMENTS, TO DATE GENERATION |
+        //--------------------------------------------------------
+        private void radMonthly_CheckedChanged(object sender, EventArgs e)
+        {
+            cbbFromMonth.Enabled = true;
+            nupFromYear.Enabled = true;
+            cbbFromMonth.SelectedIndex = 0; //"Select Month"
+            nupFromYear.Text = DateTime.Now.Year.ToString(); //Can't set a NumericUpDown to "YYYY" (Would've liked that)
+        }
+
+        private void radAnnually_CheckedChanged(object sender, EventArgs e)
+        {
+            cbbFromMonth.Enabled = true;
+            nupFromYear.Enabled = true;
+            cbbFromMonth.SelectedIndex = 0; //"Select Month"
+            txtToMonth.Text = DateTime.Now.ToString("MMMM");
+            txtToYear.Text = DateTime.Now.Year.ToString();
+        }
+
+        private void cbbFromMonth_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GenerateToDate("cbbFromMonth");
+        }
+
+        private void nupFromYear_ValueChanged(object sender, EventArgs e)
+        {
+            GenerateToDate("nupFromYear");
+        }
+
+        /// <summary>
+        /// Automatically sets the To Date values when the From Date has been chosen.
+        /// NOTE: Monthly Sales need adjustment of both To Month and To Year.
+        /// Annual Sales just need adjustment of To Month. There should be a minimum of 3 years for the Annual Sales range.
+        /// </summary>
+        /// <param name="controlType">What form element was changed? cbbFromMonth or nupFromYear?</param>
+        private void GenerateToDate(string controlType)
+        {
+            if (cbbFromMonth.SelectedIndex != 0) //"Select Month" is NOT selected in the options
+            {
+                //Get From Date values
+                int fromMonth = DateTime.ParseExact(cbbFromMonth.Text, "MMMM", CultureInfo.InvariantCulture).Month;
+                int fromYear;
+                bool isFromYearInteger = int.TryParse(nupFromYear.Text, out fromYear);
+                if (isFromYearInteger == false)
+                {
+                    MessageBox.Show("From Year must be an integer.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                DateTime fromDate = new DateTime(fromYear, fromMonth, 1); //Just placed the "1" day to complete the parameters (just need Year and Month, really).
+
+                //Generate To Date
+                DateTime toDate = fromDate.AddMonths(11);
+
+                //Set To Month value
+                txtToMonth.Text = toDate.ToString("MMMM");
+
+                //Set To Year value (For Monthly Sales; Annual Sales don't need to adjust To Year)
+                if (radMonthly.Checked == true)
+                {
+                    if (controlType == "cbbFromMonth")
+                    {
+                        txtToYear.Text = toDate.ToString("yyyy");
+                    }
+                    else if (controlType == "nupFromYear") //Have to account for user clicks on the NumericUpDown
+                    {
+                        if (cbbFromMonth.Text == "January")
+                        {
+                            txtToYear.Text = nupFromYear.Value.ToString();
+                        }
+                        else
+                        {
+                            txtToYear.Text = (nupFromYear.Value + 1).ToString();
+                        }
+                    }
+                }
+            }
+            else //"Select Month"
+            {
+                txtToMonth.Text = "N/A";
+                txtToYear.Text = "N/A";
+            }
+        }
+
+
+
         private void btnShowGraph_Click(object sender, EventArgs e)
         {
             if (cbbFromMonth.Text == "Select Month")
             {
-                MessageBox.Show("Please select a month.", "Incomplete Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please select a month for the From Month field.", "Incomplete Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
+            //----------------
+            // MONTHLY SALES |
+            //----------------
             if (radMonthly.Checked == true)
             {
-                /* ACTION PLAN
-                    - Hide the Monthly Bar graph
-                    - Show the Annually Line graph and clear its contents
-                    - Convert input dates into SQL-worthy date format
-                    - Create an ArrayList. Each element contains the year and the total sales for that year.
-                    - For each
-                    - Select all SIDR ranging between "YYYY-MM%" and "YYYY-MM%"
-                    - 
-                */
+                //Display relevant visuals and clear contents
                 graphAnnually.Hide();
-                graphMonthly.Series.Clear();
-                graphMonthly.Show();
+                dgvAnnualSales.Hide();
+                graphMonthly.Series["Sales"].Points.Clear();
+                dgvMonthlySales_Left.Rows.Clear();
+                dgvMonthlySales_Right.Rows.Clear();
 
-                /*From BAR SAMPLE
-                this.chart1.Series["Sales"].Points.AddXY("2007", 16391);
-                this.chart1.Series["Sales"].Points.AddXY("2008", 170033);
-                this.chart1.Series["Sales"].Points.AddXY("2009", 27727);
-                this.chart1.Series["Sales"].Points.AddXY("2010", 27178);
-                this.chart1.Series["Sales"].Points.AddXY("2011", 31263);
-                this.chart1.Series["Sales"].Points.AddXY("2012", 63371);
-                this.chart1.Series["Sales"].Points.AddXY("2013", 56083);
-                this.chart1.Series["Sales"].Points.AddXY("2014", 62155);
-                this.chart1.Series["Sales"].Points.AddXY("2015", 101231);
-                this.chart1.Series["Sales"].Points.AddXY("2016", 99865);
-                */
+                //Select Statement
+                int fromMonth = DateTime.ParseExact(cbbFromMonth.Text, "MMMM", CultureInfo.InvariantCulture).Month;
+                int fromYear = int.Parse(nupFromYear.Value.ToString());
+                DateTime fromDate = new DateTime(fromYear, fromMonth, 1);
+                double[] monthlySales = new double[12]; //Values filled by SQL
+                sql.SelectMonthlySales(fromDate, monthlySales);
+
+                //Display results
+                for (int i = 0; i < 12; i++)
+                {
+                    DateTime dateToCheck = fromDate.AddMonths(i);
+                    string monthXValue = dateToCheck.ToString("MMMM");
+                    graphMonthly.Series["Sales"].Points.AddXY(monthXValue, monthlySales[i]);
+
+                    if (i < 6)
+                    {
+                        dgvMonthlySales_Left.Rows.Add(monthXValue, monthlySales[i]);
+                    }
+                    else
+                    {
+                        dgvMonthlySales_Right.Rows.Add(monthXValue, monthlySales[i]);
+                    }
+                }
+                graphMonthly.Show();
+                dgvMonthlySales_Left.Show();
+                dgvMonthlySales_Right.Show();
             }
 
+            //---------------
+            // ANNUAL SALES |
+            //---------------
             if (radAnnually.Checked == true)
             {
-                graphMonthly.Hide();
-                graphAnnually.Series.Clear();
-                graphAnnually.Show();
-
+                //Validation for date range (Already accounts for non-January-to-December fiscal years)
                 int fromMonth = DateTime.ParseExact(cbbFromMonth.Text, "MMMM", CultureInfo.InvariantCulture).Month;
                 int fromYear = int.Parse(nupFromYear.Text);
                 int toMonth = DateTime.ParseExact(txtToMonth.Text, "MMMM", CultureInfo.InvariantCulture).Month;
                 int toYear = int.Parse(txtToYear.Text);
-                
-                MessageBox.Show("Yo" + fromMonth + fromYear + toMonth + toYear);
+                DateTime fromDate = new DateTime(fromYear, fromMonth, 1);
+                DateTime toDate = new DateTime(toYear, toMonth, 1).AddMonths(1).AddDays(-1); //Set Day value as last day of the month
 
-                double[] salesPerYear = new double[toYear - fromYear + 1];
-                int counter = 0; //nth array slot
-
-                for (int i = fromYear; i <= toYear; i++)
+                //Reference: http://stackoverflow.com/questions/4127363/date-difference-in-years-c-sharp
+                TimeSpan span = toDate - fromDate;
+                DateTime zeroTime = new DateTime(1, 1, 1); //For calculating the date difference in years
+                int range = (zeroTime + span).Year - 1;
+                if (range < 3)
                 {
-                    MessageBox.Show(i.ToString());
-                    double yearSales = 0;
-
-                    if ((fromYear >= fromYear + 1) && (fromYear != toYear)) //In between, not yet the toYear
-                    {
-                        for (int j = 1; j <= 12; j++)
-                        {
-                            string dateToQuery = fromYear.ToString() + "-" + fromMonth.ToString("D2");
-                            double monthSales = sql.SelectAnnualSales(dateToQuery);
-                            yearSales += monthSales;
-                        }
-                    }
-                    else if (fromYear == toYear)
-                    {
-                        for (int j = 1; j <= toMonth; j++)
-                        {
-                            string dateToQuery = fromYear.ToString() + "-" + fromMonth.ToString("D2");
-                            double monthSales = sql.SelectAnnualSales(dateToQuery);
-                            yearSales += monthSales;
-                        }
-                    }
-                    else //First month eva
-                    {
-                        for (int j = fromMonth; j <= 12; j++)
-                        {
-                            string dateToQuery = fromYear.ToString() + "-" + fromMonth.ToString("D2");
-                            double monthSales = sql.SelectAnnualSales(dateToQuery);
-                            yearSales += monthSales;
-                        }
-                    }
-
-                    salesPerYear[counter] = yearSales;
-                    MessageBox.Show("Sales for " + fromYear + " " + yearSales.ToString());
-                    counter++;
+                    MessageBox.Show("Annual Sales reports cover at least 3 years worth of sales. Please adjust your dates.", "Date Range Too Short", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
+
+                //Display relevant visuals and clear contents
+                graphMonthly.Hide();
+                dgvMonthlySales_Left.Hide();
+                dgvMonthlySales_Right.Hide();
+                graphAnnually.Series["Sales"].Points.Clear();
+                dgvAnnualSales.Rows.Clear();
+
+                //Select Statement
+                double[] annualSales = new double[range];
+                sql.SelectAnnualSales(fromDate, toDate, range, annualSales);
+
+                //Display results
+                for (int i = 0; i < range; i++)
+                {
+                    DateTime dateToCheck = fromDate.AddYears(i);
+                    string yearXValue = dateToCheck.ToString("yyyy");
+                    graphAnnually.Series["Sales"].Points.AddXY(yearXValue, annualSales[i]);
+                    dgvAnnualSales.Rows.Add(yearXValue, annualSales[i]);
+                }
+
+                graphAnnually.Show();
+                dgvAnnualSales.Show();
             }
         }
 

@@ -53,8 +53,10 @@ namespace REIC_POMS
             //TEST CODE
             DialogResult result = MessageBox.Show("Are you sure you want to exit?", "Confirm Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
-           //     sql.Backup();
+            {
+                sql.Backup();
                 Close(); //Exit the program
+            }
         }
 
         //------------------------
@@ -236,9 +238,9 @@ namespace REIC_POMS
                 sql.InsertCustomer(newCustomer);
 
                 //---MESSAGEBOX FOR DEBUG PURPOSES
-                MessageBox.Show("CREATE " + customerIDCounter + ", " + caf.BusinessName + ", " + caf.FullTinNumber + ", " + caf.CustomerName
+                /*MessageBox.Show("CREATE " + customerIDCounter + ", " + caf.BusinessName + ", " + caf.FullTinNumber + ", " + caf.CustomerName
                                 + ", " + caf.CustomerPerson + ", " + caf.CustomerNumber + ", " + caf.CustomerEmail + ", " + caf.CustomerAddress
-                                + "Inserted to Array " + (customerList.Count - 1));
+                                + "Inserted to Array " + (customerList.Count - 1));*/
 
                 customerIDCounter++;
             }
@@ -311,7 +313,7 @@ namespace REIC_POMS
                             sql.UpdateCustomer(c); //c refers to the Customer c at the start of this method's code
 
                             //---MESSAGEBOX FOR DEBUG PURPOSES
-                            MessageBox.Show("UPDATE FREAKING SUCCESSFUL. BOO YEAH.");
+                            //MessageBox.Show("UPDATE FREAKING SUCCESSFUL. BOO YEAH.");
                         }
                     }
                 } //End of if (customersList[i] != null)

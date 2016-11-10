@@ -32,6 +32,10 @@ namespace REIC_POMS
             dgvSIDR.Rows.Add("09/24/2015", "1321", "Fat Shaolin Jaideite Kiosk", "9,243.25");
             dgvSIDR.Rows.Add("09/30/2015", "1332", "Balay Dako", "5,555.10");
             dgvSIDR.Rows.Add("10/03/2015", "1552", "MGE Transport", "4,351.20");
+
+            //Sort datagridview by LATEST SO Number (Note: When you add an SIDR, it should appear at the top of the DGV)
+            dgvSIDR.Sort(dgvSIDR.Columns["SONumber"], ListSortDirection.Descending); 
+
         }
 
         private void SIDR_MainScreen_Load(object sender, EventArgs e)
@@ -49,8 +53,10 @@ namespace REIC_POMS
         {
             DialogResult result = MessageBox.Show("Are you sure you want to exit?", "Confirm Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
-         //       sql.Backup();
+            {
+                sql.Backup();
                 Close(); //Exit the program
+            }
         }
 
         //------------------------

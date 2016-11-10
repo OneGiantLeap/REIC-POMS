@@ -56,5 +56,20 @@ namespace REIC_POMS
         {
 
         }
+
+        //------------------------
+        //  OTHER FORM ELEMENTS  |
+        //------------------------
+        private void btnGeneratePDF_MouseEnter(object sender, EventArgs e)
+        { btnGeneratePDF.BackgroundImage = Properties.Resources.ButtonPDFHover; }
+
+        private void btnGeneratePDF_MouseLeave(object sender, EventArgs e)
+        { btnGeneratePDF.BackgroundImage = Properties.Resources.ButtonPDF; }
+
+        private void btnCreateSIDR_MouseEnter(object sender, EventArgs e)
+        { btnCreateSIDR.BackgroundImage = Properties.Resources.ButtonCreateSIDRFromViewPOHover; }
+
+        private void btnCreateSIDR_MouseLeave(object sender, EventArgs e)
+        { btnCreateSIDR.BackgroundImage = Properties.Resources.ButtonCreateSIDRFromViewPO; }
     }
 }

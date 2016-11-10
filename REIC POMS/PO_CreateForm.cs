@@ -339,5 +339,57 @@ namespace REIC_POMS
             cancel = true;
             Close();
         }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //------------------------
+        //  OTHER FORM ELEMENTS  |
+        //------------------------
+        //e.g. DGV, textchange events, etc.
+        private void btnRemoveItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnClearItems_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //---------------
+        //  ANIMATIONS  |
+        //---------------
+        private void txtSearchFor_GotFocus(object sender, EventArgs e)
+        { //When Search box is clicked, content becomes blank.
+            if (txtSearchFor.Text == "Search for...")
+            { txtSearchFor.Clear(); }
+        }
+
+        private void txtSearchFor_LostFocus(object sender, EventArgs e)
+        { //User clicks on textbox. Then when he clicks elsewhre, content returns to default text.
+            if (txtSearchFor.Text == "")
+            { txtSearchFor.Text = "Search for..."; }
+        }
+
+        private void btnSearch_MouseEnter(object sender, EventArgs e)
+        { btnSearch.BackgroundImage = Properties.Resources.ButtonSearchHover; }
+
+        private void btnSearch_MouseLeave(object sender, EventArgs e)
+        { btnSearch.BackgroundImage = Properties.Resources.ButtonSearch; }
+
+        private void btnRemoveItem_MouseEnter(object sender, EventArgs e)
+        { btnRemoveItem.BackgroundImage = Properties.Resources.ButtonRemoveItemsHover; }
+
+        private void btnRemoveItem_MouseLeave(object sender, EventArgs e)
+        { btnRemoveItem.BackgroundImage = Properties.Resources.ButtonRemoveItems; }
+
+        private void btnClearItems_MouseEnter(object sender, EventArgs e)
+        { btnClearItems.BackgroundImage = Properties.Resources.ButtonClearAllItemsHover; }
+
+        private void btnClearItems_MouseLeave(object sender, EventArgs e)
+        { btnClearItems.BackgroundImage = Properties.Resources.ButtonClearAllItems; }
     }
 }
