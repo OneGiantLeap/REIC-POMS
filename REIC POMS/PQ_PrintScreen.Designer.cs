@@ -29,19 +29,19 @@
         private void InitializeComponent()
         {
             this.CrystalReportViewer = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.PQ_Printout_IFOSupplier1 = new REIC_POMS.PQ_Printout_IFOSupplier();
             this.PQPrintout1 = new REIC_POMS.PQPrintout();
             this.SuspendLayout();
             // 
             // CrystalReportViewer
             // 
-            this.CrystalReportViewer.ActiveViewIndex = 0;
+            this.CrystalReportViewer.ActiveViewIndex = -1;
             this.CrystalReportViewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.CrystalReportViewer.Cursor = System.Windows.Forms.Cursors.Default;
             this.CrystalReportViewer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CrystalReportViewer.Font = new System.Drawing.Font("Source Sans Pro", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CrystalReportViewer.Location = new System.Drawing.Point(0, 0);
             this.CrystalReportViewer.Name = "CrystalReportViewer";
-            this.CrystalReportViewer.ReportSource = this.PQPrintout1;
             this.CrystalReportViewer.ShowGroupTreeButton = false;
             this.CrystalReportViewer.ShowLogo = false;
             this.CrystalReportViewer.ShowParameterPanelButton = false;
@@ -69,5 +69,6 @@
 
         private CrystalDecisions.Windows.Forms.CrystalReportViewer CrystalReportViewer;
         private PQPrintout PQPrintout1;
+        private PQ_Printout_IFOSupplier PQ_Printout_IFOSupplier1;
     }
 }

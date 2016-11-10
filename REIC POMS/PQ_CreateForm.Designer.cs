@@ -153,8 +153,8 @@
             this.cbbInFavorOf.FormattingEnabled = true;
             this.cbbInFavorOf.Items.AddRange(new object[] {
             "Select",
-            "Customer",
-            "REIC"});
+            "REIC",
+            "Supplier"});
             this.cbbInFavorOf.Location = new System.Drawing.Point(33, 355);
             this.cbbInFavorOf.Name = "cbbInFavorOf";
             this.cbbInFavorOf.Size = new System.Drawing.Size(135, 27);

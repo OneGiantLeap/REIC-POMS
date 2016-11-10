@@ -18,7 +18,7 @@ namespace REIC_POMS
         {
             InitializeComponent();
             sql = new MySQLDatabaseDriver();
-     //       sql.Restore();
+            //sql.Restore();
         }
 
         private void btnMinimize_Click(object sender, EventArgs e)
@@ -31,6 +31,7 @@ namespace REIC_POMS
             //TESTING OUT CODE; MAY NOT BE PART OF SYSTEM, REALLY.
             DialogResult result = MessageBox.Show("Are you sure you want to exit?", "Confirm Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
+                sql.Backup();
                 this.Close(); //Exit the program
         }
 

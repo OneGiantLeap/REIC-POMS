@@ -22,6 +22,7 @@ namespace REIC_POMS
         private MySqlDataAdapter adapter;
         private string pqNo; //Used to retrieve a specific PQ
         private bool firstTime; //If it's the first time the report's made, it's saved into the computer
+        //private string inFavorOf;
 
         //CONSTRUCTOR
         public PQ_PrintScreen()
@@ -45,6 +46,12 @@ namespace REIC_POMS
             get { return firstTime; }
         }
 
+        /*public string InFavorOf //Different IFO values have slightly different PQs
+        {
+            set { inFavorOf = value; }
+            get { return inFavorOf; }
+        }*/
+
         private void PQ_PrintScreen_Load(object sender, EventArgs e)
         { //When screen loads, details of the RFQ Printout should already be displayed.
             //---MYSQL CONNECTION
@@ -57,33 +64,34 @@ namespace REIC_POMS
             else
             { MessageBox.Show("Crystal Report: Connection to SQL failed!"); }
 
+
             //---SELECT Statements
             reicpomsds = new reicpomsDataSet();
 
-            //Data from supplier_t (Made, since there's supplier_id)
-            string selectRFQSupplier = string.Format("SELECT supplier_t.supplier_id, supplier_name, contact_person, contact_number, email_address, address " +
-                                                  "FROM pq_t, supplier_t " +
-                                                  "WHERE pq_no = '{0}' " +
-                                                  "AND pq_t.supplier_id = supplier_t.supplier_id;", pqNo);
-            adapter = new MySqlDataAdapter(selectRFQSupplier, connection);
+            //Data from supplier_t
+            string selectPQSupplier = string.Format("SELECT DISTINCT supplier_t.* " +
+                                                  "FROM rfq_order_line_t, item_t, supplier_t " +
+                                                  "WHERE rfq_no = '{0}' " +
+                                                  "AND rfq_order_line_t.part_number = item_t.part_number " +
+                                                  "AND item_t.supplier_id = supplier_t.supplier_id;", PQNo);
+            adapter = new MySqlDataAdapter(selectPQSupplier, connection);
             adapter.Fill(reicpomsds, "supplier_t");
 
             //Data from pq_order_line_t, inserted into item_t
-            string selectPQOrderLineItems = string.Format("SELECT item_t.part_number, item_name, item_description, supplier_unit_price, mark_up_percentage, reic_unit_price, minimum_order_quantity, unit_of_measurement, from_date, to_date, supplier_id " +
-                                                        "FROM pq_order_line_t, item_t " +
-                                                        "WHERE pq_no = '{0}' " +
-                                                        "AND pq_order_line_t.part_number = item_t.part_number;", pqNo);
-            //Will use only item_name, item_description, unit_of_measurement
+            string selectPQOrderLineItems = string.Format("SELECT item_t.* " +
+                                                          "FROM pq_order_line_t, item_t " +
+                                                          "WHERE pq_no = '{0}' " +
+                                                          "AND pq_order_line_t.part_number = item_t.part_number;", PQNo);
             adapter = new MySqlDataAdapter(selectPQOrderLineItems, connection);
             adapter.Fill(reicpomsds, "item_t"); //Inserted into item_t, since it's where item_name, item_description, and unit_of_measurement can be found
 
             //Data from pq_t
-            string selectPQ = string.Format("SELECT * FROM pq_t WHERE pq_no='{0}';", pqNo);
+            string selectPQ = string.Format("SELECT * FROM pq_t WHERE pq_no='{0}';", PQNo);
             adapter = new MySqlDataAdapter(selectPQ, connection);
             adapter.Fill(reicpomsds, "pq_t");
 
-            //Data from rfq_order_line_t
-            string selectPQOrderLine = string.Format("SELECT * FROM pq_order_line_t WHERE pq_no='{0}';", pqNo);
+            //Data from pq_order_line_t
+            string selectPQOrderLine = string.Format("SELECT * FROM pq_order_line_t WHERE pq_no='{0}';", PQNo);
             adapter = new MySqlDataAdapter(selectPQOrderLine, connection);
             adapter.Fill(reicpomsds, "pq_order_line_t");
 
@@ -92,14 +100,14 @@ namespace REIC_POMS
             //---INSTANTIATE CRYSTAL REPORT
             PQPrintout pq = new PQPrintout();
             pq.Load();
-            pq.SetDataSource(reicpomsds); //Added a code snippet in app.config file. If else, will result to a System.IOFileNotFoundException error.
+            pq.SetDataSource(reicpomsds);
             string fileName = "C:\\REIC Files\\Price Quotations\\PQ " + PQNo + ".pdf";
             if (FirstTime == true)
             {
                 pq.ExportToDisk(ExportFormatType.PortableDocFormat, fileName);
                 MessageBox.Show("A PDF file of this Price Quotation can be found in \nC:\\REIC Files\\Price Quotations.");
             }
-            CrystalReportViewer.ReportSource = pq; //Display PQPrintout.rpt in the print preview
+            CrystalReportViewer.ReportSource = pq;
         }
     }
 }

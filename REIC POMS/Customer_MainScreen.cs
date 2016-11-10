@@ -333,15 +333,39 @@ namespace REIC_POMS
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
-        { 
-            //MYSQL
+        {
+            if (txtSearch.Text == "Search for...")
+            {
+                MessageBox.Show("Please input something to search for.", "Nothing to Search", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (txtSearch.Text == null)
+            {
+                MessageBox.Show("There is nothing to search.", "Blank Field", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            //Valid
+            sql.SearchCustomer(txtSearch.Text, dgvCustomers);
+            if (dgvCustomers.Rows.Count == 0)
+            {
+                MessageBox.Show("No such customer was found.", "Empty Search Results", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void btnClearSearch_Click(object sender, EventArgs e)
         {
+            dgvCustomers.Rows.Clear();
+            for (int i = 0; i < customerList.Count; i++)
+            {
+                Customer c = (Customer)customerList[i];
+                dgvCustomers.Rows.Add(c.CustomerName,
+                                      c.CustomerPerson,
+                                      c.CustomerNumber,
+                                      c.CustomerEmail);
+            }
+
             txtSearch.Text = "Search for...";
-            dgvSearch.Visible = false;
-            dgvCustomers.Visible = true;
         }
     }
 }

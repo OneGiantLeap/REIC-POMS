@@ -159,8 +159,9 @@
             this.cbbFilterBy.FormattingEnabled = true;
             this.cbbFilterBy.Items.AddRange(new object[] {
             "Filter by...",
-            "Item Name",
-            "Part Number"});
+            "Customer Name",
+            "RFQ No.",
+            "Request Date"});
             this.cbbFilterBy.Location = new System.Drawing.Point(876, 330);
             this.cbbFilterBy.Name = "cbbFilterBy";
             this.cbbFilterBy.Size = new System.Drawing.Size(130, 26);

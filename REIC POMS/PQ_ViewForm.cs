@@ -154,5 +154,24 @@ namespace REIC_POMS
         {
             CalculateTotal();
         }
+
+        private void btnGeneratePDF_Click(object sender, EventArgs e)
+        {
+            //---OPEN THE PQ Printout Print Preview
+            if (InFavorOfToView == "Supplier")
+            {
+                PQ_PrintScreen_IFOSupplier pq = new PQ_PrintScreen_IFOSupplier();
+                pq.PQNo = PQNoToView;
+                pq.FirstTime = false;
+                pq.ShowDialog();
+            }
+            else
+            { 
+                PQ_PrintScreen pq = new PQ_PrintScreen();
+                pq.PQNo = PQNoToView;
+                pq.FirstTime = false;
+                pq.ShowDialog();
+            }
+        }
     }
 }

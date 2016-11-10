@@ -278,11 +278,40 @@ namespace REIC_POMS
         //---------------------------
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            //Wrong Inputs
+            if (txtSearch.Text == "Search for...")
+            {
+                MessageBox.Show("Please input something to search for.", "Nothing to Search", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (txtSearch.Text == null)
+            {
+                MessageBox.Show("There is nothing to search.", "Blank Field", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (cbbFilterBy.Text == "Filter by...")
+            {
+                MessageBox.Show("Please select a filter option.", "No Filter Option", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
+            //Valid
+            sql.SearchPQ(cbbFilterBy.Text, txtSearch.Text, dgvPQ);
+            if (dgvPQ.Rows.Count == 0)
+            {
+                MessageBox.Show("No such price quotation was found.", "Empty Search Results", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void btnClearSearch_Click(object sender, EventArgs e)
         {
+            //Minor flaw: If you click ClearSearch multiple times, the dgv gets populated again, even though nothing was searched. Hehe.
+            dgvPQ.Rows.Clear();
+            sql.SelectAllPQDGV(dgvPQ); //Populate DGV
+
+            //Sort datagridview by LATEST PO Number
+            dgvPQ.Sort(dgvPQ.Columns["PQNumber"], ListSortDirection.Descending);
+
             txtSearch.Text = "Search for...";
             cbbFilterBy.SelectedIndex = 0; //Sets the combobox value to "Filter by..."
         }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,11 +14,13 @@ namespace REIC_POMS
     public partial class PO_MainScreen : Form
     {
         private MySQLDatabaseDriver sql;
+        private ArrayList poList;
 
         public PO_MainScreen()
         {
             InitializeComponent();
             sql = new MySQLDatabaseDriver();
+            poList = new ArrayList();
 
             //ADJUST DATAGRIDVIEW COLUMN ALIGNMENT
             dgvPO.Columns["OrderDate"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter; //Center column header
@@ -26,11 +29,13 @@ namespace REIC_POMS
             dgvPO.Columns["DeliveryDate"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; //Center column contents
 
             //TEST CODE (For the purpose of customizing the DGV and checking out its appearance)
-            dgvPO.Rows.Add("09/24/2015", "09/30/2015", "Fat Shaolin Jaideite Kiosk", "BPO#1609-018", "Lucid Co.");
+            /*dgvPO.Rows.Add("09/24/2015", "09/30/2015", "Fat Shaolin Jaideite Kiosk", "BPO#1609-018", "Lucid Co.");
             dgvPO.Rows.Add("11/30/2015", "12/30/2015", "St. Theresa School of Novaliches", "BPO#1611-002", "Fluora’s Shop");
             dgvPO.Rows.Add("09/30/2015", "10/30/2015", "Basic Co.", "BPO#1609-001", "Cinco Company");
-            dgvPO.Rows.Add("08/23/2015", "09/15/2015", "Basic Co.", "BPO#1608-041", "Mayers Balay");
-            
+            dgvPO.Rows.Add("08/23/2015", "09/15/2015", "Basic Co.", "BPO#1608-041", "Mayers Balay");*/
+
+            sql.SelectAllPODGV(dgvPO);
+            sql.SelectAllPO(poList);
         }
 
         private void PO_MainScreen_Load(object sender, EventArgs e)
@@ -236,11 +241,40 @@ namespace REIC_POMS
         //---------------------------
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            //Insert code that changes "Search for..." to blank when textbox is clicked
+            //Wrong Inputs
+            if (txtSearch.Text == "Search for...")
+            {
+                MessageBox.Show("Please input something to search for.", "Nothing to Search", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (txtSearch.Text == null)
+            {
+                MessageBox.Show("There is nothing to search.", "Blank Field", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (cbbFilterBy.Text == "Filter by...")
+            {
+                MessageBox.Show("Please select a filter option.", "No Filter Option", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            //Valid
+            sql.SearchPO(cbbFilterBy.Text, txtSearch.Text, dgvPO);
+            if (dgvPO.Rows.Count == 0)
+            {
+                MessageBox.Show("No such purchase order was found.", "Empty Search Results", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void btnClearSearch_Click(object sender, EventArgs e)
         {
+            //Minor flaw: If you click ClearSearch multiple times, the dgv gets populated again, even though nothing was searched. Hehe.
+            dgvPO.Rows.Clear();
+            sql.SelectAllPODGV(dgvPO); //Populate DGV
+
+            //Sort datagridview by LATEST PO Number
+            dgvPO.Sort(dgvPO.Columns["PONumber"], ListSortDirection.Descending);
+
             txtSearch.Text = "Search for...";
             cbbFilterBy.SelectedIndex = 0; //Sets the combobox value to "Filter by..."
         }
