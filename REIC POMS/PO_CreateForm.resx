@@ -230,4 +230,54 @@
         i2lX/b8/e52dnnGzzgAAAABJRU5ErkJggg==
 </value>
   </data>
+  <metadata name="POItemName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="POItemPartNumber.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="PODescription.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="POUOM.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="POUnitPrice.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="POQty.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="POItemTotal.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="PartNo.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="ItemName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Description.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="UOM.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="UnitPrice.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="pictureBox2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABcAAAAZCAYAAADaILXQAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vAAADrwBlbxySQAAAdRJREFUSEvtlE2rQVEUhu9v8TnwUWIgiYkMSDJkQAaSYqYMREp+gokiykD3mlNi
+        KkoGEooS+fgX723tcjuHhYFrcOsOHoN37fVse519zsfX1yfexcf5fMY7+JezPJUvFgvU63Xk83kUi0W0
+        Wi3s93t27TV35afTCZVKBQqFAhqNBnq9XqBWq2E2mzEYDMQarvcCKz8cDsjlctBqtYjFYuh0OhiPx4J2
+        uw2n0wmj0ShOcd0rhZV3u10hzmQysvzCdruFx+OBw+HAZrNh1xCsPJVKiRGs12tZLqXf74uRNRoNtk6w
+        cpppIpGQZRw2mw3hcJitEaxcqVQim83KMg6v1wufz8fWCFZut9sRjUZlGYfJZEIymWRrBCsvFApinqPR
+        SJZLqVar4orS7Lk6wcqHwyF0Oh38fr8svzCdTsVzcblc4uZwawhWTjSbTVgsFlitVpRKJdRqNfFv0+m0
+        uEl0MpVKhWAwiPl8ftNP3JUTdAK32w2DwSDuPUEvTzweRyAQEBsQoVAIu93upv+hnDgej5hMJuj1eoLZ
+        bCby5XKJSCTyswFtRpm096n8ESSTnuD63XhJTtA4aCwkp0sgrb0sJ1arFcrlsvhSSvNfkd/jj8vp5z18
+        4hul/JE15hWeEgAAAABJRU5ErkJggg==
+</value>
+  </data>
 </root>
