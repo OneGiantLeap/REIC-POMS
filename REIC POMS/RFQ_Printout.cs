@@ -16,14 +16,14 @@ namespace REIC_POMS {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class RFQPrintout : ReportClass {
+    public class RFQ_Printout : ReportClass {
         
-        public RFQPrintout() {
+        public RFQ_Printout() {
         }
         
         public override string ResourceName {
             get {
-                return "RFQPrintout.rpt";
+                return "RFQ_Printout.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace REIC_POMS {
         
         public override string FullResourceName {
             get {
-                return "REIC_POMS.RFQPrintout.rpt";
+                return "REIC_POMS.RFQ_Printout.rpt";
             }
             set {
                 // Do nothing
@@ -90,9 +90,9 @@ namespace REIC_POMS {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedRFQPrintout : Component, ICachedReport {
+    public class CachedRFQ_Printout : Component, ICachedReport {
         
-        public CachedRFQPrintout() {
+        public CachedRFQ_Printout() {
         }
         
         [Browsable(false)]
@@ -129,7 +129,7 @@ namespace REIC_POMS {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            RFQPrintout rpt = new RFQPrintout();
+            RFQ_Printout rpt = new RFQ_Printout();
             rpt.Site = this.Site;
             return rpt;
         }

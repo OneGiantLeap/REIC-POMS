@@ -23,13 +23,15 @@ namespace REIC_POMS.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("server=localhost;user id=root;database=reicpoms;allowuservariables=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string reicpomsConnectionString {
             get {
                 return ((string)(this["reicpomsConnectionString"]));
+            }
+            set {
+                this["reicpomsConnectionString"] = value;
             }
         }
     }

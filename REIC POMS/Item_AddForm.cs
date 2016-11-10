@@ -153,7 +153,7 @@ namespace REIC_POMS
 
                 if (countPartNumber > 0)
                 {
-                MessageBox.Show("Part Number already exist.", "Incorrect Field", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Part Number already exists.", "Incorrect Field", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 tabItemForm.SelectedTab = tabItemForm.TabPages["tabItemDetails"];
                 return;
                 }
@@ -167,14 +167,14 @@ namespace REIC_POMS
 
                 if (cbbSupplierName.Text == "Select Supplier")
                 {
-                    MessageBox.Show("Please Select a Supplier.", "Incomplete Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Please select a Supplier.", "Incomplete Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     tabItemForm.SelectedTab = tabItemForm.TabPages["tabSupplierDetails"];
                     return;
                 }
 
                 if (dateResult > 0)
                 {
-                    MessageBox.Show("To Date of Validity Period should be later than From Date.", "Invalid Date", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("To Date of the Validity Period should be later than From Date.", "Invalid Date", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     tabItemForm.SelectedTab = tabItemForm.TabPages["tabItemDetails"];
                     return;
                 }
@@ -182,7 +182,7 @@ namespace REIC_POMS
 
                 if (dateResult == 0)
                 {
-                    MessageBox.Show("To Date of Validity Period should be later than From Date.", "Invalid Date", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("To Date of the Validity Period should be later than From Date.", "Invalid Date", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     tabItemForm.SelectedTab = tabItemForm.TabPages["tabItemDetails"];
                     return;
                 }

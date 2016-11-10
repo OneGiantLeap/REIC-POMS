@@ -25,18 +25,20 @@ namespace REIC_POMS
             //---ADJUST DATAGRIDVIEW COLUMN ALIGNMENT
             //Center column header
             dgvPQ.Columns["Date"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                    dgvPQ.Columns["PQNumber"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                //Center column contents
-                    dgvPQ.Columns["Date"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                    dgvPQ.Columns["PQNumber"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvPQ.Columns["PQNumber"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //Center column contents
+            dgvPQ.Columns["Date"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvPQ.Columns["PQNumber"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             //---TEST CODE (For the purpose of customizing the DGV and checking out its appearance)
-                /*dgvPQ.Rows.Add("11/20/2015", "ABC Company", "ATPI 1611-016", "01/01/2015 - 11/05/2017");
-                dgvPQ.Rows.Add("06/10/2015", "Zen Nutrients Co.", "ATPI 1606-005", "02/01/2015 - 12/03/2017");
-                dgvPQ.Rows.Add("09/07/2015", "Colette’s Company", "ATPI 1609-048", "03/01/2015 - 09/05/2017");
-                dgvPQ.Rows.Add("07/12/2015", "Joy Luck Club", "ATPI 1607-004", "04/01/2015 - 08/02/2017");*/
+            /*dgvPQ.Rows.Add("11/20/2015", "ABC Company", "ATPI 1611-016", "01/01/2015 - 11/05/2017");
+            dgvPQ.Rows.Add("06/10/2015", "Zen Nutrients Co.", "ATPI 1606-005", "02/01/2015 - 12/03/2017");
+            dgvPQ.Rows.Add("09/07/2015", "Colette’s Company", "ATPI 1609-048", "03/01/2015 - 09/05/2017");
+            dgvPQ.Rows.Add("07/12/2015", "Joy Luck Club", "ATPI 1607-004", "04/01/2015 - 08/02/2017");*/
 
-            sql.SelectAllPQDGV(dgvPQ); 
+            sql.SelectAllPQDGV(dgvPQ);
+            dgvPQ.Sort(dgvPQ.Columns["PQNumber"], ListSortDirection.Descending); //Sort datagridview by LATEST PQ Number (Note: When you add a PQ, it should appear at the top of the DGV)
+
             sql.SelectAllPQ(pqList);
 
         }
@@ -56,8 +58,10 @@ namespace REIC_POMS
         {
             DialogResult result = MessageBox.Show("Are you sure you want to exit?", "Confirm Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
-       //         sql.Backup();
+            {
+                sql.Backup();
                 Close(); //Exit the program
+            }
         }
 
         //------------------------

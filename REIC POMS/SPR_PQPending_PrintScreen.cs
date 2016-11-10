@@ -30,14 +30,8 @@ namespace REIC_POMS
         private void SPR_PQCompleted_PrintScreen_Load(object sender, EventArgs e)
         {
             //---MYSQL CONNECTION
-            connection = new MySqlConnection("server=localhost; database=reicpoms; user=root; password=; convert zero datetime=true; allow zero datetime=true;");
+            connection = new MySqlConnection(ConnectionStringManager.reicpomsConnection.ConnectionString);
             connection.Open();
-
-            //DEBUG MESSAGES
-            /*if (connection.State == System.Data.ConnectionState.Open)
-            { MessageBox.Show("Crystal Report: Connection to SQL successful!"); }
-            else
-            { MessageBox.Show("Crystal Report: Connection to SQL failed!"); }*/
 
             //---SELECT Statements
             reicpomsds = new reicpomsDataSet();

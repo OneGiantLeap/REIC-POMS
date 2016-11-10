@@ -19,6 +19,7 @@ namespace REIC_POMS
             InitializeComponent();
             sql = new MySQLDatabaseDriver();
             //sql.Restore();
+            ConnectionStringManager.SetMySQLConString("localhost", "root", "", "reicpoms");
         }
 
         private void btnMinimize_Click(object sender, EventArgs e)
@@ -28,7 +29,6 @@ namespace REIC_POMS
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            //TESTING OUT CODE; MAY NOT BE PART OF SYSTEM, REALLY.
             DialogResult result = MessageBox.Show("Are you sure you want to exit?", "Confirm Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
                 sql.Backup();
@@ -51,5 +51,11 @@ namespace REIC_POMS
             //}
         }
 
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            //Insert validation for Admin account
+            DatabaseSettingsForm settings = new DatabaseSettingsForm();
+            settings.ShowDialog();
+        }
     }
 }

@@ -31,10 +31,18 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PO_ViewForm));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabItemDetails = new System.Windows.Forms.TabControl();
             this.TabPage1 = new System.Windows.Forms.TabPage();
+            this.lblCompany = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtAddress = new System.Windows.Forms.TextBox();
+            this.lblOrderDesc = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lblRequiredDate = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblQuote = new System.Windows.Forms.Label();
             this.lblEmail = new System.Windows.Forms.Label();
@@ -60,6 +68,12 @@
             this.lblPQNumber = new System.Windows.Forms.Label();
             this.lblQuotationDetails = new System.Windows.Forms.Label();
             this.TabPage2 = new System.Windows.Forms.TabPage();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.lblTotalAmount = new System.Windows.Forms.Label();
             this.dgvRFQItems = new System.Windows.Forms.DataGridView();
             this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,37 +81,22 @@
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnGeneratePDF = new System.Windows.Forms.PictureBox();
             this.lblPQItems = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
-            this.btnCreatePO = new System.Windows.Forms.Button();
-            this.lblRequiredDate = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.lblOrderDesc = new System.Windows.Forms.TextBox();
-            this.txtAddress = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lblCompany = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.lblTotalAmount = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
+            this.btnCreateSIDR = new System.Windows.Forms.PictureBox();
+            this.btnGeneratePDF = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabItemDetails.SuspendLayout();
             this.TabPage1.SuspendLayout();
             this.TabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRFQItems)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCreateSIDR)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnGeneratePDF)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackgroundImage = global::REIC_POMS.Properties.Resources.BannerPQView;
-            //this.pictureBox1.Image = global::REIC_POMS.Properties.Resources.BannerPOView;
+            this.pictureBox1.BackgroundImage = global::REIC_POMS.Properties.Resources.BannerPOView;
             this.pictureBox1.Location = new System.Drawing.Point(1, 1);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(855, 71);
@@ -159,6 +158,110 @@
             this.TabPage1.TabIndex = 0;
             this.TabPage1.Text = "Order & Supplier Details";
             this.TabPage1.UseVisualStyleBackColor = true;
+            // 
+            // lblCompany
+            // 
+            this.lblCompany.AutoSize = true;
+            this.lblCompany.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblCompany.Location = new System.Drawing.Point(545, 348);
+            this.lblCompany.Name = "lblCompany";
+            this.lblCompany.Size = new System.Drawing.Size(101, 19);
+            this.lblCompany.TabIndex = 84;
+            this.lblCompany.Text = "ABC COMPANY";
+            this.lblCompany.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(411, 349);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(104, 18);
+            this.label7.TabIndex = 83;
+            this.label7.Text = "COMPANY NAME";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Source Sans Pro", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(63)))), ((int)(((byte)(1)))));
+            this.label5.Location = new System.Drawing.Point(404, 299);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(230, 38);
+            this.label5.TabIndex = 82;
+            this.label5.Text = "Customer Details";
+            // 
+            // txtAddress
+            // 
+            this.txtAddress.BackColor = System.Drawing.Color.White;
+            this.txtAddress.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAddress.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.txtAddress.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtAddress.Location = new System.Drawing.Point(436, 206);
+            this.txtAddress.MaxLength = 150;
+            this.txtAddress.Multiline = true;
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.ReadOnly = true;
+            this.txtAddress.Size = new System.Drawing.Size(226, 69);
+            this.txtAddress.TabIndex = 81;
+            this.txtAddress.Text = "12 Quezon Avenue corner P. Tuazon Street, Brgy. Lourdes, Quezon City, Philippines" +
+    "";
+            // 
+            // lblOrderDesc
+            // 
+            this.lblOrderDesc.BackColor = System.Drawing.Color.White;
+            this.lblOrderDesc.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lblOrderDesc.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblOrderDesc.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblOrderDesc.Location = new System.Drawing.Point(65, 183);
+            this.lblOrderDesc.MaxLength = 150;
+            this.lblOrderDesc.Multiline = true;
+            this.lblOrderDesc.Name = "lblOrderDesc";
+            this.lblOrderDesc.ReadOnly = true;
+            this.lblOrderDesc.Size = new System.Drawing.Size(284, 69);
+            this.lblOrderDesc.TabIndex = 80;
+            this.lblOrderDesc.Text = "Lorem ipsum dolor sit  amet, consectetur adipiscing elit. Vestibulum tincidunt ni" +
+    "cl a ligula ultricies gravida.";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(65, 170);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(0, 19);
+            this.label4.TabIndex = 79;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(36, 161);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(136, 18);
+            this.label3.TabIndex = 78;
+            this.label3.Text = "ORDER DESCRIPTION";
+            // 
+            // lblRequiredDate
+            // 
+            this.lblRequiredDate.AutoSize = true;
+            this.lblRequiredDate.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblRequiredDate.Location = new System.Drawing.Point(223, 130);
+            this.lblRequiredDate.Name = "lblRequiredDate";
+            this.lblRequiredDate.Size = new System.Drawing.Size(75, 19);
+            this.lblRequiredDate.TabIndex = 77;
+            this.lblRequiredDate.Text = "11/29/2015";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(36, 130);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(168, 18);
+            this.label2.TabIndex = 76;
+            this.label2.Text = "REQUIRED DELIVERY DATE";
             // 
             // panel1
             // 
@@ -405,6 +508,7 @@
             // 
             // TabPage2
             // 
+            this.TabPage2.Controls.Add(this.btnGeneratePDF);
             this.TabPage2.Controls.Add(this.label20);
             this.TabPage2.Controls.Add(this.label13);
             this.TabPage2.Controls.Add(this.label12);
@@ -412,7 +516,6 @@
             this.TabPage2.Controls.Add(this.label11);
             this.TabPage2.Controls.Add(this.lblTotalAmount);
             this.TabPage2.Controls.Add(this.dgvRFQItems);
-            this.TabPage2.Controls.Add(this.btnGeneratePDF);
             this.TabPage2.Controls.Add(this.lblPQItems);
             this.TabPage2.Location = new System.Drawing.Point(4, 28);
             this.TabPage2.Name = "TabPage2";
@@ -421,6 +524,72 @@
             this.TabPage2.TabIndex = 1;
             this.TabPage2.Text = "Item Details";
             this.TabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.label20.Location = new System.Drawing.Point(742, 370);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(68, 19);
+            this.label20.TabIndex = 86;
+            this.label20.Text = "7, 908.50";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.label13.Location = new System.Drawing.Point(757, 335);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(53, 19);
+            this.label13.TabIndex = 85;
+            this.label13.Text = "500.00";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.label12.Location = new System.Drawing.Point(742, 301);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(68, 19);
+            this.label12.TabIndex = 84;
+            this.label12.Text = "7, 408.50";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.label8.Location = new System.Drawing.Point(634, 335);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(99, 19);
+            this.label8.TabIndex = 83;
+            this.label8.Text = "Delivery Costs";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.label11.Location = new System.Drawing.Point(591, 301);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(142, 19);
+            this.label11.TabIndex = 82;
+            this.label11.Text = "Net: Item(s) Subtotal";
+            // 
+            // lblTotalAmount
+            // 
+            this.lblTotalAmount.AutoSize = true;
+            this.lblTotalAmount.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblTotalAmount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.lblTotalAmount.Location = new System.Drawing.Point(635, 370);
+            this.lblTotalAmount.Name = "lblTotalAmount";
+            this.lblTotalAmount.Size = new System.Drawing.Size(98, 19);
+            this.lblTotalAmount.TabIndex = 81;
+            this.lblTotalAmount.Text = "ORDER TOTAL";
             // 
             // dgvRFQItems
             // 
@@ -513,15 +682,6 @@
             this.Column2.ReadOnly = true;
             this.Column2.Width = 95;
             // 
-            // btnGeneratePDF
-            // 
-            this.btnGeneratePDF.Image = ((System.Drawing.Image)(resources.GetObject("btnGeneratePDF.Image")));
-            this.btnGeneratePDF.Location = new System.Drawing.Point(761, 18);
-            this.btnGeneratePDF.Name = "btnGeneratePDF";
-            this.btnGeneratePDF.Size = new System.Drawing.Size(40, 40);
-            this.btnGeneratePDF.TabIndex = 16;
-            this.btnGeneratePDF.TabStop = false;
-            // 
             // lblPQItems
             // 
             this.lblPQItems.AutoSize = true;
@@ -548,190 +708,28 @@
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // btnCreatePO
+            // btnCreateSIDR
             // 
-            this.btnCreatePO.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(107)))), ((int)(((byte)(58)))));
-            this.btnCreatePO.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(63)))), ((int)(((byte)(1)))));
-            this.btnCreatePO.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCreatePO.Font = new System.Drawing.Font("Source Sans Pro", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.btnCreatePO.ForeColor = System.Drawing.Color.White;
-            this.btnCreatePO.Location = new System.Drawing.Point(508, 522);
-            this.btnCreatePO.Name = "btnCreatePO";
-            this.btnCreatePO.Size = new System.Drawing.Size(225, 35);
-            this.btnCreatePO.TabIndex = 67;
-            this.btnCreatePO.Text = "CREATE SI \\ DR";
-            this.btnCreatePO.UseVisualStyleBackColor = false;
-            this.btnCreatePO.Click += new System.EventHandler(this.btnCreatePO_Click);
+            this.btnCreateSIDR.BackgroundImage = global::REIC_POMS.Properties.Resources.ButtonCreateSIDRFromViewPO;
+            this.btnCreateSIDR.Location = new System.Drawing.Point(564, 522);
+            this.btnCreateSIDR.Name = "btnCreateSIDR";
+            this.btnCreateSIDR.Size = new System.Drawing.Size(169, 35);
+            this.btnCreateSIDR.TabIndex = 80;
+            this.btnCreateSIDR.TabStop = false;
+            this.btnCreateSIDR.MouseEnter += new System.EventHandler(this.btnCreateSIDR_MouseEnter);
+            this.btnCreateSIDR.MouseLeave += new System.EventHandler(this.btnCreateSIDR_MouseLeave);
             // 
-            // lblRequiredDate
+            // btnGeneratePDF
             // 
-            this.lblRequiredDate.AutoSize = true;
-            this.lblRequiredDate.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.lblRequiredDate.Location = new System.Drawing.Point(223, 130);
-            this.lblRequiredDate.Name = "lblRequiredDate";
-            this.lblRequiredDate.Size = new System.Drawing.Size(75, 19);
-            this.lblRequiredDate.TabIndex = 77;
-            this.lblRequiredDate.Text = "11/29/2015";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(36, 130);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(168, 18);
-            this.label2.TabIndex = 76;
-            this.label2.Text = "REQUIRED DELIVERY DATE";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(36, 161);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(136, 18);
-            this.label3.TabIndex = 78;
-            this.label3.Text = "ORDER DESCRIPTION";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(65, 170);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(0, 19);
-            this.label4.TabIndex = 79;
-            // 
-            // lblOrderDesc
-            // 
-            this.lblOrderDesc.BackColor = System.Drawing.Color.White;
-            this.lblOrderDesc.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lblOrderDesc.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.lblOrderDesc.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblOrderDesc.Location = new System.Drawing.Point(65, 183);
-            this.lblOrderDesc.MaxLength = 150;
-            this.lblOrderDesc.Multiline = true;
-            this.lblOrderDesc.Name = "lblOrderDesc";
-            this.lblOrderDesc.ReadOnly = true;
-            this.lblOrderDesc.Size = new System.Drawing.Size(284, 69);
-            this.lblOrderDesc.TabIndex = 80;
-            this.lblOrderDesc.Text = "Lorem ipsum dolor sit  amet, consectetur adipiscing elit. Vestibulum tincidunt ni" +
-    "cl a ligula ultricies gravida.";
-            // 
-            // txtAddress
-            // 
-            this.txtAddress.BackColor = System.Drawing.Color.White;
-            this.txtAddress.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtAddress.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.txtAddress.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtAddress.Location = new System.Drawing.Point(436, 206);
-            this.txtAddress.MaxLength = 150;
-            this.txtAddress.Multiline = true;
-            this.txtAddress.Name = "txtAddress";
-            this.txtAddress.ReadOnly = true;
-            this.txtAddress.Size = new System.Drawing.Size(226, 69);
-            this.txtAddress.TabIndex = 81;
-            this.txtAddress.Text = "12 Quezon Avenue corner P. Tuazon Street, Brgy. Lourdes, Quezon City, Philippines" +
-    "";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Source Sans Pro", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(63)))), ((int)(((byte)(1)))));
-            this.label5.Location = new System.Drawing.Point(404, 299);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(230, 38);
-            this.label5.TabIndex = 82;
-            this.label5.Text = "Customer Details";
-            // 
-            // lblCompany
-            // 
-            this.lblCompany.AutoSize = true;
-            this.lblCompany.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.lblCompany.Location = new System.Drawing.Point(545, 348);
-            this.lblCompany.Name = "lblCompany";
-            this.lblCompany.Size = new System.Drawing.Size(101, 19);
-            this.lblCompany.TabIndex = 84;
-            this.lblCompany.Text = "ABC COMPANY";
-            this.lblCompany.Click += new System.EventHandler(this.label6_Click);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(411, 349);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(104, 18);
-            this.label7.TabIndex = 83;
-            this.label7.Text = "COMPANY NAME";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.label8.Location = new System.Drawing.Point(634, 335);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(99, 19);
-            this.label8.TabIndex = 83;
-            this.label8.Text = "Delivery Costs";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.label11.Location = new System.Drawing.Point(591, 301);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(142, 19);
-            this.label11.TabIndex = 82;
-            this.label11.Text = "Net: Item(s) Subtotal";
-            // 
-            // lblTotalAmount
-            // 
-            this.lblTotalAmount.AutoSize = true;
-            this.lblTotalAmount.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.lblTotalAmount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.lblTotalAmount.Location = new System.Drawing.Point(635, 370);
-            this.lblTotalAmount.Name = "lblTotalAmount";
-            this.lblTotalAmount.Size = new System.Drawing.Size(98, 19);
-            this.lblTotalAmount.TabIndex = 81;
-            this.lblTotalAmount.Text = "ORDER TOTAL";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.label12.Location = new System.Drawing.Point(742, 301);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(68, 19);
-            this.label12.TabIndex = 84;
-            this.label12.Text = "7, 408.50";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.label13.Location = new System.Drawing.Point(757, 335);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(53, 19);
-            this.label13.TabIndex = 85;
-            this.label13.Text = "500.00";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.label20.Location = new System.Drawing.Point(742, 370);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(68, 19);
-            this.label20.TabIndex = 86;
-            this.label20.Text = "7, 908.50";
+            this.btnGeneratePDF.BackgroundImage = global::REIC_POMS.Properties.Resources.ButtonPDF;
+            this.btnGeneratePDF.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGeneratePDF.Location = new System.Drawing.Point(761, 18);
+            this.btnGeneratePDF.Name = "btnGeneratePDF";
+            this.btnGeneratePDF.Size = new System.Drawing.Size(40, 40);
+            this.btnGeneratePDF.TabIndex = 87;
+            this.btnGeneratePDF.TabStop = false;
+            this.btnGeneratePDF.MouseEnter += new System.EventHandler(this.btnGeneratePDF_MouseEnter);
+            this.btnGeneratePDF.MouseLeave += new System.EventHandler(this.btnGeneratePDF_MouseLeave);
             // 
             // PO_ViewForm
             // 
@@ -739,7 +737,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(249)))));
             this.ClientSize = new System.Drawing.Size(855, 575);
-            this.Controls.Add(this.btnCreatePO);
+            this.Controls.Add(this.btnCreateSIDR);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.tabItemDetails);
             this.Controls.Add(this.pictureBox1);
@@ -753,6 +751,7 @@
             this.TabPage2.ResumeLayout(false);
             this.TabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRFQItems)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCreateSIDR)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnGeneratePDF)).EndInit();
             this.ResumeLayout(false);
 
@@ -788,7 +787,6 @@
         internal System.Windows.Forms.TabPage TabPage2;
         internal System.Windows.Forms.Label lblPQItems;
         internal System.Windows.Forms.Label lblQuote;
-        private System.Windows.Forms.PictureBox btnGeneratePDF;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dgvRFQItems;
@@ -798,7 +796,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Qty;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.Button btnCreatePO;
         internal System.Windows.Forms.Label label4;
         internal System.Windows.Forms.Label label3;
         internal System.Windows.Forms.Label lblRequiredDate;
@@ -814,5 +811,7 @@
         internal System.Windows.Forms.Label label8;
         internal System.Windows.Forms.Label label11;
         internal System.Windows.Forms.Label lblTotalAmount;
+        private System.Windows.Forms.PictureBox btnCreateSIDR;
+        private System.Windows.Forms.PictureBox btnGeneratePDF;
     }
 }

@@ -108,8 +108,10 @@ namespace REIC_POMS
             //TEST CODE
             DialogResult result = MessageBox.Show("Are you sure you want to exit?", "Confirm Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
-         //       sql.Backup();
+            {
+                sql.Backup();
                 Close(); //Exit the program
+            }
         }
 
         //------------------------
@@ -333,7 +335,7 @@ namespace REIC_POMS
 
                
                             sql.UpdateSupplier(s); 
-                            MessageBox.Show("oh yan updated na yan ah.");
+                            //MessageBox.Show("oh yan updated na yan ah.");
                         }
                     }
                 }

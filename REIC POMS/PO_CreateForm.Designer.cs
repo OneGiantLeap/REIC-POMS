@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PO_CreateForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -37,6 +36,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PO_CreateForm));
             this.txtItemName = new System.Windows.Forms.TextBox();
             this.txtOrderTotal = new System.Windows.Forms.TextBox();
             this.cbbInFavorOf = new System.Windows.Forms.ComboBox();
@@ -72,12 +72,12 @@
             this.lblItemSelected = new System.Windows.Forms.Label();
             this.txtItemTotal = new System.Windows.Forms.TextBox();
             this.TabPage2 = new System.Windows.Forms.TabPage();
+            this.btnSearch = new System.Windows.Forms.PictureBox();
+            this.txtSearchFor = new System.Windows.Forms.TextBox();
             this.txtDeliveryCosts = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtItemSubtotal = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.btnClearItems = new System.Windows.Forms.Button();
-            this.btnRemove = new System.Windows.Forms.Button();
             this.dgvPOItems = new System.Windows.Forms.DataGridView();
             this.POItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PODescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -87,16 +87,11 @@
             this.POItemTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblRFQItems = new System.Windows.Forms.Label();
             this.dgvItemSelection = new System.Windows.Forms.DataGridView();
-            this.PartNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UOM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnClearSearch = new System.Windows.Forms.Button();
             this.cbbFilterBy = new System.Windows.Forms.ComboBox();
-            this.txtSearchFor = new System.Windows.Forms.TextBox();
             this.lblSelection = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.btnClearItems = new System.Windows.Forms.Button();
+            this.btnRemoveItem = new System.Windows.Forms.Button();
             this.lblDate = new System.Windows.Forms.Label();
             this.lblPQNumber = new System.Windows.Forms.Label();
             this.lblQuotationDetails = new System.Windows.Forms.Label();
@@ -115,12 +110,17 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.PartNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UOM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.nupItemQuantity)).BeginInit();
             this.grpItemSelected.SuspendLayout();
             this.TabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPOItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItemSelection)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabPQForm.SuspendLayout();
             this.TabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -145,7 +145,7 @@
             this.txtOrderTotal.Enabled = false;
             this.txtOrderTotal.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.txtOrderTotal.ForeColor = System.Drawing.Color.Black;
-            this.txtOrderTotal.Location = new System.Drawing.Point(642, 432);
+            this.txtOrderTotal.Location = new System.Drawing.Point(642, 429);
             this.txtOrderTotal.Name = "txtOrderTotal";
             this.txtOrderTotal.Size = new System.Drawing.Size(100, 26);
             this.txtOrderTotal.TabIndex = 11;
@@ -273,7 +273,7 @@
             this.lblTotalAmount.AutoSize = true;
             this.lblTotalAmount.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblTotalAmount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.lblTotalAmount.Location = new System.Drawing.Point(541, 435);
+            this.lblTotalAmount.Location = new System.Drawing.Point(541, 432);
             this.lblTotalAmount.Name = "lblTotalAmount";
             this.lblTotalAmount.Size = new System.Drawing.Size(98, 19);
             this.lblTotalAmount.TabIndex = 3;
@@ -341,10 +341,10 @@
             // 
             this.txtQuoteNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtQuoteNumber.Enabled = false;
-            this.txtQuoteNumber.Location = new System.Drawing.Point(224, 304);
+            this.txtQuoteNumber.Location = new System.Drawing.Point(204, 304);
             this.txtQuoteNumber.Multiline = true;
             this.txtQuoteNumber.Name = "txtQuoteNumber";
-            this.txtQuoteNumber.Size = new System.Drawing.Size(119, 27);
+            this.txtQuoteNumber.Size = new System.Drawing.Size(139, 27);
             this.txtQuoteNumber.TabIndex = 11;
             // 
             // txtPONumber
@@ -395,8 +395,9 @@
             // 
             this.nupItemQuantity.Location = new System.Drawing.Point(15, 114);
             this.nupItemQuantity.Name = "nupItemQuantity";
-            this.nupItemQuantity.Size = new System.Drawing.Size(33, 25);
+            this.nupItemQuantity.Size = new System.Drawing.Size(44, 25);
             this.nupItemQuantity.TabIndex = 13;
+            this.nupItemQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblRFQNumber
             // 
@@ -502,29 +503,54 @@
             // TabPage2
             // 
             this.TabPage2.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.TabPage2.Controls.Add(this.btnSearch);
+            this.TabPage2.Controls.Add(this.txtSearchFor);
             this.TabPage2.Controls.Add(this.txtDeliveryCosts);
             this.TabPage2.Controls.Add(this.label6);
             this.TabPage2.Controls.Add(this.txtItemSubtotal);
             this.TabPage2.Controls.Add(this.label5);
-            this.TabPage2.Controls.Add(this.btnClearItems);
-            this.TabPage2.Controls.Add(this.btnRemove);
             this.TabPage2.Controls.Add(this.dgvPOItems);
             this.TabPage2.Controls.Add(this.lblRFQItems);
             this.TabPage2.Controls.Add(this.dgvItemSelection);
             this.TabPage2.Controls.Add(this.btnClearSearch);
             this.TabPage2.Controls.Add(this.cbbFilterBy);
-            this.TabPage2.Controls.Add(this.txtSearchFor);
             this.TabPage2.Controls.Add(this.lblSelection);
             this.TabPage2.Controls.Add(this.grpItemSelected);
             this.TabPage2.Controls.Add(this.txtOrderTotal);
             this.TabPage2.Controls.Add(this.lblTotalAmount);
-            this.TabPage2.Controls.Add(this.pictureBox2);
+            this.TabPage2.Controls.Add(this.btnClearItems);
+            this.TabPage2.Controls.Add(this.btnRemoveItem);
             this.TabPage2.Location = new System.Drawing.Point(4, 28);
             this.TabPage2.Name = "TabPage2";
             this.TabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.TabPage2.Size = new System.Drawing.Size(845, 474);
             this.TabPage2.TabIndex = 1;
             this.TabPage2.Text = "Item Details";
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.BackgroundImage = global::REIC_POMS.Properties.Resources.ButtonSearch;
+            this.btnSearch.Location = new System.Drawing.Point(295, 27);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(24, 26);
+            this.btnSearch.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnSearch.TabIndex = 83;
+            this.btnSearch.TabStop = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            this.btnSearch.MouseEnter += new System.EventHandler(this.btnSearch_MouseEnter);
+            this.btnSearch.MouseLeave += new System.EventHandler(this.btnSearch_MouseLeave);
+            // 
+            // txtSearchFor
+            // 
+            this.txtSearchFor.BackColor = System.Drawing.Color.White;
+            this.txtSearchFor.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.txtSearchFor.Location = new System.Drawing.Point(160, 27);
+            this.txtSearchFor.Name = "txtSearchFor";
+            this.txtSearchFor.Size = new System.Drawing.Size(136, 26);
+            this.txtSearchFor.TabIndex = 82;
+            this.txtSearchFor.Text = "Search for...";
+            this.txtSearchFor.GotFocus += new System.EventHandler(this.txtSearchFor_GotFocus);
+            this.txtSearchFor.LostFocus += new System.EventHandler(this.txtSearchFor_LostFocus);
             // 
             // txtDeliveryCosts
             // 
@@ -533,7 +559,7 @@
             this.txtDeliveryCosts.Enabled = false;
             this.txtDeliveryCosts.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.txtDeliveryCosts.ForeColor = System.Drawing.Color.Black;
-            this.txtDeliveryCosts.Location = new System.Drawing.Point(412, 432);
+            this.txtDeliveryCosts.Location = new System.Drawing.Point(412, 429);
             this.txtDeliveryCosts.Name = "txtDeliveryCosts";
             this.txtDeliveryCosts.Size = new System.Drawing.Size(100, 26);
             this.txtDeliveryCosts.TabIndex = 81;
@@ -543,7 +569,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.label6.Location = new System.Drawing.Point(307, 434);
+            this.label6.Location = new System.Drawing.Point(307, 431);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(99, 19);
             this.label6.TabIndex = 80;
@@ -556,7 +582,7 @@
             this.txtItemSubtotal.Enabled = false;
             this.txtItemSubtotal.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.txtItemSubtotal.ForeColor = System.Drawing.Color.Black;
-            this.txtItemSubtotal.Location = new System.Drawing.Point(178, 432);
+            this.txtItemSubtotal.Location = new System.Drawing.Point(178, 429);
             this.txtItemSubtotal.Name = "txtItemSubtotal";
             this.txtItemSubtotal.Size = new System.Drawing.Size(100, 26);
             this.txtItemSubtotal.TabIndex = 79;
@@ -567,35 +593,11 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Source Sans Pro Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.label5.Location = new System.Drawing.Point(30, 434);
+            this.label5.Location = new System.Drawing.Point(30, 431);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(142, 19);
             this.label5.TabIndex = 78;
             this.label5.Text = "Net: Item(s) Subtotal";
-            // 
-            // btnClearItems
-            // 
-            this.btnClearItems.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnClearItems.BackgroundImage")));
-            this.btnClearItems.FlatAppearance.BorderSize = 0;
-            this.btnClearItems.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClearItems.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(107)))), ((int)(((byte)(58)))));
-            this.btnClearItems.Location = new System.Drawing.Point(759, 348);
-            this.btnClearItems.Name = "btnClearItems";
-            this.btnClearItems.Size = new System.Drawing.Size(60, 67);
-            this.btnClearItems.TabIndex = 77;
-            this.btnClearItems.UseVisualStyleBackColor = true;
-            // 
-            // btnRemove
-            // 
-            this.btnRemove.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRemove.BackgroundImage")));
-            this.btnRemove.FlatAppearance.BorderSize = 0;
-            this.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRemove.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnRemove.Location = new System.Drawing.Point(759, 275);
-            this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(60, 67);
-            this.btnRemove.TabIndex = 76;
-            this.btnRemove.UseVisualStyleBackColor = true;
             // 
             // dgvPOItems
             // 
@@ -630,7 +632,7 @@
             this.POQty,
             this.POItemTotal});
             this.dgvPOItems.EnableHeadersVisualStyles = false;
-            this.dgvPOItems.Location = new System.Drawing.Point(32, 275);
+            this.dgvPOItems.Location = new System.Drawing.Point(32, 270);
             this.dgvPOItems.MultiSelect = false;
             this.dgvPOItems.Name = "dgvPOItems";
             this.dgvPOItems.ReadOnly = true;
@@ -702,7 +704,7 @@
             this.lblRFQItems.AutoSize = true;
             this.lblRFQItems.Font = new System.Drawing.Font("Source Sans Pro", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblRFQItems.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(63)))), ((int)(((byte)(1)))));
-            this.lblRFQItems.Location = new System.Drawing.Point(25, 231);
+            this.lblRFQItems.Location = new System.Drawing.Point(25, 226);
             this.lblRFQItems.Name = "lblRFQItems";
             this.lblRFQItems.Size = new System.Drawing.Size(317, 38);
             this.lblRFQItems.TabIndex = 75;
@@ -740,7 +742,7 @@
             this.UOM,
             this.UnitPrice});
             this.dgvItemSelection.EnableHeadersVisualStyles = false;
-            this.dgvItemSelection.Location = new System.Drawing.Point(32, 71);
+            this.dgvItemSelection.Location = new System.Drawing.Point(27, 67);
             this.dgvItemSelection.MultiSelect = false;
             this.dgvItemSelection.Name = "dgvItemSelection";
             this.dgvItemSelection.ReadOnly = true;
@@ -765,41 +767,6 @@
             this.dgvItemSelection.TabIndex = 73;
             this.dgvItemSelection.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItemSelection_CellContentClick);
             // 
-            // PartNo
-            // 
-            this.PartNo.HeaderText = "PART NO.";
-            this.PartNo.Name = "PartNo";
-            this.PartNo.ReadOnly = true;
-            this.PartNo.Width = 90;
-            // 
-            // ItemName
-            // 
-            this.ItemName.HeaderText = "ITEM NAME";
-            this.ItemName.Name = "ItemName";
-            this.ItemName.ReadOnly = true;
-            this.ItemName.Width = 120;
-            // 
-            // Description
-            // 
-            this.Description.HeaderText = "DESCRIPTION";
-            this.Description.Name = "Description";
-            this.Description.ReadOnly = true;
-            this.Description.Width = 143;
-            // 
-            // UOM
-            // 
-            this.UOM.HeaderText = "UOM";
-            this.UOM.Name = "UOM";
-            this.UOM.ReadOnly = true;
-            this.UOM.Width = 70;
-            // 
-            // UnitPrice
-            // 
-            this.UnitPrice.HeaderText = "UNIT PRICE";
-            this.UnitPrice.Name = "UnitPrice";
-            this.UnitPrice.ReadOnly = true;
-            this.UnitPrice.Width = 90;
-            // 
             // btnClearSearch
             // 
             this.btnClearSearch.BackColor = System.Drawing.Color.White;
@@ -807,7 +774,7 @@
             this.btnClearSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClearSearch.Font = new System.Drawing.Font("Source Sans Pro Semibold", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.btnClearSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(107)))), ((int)(((byte)(58)))));
-            this.btnClearSearch.Location = new System.Drawing.Point(459, 31);
+            this.btnClearSearch.Location = new System.Drawing.Point(454, 27);
             this.btnClearSearch.Name = "btnClearSearch";
             this.btnClearSearch.Size = new System.Drawing.Size(88, 27);
             this.btnClearSearch.TabIndex = 74;
@@ -821,42 +788,54 @@
             this.cbbFilterBy.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.cbbFilterBy.FormattingEnabled = true;
             this.cbbFilterBy.Items.AddRange(new object[] {
-            "Filter by..."});
-            this.cbbFilterBy.Location = new System.Drawing.Point(332, 31);
+            "Filter by...",
+            "Part Number",
+            "Item Name"});
+            this.cbbFilterBy.Location = new System.Drawing.Point(327, 27);
             this.cbbFilterBy.Name = "cbbFilterBy";
             this.cbbFilterBy.Size = new System.Drawing.Size(120, 27);
             this.cbbFilterBy.TabIndex = 71;
-            // 
-            // txtSearchFor
-            // 
-            this.txtSearchFor.BackColor = System.Drawing.Color.White;
-            this.txtSearchFor.Font = new System.Drawing.Font("Source Sans Pro", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.txtSearchFor.Location = new System.Drawing.Point(174, 31);
-            this.txtSearchFor.Name = "txtSearchFor";
-            this.txtSearchFor.Size = new System.Drawing.Size(130, 26);
-            this.txtSearchFor.TabIndex = 69;
-            this.txtSearchFor.Text = "Search for...";
             // 
             // lblSelection
             // 
             this.lblSelection.AutoSize = true;
             this.lblSelection.Font = new System.Drawing.Font("Source Sans Pro", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblSelection.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(63)))), ((int)(((byte)(1)))));
-            this.lblSelection.Location = new System.Drawing.Point(25, 22);
+            this.lblSelection.Location = new System.Drawing.Point(20, 18);
             this.lblSelection.Name = "lblSelection";
             this.lblSelection.Size = new System.Drawing.Size(134, 38);
             this.lblSelection.TabIndex = 68;
             this.lblSelection.Text = "Selection";
             // 
-            // pictureBox2
+            // btnClearItems
             // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(302, 31);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(23, 26);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 70;
-            this.pictureBox2.TabStop = false;
+            this.btnClearItems.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnClearItems.BackgroundImage")));
+            this.btnClearItems.FlatAppearance.BorderSize = 0;
+            this.btnClearItems.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClearItems.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(107)))), ((int)(((byte)(58)))));
+            this.btnClearItems.Location = new System.Drawing.Point(759, 343);
+            this.btnClearItems.Name = "btnClearItems";
+            this.btnClearItems.Size = new System.Drawing.Size(60, 67);
+            this.btnClearItems.TabIndex = 77;
+            this.btnClearItems.UseVisualStyleBackColor = true;
+            this.btnClearItems.Click += new System.EventHandler(this.btnClearItems_Click);
+            this.btnClearItems.MouseEnter += new System.EventHandler(this.btnClearItems_MouseEnter);
+            this.btnClearItems.MouseLeave += new System.EventHandler(this.btnClearItems_MouseLeave);
+            // 
+            // btnRemoveItem
+            // 
+            this.btnRemoveItem.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRemoveItem.BackgroundImage")));
+            this.btnRemoveItem.FlatAppearance.BorderSize = 0;
+            this.btnRemoveItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemoveItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnRemoveItem.Location = new System.Drawing.Point(759, 270);
+            this.btnRemoveItem.Name = "btnRemoveItem";
+            this.btnRemoveItem.Size = new System.Drawing.Size(60, 67);
+            this.btnRemoveItem.TabIndex = 76;
+            this.btnRemoveItem.UseVisualStyleBackColor = true;
+            this.btnRemoveItem.Click += new System.EventHandler(this.btnRemoveItem_Click);
+            this.btnRemoveItem.MouseEnter += new System.EventHandler(this.btnRemoveItem_MouseEnter);
+            this.btnRemoveItem.MouseLeave += new System.EventHandler(this.btnRemoveItem_MouseLeave);
             // 
             // lblDate
             // 
@@ -1077,13 +1056,48 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackgroundImage = global::REIC_POMS.Properties.Resources.BannerPQCreate;
+            this.pictureBox1.BackgroundImage = global::REIC_POMS.Properties.Resources.BannerPOCreate;
             this.pictureBox1.Location = new System.Drawing.Point(1, -2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(853, 71);
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // PartNo
+            // 
+            this.PartNo.HeaderText = "PART NO.";
+            this.PartNo.Name = "PartNo";
+            this.PartNo.ReadOnly = true;
+            this.PartNo.Width = 90;
+            // 
+            // ItemName
+            // 
+            this.ItemName.HeaderText = "ITEM NAME";
+            this.ItemName.Name = "ItemName";
+            this.ItemName.ReadOnly = true;
+            this.ItemName.Width = 120;
+            // 
+            // Description
+            // 
+            this.Description.HeaderText = "DESCRIPTION";
+            this.Description.Name = "Description";
+            this.Description.ReadOnly = true;
+            this.Description.Width = 143;
+            // 
+            // UOM
+            // 
+            this.UOM.HeaderText = "UOM";
+            this.UOM.Name = "UOM";
+            this.UOM.ReadOnly = true;
+            this.UOM.Width = 70;
+            // 
+            // UnitPrice
+            // 
+            this.UnitPrice.HeaderText = "SUP. PRICE";
+            this.UnitPrice.Name = "UnitPrice";
+            this.UnitPrice.ReadOnly = true;
+            this.UnitPrice.Width = 90;
             // 
             // PO_CreateForm
             // 
@@ -1105,9 +1119,9 @@
             this.grpItemSelected.PerformLayout();
             this.TabPage2.ResumeLayout(false);
             this.TabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPOItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItemSelection)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.tabPQForm.ResumeLayout(false);
             this.TabPage1.ResumeLayout(false);
             this.TabPage1.PerformLayout();
@@ -1160,19 +1174,12 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnClearItems;
-        private System.Windows.Forms.Button btnRemove;
+        private System.Windows.Forms.Button btnRemoveItem;
         private System.Windows.Forms.DataGridView dgvPOItems;
         private System.Windows.Forms.Label lblRFQItems;
         private System.Windows.Forms.DataGridView dgvItemSelection;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PartNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItemName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Description;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UOM;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UnitPrice;
         private System.Windows.Forms.Button btnClearSearch;
         private System.Windows.Forms.ComboBox cbbFilterBy;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.TextBox txtSearchFor;
         private System.Windows.Forms.Label lblSelection;
         private System.Windows.Forms.Button btnAddtoPQ;
         private System.Windows.Forms.Label lblItemName;
@@ -1196,6 +1203,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn POQty;
         private System.Windows.Forms.DataGridViewTextBoxColumn POItemTotal;
         private System.Windows.Forms.TextBox txtPQNumber;
+        private System.Windows.Forms.PictureBox btnSearch;
+        private System.Windows.Forms.TextBox txtSearchFor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PartNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Description;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UOM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UnitPrice;
     }
 }
 

@@ -21,6 +21,8 @@ namespace REIC_POMS
         private reicpomsDataSet reicpomsds;
         private MySqlDataAdapter adapter;
 
+        private MySQLDatabaseDriver sql;
+
         //CONSTRUCTOR
         public SPR_RFQPending_PrintScreen()
         {
@@ -31,14 +33,8 @@ namespace REIC_POMS
         private void SPR_RFQPending_PrintScreen_Load(object sender, EventArgs e)
         {
             //---MYSQL CONNECTION
-            connection = new MySqlConnection("server=localhost; database=reicpoms; user=root; password=; convert zero datetime=true; allow zero datetime=true;");
+            connection = new MySqlConnection(ConnectionStringManager.reicpomsConnection.ConnectionString);
             connection.Open();
-
-            //DEBUG MESSAGES
-            if (connection.State == System.Data.ConnectionState.Open)
-            { MessageBox.Show("Crystal Report: Connection to SQL successful!"); }
-            else
-            { MessageBox.Show("Crystal Report: Connection to SQL failed!"); }
 
             //---SELECT Statements
             reicpomsds = new reicpomsDataSet();
@@ -79,35 +75,6 @@ namespace REIC_POMS
             rfqpending.ExportToDisk(ExportFormatType.PortableDocFormat, fileName);
             MessageBox.Show("A PDF file of this report on pending requests for price quotation can be found in C:\\REIC Files\\Sales Performance Report & Summary\\\nRequests for Price Quotation - Pending.");
             CrystalReportViewer.ReportSource = rfqpending; //Display SPR_RFQPending.rpt in the print preview
-
-            //---OLD SELECT STATEMENTS
-            /*//Data from ALL supplier_t (Needed to avoid a ContstraintException in selectPendingRFQ)
-            string selectAllSuppliers = "SELECT * FROM supplier_t;";
-            adapter = new MySqlDataAdapter(selectAllSuppliers, connection);
-            adapter.Fill(reicpomsds, "supplier_t");
-
-            //Data from ALL customer_t (Needed to avoid a ContstraintException in selectRFQCustomer)
-            string selectAllCustomers = "SELECT * FROM customer_t;";
-            adapter = new MySqlDataAdapter(selectAllCustomers, connection);
-            adapter.Fill(reicpomsds, "customer_t");
-
-            //Data from customer
-            string selectRFQCustomer = string.Format("SELECT customer_t.customer_id, business_name_style, tin_number, company_name, contact_person, contact_number, account_number, email_address, address " +
-                                                     "FROM rfq_t, customer_t " +
-                                                     "WHERE pq_no IS NULL " +
-                                                     "AND rfq_t.customer_id = customer_t.customer_id;");
-            adapter = new MySqlDataAdapter(selectRFQCustomer, connection);
-            adapter.Fill(reicpomsds, "customer_t"); //Overwrites the customer_t*/
-
-            //SelectPendingRFQ
-
-            //Data from supplier_t
-            /*string selectRFQSupplier = string.Format("SELECT supplier_t.supplier_id, supplier_name, contact_person, contact_number, email_address, address " +
-                                                     "FROM rfq_t, supplier_t " +
-                                                     "WHERE pq_no IS NULL " +
-                                                     "AND rfq_t.supplier_id = supplier_t.supplier_id;");
-            adapter = new MySqlDataAdapter(selectRFQSupplier, connection);
-            adapter.Fill(reicpomsds, "supplier_t"); //Overwrites the supplier_t*/
         }
     }
 }

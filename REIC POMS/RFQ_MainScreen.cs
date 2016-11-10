@@ -37,7 +37,7 @@ namespace REIC_POMS
             sql.SelectAllRFQDGV(dgvRFQ); //Populate DGV
             sql.SelectAllRFQ(rfqList);
 
-            //Sort datagridview by LATEST RFQ Number
+            //Sort datagridview by LATEST RFQ Number (Note: When you add an RFQ, it should appear at the top of the DGV)
             dgvRFQ.Sort(dgvRFQ.Columns["RFQNo"], ListSortDirection.Descending);
 
             //Default selected row is the first row
@@ -62,8 +62,10 @@ namespace REIC_POMS
         {
             DialogResult result = MessageBox.Show("Are you sure you want to exit?", "Confirm Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
-      //          sql.Backup();
+            {
+                sql.Backup();
                 Close(); //Exit the program
+            }
         }
 
         //------------------------
@@ -262,6 +264,7 @@ namespace REIC_POMS
 
                 //---DISPLAY the newly created RFQ in the Main Screen DGV
                 dgvRFQ.Rows.Add(crfq.RFQNo, crfq.RequestDate, crfq.SupplierName, crfq.CustomerName);
+                dgvRFQ.Sort(dgvRFQ.Columns["RFQNo"], ListSortDirection.Descending); //So that newly added row is on top
 
                 //---OPEN THE RFQ Printout Print Preview
                 RFQ_PrintScreen rfqps = new RFQ_PrintScreen();
@@ -343,7 +346,7 @@ namespace REIC_POMS
             }
             if (txtSearch.Text == null)
             {
-                MessageBox.Show("There is nothing to search.", "Blank Field", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("There is nothing to search for.", "Blank Field", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (cbbFilterBy.Text == "Filter by...")

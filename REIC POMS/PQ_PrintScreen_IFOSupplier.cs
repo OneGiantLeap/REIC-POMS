@@ -55,7 +55,7 @@ namespace REIC_POMS
         private void PQ_PrintScreen_IFOSupplier_Load(object sender, EventArgs e)
         { //When screen loads, details of the RFQ Printout should already be displayed.
             //---MYSQL CONNECTION
-            connection = new MySqlConnection("server=localhost; database=reicpoms; user=root; password=; convert zero datetime=true; allow zero datetime=true;");
+            connection = new MySqlConnection(ConnectionStringManager.reicpomsConnection.ConnectionString);
             connection.Open();
 
             //---SELECT Statements

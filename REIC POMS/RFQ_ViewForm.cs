@@ -117,5 +117,20 @@ namespace REIC_POMS
             rfqps.RFQNo = RFQNoToView; //For the Print Screen to use in its SQL statement
             rfqps.ShowDialog();
         }
+
+        //------------------------
+        //  OTHER FORM ELEMENTS  |
+        //------------------------
+        private void btnGeneratePDF_MouseEnter(object sender, EventArgs e)
+        { btnGeneratePDF.BackgroundImage = Properties.Resources.ButtonPDFHover; }
+
+        private void btnGeneratePDF_MouseLeave(object sender, EventArgs e)
+        { btnGeneratePDF.BackgroundImage = Properties.Resources.ButtonPDF; }
+
+        private void btnCreatePQ_MouseEnter(object sender, EventArgs e)
+        { btnCreatePQ.BackgroundImage = Properties.Resources.ButtonCreatePQFromViewRFQHover; }
+
+        private void btnCreatePQ_MouseLeave(object sender, EventArgs e)
+        { btnCreatePQ.BackgroundImage = Properties.Resources.ButtonCreatePQFromViewRFQ; }
     }
 }

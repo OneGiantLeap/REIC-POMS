@@ -37,11 +37,11 @@ namespace REIC_POMS
             get { return outputDate.Text; }
         }
 
-        public string RFQNoToView
-        {
-            set { outputRFQNo.Text = value; }
-            get { return outputRFQNo.Text; }
-        }
+        //public string RFQNoToView --> No longer needed; FK (PQ No.) is in RFQ
+        //{
+        //    set { outputRFQNo.Text = value; }
+        //    get { return outputRFQNo.Text; }
+        //}
 
         public string FromDatetoView
         {
@@ -157,6 +157,7 @@ namespace REIC_POMS
 
         private void btnGeneratePDF_Click(object sender, EventArgs e)
         {
+            /*
             //---OPEN THE PQ Printout Print Preview
             if (InFavorOfToView == "Supplier")
             {
@@ -171,7 +172,22 @@ namespace REIC_POMS
                 pq.PQNo = PQNoToView;
                 pq.FirstTime = false;
                 pq.ShowDialog();
-            }
+            }*/
         }
+
+        //------------------------
+        //  OTHER FORM ELEMENTS  |
+        //------------------------
+        private void btnGeneratePDF_MouseEnter(object sender, EventArgs e)
+        { btnGeneratePDF.BackgroundImage = Properties.Resources.ButtonPDFHover; }
+
+        private void btnGeneratePDF_MouseLeave(object sender, EventArgs e)
+        { btnGeneratePDF.BackgroundImage = Properties.Resources.ButtonPDF; }
+
+        private void btnCreatePO_MouseEnter(object sender, EventArgs e)
+        { btnCreatePO.BackgroundImage = Properties.Resources.ButtonCreatePOFromViewPQHover; }
+
+        private void btnCreatePO_MouseLeave(object sender, EventArgs e)
+        { btnCreatePO.BackgroundImage = Properties.Resources.ButtonCreatePOFromViewPQ; }
     }
 }

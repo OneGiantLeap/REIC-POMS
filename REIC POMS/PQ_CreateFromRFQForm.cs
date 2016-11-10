@@ -18,7 +18,6 @@ namespace REIC_POMS
         private ArrayList selectedRFQList;
         private ArrayList rfqList;
 
-
         public PQ_CreateFromRFQForm()
         {
             InitializeComponent();
@@ -124,37 +123,32 @@ namespace REIC_POMS
             this.Close();
 
             PQ_CreateForm pf = new PQ_CreateForm();
-            
 
             for (int i = 0; i < dgvRFQSelected.RowCount; i++)
             {
-               
-               
-                    string rfqNo;
-                    DataGridViewRow row = dgvRFQSelected.Rows[i];
-                    rfqNo = (row.Cells["SelectedRFQNo"].Value).ToString(); //get the RFQNo of the rfq selected
-                    RFQ r = sql.SelectRFQDetails(rfqNo); //from the RFQNo taken, get its details
-                    selectedRFQList.Add(new RFQ(r.RFQNo, r.RequestDate, r.PaymentTerms, r.DeliveryTerms, r.CustomerID, r.SupplierID, r.PQNo)); //put in an ArrayList the details taken
-                    pf.RFQNo = rfqNo;
+                string rfqNo;
+                DataGridViewRow row = dgvRFQSelected.Rows[i];
+                rfqNo = (row.Cells["SelectedRFQNo"].Value).ToString(); //get the RFQNo of the rfq selected
+                RFQ r = sql.SelectRFQDetails(rfqNo); //from the RFQNo taken, get its details
+                selectedRFQList.Add(new RFQ(r.RFQNo, r.RequestDate, r.PaymentTerms, r.DeliveryTerms, r.CustomerID, r.SupplierID, r.PQNo)); //put in an ArrayList the details taken
+                pf.RFQNo = rfqNo;
 
-                    string year = DateTime.Now.ToString("yy");
-                    string month = DateTime.Now.ToString("MM");
-                    int pqCount = sql.GetRowCount("pq_t", year, month);
-                    string generatedPQNo = year + month + "-" + (pqCount + 1).ToString("D3");
-                    pf.PQNo = generatedPQNo;
+                string year = DateTime.Now.ToString("yy");
+                string month = DateTime.Now.ToString("MM");
+                int pqCount = sql.GetRowCount("pq_t", year, month);
+                string generatedPQNo = year + month + "-" + (pqCount + 1).ToString("D3");
+                pf.PQNo = generatedPQNo;
 
-                    pf.PaymentTerms = r.PaymentTerms;
-                    pf.DeliveryTerms = r.DeliveryTerms;
+                pf.PaymentTerms = r.PaymentTerms;
+                pf.DeliveryTerms = r.DeliveryTerms;
 
-                    Customer c = sql.SelectCustomerDetails(r.CustomerID); //to retrieve the details of Customer from MySqlDatabaseDriver
-                    pf.CustomerName = c.CustomerName;
-                    pf.CustomerPerson = c.CustomerPerson;
-                    pf.CustomerNumber = c.CustomerNumber;
-                    pf.CustomerEmail = c.CustomerEmail;
-                    pf.CustomerAddress = c.CustomerAddress;
-                    
-                              
-               
+                Customer c = sql.SelectCustomerDetails(r.CustomerID); //to retrieve the details of Customer from MySqlDatabaseDriver
+                pf.CustomerName = c.CustomerName;
+                pf.CustomerPerson = c.CustomerPerson;
+                pf.CustomerNumber = c.CustomerNumber;
+                pf.CustomerEmail = c.CustomerEmail;
+                pf.CustomerAddress = c.CustomerAddress;
+                             
                 pf.ShowDialog();
             }
             
@@ -180,14 +174,14 @@ namespace REIC_POMS
                 sql.InsertPQ(newPQ);
 
                 for (int j = 0; j < pf.PQOrderLineList.Count; j++)
-                    {
-                        PQ_OrderLine pol = (PQ_OrderLine)pf.PQOrderLineList[j];
-                        sql.InsertPQOrderLine(pol);
-                        MessageBox.Show("OrderLine added to comprehensive list: " + pol.PQNo + ", " + pol.PartNumber + ", " + pol.ReicUnitPrice + "," + pol.Quantity + "," + pol.ItemTotal);
-                    }
+                {
+                    PQ_OrderLine pol = (PQ_OrderLine)pf.PQOrderLineList[j];
+                    sql.InsertPQOrderLine(pol);
+                    //MessageBox.Show("OrderLine added to comprehensive list: " + pol.PQNo + ", " + pol.PartNumber + ", " + pol.ReicUnitPrice + "," + pol.Quantity + "," + pol.ItemTotal);
+                }
 
                 //---OPEN THE PQ Printout Print Preview
-                if (pf.InFavorOf == "Supplier")
+                /*if (pf.InFavorOf == "Supplier")
                 {
                     PQ_PrintScreen_IFOSupplier pq = new PQ_PrintScreen_IFOSupplier();
                     pq.PQNo = pf.PQNo;
@@ -200,7 +194,7 @@ namespace REIC_POMS
                     pq.PQNo = pf.PQNo;
                     pq.FirstTime = false;
                     pq.ShowDialog();
-                }
+                }*/
             }
 
         }

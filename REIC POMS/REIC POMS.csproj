@@ -67,6 +67,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConnectionStringManager.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="Customer_AddForm.cs">
       <SubType>Form</SubType>
@@ -91,6 +92,12 @@
     </Compile>
     <Compile Include="Customer_ViewForm.Designer.cs">
       <DependentUpon>Customer_ViewForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DatabaseSettingsForm.Designer.cs">
+      <DependentUpon>DatabaseSettingsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Item.cs" />
     <Compile Include="Item_AddForm.cs">
@@ -220,10 +227,10 @@
       <DependentUpon>reicpomsDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="RFQ.cs" />
-    <Compile Include="RFQPrintout.cs">
+    <Compile Include="RFQ_Printout.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>RFQPrintout.rpt</DependentUpon>
+      <DependentUpon>RFQ_Printout.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="RFQ_CreateForm.cs">
@@ -251,6 +258,19 @@
     <Compile Include="RFQ_ViewForm.Designer.cs">
       <DependentUpon>RFQ_ViewForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SIDR.cs" />
+    <Compile Include="SIDR_CreateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SIDR_CreateForm.Designer.cs">
+      <DependentUpon>SIDR_CreateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SIDR_CreateFromPO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SIDR_CreateFromPO.Designer.cs">
+      <DependentUpon>SIDR_CreateFromPO.cs</DependentUpon>
+    </Compile>
     <Compile Include="SIDR_MainScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -262,6 +282,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DRPrintout.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SIDR_OrderLine.cs" />
+    <Compile Include="SIDR_ViewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SIDR_ViewForm.Designer.cs">
+      <DependentUpon>SIDR_ViewForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SIPrintout.cs">
       <AutoGen>True</AutoGen>
@@ -411,6 +438,9 @@
     <EmbeddedResource Include="Customer_MainScreen.resx">
       <DependentUpon>Customer_MainScreen.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DatabaseSettingsForm.resx">
+      <DependentUpon>DatabaseSettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Item_MainScreen.resx">
       <DependentUpon>Item_MainScreen.cs</DependentUpon>
     </EmbeddedResource>
@@ -486,9 +516,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="RFQPrintout.rpt">
+    <EmbeddedResource Include="RFQ_Printout.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RFQPrintout.cs</LastGenOutput>
+      <LastGenOutput>RFQ_Printout.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="RFQ_CreateForm.resx">
       <DependentUpon>RFQ_CreateForm.cs</DependentUpon>
@@ -502,12 +532,21 @@
     <EmbeddedResource Include="RFQ_ViewForm.resx">
       <DependentUpon>RFQ_ViewForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SIDR_CreateForm.resx">
+      <DependentUpon>SIDR_CreateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SIDR_CreateFromPO.resx">
+      <DependentUpon>SIDR_CreateFromPO.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SIDR_MainScreen.resx">
       <DependentUpon>SIDR_MainScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DRPrintout.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>DRPrintout.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SIDR_ViewForm.resx">
+      <DependentUpon>SIDR_ViewForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SIPrintout.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -609,7 +648,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="reicpomsDataSet.xsc">
@@ -702,6 +743,60 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BannerPOCreate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BannerPOQuickCreate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BannerPOView.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Actions-Add PQ %2864px White%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Actions-Add PO %2864px White%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Actions-Add SI&amp;DR %2864px White%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ButtonPDF.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ButtonPDFHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ButtonCreatePOFromViewPQ.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ButtonCreatePOFromViewPQHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ButtonCreatePQFromViewRFQ.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ButtonCreatePQFromViewRFQHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ButtonCreateSIDRFromViewPO.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ButtonCreateSIDRFromViewPOHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Settings %2832px White%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BannerDatabaseSettings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BannerSIDRCreate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BannerSIDRView.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

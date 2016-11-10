@@ -16,12 +16,10 @@ namespace REIC_POMS
     {
         //ATTRIBUTES
         private MySQLDatabaseDriver sql;
-        //private ArrayList itemList; //All Items
-        //private ArrayList customerList; //All Customers
-        private ArrayList supplierItemList; //All Items offered by the selected Supplier
         private ArrayList customerDropdownList; //All Customer NAMES
         private ArrayList supplierList; //All Suppliers
         private ArrayList supplierDropdownList; //All Supplier NAMES
+        private ArrayList supplierItemList; //All Items offered by the selected Supplier
         private ArrayList rfqOrderLineList; //Items in the RFQ
         private int customerIDFK; //RFQ Foreign Key 1
         private int supplierIDFK; //RFQ Foreign Key 2
@@ -33,29 +31,13 @@ namespace REIC_POMS
             sql = new MySQLDatabaseDriver();
 
             //Instantiate ArrayLists and populate them
-            //itemList = new ArrayList();
-            /*sql.SelectAllItems(itemList); --> No longer used. dgvItemSelection only displays what the selected Supplier offers.
-            for (int i = 0; i < itemList.Count; i++)
-            {
-                Item itemToAdd = (Item)itemList[i];
-                dgvItemSelection.Rows.Add(itemToAdd.PartNumber,
-                                          itemToAdd.ItemName,
-                                          itemToAdd.ItemDescription,
-                                          itemToAdd.Uom,
-                                          itemToAdd.SupplierUnitPrice.ToString("0.00"));
-            }*/
-
-            supplierItemList = new ArrayList();
-
-            //customerList = new ArrayList();
-            //sql.SelectAllCustomers(customerList);
-
             customerDropdownList = new ArrayList();
             sql.SelectAllCustomerNames(customerDropdownList);
             customerDropdownList.Sort(); //Sort list alphabetically
             customerDropdownList.Insert(0, "Select Customer");
             cbbCustomerName.DataSource = customerDropdownList; //Populate the dropdown
 
+            supplierItemList = new ArrayList();
             supplierList = new ArrayList(); //Need all the Supplier Details, since there's Supplier auto-complete
             sql.SelectAllSuppliers(supplierList);
 
@@ -193,6 +175,7 @@ namespace REIC_POMS
         /* FOR: btnSave_Click,
                 btnCancel_Click,
                 btnSearch_Click,
+                btnClearSearch_Click,
                 btnAddToRequest_Click,
                 btnRemoveItem_Click,
                 btnClearItems_Click     */
@@ -275,10 +258,50 @@ namespace REIC_POMS
             Close();
         }
 
+        //-----------------------------
+        //  ITEM DETAILS TAB METHODS  |
+        //-----------------------------
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            /*Insert SQL code here*/
+            if ((txtSearchFor.Text == "Search for...") || (txtSearchFor.Text == ""))
+            {
+                MessageBox.Show("Please input something to search for.", "Nothing to Search", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (cbbFilterBy.Text == "Filter by...")
+            {
+                MessageBox.Show("Please select a filter option.", "No Filter Option", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            //Valid search input
+            if (dgvItemSelection.Rows.Count == 0) //If Supplier selected doesn't offer anything
+            {
+                MessageBox.Show("There is nothing to search for.", "No Items to Search For", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            //Valid search input, and there are items in dgvItemSelection
+            SupplierIDFK = sql.SelectSupplierID(SupplierName); //Extract Supplier ID; use it next query
+            dgvItemSelection.Rows.Clear();
+            sql.SearchSupplierItems(dgvItemSelection, cbbFilterBy.Text, SupplierIDFK, txtSearchFor.Text);
+            if (dgvItemSelection.Rows.Count == 0) //Empty search results
+            {
+                MessageBox.Show("No item(s) was found.", "Empty Search Results", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnClearSearch_Click(object sender, EventArgs e)
+        {
             txtSearchFor.Text = "Search for...";
+            dgvItemSelection.Rows.Clear(); //Erase search results
+            SupplierIDFK = sql.SelectSupplierID(SupplierName);
+            sql.SelectSupplierItems(dgvItemSelection, SupplierIDFK);
+            if (dgvItemSelection.RowCount != 0) //If Supplier offers at least 1 item, set the Item Name text to the first row's item name
+            {
+                txtItemName.Text = dgvItemSelection.SelectedRows[0].Cells["ItemName"].Value.ToString();
+                nupItemQuantity.Value = 1;
+            }
         }
 
         private void dgvItemSelection_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -349,16 +372,23 @@ namespace REIC_POMS
         //------------------------
         //  OTHER FORM ELEMENTS  |
         //------------------------
+        private void dtpDateOfRequest_ValueChanged(object sender, EventArgs e)
+        { //If the User wants to input an RFQ with date of year/month != current year/month
+            string year = dtpDateOfRequest.Value.ToString("yy");
+            string month = dtpDateOfRequest.Value.ToString("MM");
+            int rfqCount = sql.GetRowCount("rfq_t", year, month);
+            string generatedRFQNo = year + month + "-" + (rfqCount + 1).ToString("D3");
+            RFQNo = generatedRFQNo;
+        }
+
         private void cbbSupplierName_SelectedIndexChanged(object sender, EventArgs e)
         { //Once a Supplier has been selected, the other Supplier-related fields should be auto-completed. dgvItemSelection should change.
-            //Empty DGV contents (to be refilled upon Supplier selection)
-            dgvItemSelection.Rows.Clear();
+            dgvItemSelection.Rows.Clear(); //Empty DGV contents (to be refilled upon Supplier selection)
             if (dgvRFQItems.RowCount != 0) //Do we need this messagebox?
             {
                 MessageBox.Show("Note: Items not provided by the chosen Supplier are excluded from the Request for Price Quotation.", "Important!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 dgvRFQItems.Rows.Clear();
             }
-            
             
             if (cbbSupplierName.Text == "Select Supplier")
             {
@@ -394,12 +424,14 @@ namespace REIC_POMS
 
         private void txtSearchFor_GotFocus(object sender, EventArgs e)
         { //When Search box is clicked, content becomes blank.
-            txtSearchFor.Clear();
+            if (txtSearchFor.Text == "Search for...")
+            { txtSearchFor.Clear(); }
         }
 
         private void txtSearchFor_LostFocus(object sender, EventArgs e)
         { //User clicks on textbox. Then when he clicks elsewhre, content returns to default text.
-            txtSearchFor.Text = "Search for...";
+            if (txtSearchFor.Text == "")
+            { txtSearchFor.Text = "Search for..."; }
         }
 
         private void btnSearch_MouseEnter(object sender, EventArgs e)
@@ -419,6 +451,5 @@ namespace REIC_POMS
 
         private void btnClearItems_MouseLeave(object sender, EventArgs e)
         { btnClearItems.BackgroundImage = Properties.Resources.ButtonClearAllItems; }
-
     }
 }
