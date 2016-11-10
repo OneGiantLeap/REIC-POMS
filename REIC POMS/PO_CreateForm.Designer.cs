@@ -79,12 +79,6 @@
             this.btnClearItems = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
             this.dgvPOItems = new System.Windows.Forms.DataGridView();
-            this.POItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PODescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.POUOM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.POUnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.POQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.POItemTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblRFQItems = new System.Windows.Forms.Label();
             this.dgvItemSelection = new System.Windows.Forms.DataGridView();
             this.PartNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -115,6 +109,13 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.POItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.POItemPartNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PODescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.POUOM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.POUnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.POQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.POItemTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.nupItemQuantity)).BeginInit();
             this.grpItemSelected.SuspendLayout();
             this.TabPage2.SuspendLayout();
@@ -624,6 +625,7 @@
             this.dgvPOItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvPOItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.POItemName,
+            this.POItemPartNumber,
             this.PODescription,
             this.POUOM,
             this.POUnitPrice,
@@ -654,48 +656,6 @@
             this.dgvPOItems.Size = new System.Drawing.Size(710, 140);
             this.dgvPOItems.TabIndex = 72;
             this.dgvPOItems.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvPOItems_RowsAdded);
-            // 
-            // POItemName
-            // 
-            this.POItemName.HeaderText = "ITEM NAME";
-            this.POItemName.Name = "POItemName";
-            this.POItemName.ReadOnly = true;
-            this.POItemName.Width = 208;
-            // 
-            // PODescription
-            // 
-            this.PODescription.HeaderText = "DESCRIPTION";
-            this.PODescription.Name = "PODescription";
-            this.PODescription.ReadOnly = true;
-            this.PODescription.Width = 240;
-            // 
-            // POUOM
-            // 
-            this.POUOM.HeaderText = "UOM";
-            this.POUOM.Name = "POUOM";
-            this.POUOM.ReadOnly = true;
-            this.POUOM.Width = 40;
-            // 
-            // POUnitPrice
-            // 
-            this.POUnitPrice.HeaderText = "UNIT PRICE";
-            this.POUnitPrice.Name = "POUnitPrice";
-            this.POUnitPrice.ReadOnly = true;
-            this.POUnitPrice.Width = 90;
-            // 
-            // POQty
-            // 
-            this.POQty.HeaderText = "QTY.";
-            this.POQty.Name = "POQty";
-            this.POQty.ReadOnly = true;
-            this.POQty.Width = 40;
-            // 
-            // POItemTotal
-            // 
-            this.POItemTotal.HeaderText = "ITEM TOTAL";
-            this.POItemTotal.Name = "POItemTotal";
-            this.POItemTotal.ReadOnly = true;
-            this.POItemTotal.Width = 90;
             // 
             // lblRFQItems
             // 
@@ -1085,6 +1045,55 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // POItemName
+            // 
+            this.POItemName.HeaderText = "ITEM NAME";
+            this.POItemName.Name = "POItemName";
+            this.POItemName.ReadOnly = true;
+            this.POItemName.Width = 208;
+            // 
+            // POItemPartNumber
+            // 
+            this.POItemPartNumber.HeaderText = "Column1";
+            this.POItemPartNumber.Name = "POItemPartNumber";
+            this.POItemPartNumber.ReadOnly = true;
+            this.POItemPartNumber.Visible = false;
+            // 
+            // PODescription
+            // 
+            this.PODescription.HeaderText = "DESCRIPTION";
+            this.PODescription.Name = "PODescription";
+            this.PODescription.ReadOnly = true;
+            this.PODescription.Width = 240;
+            // 
+            // POUOM
+            // 
+            this.POUOM.HeaderText = "UOM";
+            this.POUOM.Name = "POUOM";
+            this.POUOM.ReadOnly = true;
+            this.POUOM.Width = 40;
+            // 
+            // POUnitPrice
+            // 
+            this.POUnitPrice.HeaderText = "UNIT PRICE";
+            this.POUnitPrice.Name = "POUnitPrice";
+            this.POUnitPrice.ReadOnly = true;
+            this.POUnitPrice.Width = 90;
+            // 
+            // POQty
+            // 
+            this.POQty.HeaderText = "QTY.";
+            this.POQty.Name = "POQty";
+            this.POQty.ReadOnly = true;
+            this.POQty.Width = 40;
+            // 
+            // POItemTotal
+            // 
+            this.POItemTotal.HeaderText = "ITEM TOTAL";
+            this.POItemTotal.Name = "POItemTotal";
+            this.POItemTotal.ReadOnly = true;
+            this.POItemTotal.Width = 90;
+            // 
             // PO_CreateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1189,13 +1198,14 @@
         internal System.Windows.Forms.TextBox txtItemSubtotal;
         internal System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtSupplierID;
+        private System.Windows.Forms.TextBox txtPQNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn POItemName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn POItemPartNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn PODescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn POUOM;
         private System.Windows.Forms.DataGridViewTextBoxColumn POUnitPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn POQty;
         private System.Windows.Forms.DataGridViewTextBoxColumn POItemTotal;
-        private System.Windows.Forms.TextBox txtPQNumber;
     }
 }
 
